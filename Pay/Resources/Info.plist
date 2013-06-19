@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleDisplayName</key>
+	<string>${PRODUCT_NAME}</string>
+	<key>CFBundleExecutable</key>
+	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIconFile</key>
+	<string></string>
+	<key>CFBundleIconFiles</key>
+	<array>
+		<string>Icon.png</string>
+		<string>Icon@2x.png</string>
+		<string>Icon-72.png</string>
+		<string>Icon-Small-50.png</string>
+		<string>Icon-Small.png</string>
+		<string>Icon-Small@2x.png</string>
+	</array>
+	<key>CFBundleIdentifier</key>
+	<string>com.ismole.${PRODUCT_NAME:rfc1034identifier}</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>${PRODUCT_NAME}</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UIPrerenderedIcon</key>
+	<true/>
+	<key>Partner</key>
+	<string>2088801319828435</string>
+	<key>Seller</key>
+	<string>mobile@ismole.com</string>
+	<key>RSA private key</key>
+	<string>MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBANAYoo9LOeCEitcJIxRpkn4fTzW6H5LQshRJbwa3lmwSVqxAfbmHWfO8bWtq9omz26IjmhxEFySbm0zqBqxiGnQq4VGnl7uMRK8b9f7hsfKF2g3ax3RhouMf8RIeYqgbaPPtkVCBSnqdbB9fRgeTM8ZFsoeSvfrkeSU1wB7XStbzAgMBAAECgYAkBe+2II6fWDJ0sSc6dGAgpyjeIx8uGiSJsICgyA0pHi+U2AErqcufjuHeM4EEK3d85O7br8nV034Z3XVUSBNN8q7FDXbT1oQsvhpi89xR5JbfFwJQIEJNYGJowrR7pqv5Vk1tG6JTzNNxKOYP2y8v+O1Mzczvn6qezmF/aZCLIQJBAPjpwfbZQ37HWLUKw7087Hcyh3c/XqIHWbboEtLcl29XUm61S60AZKicQ7vzEWV7MVCzf6RVkzebYOB2v++DDpECQQDWBWCGNjErEnD0a84gEsf7oy1ZmAkN1K35ATWEIkCHbofgxjv/1H1eRnuGo5HCPi+MG6B9s5T+qK7xBf8MPxdDAkEAiH2eJ98xXLaxVO0nMoDS5fXmRKSSHuVK87pEgC4IODy47g4qBh6+E5tEpS5/bpdkDm2vY4ytYoOoVs2nKA5EkQJAc8v2/MbndXmF2glWPm5K+7C/QcGL7IrNEnQAA50QsvYv2IMJRZMvvcl+3ksz+xfwW+s6u6hljh+wf8IRzAt6xwJBANHqMQOm5lyRZAVnraMgGjQXtFCStDkOgpzDFvrtm2N0qp86CXZZmoqcvXJErzxzgiQ/iqujHbToVl4Dj7Gkj6M=</string>
+	<key>RSA public key</key>
+	<string>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQGKKPSznghIrXCSMUaZJ+H081
+uh+S0LIUSW8Gt5ZsElasQH25h1nzvG1ravaJs9uiI5ocRBckm5tM6gasYhp0KuFR
+p5e7jESvG/X+4bHyhdoN2sd0YaLjH/ESHmKoG2jz7ZFQgUp6nWwfX0YHkzPGRbKH
+kr365HklNcAe10rW8wIDAQAB</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<dict>
+		<key>accelerometer</key>
+		<true/>
+		<key>opengles-1</key>
+		<true/>
+	</dict>
+	<key>UIStatusBarHidden</key>
+	<true/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string></string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>Pay</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
