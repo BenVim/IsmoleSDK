@@ -261,12 +261,6 @@
 		B51E4641173CC1D7002B9031 /* PrepaidCardNextStepView.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = B51E460D173CC1D7002B9031 /* PrepaidCardNextStepView.ccbi */; };
 		B51E4642173CC1D7002B9031 /* PrepaidCardView.ccb in Resources */ = {isa = PBXBuildFile; fileRef = B51E460E173CC1D7002B9031 /* PrepaidCardView.ccb */; };
 		B51E4643173CC1D7002B9031 /* PrepaidCardView.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = B51E460F173CC1D7002B9031 /* PrepaidCardView.ccbi */; };
-		B51E4644173CC1D7002B9031 /* 支付中心-帮助.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E4610173CC1D7002B9031 /* 支付中心-帮助.png */; };
-		B51E4645173CC1D7002B9031 /* 支付中心-选择支付-电话卡.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E4611173CC1D7002B9031 /* 支付中心-选择支付-电话卡.png */; };
-		B51E4646173CC1D7002B9031 /* 支付中心-选择支付.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E4612173CC1D7002B9031 /* 支付中心-选择支付.png */; };
-		B51E4647173CC1D7002B9031 /* 支付中心.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E4613173CC1D7002B9031 /* 支付中心.png */; };
-		B51E4648173CC1D7002B9031 /* 注册.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E4614173CC1D7002B9031 /* 注册.png */; };
-		B51E4649173CC1D7002B9031 /* 登录.png in Resources */ = {isa = PBXBuildFile; fileRef = B51E4615173CC1D7002B9031 /* 登录.png */; };
 		B51E48AA173CE4CD002B9031 /* AlixPayIPadDemoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B51E484B173CE4CD002B9031 /* AlixPayIPadDemoViewController.xib */; };
 		B51E48AD173CE4CD002B9031 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = B51E489E173CE4CD002B9031 /* base64.m */; };
 		B51E48AE173CE4CD002B9031 /* MD5DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = B51E48A1173CE4CD002B9031 /* MD5DataSigner.m */; };
@@ -828,12 +822,6 @@
 		B51E460D173CC1D7002B9031 /* PrepaidCardNextStepView.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = PrepaidCardNextStepView.ccbi; sourceTree = "<group>"; };
 		B51E460E173CC1D7002B9031 /* PrepaidCardView.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrepaidCardView.ccb; sourceTree = "<group>"; };
 		B51E460F173CC1D7002B9031 /* PrepaidCardView.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = PrepaidCardView.ccbi; sourceTree = "<group>"; };
-		B51E4610173CC1D7002B9031 /* 支付中心-帮助.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "支付中心-帮助.png"; sourceTree = "<group>"; };
-		B51E4611173CC1D7002B9031 /* 支付中心-选择支付-电话卡.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "支付中心-选择支付-电话卡.png"; sourceTree = "<group>"; };
-		B51E4612173CC1D7002B9031 /* 支付中心-选择支付.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "支付中心-选择支付.png"; sourceTree = "<group>"; };
-		B51E4613173CC1D7002B9031 /* 支付中心.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "支付中心.png"; sourceTree = "<group>"; };
-		B51E4614173CC1D7002B9031 /* 注册.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "注册.png"; sourceTree = "<group>"; };
-		B51E4615173CC1D7002B9031 /* 登录.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "登录.png"; sourceTree = "<group>"; };
 		B51E484B173CE4CD002B9031 /* AlixPayIPadDemoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlixPayIPadDemoViewController.xib; sourceTree = "<group>"; };
 		B51E4851173CE4CD002B9031 /* aes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = aes.h; sourceTree = "<group>"; };
 		B51E4852173CE4CD002B9031 /* asn1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asn1.h; sourceTree = "<group>"; };
@@ -2076,12 +2064,6 @@
 				B51E460D173CC1D7002B9031 /* PrepaidCardNextStepView.ccbi */,
 				B51E460E173CC1D7002B9031 /* PrepaidCardView.ccb */,
 				B51E460F173CC1D7002B9031 /* PrepaidCardView.ccbi */,
-				B51E4610173CC1D7002B9031 /* 支付中心-帮助.png */,
-				B51E4611173CC1D7002B9031 /* 支付中心-选择支付-电话卡.png */,
-				B51E4612173CC1D7002B9031 /* 支付中心-选择支付.png */,
-				B51E4613173CC1D7002B9031 /* 支付中心.png */,
-				B51E4614173CC1D7002B9031 /* 注册.png */,
-				B51E4615173CC1D7002B9031 /* 登录.png */,
 			);
 			path = pay;
 			sourceTree = "<group>";
@@ -2392,12 +2374,6 @@
 				B51E4641173CC1D7002B9031 /* PrepaidCardNextStepView.ccbi in Resources */,
 				B51E4642173CC1D7002B9031 /* PrepaidCardView.ccb in Resources */,
 				B51E4643173CC1D7002B9031 /* PrepaidCardView.ccbi in Resources */,
-				B51E4644173CC1D7002B9031 /* 支付中心-帮助.png in Resources */,
-				B51E4645173CC1D7002B9031 /* 支付中心-选择支付-电话卡.png in Resources */,
-				B51E4646173CC1D7002B9031 /* 支付中心-选择支付.png in Resources */,
-				B51E4647173CC1D7002B9031 /* 支付中心.png in Resources */,
-				B51E4648173CC1D7002B9031 /* 注册.png in Resources */,
-				B51E4649173CC1D7002B9031 /* 登录.png in Resources */,
 				B51E48AA173CE4CD002B9031 /* AlixPayIPadDemoViewController.xib in Resources */,
 				B51E497F173D1995002B9031 /* Info.plist in Resources */,
 				B5A13EF0174208E4002CE6E0 /* RegisterView.ccbi in Resources */,
