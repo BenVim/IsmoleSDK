@@ -154,7 +154,7 @@ void LoginView::loginOnclick(cocos2d::CCNode* pSender, cocos2d::extension::CCCon
     if (!userName.empty() && !userpass.empty())
     {
         char sign[255];
-        sprintf(sign, "appid=%ddo=loginemail=%smode=Userpassword=%s%s",
+        sprintf(sign, "appid=%ddo=loginemail=%smod=Userpassword=%s%s",
                                             QimiPlatform::shareQimiPlatform()->getQimiGameAppId(),
                                             userName.c_str(),
                                             userpass.c_str(),
@@ -223,8 +223,7 @@ void LoginView::loginSucceed(cocos2d::CCNode *sender, void *data)
                 pQimiUserModel->retain();
                 QimiPlatform::shareQimiPlatform()->setQimiUserModel(pQimiUserModel);
             }
-            QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "注册成功");
-            QimiPlatform::shareQimiPlatform()->QimiLogin();//注册成功打开奇米登录窗口。
+            QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "登录成功");
             this->removeFromParentAndCleanup(true);
         }
         else
