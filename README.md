@@ -1,13 +1,13 @@
 IsmoleSDK
 =========
-+QimiSDK接口概述
-+QimiSDK初始化
-+QimiSDK平台用户注册
-+QimiSDK平台用户登录
-+QimiSDK调用平台支付接口
-+QimiSDK调用应用内论坛接口
-+QimiSDK调用系统aleart接口
-+QimiSDK获取平台登录用户信息数据
+- QimiSDK接口概述
+- QimiSDK初始化
+- QimiSDK平台用户注册
+- QimiSDK平台用户登录
+- QimiSDK调用平台支付接口
+- QimiSDK调用应用内论坛接口
+- QimiSDK调用系统aleart接口
+- QimiSDK获取平台登录用户信息数据
 
 ===========
 
@@ -85,7 +85,7 @@ IsmoleSDK
      * sId 
      * appkey
      */
-    QimiParamInfo* paramInfo = QimiParamInfo::create(21, 15, "7a92bba4670d479c5514720c1cf46aab");
+    QimiParamInfo* paramInfo = QimiParamInfo::create(2, 150, "7a92bba4670dddd479c5514720c1cf46aab");
     QimiPlatform::shareQimiPlatform()->setParamInfo(paramInfo);
 
     QimiPlatform初始化方法如上所示， 创建QimiParamInfo对象，QimiParamInfo对象所需要的三个值是平台赋于应用的关键三个参数。appId是平台方对应用的唯一值，sId是该用对应的服务器ID值。appkey是该应用唯一的KEY。APP应用在平台注册后由平台方提供该参数。
@@ -118,7 +118,7 @@ IsmoleSDK
     void openPayDailog(int uId, int sId, std::string key ,int money);
 
     /**使用方法**/
-    QimiPlatform::shareQimiPlatform()->openPayDailog(21, 15, "7a92bba4670d479c5514720c1cf46aab", 10);
+    QimiPlatform::shareQimiPlatform()->openPayDailog(1, 5, "7a92bba467dd0d479c5514720c1cf46aab", 10);
 
 #####QimiSDK调用应用内论坛接口
 	/* 打开论坛的接口参数说明
