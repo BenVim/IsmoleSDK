@@ -1,7 +1,17 @@
 IsmoleSDK
 =========
++QimiSDK接口概述
++QimiSDK初始化
++QimiSDK平台用户注册
++QimiSDK平台用户登录
++QimiSDK调用平台支付接口
++QimiSDK调用应用内论坛接口
++QimiSDK调用系统aleart接口
++QimiSDK获取平台登录用户信息数据
 
-###接口概述
+===========
+
+####接口概述
 
     /**
      * 平台初始化 QimiParamInfo对象里面保存appId, sId, appKey几个平台初始化必需要的参数
@@ -82,7 +92,7 @@ IsmoleSDK
 
     QimiPlatform初始化必须调用setParamInfo()方法。把QimiParamInfo对象的关键参数赋给平台。初始化完成后才可以进行其它的注册、登录、支付等相关操作。
 
-#####QimiSDK注册
+#####QimiSDK平台用户注册
 	/**平台注册接口**/
 	void QimiRegister();
 
@@ -90,7 +100,7 @@ IsmoleSDK
 	QimiPlatform::shareQimiPlatform()->QimiRegister();
 	如上所示便可以打开平台注册页面。注册完成后服务器返回的数据会填充 QimiUserModel对象（QimiUserModel对象是用户数据MODEL，后面有详细描述或参加源代码）。
 
-#####QimiSDK用户登录接口
+#####QimiSDK平台用户登录
     /**用户登录接口**/
     void QimiLogin();
 
@@ -98,7 +108,7 @@ IsmoleSDK
     QimiPlatform::shareQimiPlatform()->QimiLogin();
     调用以上方法打开平台登录界面。登录成功数据填充QimiUserModel对象（QimiUserModel对象是用户数据MODEL，后面有详细描述或参加源代码）。
 
-#####调用Qimi支付平台
+#####QimiSDK调用平台支付接口
 	/* 支付接口参数说明：
      * uId int类型 游戏的uId;
      * sId int类型 游戏的sId;
@@ -110,7 +120,7 @@ IsmoleSDK
     /**使用方法**/
     QimiPlatform::shareQimiPlatform()->openPayDailog(21, 15, "7a92bba4670d479c5514720c1cf46aab", 10);
 
-#####调用Qimi论坛
+#####QimiSDK调用应用内论坛接口
 	/* 打开论坛的接口参数说明
      * 该接口可以在游戏中打开web网页
      * webUrl string 类型 网站网址。
@@ -121,7 +131,7 @@ IsmoleSDK
     QimiPlatform::shareQimiPlatform()->openGameWeb("http://bbs.qimi.com/forum.php");
     应用内显示论坛。
 
-#####调用系统Alear弹窗
+#####QimiSDK调用系统aleart接
 	/* 提示窗口
      * msg std::string 系统提示信息显示内容；
      * title 弹窗标题
@@ -131,7 +141,7 @@ IsmoleSDK
      /**使用方法**/
     QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "这是一个设备系统提示窗口！");
     
-#####获取平台登录用户信息数据
+#####QimiSDK获取平台登录用户信息数据
 	QimiUserModel* getQimiUserModel();
 
 	/**使用方法**/
