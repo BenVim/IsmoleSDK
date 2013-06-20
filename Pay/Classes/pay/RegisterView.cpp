@@ -80,8 +80,9 @@ void RegisterView::initView()
     m_pEditUserName = CCEditBox::create(editBoxSize, m_pInputUserNameTxtBg);
     m_pEditUserName->setPosition(m_pCCEditBoxUserCCNode->getPosition());
     m_pEditUserName->setFontColor(ccc3(175,175,175));
-    m_pEditUserName->setMaxLength(50);
+    m_pEditUserName->setMaxLength(60);
     m_pEditUserName->setReturnType(kKeyboardReturnTypeDone);
+    m_pEditUserName->setInputMode(kEditBoxInputModeEmailAddr);
     m_pEditUserName->setTouchPriority(-130);
     m_pEditUserName->setText("用户名");
     addChild(m_pEditUserName);
@@ -92,6 +93,7 @@ void RegisterView::initView()
     m_pEditUserPass->setFontColor(ccc3(175,175,175));
     m_pEditUserPass->setMaxLength(50);
     m_pEditUserPass->setReturnType(kKeyboardReturnTypeDone);
+    m_pEditUserPass->setInputFlag(kEditBoxInputFlagPassword);
     m_pEditUserPass->setTouchPriority(-130);
     m_pEditUserPass->setText("用户密码");
     addChild(m_pEditUserPass);
@@ -102,6 +104,7 @@ void RegisterView::initView()
     m_pEditVerifyPass->setFontColor(ccc3(175,175,175));
     m_pEditVerifyPass->setMaxLength(50);
     m_pEditVerifyPass->setReturnType(kKeyboardReturnTypeDone);
+    m_pEditVerifyPass->setInputFlag(kEditBoxInputFlagPassword);
     m_pEditVerifyPass->setTouchPriority(-130);
     m_pEditVerifyPass->setText("确认密码");
     addChild(m_pEditVerifyPass);
@@ -115,20 +118,17 @@ void RegisterView::registerOnClick(cocos2d::CCNode* pSender, cocos2d::extension:
     
     if (!userName.empty() && !userPass.empty() && !userVerifyPass.empty())
     {
-        std::string userEmail = "";//m_pUserName->getText();
-        std::string userpass = "";//m_pPassWorld->getText();
-
         if (userPass == userVerifyPass)
         {
             std::string url = std::string("http://api.qimi.com/api.php");
             char sign[255];
-            sprintf(sign, "appid=%dbirthday=do=regemail=%smod=Username=password=%ssex=", QimiPlatform::shareQimiPlatform()->getQimiGameAppId(), userEmail.c_str(),userpass.c_str());
+            sprintf(sign, "appid=%dbirthday=do=regemail=%smod=Username=password=%ssex=", QimiPlatform::shareQimiPlatform()->getQimiGameAppId(), userName.c_str(),userPass.c_str());
             Json::Value homeData;
             homeData["sign"] = GameUtils::getStringWithMd5(std::string(sign));
             homeData["appid"] = QimiPlatform::shareQimiPlatform()->getQimiGameAppId();
             homeData["mod"] = "User";
             homeData["do"] = "reg";
-            homeData["email"] = userEmail;
+            homeData["email"] = userName;
             homeData["password"] = userPass;
             homeData["name"] = "";
             homeData["sex"] = "";
@@ -177,11 +177,22 @@ void RegisterView::registerSucceed(Proxy* pro, ProxyEvent proxyEvent)
         QimiPlatform::shareQimiPlatform()->setQimiUserModel(pQimiUserModel);
     }
     QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "登录成功");
+    
+    this->removeFromParentAndCleanup(true);
 }
 
 void RegisterView::registerloginFiled(Proxy* pro, ProxyEvent proxyEvent)
 {
-    QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "用户名或密码错误！");
+    Json::Value root = pro->getResponseData();
+    int errCode;
+    std::string msg;
+    if (!root.isNull())
+    {
+        CC_GAME_JSON_ADD(root, isInt, errCode, "status", asInt);
+        CC_GAME_JSON_ADD(root, isString, msg, "error", asString);
+    }
+    
+    QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", msg);
 }
 
 

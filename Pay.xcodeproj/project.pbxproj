@@ -314,6 +314,7 @@
 		B5B495B917707DCD00F89F5D /* QimiPlatformIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5B495B717707DC800F89F5D /* QimiPlatformIOS.mm */; };
 		B5B495BC17707DE900F89F5D /* QimiPlatformAndroid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5B495BA17707DE800F89F5D /* QimiPlatformAndroid.cpp */; };
 		B5C3869F1772CBC50072CA97 /* QimiUserModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5C3869D1772CBC50072CA97 /* QimiUserModel.cpp */; };
+		B5C386A71772D6360072CA97 /* QimiParamInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5C386A51772D6350072CA97 /* QimiParamInfo.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -999,6 +1000,8 @@
 		B5B495BB17707DE900F89F5D /* QimiPlatformAndroid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QimiPlatformAndroid.h; sourceTree = "<group>"; };
 		B5C3869D1772CBC50072CA97 /* QimiUserModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QimiUserModel.cpp; sourceTree = "<group>"; };
 		B5C3869E1772CBC50072CA97 /* QimiUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QimiUserModel.h; sourceTree = "<group>"; };
+		B5C386A51772D6350072CA97 /* QimiParamInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QimiParamInfo.cpp; sourceTree = "<group>"; };
+		B5C386A61772D6360072CA97 /* QimiParamInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QimiParamInfo.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2262,6 +2265,8 @@
 				B5B495BB17707DE900F89F5D /* QimiPlatformAndroid.h */,
 				B5C3869D1772CBC50072CA97 /* QimiUserModel.cpp */,
 				B5C3869E1772CBC50072CA97 /* QimiUserModel.h */,
+				B5C386A51772D6350072CA97 /* QimiParamInfo.cpp */,
+				B5C386A61772D6360072CA97 /* QimiParamInfo.h */,
 			);
 			name = pay;
 			path = Classes/pay;
@@ -2622,6 +2627,7 @@
 				B5B495B917707DCD00F89F5D /* QimiPlatformIOS.mm in Sources */,
 				B5B495BC17707DE900F89F5D /* QimiPlatformAndroid.cpp in Sources */,
 				B5C3869F1772CBC50072CA97 /* QimiUserModel.cpp in Sources */,
+				B5C386A71772D6360072CA97 /* QimiParamInfo.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

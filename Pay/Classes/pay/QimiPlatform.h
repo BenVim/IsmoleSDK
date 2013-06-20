@@ -15,12 +15,18 @@
 class QimiPlatformIOS;
 class QimiPlatformAndroid;
 class QimiUserModel;
+class QimiParamInfo;
 
 class QimiPlatform : public cocos2d::CCObject
 {
 public:
     static QimiPlatform* shareQimiPlatform();
     bool initialize();
+    
+    /**
+     * 平台初始化 QimiParamInfo对象里面保存appId, sId, appKey几个平台初始化必需要的参数
+     */
+    void setParamInfo(QimiParamInfo* pQimiParamInfo);
     /* 打开论坛的接口参数说明
      * 该接口可以在游戏中打开web网页
      * webUrl string 类型 网站网址。
@@ -89,6 +95,9 @@ private:
     int                  m_appid; //游戏的APPID
     
 private:
+    bool isCheckAppId();//检查是否获得APP ID
+    bool isCheckAppKey();//检查是否已获得APP KEY
+    
 
     
     

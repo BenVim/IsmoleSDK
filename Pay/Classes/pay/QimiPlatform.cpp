@@ -9,8 +9,10 @@
 #include "QimiPlatform.h"
 #include "QimiPlatformIOS.h"
 #include "QimiPlatformAndroid.h"
+#include "QimiParamInfo.h"
 #include "GameCCBLoader.h"
 #include "StageScene.h"
+
 #include "md5c.h"
 
 
@@ -39,10 +41,10 @@ QimiPlatform* QimiPlatform::shareQimiPlatform()
 
 bool QimiPlatform::initialize()
 {
+    m_appid = 0;
+    m_sId   = 0;
     m_key   = "";
     m_uId   = 0;
-    m_sId   = 0;
-    m_appid = 0;
     
     #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     m_pQimiPlatformIOS = QimiPlatformIOS::create();
@@ -55,6 +57,14 @@ bool QimiPlatform::initialize()
     #endif
     return true;
 }
+
+void QimiPlatform::setParamInfo(QimiParamInfo *pQimiParamInfo)
+{
+    m_appid = pQimiParamInfo->getAppID();
+    m_sId   = pQimiParamInfo->getSID();
+    m_key   = pQimiParamInfo->getAppKey();
+}
+
 
 void QimiPlatform::openGameWeb(std::string webUrl)
 {
@@ -85,9 +95,6 @@ void QimiPlatform::openPayDailog(int uId, int sId, std::string key, int money)
     StageScene::shareStageScene()->m_DialogContainer->addChild(pPayView);
     pPayView->setPosition(ccp(0, 0));
     pPayView->initView(uId, sId, key, money);
-
-    //pPayView->initView(58, 14, "bb7ed06454fdb77f1bfdc42918f175ba", 10);
-    //58, 14, "bb7ed06454fdb77f1bfdc42918f175ba", 10);
 }
 
 void QimiPlatform::QimiRegister()
@@ -115,6 +122,15 @@ bool QimiPlatform::isLogined()
     return m_uId ? true : false;
 }
 
+bool QimiPlatform::isCheckAppId()
+{
+    return m_appid ? true : false;
+}//检查是否获得APP ID
+
+bool QimiPlatform::isCheckAppKey()
+{
+    return m_key.empty() ? false : true;
+}//检查是否已获得APP KEY
 
 
 
