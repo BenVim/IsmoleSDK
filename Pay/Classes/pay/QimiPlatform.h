@@ -14,6 +14,7 @@
 
 class QimiPlatformIOS;
 class QimiPlatformAndroid;
+class QimiUserModel;
 
 class QimiPlatform : public cocos2d::CCObject
 {
@@ -40,10 +41,56 @@ public:
      */
     void openAlertDailog(std::string title, std::string msg);
     
+    /*
+     * 获取用户id,uId;
+     */
+    int getUserId();
+    
+    /**
+     * 登录和注册奇米平台
+     */
+    void QimiRegister();
+    void QimiLogin();
+    
+    /*存入游戏的KEY值*/
+    void setQimiGameKey(std::string key){m_key = key;};
+    /*存入游戏的UId*/
+    void setQimiGameUId(int uID){m_uId = uID;};
+    /*存入游戏的sId*/
+    void setQimiGameSId(int sID){m_sId = sID;};
+    /*存入游戏的appId*/
+    void setQimiGameAppId(int appId){m_appid = appId;};
+    /*退出登录*/
+    void loginOut();
+    /*检测是否已登录*/
+    bool isLogined();
+    
+    
+    /*获得游戏的KEY值*/
+    std::string getQimiGameKey(){ return m_key;};
+    /*获得游戏的UId*/
+    int getQimiGameUId(){return m_uId;};
+    /*获得游戏的sId*/
+    int getQimiGameSId(){return m_sId;};
+    /*获得游戏的appId*/
+    int getQimiGameAppId(){return m_appid;};
+    
+    //qimi
+    QimiUserModel* getQimiUserModel(){return m_pQimiUserModel;};
+    void setQimiUserModel(QimiUserModel* model){m_pQimiUserModel = model;};
     
 private:
     QimiPlatformIOS*     m_pQimiPlatformIOS;
     QimiPlatformAndroid* m_pQimiPlatformAndroid;
+    QimiUserModel*       m_pQimiUserModel;
+    std::string          m_key; //游戏的KEY值
+    int                  m_uId; //uid
+    int                  m_sId; //用户ID
+    int                  m_appid; //游戏的APPID
+    
+private:
+
+    
     
     
     

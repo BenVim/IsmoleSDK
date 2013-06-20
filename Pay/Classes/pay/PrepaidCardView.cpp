@@ -34,13 +34,10 @@ m_pBtn500Select(NULL)
 PrepaidCardView::~PrepaidCardView()
 {
     CC_SAFE_RELEASE(m_pBackBtn);
-    
-    CC_SAFE_RELEASE(m_pBtnCongzhi);
-    CC_SAFE_RELEASE(m_pMcashNumTxt);
-    CC_SAFE_RELEASE(m_pMcashNumBackTxt);
-    CC_SAFE_RELEASE(m_pCCEditBoxCCNode);
     CC_SAFE_RELEASE(m_pInputTxtBg);
-    
+    CC_SAFE_RELEASE(m_pBtnCongzhi);
+    CC_SAFE_RELEASE(m_pButtonList);
+    CC_SAFE_RELEASE(m_pMcashNumTxt);
     CC_SAFE_RELEASE(m_pBtn10Select);
     CC_SAFE_RELEASE(m_pBtn20Select);
     CC_SAFE_RELEASE(m_pBtn30Select);
@@ -48,7 +45,9 @@ PrepaidCardView::~PrepaidCardView()
     CC_SAFE_RELEASE(m_pBtn100Select);
     CC_SAFE_RELEASE(m_pBtn300Select);
     CC_SAFE_RELEASE(m_pBtn500Select);
-    CC_SAFE_RELEASE(m_pButtonList);
+    CC_SAFE_RELEASE(m_pMcashNumBackTxt);
+    CC_SAFE_RELEASE(m_pCCEditBoxCCNode);
+    
     
 }
 
@@ -67,9 +66,7 @@ cocos2d::extension::SEL_CCControlHandler PrepaidCardView::onResolveCCBCCControlS
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "100SelectOnClickHandler:", PrepaidCardView::select100OnClick);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "300SelectOnClickHandler:", PrepaidCardView::select300OnClick);
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "500SelectOnClickHandler:", PrepaidCardView::select500OnClick);
-    
     CCB_SELECTORRESOLVER_CCCONTROL_GLUE(this, "rechargeOnClickHandler:", PrepaidCardView::nextOnClick);// next step
-    
     return NULL;
 }
 
@@ -81,7 +78,6 @@ bool PrepaidCardView::onAssignCCBMemberVariable(cocos2d::CCObject *pTarget, cons
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "McashNumLastTxt:", cocos2d::CCLabelTTF*, m_pMcashNumBackTxt);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "CCEditBoxCCNode:", cocos2d::CCNode*, m_pCCEditBoxCCNode);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "InputBgSprte:", cocos2d::extension::CCScale9Sprite*, m_pInputTxtBg);
-    
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "Btn10Select:", CCControlButton*, m_pBtn10Select);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "Btn20Select:",CCControlButton*, m_pBtn20Select);
     CCB_MEMBERVARIABLEASSIGNER_GLUE(this, "Btn30Select:",CCControlButton*, m_pBtn30Select);
@@ -104,10 +100,8 @@ void PrepaidCardView::onNodeLoaded(cocos2d::CCNode *pNode, cocos2d::extension::C
     m_pBtn100Select->setDefaultTouchPriority(-130);
     m_pBtn300Select->setDefaultTouchPriority(-130);
     m_pBtn500Select->setDefaultTouchPriority(-130);
-    
     m_pButtonList = CCArray::create();
     m_pButtonList->retain();
-    
     m_pButtonList->addObject(m_pBtn10Select);
     m_pButtonList->addObject(m_pBtn20Select);
     m_pButtonList->addObject(m_pBtn30Select);
@@ -115,7 +109,6 @@ void PrepaidCardView::onNodeLoaded(cocos2d::CCNode *pNode, cocos2d::extension::C
     m_pButtonList->addObject(m_pBtn100Select);
     m_pButtonList->addObject(m_pBtn300Select);
     m_pButtonList->addObject(m_pBtn500Select);
-    
     initView();
 }
 
@@ -202,7 +195,6 @@ void PrepaidCardView::upDataView(int pay)
 void PrepaidCardView::backOnClick(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)
 {
     std::string money = m_pEditName->getText();
-    
     m_money = atoi(money.c_str());
     PayView* pPayView = GameCCBLoader::sharedLoader()->createCCBNode<PayView>("PayView.ccbi");
     StageScene::shareStageScene()->m_DialogContainer->addChild(pPayView);

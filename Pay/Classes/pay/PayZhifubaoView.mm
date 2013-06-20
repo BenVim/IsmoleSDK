@@ -16,13 +16,8 @@
 #include "Proxy.h"
 #include "GameUtils.h"
 
-#import "AlixPayOrder.h"
-#import "AlixPayResult.h"
-#import "AlixPay.h"
-#import "DataSigner.h"
-#import "EAGLView.h"
-#import "RSADataSigner.h"
-#import "WebView.h"
+#include "QimiPlatformIOS.h"
+#include "QimiPlatform.h"
 
 
 PayZhifubaoView::PayZhifubaoView():
@@ -250,8 +245,6 @@ void PayZhifubaoView::onLoadOrderSucssful(cocos2d::CCNode *sender, void *data)
     {
         return;
     }
-    
-    // You can get original request type from: response->request->reqType
     if (0 != strlen(response->getHttpRequest()->getTag()))
     {
         CCLog("%s completed", response->getHttpRequest()->getTag());
@@ -294,35 +287,25 @@ void PayZhifubaoView::onLoadOrderSucssful(cocos2d::CCNode *sender, void *data)
         m_oderId= root["data"].asString();
     }
     
-    
-    
-    /*
-
-    NSURL *url =[NSURL URLWithString:@"http://www.baidu.com"];
-    NSURLRequest *request =[NSURLRequest requestWithURL:url];
-    
-    CGRect webFrame = CGRectMake(0, 0, 320, 480);
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:webFrame];
-    [webView setBackgroundColor:[UIColor whiteColor]];//设置北京为白色
-    webView.scalesPageToFit = YES;//适应屏幕大小
-    [webView loadRequest:request];
-    [[EAGLView sharedEGLView] addSubview:webView];
-    
-    UIToolbar *toolBar = [[[UIToolbar alloc] initWithFrame:CGRectMake(0.0f, 440.0f, 320.0f, 40.0f) ] autorelease];
-    [[EAGLView sharedEGLView] addSubview:toolBar];
-    
-    //创建barbuttonitem
-    UIBarButtonItem *item1 = [[[UIBarButtonItem alloc] initWithTitle:@"收藏" style:UIBarButtonItemStyleBordered target:self action:@selector(test:)] autorelease];
-*/
-   // loadAlixPay();
+   loadAlixPay();
 }
 
 void PayZhifubaoView::loadAlixPay()
 {
+    #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    QimiPlatformIOS* pQimiPlatformIOS = QimiPlatformIOS::create();
+    pQimiPlatformIOS->retain();
+    pQimiPlatformIOS->alipayPay(m_oderId, m_money, "pro", "proDes", "pay");
+    pQimiPlatformIOS->release();
+    #endif
+    
+    #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "android支付宝支付暂未支持！");
+    #endif
     /*
      *生成订单信息及签名
      *由于demo的局限性，本demo中的公私钥存放在AlixPayDemo-Info.plist中,外部商户可以存放在服务端或本地其他地方。
-     */
+     
 	//将商品信息赋予AlixPayOrder的成员变量
 	AlixPayOrder *order = [[AlixPayOrder alloc] init];
     
@@ -377,6 +360,7 @@ void PayZhifubaoView::loadAlixPay()
         } 
 	}
     CCLog("支付宝 money %d", m_money);
+     */
 }
 
 void PayZhifubaoView::backOnClick(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)

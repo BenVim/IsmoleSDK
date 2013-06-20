@@ -24,6 +24,8 @@ public:
     
     void openWeb(std::string url);
     void openAlert(std::string title, std::string msg);
+    void alipayPay(std::string order, float price, std::string product, std::string productDes, std::string appScheme);
+    
 private:
     
 

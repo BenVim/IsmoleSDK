@@ -51,14 +51,5 @@ void GameCCBLoader::init()
     m_pLibrary->registerCCNodeLoader("GameUIBigMaskLayer", GameUIBigMaskLayerLoader::loader());
     m_pLibrary->registerCCNodeLoader("LoginView", LoginViewLoader::loader());
     m_pLibrary->registerCCNodeLoader("RegisterView", RegisterViewLoader::loader());
-    
 }
-
-
-
-
-
-
-
-
 

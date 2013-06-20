@@ -11,7 +11,9 @@
 #include "ProxyFilterManager.h"
 #include "ProxyLoadingFilter.h"
 #include "Proxy.h"
-
+#include "QimiPlatform.h"
+#include "GameUtils.h"
+#include "QimiUserModel.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -118,10 +120,12 @@ void RegisterView::registerOnClick(cocos2d::CCNode* pSender, cocos2d::extension:
 
         if (userPass == userVerifyPass)
         {
-            std::string url = std::string("http://www.qimi.com/platform/addOrder.php");
+            std::string url = std::string("http://api.qimi.com/api.php");
+            char sign[255];
+            sprintf(sign, "appid=%dbirthday=do=regemail=%smod=Username=password=%ssex=", QimiPlatform::shareQimiPlatform()->getQimiGameAppId(), userEmail.c_str(),userpass.c_str());
             Json::Value homeData;
-            homeData["sign"] = "";
-            homeData["appid"] = "";
+            homeData["sign"] = GameUtils::getStringWithMd5(std::string(sign));
+            homeData["appid"] = QimiPlatform::shareQimiPlatform()->getQimiGameAppId();
             homeData["mod"] = "User";
             homeData["do"] = "reg";
             homeData["email"] = userEmail;
@@ -141,12 +145,16 @@ void RegisterView::registerOnClick(cocos2d::CCNode* pSender, cocos2d::extension:
         }
         else
         {
-            CCLog("两次密码不一致！");
+            //CCLog("两次密码不一致！");
+            QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "两次输入的密码不一致！");
         }
     }
     else
     {
-        CCLog("用户名和密码不能为空！");
+        
+        //CCLog("用户名和密码不能为空！");
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "用户名或密码不能为空！");
+        
     }
     
 }
@@ -160,12 +168,20 @@ void RegisterView::onBack(cocos2d::CCNode* pSender, cocos2d::extension::CCContro
 
 void RegisterView::registerSucceed(Proxy* pro, ProxyEvent proxyEvent)
 {
-    
+    Json::Value root = pro->getResponseData();
+    if (!root.isNull())
+    {
+        QimiUserModel* pQimiUserModel = QimiUserModel::create();
+        pQimiUserModel->initData(root["data"]);
+        pQimiUserModel->retain();
+        QimiPlatform::shareQimiPlatform()->setQimiUserModel(pQimiUserModel);
+    }
+    QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "登录成功");
 }
 
 void RegisterView::registerloginFiled(Proxy* pro, ProxyEvent proxyEvent)
 {
-    
+    QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "用户名或密码错误！");
 }
 
 

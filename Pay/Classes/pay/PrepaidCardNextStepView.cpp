@@ -18,6 +18,7 @@
 #include "Proxy.h"
 #include "GameUtils.h"
 #include "md5.h"
+#include "QimiPlatform.h"
 
 PrepaidCardNextStepView::PrepaidCardNextStepView():
 m_pBtnCongzhi(NULL),
@@ -197,6 +198,7 @@ void PrepaidCardNextStepView::rechargeOnClick(cocos2d::CCNode* pSender, cocos2d:
     if (str.empty())
     {
         CCLog("card number is NULL");
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "请输入充值卡号");
         return;
     }
     
@@ -204,12 +206,14 @@ void PrepaidCardNextStepView::rechargeOnClick(cocos2d::CCNode* pSender, cocos2d:
     if (strPass.empty())
     {
         CCLog("strPass number is NULL");
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "请输入充值卡密码");
         return;
     }
     
     if (m_denomination == 0)
     {
         CCLog("m_denomination number is 0");
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "请选择您的充值卡面额!");
         return;
     }
 
@@ -267,8 +271,6 @@ void PrepaidCardNextStepView::upSelectState(int index)
         }
     }
 }
-
-
 
 void PrepaidCardNextStepView::upDataView(int pay)
 {
@@ -435,7 +437,6 @@ void PrepaidCardNextStepView::requestFaild(Proxy *pro, ProxyEvent proxyEvent)
 
 void PrepaidCardNextStepView::reqeuestPay(PrepaidCardOrder *pOrder)
 {
-    
     CCHttpRequest* request = new CCHttpRequest();
     request->setUrl("http://pay3.shenzhoufu.com/interface/version3/serverconnszx/entry-noxml.aspx");
     request->setRequestType(CCHttpRequest::kHttpPost);
@@ -506,10 +507,12 @@ void PrepaidCardNextStepView::requestPaySucssful(cocos2d::CCNode *sender, void *
     
     switch (statusCode) {
         case 200:
-            CCLog("充值已成功！");
+            QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "充值已成功！");//CCLog("充值已成功！");
             break;
-            case 101:
-            CCLog("异常错误");
+        case 101:
+            QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "异常错误！");//CCLog("异常错误");
+            break;
+            
             
         default:
             break;

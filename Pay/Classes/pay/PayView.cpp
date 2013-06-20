@@ -125,15 +125,6 @@ void PayView::onLoadRequestSucssful(cocos2d::CCNode *sender, void *data)
         QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "输出用户信息获取失败。请检查网络");
         return;
     }
-    else
-    {
-        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "输出用户信息获取失败。请检查网络");
-    }
-    
-    if (0 != strlen(response->getHttpRequest()->getTag()))
-    {
-        CCLog("%s completed", response->getHttpRequest()->getTag());
-    }
     
     int statusCode = response->getResponseCode();
     char statusString[64] = {};
