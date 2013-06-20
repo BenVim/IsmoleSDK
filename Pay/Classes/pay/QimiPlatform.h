@@ -83,6 +83,7 @@ public:
     
     //qimi
     QimiUserModel* getQimiUserModel(){return m_pQimiUserModel;};
+    
     void setQimiUserModel(QimiUserModel* model){m_pQimiUserModel = model;};
     
     
@@ -99,11 +100,6 @@ private:
 private:
     bool isCheckAppId();//检查是否获得APP ID
     bool isCheckAppKey();//检查是否已获得APP KEY
-    
-
-    
-    
-    
     
 };
 

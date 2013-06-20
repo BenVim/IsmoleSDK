@@ -83,34 +83,61 @@ IsmoleSDK
     QimiPlatform初始化必须调用setParamInfo()方法。把QimiParamInfo对象的关键参数赋给平台。初始化完成后才可以进行其它的注册、登录、支付等相关操作。
 
 #####QimiSDK注册
-	/**平台注册**/
+	/**平台注册接口**/
 	void QimiRegister();
 
 	/**调用方法**/
 	QimiPlatform::shareQimiPlatform()->QimiRegister();
 	如上所示便可以打开平台注册页面。注册完成后服务器返回的数据会填充 QimiUserModel对象（QimiUserModel对象是用户数据MODEL，后面有详细描述或参加源代码）。
-	返回的数据如下所示：
-	{   
-   "data": {      
-      "user": {         
-         "uid": 22,         
-         "name": "test22",         
-         "avatar": "http://dev.ismole.com/fish/qimi/www/static/images/sysavatar/default_male.png",         
-         "sex": 1,         
-         "email": "test22@ismole.com",         
-         "level": 1,         
-         "score": 0,         
-         "vip_level": 0,         
-         "vip_privilege": 0,         
-         "birthday": 19800101,         
-         "regdata": 1340781448,         
-         "experience": 0
-      },      
-      "session_key": "ElUe+DqcmYOI9GS+hM7a5f1UqmQsCVpOiYssHcyPfug="
-   },   
-   "status": 100,   
-   "method": "User.reg"
-}
+
+#####QimiSDK用户登录接口
+    /**用户登录接口**/
+    void QimiLogin();
+
+    /**使用方法**/
+    QimiPlatform::shareQimiPlatform()->QimiLogin();
+    调用以上方法打开平台登录界面。登录成功数据填充QimiUserModel对象（QimiUserModel对象是用户数据MODEL，后面有详细描述或参加源代码）。
+
+#####调用Qimi支付平台
+	/* 支付接口参数说明：
+     * uId int类型 游戏的uId;
+     * sId int类型 游戏的sId;
+     * key string类型 游戏的key;
+     * money int类型 需要支付的初始费用，进入支付系统后，可以再修改;
+     */
+    void openPayDailog(int uId, int sId, std::string key ,int money);
+
+    /**使用方法**/
+    QimiPlatform::shareQimiPlatform()->openPayDailog(21, 15, "7a92bba4670d479c5514720c1cf46aab", 10);
+
+#####调用Qimi论坛
+	/* 打开论坛的接口参数说明
+     * 该接口可以在游戏中打开web网页
+     * webUrl string 类型 网站网址。
+     */
+    void openGameWeb(std::string webUrl);
+
+     /**使用方法**/
+    QimiPlatform::shareQimiPlatform()->openGameWeb("http://bbs.qimi.com/forum.php");
+    应用内显示论坛。
+
+#####调用系统Alear弹窗
+	/* 提示窗口
+     * msg std::string 系统提示信息显示内容；
+     * title 弹窗标题
+     */
+    void openAlertDailog(std::string title, std::string msg);
+
+     /**使用方法**/
+    QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "这是一个设备系统提示窗口！");
+    
+#####获取平台登录用户信息数据
+	QimiUserModel* getQimiUserModel();
+
+	/**使用方法**/
+	QimiPlatform::shareQimiPlatform()->getQimiUserModel();
+
+
 
 
 
