@@ -42,10 +42,12 @@ bool HelloWorld::init()
 
 void HelloWorld::menuCloseCallback(CCObject* pSender)
 {
-    //LoginView* pPayView = GameCCBLoader::sharedLoader()->createCCBNode<LoginView>("LoginView.ccbi");
-    //StageScene::shareStageScene()->m_DialogContainer->addChild(pPayView);
-    //pPayView->setPosition(ccp(0, 0));
-    //QimiPlatform::shareQimiPlatform()->openPayDailog(58, 14, "bb7ed06454fdb77f1bfdc42918f175ba", 10);
+    /*平台调用方式*/
+    /* QimiParamInfo::create(int appId, int sId, std::string appKey);
+     * appId 应用ID
+     * sId 
+     * appkey
+     */
     QimiParamInfo* paramInfo = QimiParamInfo::create(21, 15, "7a92bba4670d479c5514720c1cf46aab");
     QimiPlatform::shareQimiPlatform()->setParamInfo(paramInfo);
     QimiPlatform::shareQimiPlatform()->QimiRegister();

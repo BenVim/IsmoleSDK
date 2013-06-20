@@ -13,6 +13,8 @@
 #include "ProxyLoadingFilter.h"
 #include "Proxy.h"
 #include "ObjCalls.h"
+#include "QimiPlatform.h"
+#include "QimiUserModel.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -94,6 +96,7 @@ void LoginView::onNodeLoaded(cocos2d::CCNode * pNode,  CCNodeLoader * pNodeLoade
     m_pUserName->setReturnType(kKeyboardReturnTypeDone);
     m_pUserName->setTouchPriority(-130);
     m_pUserName->setText("您的电子邮箱地址");
+    m_pUserName->setInputMode(kEditBoxInputModeEmailAddr);
     addChild(m_pUserName);
     
     m_pInputUserPassTxtBg->removeFromParentAndCleanup(false);
@@ -103,6 +106,7 @@ void LoginView::onNodeLoaded(cocos2d::CCNode * pNode,  CCNodeLoader * pNodeLoade
     m_pPassWorld->setMaxLength(50);
     m_pPassWorld->setText("您的登录密码");
     m_pPassWorld->setReturnType(kKeyboardReturnTypeDone);
+    m_pPassWorld->setInputFlag(kEditBoxInputFlagPassword);
     m_pPassWorld->setTouchPriority(-130);
     addChild(m_pPassWorld);
     
@@ -147,11 +151,14 @@ void LoginView::loginOnclick(cocos2d::CCNode* pSender, cocos2d::extension::CCCon
     
     if (!userName.empty() && !userpass.empty())
     {
+        char sign[255];
+        sprintf(sign, "appid=%ddo=loginemail=%smode=Userpassword=%s", QimiPlatform::shareQimiPlatform()->getQimiGameAppId(), userName.c_str(),userpass.c_str());
+        
         //登录
-        std::string url = std::string("http://www.qimi.com/platform/addOrder.php");
+        std::string url = std::string("http://api.qimi.com/api.php");
         Json::Value homeData;
-        homeData["sIg"] = "";
-        homeData["appid"] = "";
+        homeData["sign"] = sign;
+        homeData["appid"] = QimiPlatform::shareQimiPlatform()->getQimiGameAppId();
         homeData["mode"] = "User";
         homeData["do"] = "login";
         homeData["email"] = userName; //还需要验证邮箱地址
@@ -165,20 +172,19 @@ void LoginView::loginOnclick(cocos2d::CCNode* pSender, cocos2d::extension::CCCon
                                                   proxy_selector(LoginView::loginFiled),
                                                   ProxyEventResponseError);
         proxy->load(url);
+        
     }
 }
 
 void LoginView::remeberPassworld(cocos2d::CCObject *obj)
 {
-    CCLog("....");
     isSelelcted = !isSelelcted;
     m_pRememberSprite->setVisible(isSelelcted);
 }
 
 void LoginView::fogetPassWorld(cocos2d::CCObject *obj)
 {
-    ObjCCalls* pCallObj = new ObjCCalls();
-    pCallObj->OpenURL("http://www.baidu.com");
+    QimiPlatform::shareQimiPlatform()->openGameWeb("http://www.qimi.com/index.php?mod=User&do=backPwd");
 }
 
 
@@ -190,13 +196,33 @@ void LoginView::onBack(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEv
 void LoginView::loginSucceed(Proxy* pro, ProxyEvent proxyEvent)
 {
     //登录成功
-    
+    Json::Value root = pro->getResponseData();
+    if (!root.isNull())
+    {
+        QimiUserModel* pQimiUserModel = QimiUserModel::create();
+        pQimiUserModel->initData(root["data"]);
+        pQimiUserModel->retain();
+        QimiPlatform::shareQimiPlatform()->setQimiUserModel(pQimiUserModel);
+    }
+    QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "登录成功");
+    this->removeFromParentAndCleanup(true);
 }
 
 void LoginView::loginFiled(Proxy* pro, ProxyEvent proxyEvent)
 {
+    Json::Value root = pro->getResponseData();
+    int errCode;
+    std::string msg;
+    if (!root.isNull())
+    {
+        CC_GAME_JSON_ADD(root, isInt, errCode, "status", asInt);
+        CC_GAME_JSON_ADD(root, isString, msg, "error", asString);
+    }
     
+    QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", msg);
 }
+
+
 
 
 

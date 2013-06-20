@@ -176,8 +176,8 @@ void RegisterView::registerSucceed(Proxy* pro, ProxyEvent proxyEvent)
         pQimiUserModel->retain();
         QimiPlatform::shareQimiPlatform()->setQimiUserModel(pQimiUserModel);
     }
-    QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "登录成功");
-    
+    QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "注册成功");
+    QimiPlatform::shareQimiPlatform()->QimiLogin();//注册成功打开奇米登录窗口。
     this->removeFromParentAndCleanup(true);
 }
 
