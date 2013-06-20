@@ -54,8 +54,7 @@ private:
     
 private:
     
-    void registerSucceed(Proxy* pro, ProxyEvent proxyEvent);
-    void registerloginFiled(Proxy* pro, ProxyEvent proxyEvent);
+    void registerSucceed(cocos2d::CCNode *sender, void *data);
 
     
 };

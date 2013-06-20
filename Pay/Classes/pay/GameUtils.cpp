@@ -102,4 +102,47 @@ std::string GameUtils::getStringWithMd5(std::string str)
     return finalStr;
 }
 
+Json::Value GameUtils::getResponseData(cocos2d::extension::CCHttpResponse *response)
+{
+    if (!response)
+    {
+        //调用弹窗口。输出用户信息获取失败。请检查网络。
+        return NULL;
+    }
+    
+    int statusCode = response->getResponseCode();
+    char statusString[64] = {};
+    sprintf(statusString, "HTTP Status Code: %d, tag = %s", statusCode, response->getHttpRequest()->getTag());
+    CCLog("response code: %d", statusCode);
+    
+    if (!response->isSucceed())
+    {
+        CCLog("response failed");
+        CCLog("error buffer: %s", response->getErrorBuffer());
+        return NULL;
+    }
+    
+    std::vector<char> *buffer = response->getResponseData();
+    std::string responseData;
+    char buff[24];
+    printf("Http Test, dump data: ");
+    for (unsigned int i = 0; i < buffer->size(); i++)
+    {
+        printf("%c", (*buffer)[i]);
+        sprintf(buff, "%c", (*buffer)[i]);
+        responseData.append(buff);
+    }
+    printf("\n");
+    
+    Json::Value root;
+    Json::Reader reader;
+    bool parsingSuccessful = reader.parse(responseData, root);
+    
+    if (!parsingSuccessful)
+    {
+        return NULL;
+    }
+    return root;
+}
+
 

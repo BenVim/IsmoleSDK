@@ -59,8 +59,7 @@ private:
     
     void fogetPassWorld(CCObject* obj);
     void remeberPassworld(CCObject* obj);
-    void loginSucceed(Proxy* pro, ProxyEvent proxyEvent);
-    void loginFiled(Proxy* pro, ProxyEvent proxyEvent);
+    void loginSucceed(cocos2d::CCNode *sender, void *data);
     
 };
 

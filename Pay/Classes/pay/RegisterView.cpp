@@ -14,6 +14,8 @@
 #include "QimiPlatform.h"
 #include "GameUtils.h"
 #include "QimiUserModel.h"
+#include "GameUtils.h"
+#include "md5.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -122,26 +124,36 @@ void RegisterView::registerOnClick(cocos2d::CCNode* pSender, cocos2d::extension:
         {
             std::string url = std::string("http://api.qimi.com/api.php");
             char sign[255];
-            sprintf(sign, "appid=%dbirthday=do=regemail=%smod=Username=password=%ssex=", QimiPlatform::shareQimiPlatform()->getQimiGameAppId(), userName.c_str(),userPass.c_str());
-            Json::Value homeData;
-            homeData["sign"] = GameUtils::getStringWithMd5(std::string(sign));
-            homeData["appid"] = QimiPlatform::shareQimiPlatform()->getQimiGameAppId();
-            homeData["mod"] = "User";
-            homeData["do"] = "reg";
-            homeData["email"] = userName;
-            homeData["password"] = userPass;
-            homeData["name"] = "";
-            homeData["sex"] = "";
-            homeData["birthday"] = "";
+            sprintf(sign, "appid=%dbirthday=2000-10-10do=regemail=%smod=Username=%spassword=%ssex=1%s",
+                    QimiPlatform::shareQimiPlatform()->getQimiGameAppId(),
+                    userName.c_str(),
+                    userName.c_str(),
+                    userPass.c_str(),
+                    QimiPlatform::shareQimiPlatform()->getQimiGameKey().c_str());
             
-            SingleProxy *proxy = SingleProxy::create(homeData);
-            proxy->addTargetWithActionFromProxyEvents(this,
-                                                      proxy_selector(RegisterView::registerSucceed),
-                                                      ProxyEventResponseSucceed);
-            proxy->addTargetWithActionFromProxyEvents(this,
-                                                      proxy_selector(RegisterView::registerloginFiled),
-                                                      ProxyEventResponseError);
-            proxy->load(url);
+            MD5 md5;
+            md5.update(sign);
+            //CCLog("md5str==%s",sign);
+            std::string md5tolower = md5.toString();
+            
+            CCHttpRequest* request = new CCHttpRequest();
+            request->setUrl(url.c_str());
+            request->setRequestType(CCHttpRequest::kHttpPost);
+            request->setResponseCallback(this, callfuncND_selector(RegisterView::registerSucceed));
+            
+            CCString* postDataStr = CCString::createWithFormat("sign=%s&appid=%d&mod=User&do=reg&email=%s&password=%s&name=%s&sex=1&birthday=2000-10-10",
+                                                               md5tolower.c_str(),
+                                                               QimiPlatform::shareQimiPlatform()->getQimiGameAppId(),
+                                                               userName.c_str(),
+                                                               userPass.c_str(),
+                                                               userName.c_str());
+            const char* postData = postDataStr->getCString();
+            //CCLog("postData==%s", postData);
+            
+            request->setRequestData(postData, strlen(postData));
+            request->setTag("POST test1");
+            CCHttpClient::getInstance()->send(request);
+            request->release();
         }
         else
         {
@@ -154,7 +166,6 @@ void RegisterView::registerOnClick(cocos2d::CCNode* pSender, cocos2d::extension:
         
         //CCLog("用户名和密码不能为空！");
         QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "用户名或密码不能为空！");
-        
     }
     
 }
@@ -166,33 +177,46 @@ void RegisterView::onBack(cocos2d::CCNode* pSender, cocos2d::extension::CCContro
     this->removeFromParentAndCleanup(true);
 }
 
-void RegisterView::registerSucceed(Proxy* pro, ProxyEvent proxyEvent)
+void RegisterView::registerSucceed(cocos2d::CCNode *sender, void *data)
 {
-    Json::Value root = pro->getResponseData();
-    if (!root.isNull())
+    CCHttpResponse *response = (CCHttpResponse*)data;
+    Json::Value root = GameUtils::getResponseData(response);
+    if (root!=NULL && !root.isNull())
     {
-        QimiUserModel* pQimiUserModel = QimiUserModel::create();
-        pQimiUserModel->initData(root["data"]);
-        pQimiUserModel->retain();
-        QimiPlatform::shareQimiPlatform()->setQimiUserModel(pQimiUserModel);
-    }
-    QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "注册成功");
-    QimiPlatform::shareQimiPlatform()->QimiLogin();//注册成功打开奇米登录窗口。
-    this->removeFromParentAndCleanup(true);
-}
-
-void RegisterView::registerloginFiled(Proxy* pro, ProxyEvent proxyEvent)
-{
-    Json::Value root = pro->getResponseData();
-    int errCode;
-    std::string msg;
-    if (!root.isNull())
-    {
-        CC_GAME_JSON_ADD(root, isInt, errCode, "status", asInt);
-        CC_GAME_JSON_ADD(root, isString, msg, "error", asString);
+        root["status"];
+        int status;
+        CC_GAME_JSON_ADD(root, isInt, status, "status", asInt);
+        CCLog("status%d", status);
+        
+        if (status == 100)
+        {
+            Json::Value data = root["data"];
+            if (!data.isNull())
+            {
+                QimiUserModel* pQimiUserModel = QimiUserModel::create();
+                pQimiUserModel->initData(data);
+                pQimiUserModel->retain();
+                QimiPlatform::shareQimiPlatform()->setQimiUserModel(pQimiUserModel);
+            }
+            QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "注册成功");
+            QimiPlatform::shareQimiPlatform()->QimiLogin();//注册成功打开奇米登录窗口。
+            this->removeFromParentAndCleanup(true);
+        }
+        else
+        {
+            int errCode;
+            std::string msg;
+            if (!root.isNull())
+            {
+                CC_GAME_JSON_ADD(root, isInt, errCode, "status", asInt);
+                CC_GAME_JSON_ADD(root, isString, msg, "error", asString);
+            }
+            
+            QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", msg);
+        }
     }
     
-    QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", msg);
+    
 }
 
 

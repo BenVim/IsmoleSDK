@@ -16,6 +16,7 @@
 
 
 
+
 class ConfirmParamInfo;
 class GameUtils
 {
@@ -29,6 +30,7 @@ public:
     static int getAttackWithData(int confId, float grow, int toLevel);
     
     static std::string getStringWithMd5(std::string str);
+    static Json::Value getResponseData(cocos2d::extension::CCHttpResponse *response);
 };
 
 #endif /* defined(__NavigationTimes__GameUtils__) */

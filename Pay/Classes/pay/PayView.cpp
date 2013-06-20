@@ -150,6 +150,7 @@ void PayView::onLoadRequestSucssful(cocos2d::CCNode *sender, void *data)
     }
     printf("\n");
 
+
     Json::Value root;
     Json::Reader reader;
     bool parsingSuccessful = reader.parse(responseData, root);

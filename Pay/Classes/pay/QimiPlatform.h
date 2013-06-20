@@ -85,6 +85,8 @@ public:
     QimiUserModel* getQimiUserModel(){return m_pQimiUserModel;};
     void setQimiUserModel(QimiUserModel* model){m_pQimiUserModel = model;};
     
+    
+    
 private:
     QimiPlatformIOS*     m_pQimiPlatformIOS;
     QimiPlatformAndroid* m_pQimiPlatformAndroid;
