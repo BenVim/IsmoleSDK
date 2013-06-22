@@ -15,7 +15,7 @@
 #include "GameUtils.h"
 #include "QimiUserModel.h"
 #include "GameUtils.h"
-#include "md5.h"
+#include "QimiMD5.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -131,7 +131,7 @@ void RegisterView::registerOnClick(cocos2d::CCNode* pSender, cocos2d::extension:
                     userPass.c_str(),
                     QimiPlatform::shareQimiPlatform()->getQimiGameKey().c_str());
             
-            MD5 md5;
+            QimiMD5 md5;
             md5.update(sign);
             //CCLog("md5str==%s",sign);
             std::string md5tolower = md5.toString();

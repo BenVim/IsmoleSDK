@@ -290,13 +290,12 @@
 		B57E62D017705BA100689077 /* GameUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E629B17705BA100689077 /* GameUtils.cpp */; };
 		B57E62D117705BA100689077 /* LoadingView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E629D17705BA100689077 /* LoadingView.cpp */; };
 		B57E62D217705BA100689077 /* LoginView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E629F17705BA100689077 /* LoginView.cpp */; };
-		B57E62D317705BA100689077 /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62A117705BA100689077 /* md5.cpp */; };
-		B57E62D417705BA100689077 /* md5c.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62A317705BA100689077 /* md5c.cpp */; };
+		B57E62D317705BA100689077 /* QimiMD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62A117705BA100689077 /* QimiMD5.cpp */; };
 		B57E62D517705BA100689077 /* MultiProxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62A517705BA100689077 /* MultiProxy.cpp */; };
 		B57E62D617705BA100689077 /* ObjCalls.mm in Sources */ = {isa = PBXBuildFile; fileRef = B57E62A817705BA100689077 /* ObjCalls.mm */; };
 		B57E62D717705BA100689077 /* PayHelpView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62A917705BA100689077 /* PayHelpView.cpp */; };
 		B57E62D817705BA100689077 /* PayView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62AB17705BA100689077 /* PayView.cpp */; };
-		B57E62D917705BA100689077 /* PayZhifubaoView.mm in Sources */ = {isa = PBXBuildFile; fileRef = B57E62AE17705BA100689077 /* PayZhifubaoView.mm */; };
+		B57E62D917705BA100689077 /* PayZhifubaoView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62AE17705BA100689077 /* PayZhifubaoView.cpp */; };
 		B57E62DA17705BA100689077 /* PrepaidCardNextStepView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62AF17705BA100689077 /* PrepaidCardNextStepView.cpp */; };
 		B57E62DB17705BA100689077 /* PrepaidCardOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62B117705BA100689077 /* PrepaidCardOrder.cpp */; };
 		B57E62DC17705BA100689077 /* PrepaidCardView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62B317705BA100689077 /* PrepaidCardView.cpp */; };
@@ -315,6 +314,8 @@
 		B5B495BC17707DE900F89F5D /* QimiPlatformAndroid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5B495BA17707DE800F89F5D /* QimiPlatformAndroid.cpp */; };
 		B5C3869F1772CBC50072CA97 /* QimiUserModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5C3869D1772CBC50072CA97 /* QimiUserModel.cpp */; };
 		B5C386A71772D6360072CA97 /* QimiParamInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5C386A51772D6350072CA97 /* QimiParamInfo.cpp */; };
+		B5E37B141775C09000AE4054 /* md5c.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5E37B121775C09000AE4054 /* md5c.cpp */; };
+		B5E37B171775C11500AE4054 /* Qimi.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5E37B151775C11500AE4054 /* Qimi.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -951,10 +952,8 @@
 		B57E629E17705BA100689077 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		B57E629F17705BA100689077 /* LoginView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoginView.cpp; sourceTree = "<group>"; };
 		B57E62A017705BA100689077 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
-		B57E62A117705BA100689077 /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5.cpp; sourceTree = "<group>"; };
-		B57E62A217705BA100689077 /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5.h; sourceTree = "<group>"; };
-		B57E62A317705BA100689077 /* md5c.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5c.cpp; sourceTree = "<group>"; };
-		B57E62A417705BA100689077 /* md5c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5c.h; sourceTree = "<group>"; };
+		B57E62A117705BA100689077 /* QimiMD5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QimiMD5.cpp; sourceTree = "<group>"; };
+		B57E62A217705BA100689077 /* QimiMD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QimiMD5.h; sourceTree = "<group>"; };
 		B57E62A517705BA100689077 /* MultiProxy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MultiProxy.cpp; sourceTree = "<group>"; };
 		B57E62A617705BA100689077 /* MultiProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiProxy.h; sourceTree = "<group>"; };
 		B57E62A717705BA100689077 /* ObjCalls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCalls.h; sourceTree = "<group>"; };
@@ -964,7 +963,7 @@
 		B57E62AB17705BA100689077 /* PayView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PayView.cpp; sourceTree = "<group>"; };
 		B57E62AC17705BA100689077 /* PayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayView.h; sourceTree = "<group>"; };
 		B57E62AD17705BA100689077 /* PayZhifubaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayZhifubaoView.h; sourceTree = "<group>"; };
-		B57E62AE17705BA100689077 /* PayZhifubaoView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PayZhifubaoView.mm; sourceTree = "<group>"; };
+		B57E62AE17705BA100689077 /* PayZhifubaoView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PayZhifubaoView.cpp; sourceTree = "<group>"; };
 		B57E62AF17705BA100689077 /* PrepaidCardNextStepView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrepaidCardNextStepView.cpp; sourceTree = "<group>"; };
 		B57E62B017705BA100689077 /* PrepaidCardNextStepView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepaidCardNextStepView.h; sourceTree = "<group>"; };
 		B57E62B117705BA100689077 /* PrepaidCardOrder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrepaidCardOrder.cpp; sourceTree = "<group>"; };
@@ -1002,6 +1001,10 @@
 		B5C3869E1772CBC50072CA97 /* QimiUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QimiUserModel.h; sourceTree = "<group>"; };
 		B5C386A51772D6350072CA97 /* QimiParamInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QimiParamInfo.cpp; sourceTree = "<group>"; };
 		B5C386A61772D6360072CA97 /* QimiParamInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QimiParamInfo.h; sourceTree = "<group>"; };
+		B5E37B121775C09000AE4054 /* md5c.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = md5c.cpp; sourceTree = "<group>"; };
+		B5E37B131775C09000AE4054 /* md5c.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = md5c.h; sourceTree = "<group>"; };
+		B5E37B151775C11500AE4054 /* Qimi.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Qimi.cpp; sourceTree = "<group>"; };
+		B5E37B161775C11500AE4054 /* Qimi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Qimi.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2189,6 +2192,8 @@
 		B57E628517705BA100689077 /* pay */ = {
 			isa = PBXGroup;
 			children = (
+				B5E37B121775C09000AE4054 /* md5c.cpp */,
+				B5E37B131775C09000AE4054 /* md5c.h */,
 				B57E628617705BA100689077 /* AlixPay.h */,
 				B57E628717705BA100689077 /* AlixPayOrder.h */,
 				B57E628817705BA100689077 /* AlixPayResult.h */,
@@ -2216,10 +2221,8 @@
 				B57E629E17705BA100689077 /* LoadingView.h */,
 				B57E629F17705BA100689077 /* LoginView.cpp */,
 				B57E62A017705BA100689077 /* LoginView.h */,
-				B57E62A117705BA100689077 /* md5.cpp */,
-				B57E62A217705BA100689077 /* md5.h */,
-				B57E62A317705BA100689077 /* md5c.cpp */,
-				B57E62A417705BA100689077 /* md5c.h */,
+				B57E62A117705BA100689077 /* QimiMD5.cpp */,
+				B57E62A217705BA100689077 /* QimiMD5.h */,
 				B57E62A517705BA100689077 /* MultiProxy.cpp */,
 				B57E62A617705BA100689077 /* MultiProxy.h */,
 				B57E62A717705BA100689077 /* ObjCalls.h */,
@@ -2229,7 +2232,7 @@
 				B57E62AB17705BA100689077 /* PayView.cpp */,
 				B57E62AC17705BA100689077 /* PayView.h */,
 				B57E62AD17705BA100689077 /* PayZhifubaoView.h */,
-				B57E62AE17705BA100689077 /* PayZhifubaoView.mm */,
+				B57E62AE17705BA100689077 /* PayZhifubaoView.cpp */,
 				B57E62AF17705BA100689077 /* PrepaidCardNextStepView.cpp */,
 				B57E62B017705BA100689077 /* PrepaidCardNextStepView.h */,
 				B57E62B117705BA100689077 /* PrepaidCardOrder.cpp */,
@@ -2267,6 +2270,8 @@
 				B5C3869E1772CBC50072CA97 /* QimiUserModel.h */,
 				B5C386A51772D6350072CA97 /* QimiParamInfo.cpp */,
 				B5C386A61772D6360072CA97 /* QimiParamInfo.h */,
+				B5E37B151775C11500AE4054 /* Qimi.cpp */,
+				B5E37B161775C11500AE4054 /* Qimi.h */,
 			);
 			name = pay;
 			path = Classes/pay;
@@ -2603,13 +2608,12 @@
 				B57E62D017705BA100689077 /* GameUtils.cpp in Sources */,
 				B57E62D117705BA100689077 /* LoadingView.cpp in Sources */,
 				B57E62D217705BA100689077 /* LoginView.cpp in Sources */,
-				B57E62D317705BA100689077 /* md5.cpp in Sources */,
-				B57E62D417705BA100689077 /* md5c.cpp in Sources */,
+				B57E62D317705BA100689077 /* QimiMD5.cpp in Sources */,
 				B57E62D517705BA100689077 /* MultiProxy.cpp in Sources */,
 				B57E62D617705BA100689077 /* ObjCalls.mm in Sources */,
 				B57E62D717705BA100689077 /* PayHelpView.cpp in Sources */,
 				B57E62D817705BA100689077 /* PayView.cpp in Sources */,
-				B57E62D917705BA100689077 /* PayZhifubaoView.mm in Sources */,
+				B57E62D917705BA100689077 /* PayZhifubaoView.cpp in Sources */,
 				B57E62DA17705BA100689077 /* PrepaidCardNextStepView.cpp in Sources */,
 				B57E62DB17705BA100689077 /* PrepaidCardOrder.cpp in Sources */,
 				B57E62DC17705BA100689077 /* PrepaidCardView.cpp in Sources */,
@@ -2628,6 +2632,8 @@
 				B5B495BC17707DE900F89F5D /* QimiPlatformAndroid.cpp in Sources */,
 				B5C3869F1772CBC50072CA97 /* QimiUserModel.cpp in Sources */,
 				B5C386A71772D6360072CA97 /* QimiParamInfo.cpp in Sources */,
+				B5E37B141775C09000AE4054 /* md5c.cpp in Sources */,
+				B5E37B171775C11500AE4054 /* Qimi.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

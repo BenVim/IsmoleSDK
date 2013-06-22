@@ -9,6 +9,7 @@
 #ifndef __Pay__QimiParamInfo__
 #define __Pay__QimiParamInfo__
 
+#include "Qimi.h"
 #include <iostream>
 #include "cocos2d.h"
 

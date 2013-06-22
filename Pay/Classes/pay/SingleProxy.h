@@ -9,6 +9,7 @@
 #ifndef __Sangou__SingleProxy__
 #define __Sangou__SingleProxy__
 
+#include "Qimi.h"
 #include "Proxy.h"
 #include "DataRequest.h"
 

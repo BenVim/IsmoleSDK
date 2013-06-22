@@ -11,6 +11,8 @@
 
 #include "cocos2d.h"
 #include "json.h"
+#include "Qimi.h"
+
 class QimiUserModel : public cocos2d::CCObject
 {
 public:

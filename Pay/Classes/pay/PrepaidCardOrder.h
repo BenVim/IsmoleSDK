@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "Qimi.h"
 
 USING_NS_CC;
 

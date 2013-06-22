@@ -80,11 +80,11 @@ bool PayView::onAssignCCBMemberVariable(cocos2d::CCObject *pTarget, const char *
 
 void PayView::onNodeLoaded(cocos2d::CCNode *pNode, cocos2d::extension::CCNodeLoader *pNodeLoader)
 {
-    m_pBackBtn->setDefaultTouchPriority(-130);
-    m_pBtnZfb->setDefaultTouchPriority(-130);
-    m_pBtnSz->setDefaultTouchPriority(-130);
-    m_pBtnLt->setDefaultTouchPriority(-130);
-    m_pBtnDx->setDefaultTouchPriority(-130);
+    m_pBackBtn->setTouchPriority(-130);
+    m_pBtnZfb->setTouchPriority(-130);
+    m_pBtnSz->setTouchPriority(-130);
+    m_pBtnLt->setTouchPriority(-130);
+    m_pBtnDx->setTouchPriority(-130);
 }
 
 void PayView::initView(int uId, int sId, std::string key, int money)

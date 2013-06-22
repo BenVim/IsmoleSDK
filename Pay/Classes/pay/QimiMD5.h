@@ -1,5 +1,5 @@
-#ifndef MD5_H
-#define MD5_H
+#ifndef QimiMD5_H
+#define QimiMD5_H
 
 #include <string>
 #include <fstream>
@@ -12,12 +12,12 @@ using std::string;
 using std::ifstream;
 
 /* MD5 declaration. */
-class MD5 {
+class QimiMD5 {
 public:
-	MD5();
-	MD5(const void *input, size_t length);
-	MD5(const string &str);
-	MD5(ifstream &in);
+	QimiMD5();
+	QimiMD5(const void *input, size_t length);
+	QimiMD5(const string &str);
+	QimiMD5(ifstream &in);
 	void update(const void *input, size_t length);
 	void update(const string &str);
 	void update(ifstream &in);
@@ -33,8 +33,8 @@ private:
 	string bytesToHexString(const byte *input, size_t length);
 
 	/* class uncopyable */
-	MD5(const MD5&);
-	MD5& operator=(const MD5&);
+    QimiMD5(const QimiMD5&);
+	QimiMD5& operator=(const QimiMD5&);
 private:
 	ulong _state[4];	/* state (ABCD) */
 	ulong _count[2];	/* number of bits, modulo 2^64 (low-order word first) */

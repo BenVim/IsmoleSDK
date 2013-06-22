@@ -17,7 +17,7 @@
 #include "ProxyLoadingFilter.h"
 #include "Proxy.h"
 #include "GameUtils.h"
-#include "md5.h"
+#include "QimiMD5.h"
 #include "QimiPlatform.h"
 
 PrepaidCardNextStepView::PrepaidCardNextStepView():
@@ -109,15 +109,15 @@ bool PrepaidCardNextStepView::onAssignCCBMemberVariable(cocos2d::CCObject *pTarg
 
 void PrepaidCardNextStepView::onNodeLoaded(cocos2d::CCNode *pNode, cocos2d::extension::CCNodeLoader *pNodeLoader)
 {
-    m_pBtnCongzhi->setDefaultTouchPriority(-130);
-    m_pBackBtn->setDefaultTouchPriority(-130);
-    m_pBtnCard10Select->setDefaultTouchPriority(-130);
-    m_pBtnCard20Select->setDefaultTouchPriority(-130);
-    m_pBtnCard30Select->setDefaultTouchPriority(-130);
-    m_pBtnCard50Select->setDefaultTouchPriority(-130);
-    m_pBtnCard100Select->setDefaultTouchPriority(-130);
-    m_pBtnCard300Select->setDefaultTouchPriority(-130);
-    m_pBtnCard500Select->setDefaultTouchPriority(-130);
+    m_pBtnCongzhi->setTouchPriority(-130);
+    m_pBackBtn->setTouchPriority(-130);
+    m_pBtnCard10Select->setTouchPriority(-130);
+    m_pBtnCard20Select->setTouchPriority(-130);
+    m_pBtnCard30Select->setTouchPriority(-130);
+    m_pBtnCard50Select->setTouchPriority(-130);
+    m_pBtnCard100Select->setTouchPriority(-130);
+    m_pBtnCard300Select->setTouchPriority(-130);
+    m_pBtnCard500Select->setTouchPriority(-130);
     
     m_pButtonList = CCArray::create();
     m_pButtonList->retain();
@@ -418,7 +418,7 @@ void PrepaidCardNextStepView::requestSucssful(cocos2d::CCNode *sender, void *dat
     md5str+=pt;
     md5str+=privateKey;
     
-    MD5 md5;
+    QimiMD5 md5;
     md5.update(md5str);
     
     CCLog("md5str==%s",md5str.c_str());

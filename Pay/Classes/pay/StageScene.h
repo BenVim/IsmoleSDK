@@ -9,6 +9,7 @@
 #ifndef __NavigationTimes__StageScene__
 #define __NavigationTimes__StageScene__
 
+#include "Qimi.h"
 #include "cocos2d.h"
 
 class StageScene : public cocos2d::CCNode

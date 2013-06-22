@@ -46,7 +46,6 @@
     //创建barbuttonitem
     UIBarButtonItem *item1 = [[[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStyleBordered target:self action:@selector(test:)] autorelease];
     [toolBar setItems:[NSArray arrayWithObjects:item1, nil] animated:YES];
-    
 }
 
 -(void)test:(id)sender

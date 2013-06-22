@@ -91,15 +91,15 @@ bool PrepaidCardView::onAssignCCBMemberVariable(cocos2d::CCObject *pTarget, cons
 
 void PrepaidCardView::onNodeLoaded(cocos2d::CCNode *pNode, cocos2d::extension::CCNodeLoader *pNodeLoader)
 {
-    m_pBackBtn->setDefaultTouchPriority(-130);
-    m_pBtnCongzhi->setDefaultTouchPriority(-130);
-    m_pBtn10Select->setDefaultTouchPriority(-130);
-    m_pBtn20Select->setDefaultTouchPriority(-130);
-    m_pBtn30Select->setDefaultTouchPriority(-130);
-    m_pBtn50Select->setDefaultTouchPriority(-130);
-    m_pBtn100Select->setDefaultTouchPriority(-130);
-    m_pBtn300Select->setDefaultTouchPriority(-130);
-    m_pBtn500Select->setDefaultTouchPriority(-130);
+    m_pBackBtn->setTouchPriority(-130);
+    m_pBtnCongzhi->setTouchPriority(-130);
+    m_pBtn10Select->setTouchPriority(-130);
+    m_pBtn20Select->setTouchPriority(-130);
+    m_pBtn30Select->setTouchPriority(-130);
+    m_pBtn50Select->setTouchPriority(-130);
+    m_pBtn100Select->setTouchPriority(-130);
+    m_pBtn300Select->setTouchPriority(-130);
+    m_pBtn500Select->setTouchPriority(-130);
     m_pButtonList = CCArray::create();
     m_pButtonList->retain();
     m_pButtonList->addObject(m_pBtn10Select);

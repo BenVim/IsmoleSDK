@@ -15,7 +15,7 @@
 #include "ObjCalls.h"
 #include "QimiPlatform.h"
 #include "QimiUserModel.h"
-#include "md5.h"
+#include "QimiMD5.h"
 #include "GameUtils.h"
 
 USING_NS_CC;
@@ -83,9 +83,9 @@ bool LoginView::onAssignCCBMemberVariable(CCObject * pTarget, const char * pMemb
 
 void LoginView::onNodeLoaded(cocos2d::CCNode * pNode,  CCNodeLoader * pNodeLoader)
 {
-    m_pBackBtn->setDefaultTouchPriority(-130);
-    m_pLoginBtn->setDefaultTouchPriority(-130);
-    m_pRegisterBtn->setDefaultTouchPriority(-130);
+    m_pBackBtn->setTouchPriority(-130);
+    m_pLoginBtn->setTouchPriority(-130);
+    m_pRegisterBtn->setTouchPriority(-130);
     
     m_pRememberSprite->setVisible(false);
     CCSize editBoxSize = CCSizeMake(300, 50);
@@ -160,7 +160,7 @@ void LoginView::loginOnclick(cocos2d::CCNode* pSender, cocos2d::extension::CCCon
                                             userpass.c_str(),
                                             QimiPlatform::shareQimiPlatform()->getQimiGameKey().c_str()
                                             );
-        MD5 md5;
+        QimiMD5 md5;
         md5.update(sign);
         CCLog("md5str==%s",sign);
         std::string md5tolower = md5.toString();
