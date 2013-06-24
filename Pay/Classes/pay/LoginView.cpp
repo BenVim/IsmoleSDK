@@ -211,7 +211,7 @@ void LoginView::loginSucceed(cocos2d::CCNode *sender, void *data)
         root["status"];
         int status;
         CC_GAME_JSON_ADD(root, isInt, status, "status", asInt);
-        CCLog("status%d", status);
+        //CCLog("status%d", status);
         
         if (status == 100)
         {

@@ -9,6 +9,9 @@
 #ifndef __Pay__QimiPlatform__
 #define __Pay__QimiPlatform__
 
+#define RegCallBack "RegCallBack"
+#define LoginCallBack "LoginCallBack"
+#define QimiPayCallBack "QimiPayCallBack"
 
 #include "cocos2d.h"
 
@@ -20,6 +23,9 @@ class QimiParamInfo;
 class QimiPlatform : public cocos2d::CCObject
 {
 public:
+    
+    
+    
     static QimiPlatform* shareQimiPlatform();
     bool initialize();
     
@@ -86,7 +92,15 @@ public:
     
     void setQimiUserModel(QimiUserModel* model){m_pQimiUserModel = model;};
     
+    //回调函数 1.支付回调 2.登录回调 3.注册回调
     
+    void registerPayCallBack(cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call);
+    void registerLoginCallBack(cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call);
+    void registerRegCallBack(cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call);
+    
+    void callPayBack(cocos2d::CCObject* obj);
+    void callLoginBack(cocos2d::CCObject* obj);
+    void callRegBack(cocos2d::CCObject* obj);
     
 private:
     QimiPlatformIOS*     m_pQimiPlatformIOS;
@@ -96,6 +110,15 @@ private:
     int                  m_uId; //uid
     int                  m_sId; //用户ID
     int                  m_appid; //游戏的APPID
+    
+    cocos2d::CCObject* m_LoginTarget;
+    cocos2d::SEL_CallFuncO m_LoginCall;
+    
+    cocos2d::CCObject* m_RegTarget;
+    cocos2d::SEL_CallFuncO m_RegCall;
+    
+    cocos2d::CCObject* m_PayTarget;
+    cocos2d::SEL_CallFuncO m_payCall;
     
 private:
     bool isCheckAppId();//检查是否获得APP ID

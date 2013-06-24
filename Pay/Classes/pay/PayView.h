@@ -39,6 +39,7 @@ public:
     void LtOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void DxOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     
+    
     void initView(int uId, int sId, std::string key, int money);
     void onRequestData();
     

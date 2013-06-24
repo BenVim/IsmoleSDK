@@ -57,6 +57,7 @@ private:
     bool isSelelcted;
 private:
     
+    
     void fogetPassWorld(CCObject* obj);
     void remeberPassworld(CCObject* obj);
     void loginSucceed(cocos2d::CCNode *sender, void *data);

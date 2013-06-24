@@ -276,6 +276,8 @@
 		B5401241177180C0003C973B /* PrepaidCardView.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = B540120E177180C0003C973B /* PrepaidCardView.ccbi */; };
 		B5401242177180C0003C973B /* RegisterView.ccb in Resources */ = {isa = PBXBuildFile; fileRef = B540120F177180C0003C973B /* RegisterView.ccb */; };
 		B5401243177180C0003C973B /* RegisterView.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = B5401210177180C0003C973B /* RegisterView.ccbi */; };
+		B543BB231778249C007AA7D4 /* QimiMainView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B543BB211778249C007AA7D4 /* QimiMainView.cpp */; };
+		B543BB2617784CB6007AA7D4 /* QimiLoginView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B543BB2417784CB4007AA7D4 /* QimiLoginView.cpp */; };
 		B56C542D17424A6200D54212 /* libalixpay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B56C542C17424A6200D54212 /* libalixpay.a */; };
 		B56C5B631742509300D54212 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B56C5B611742509300D54212 /* libssl.a */; };
 		B56C5B641742509300D54212 /* libcrypto.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B56C5B621742509300D54212 /* libcrypto.a */; };
@@ -922,6 +924,11 @@
 		B540120E177180C0003C973B /* PrepaidCardView.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = PrepaidCardView.ccbi; sourceTree = "<group>"; };
 		B540120F177180C0003C973B /* RegisterView.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RegisterView.ccb; sourceTree = "<group>"; };
 		B5401210177180C0003C973B /* RegisterView.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = RegisterView.ccbi; sourceTree = "<group>"; };
+		B543BB1F17781EBD007AA7D4 /* IntObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntObject.h; sourceTree = "<group>"; };
+		B543BB211778249C007AA7D4 /* QimiMainView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QimiMainView.cpp; sourceTree = "<group>"; };
+		B543BB221778249C007AA7D4 /* QimiMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QimiMainView.h; sourceTree = "<group>"; };
+		B543BB2417784CB4007AA7D4 /* QimiLoginView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QimiLoginView.cpp; sourceTree = "<group>"; };
+		B543BB2517784CB5007AA7D4 /* QimiLoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QimiLoginView.h; sourceTree = "<group>"; };
 		B56C542C17424A6200D54212 /* libalixpay.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libalixpay.a; path = libs/libalixpay.a; sourceTree = "<group>"; };
 		B56C5B611742509300D54212 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libssl.a; path = libs/libssl.a; sourceTree = "<group>"; };
 		B56C5B621742509300D54212 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libcrypto.a; path = libs/libcrypto.a; sourceTree = "<group>"; };
@@ -2192,6 +2199,7 @@
 		B57E628517705BA100689077 /* pay */ = {
 			isa = PBXGroup;
 			children = (
+				B543BB1F17781EBD007AA7D4 /* IntObject.h */,
 				B5E37B121775C09000AE4054 /* md5c.cpp */,
 				B5E37B131775C09000AE4054 /* md5c.h */,
 				B57E628617705BA100689077 /* AlixPay.h */,
@@ -2272,6 +2280,10 @@
 				B5C386A61772D6360072CA97 /* QimiParamInfo.h */,
 				B5E37B151775C11500AE4054 /* Qimi.cpp */,
 				B5E37B161775C11500AE4054 /* Qimi.h */,
+				B543BB211778249C007AA7D4 /* QimiMainView.cpp */,
+				B543BB221778249C007AA7D4 /* QimiMainView.h */,
+				B543BB2417784CB4007AA7D4 /* QimiLoginView.cpp */,
+				B543BB2517784CB5007AA7D4 /* QimiLoginView.h */,
 			);
 			name = pay;
 			path = Classes/pay;
@@ -2634,6 +2646,8 @@
 				B5C386A71772D6360072CA97 /* QimiParamInfo.cpp in Sources */,
 				B5E37B141775C09000AE4054 /* md5c.cpp in Sources */,
 				B5E37B171775C11500AE4054 /* Qimi.cpp in Sources */,
+				B543BB231778249C007AA7D4 /* QimiMainView.cpp in Sources */,
+				B543BB2617784CB6007AA7D4 /* QimiLoginView.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
