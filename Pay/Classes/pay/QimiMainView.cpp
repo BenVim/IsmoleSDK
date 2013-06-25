@@ -9,6 +9,8 @@
 #include "QimiMainView.h"
 #include "GameUtils.h"
 #include "QimiAlipayView.h"
+#include "StageScene.h"
+#include "Qimi.h"
 
 QimiMainView::QimiMainView()
 {
@@ -261,7 +263,8 @@ void QimiMainView::onUpdataView()
 void QimiMainView::alipayOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
 {
     //QimiAlipayView
-    CCLog("alipayOnClick");
+    QimiAlipayView* pQimiAlipayView = QimiAlipayView::create();
+    StageScene::shareStageScene()->m_DialogContainer->addChild(pQimiAlipayView);
 }
 
 void QimiMainView::SzOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)

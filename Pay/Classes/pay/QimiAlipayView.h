@@ -26,7 +26,7 @@ public:
     
     void initView();
     void initData(int uId, int sId, std::string key, int money);
-    
+    void rechargeOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void backOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
 private:
     
@@ -38,13 +38,11 @@ private:
     CCArray* m_pButtonList;
     std::string m_oderId;
     
-    cocos2d::extension::CCScale9Sprite* m_pInputUserNameTxtBg;
-    cocos2d::extension::CCScale9Sprite* m_pInputUserPassTxtBg;
-    cocos2d::extension::CCScale9Sprite* m_pInputUserVerifyPassTxtBg;
+    CCLabelTTF* m_pMcashNumTxt;
+    CCLabelTTF* m_pMcashNumLastTxt;
     
-    cocos2d::extension::CCEditBox* m_pEditUserName;
-    cocos2d::extension::CCEditBox* m_pEditUserPass;
-    cocos2d::extension::CCEditBox* m_pEditVerifyPass;
+    
+    CCEditBox* m_pEditName;
     
     bool isSelelcted;
     

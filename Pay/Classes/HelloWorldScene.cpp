@@ -48,11 +48,12 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
      * sId 
      * appkey
      */
-    //QimiParamInfo* paramInfo = QimiParamInfo::create(21, 15, "7a92bba4670d479c5514720c1cf46aab");
-    //QimiPlatform::shareQimiPlatform()->setParamInfo(paramInfo);
+    QimiParamInfo* paramInfo = QimiParamInfo::create(21, 15, "7a92bba4670d479c5514720c1cf46aab");
+    QimiPlatform::shareQimiPlatform()->setParamInfo(paramInfo);
+    
     //QimiPlatform::shareQimiPlatform()->QimiRegister();
-    //QimiPlatform::shareQimiPlatform()->openPayDailog(21, 15, "7a92bba4670d479c5514720c1cf46aab", 10);
-    QimiPlatform::shareQimiPlatform()->QimiLogin();
+    QimiPlatform::shareQimiPlatform()->openPayDailog(21, 15, "7a92bba4670d479c5514720c1cf46aab", 10);
+    //QimiPlatform::shareQimiPlatform()->QimiLogin();
 }
 
 

@@ -24,7 +24,16 @@ public:
     
     void openWeb(std::string url);
     void openAlert(std::string title, std::string msg);
-    void alipayPay(std::string order, float price, std::string product, std::string productDes, std::string appScheme);
+    
+    void alipayPay(std::string order,
+                   float price,
+                   std::string product,
+                   std::string productDes,
+                   std::string appScheme,
+                   std::string parent,
+                   std::string seller,
+                   std::string notifyUrl,
+                   std::string alipayKey);
     
 private:
     

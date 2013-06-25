@@ -18,6 +18,7 @@
 
 #include "QimiPlatformIOS.h"
 #include "QimiPlatform.h"
+#include "Qimi.h"
 
 
 PayZhifubaoView::PayZhifubaoView():
@@ -295,7 +296,16 @@ void PayZhifubaoView::loadAlixPay()
     #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     QimiPlatformIOS* pQimiPlatformIOS = QimiPlatformIOS::create();
     pQimiPlatformIOS->retain();
-    pQimiPlatformIOS->alipayPay(m_oderId, m_money, "pro", "proDes", "pay");
+    pQimiPlatformIOS->alipayPay(m_oderId,
+                                m_money,
+                                "pro",
+                                "proDes",
+                                "pay",
+                                QIMI_ALIAPAY_SID,
+                                QIMI_ALIAPAY_USERNMAE,
+                                "www.qimi.com",
+                                QIMI_PRIVATE_KEY
+                                );
     pQimiPlatformIOS->release();
     #endif
     
