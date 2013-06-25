@@ -15,6 +15,7 @@
 #include "IntObject.h"
 #include "QimiMainView.h"
 #include "QimiLoginView.h"
+#include "QimiRegisterView.h"
 
 #include "md5c.h"
 
@@ -104,7 +105,7 @@ void QimiPlatform::openPayDailog(int uId, int sId, std::string key, int money)
 
 void QimiPlatform::QimiRegister()
 {
-    RegisterView* pRegisterView = GameCCBLoader::sharedLoader()->createCCBNode<RegisterView>("RegisterView.ccbi");
+    QimiRegisterView* pRegisterView = QimiRegisterView::create();
     StageScene::shareStageScene()->m_DialogContainer->addChild(pRegisterView);
     pRegisterView->setPosition(ccp(0, 0));
 }

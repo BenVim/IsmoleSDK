@@ -230,6 +230,7 @@ void QimiLoginView::loginSucceed(cocos2d::CCNode *sender, void *data)
 void QimiLoginView::registerOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
 {
     QimiPlatform::shareQimiPlatform()->QimiRegister();
+    backOnClick(NULL, NULL);
     //注册
 }
 

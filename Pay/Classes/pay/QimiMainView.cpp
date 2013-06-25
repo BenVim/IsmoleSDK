@@ -8,6 +8,7 @@
 
 #include "QimiMainView.h"
 #include "GameUtils.h"
+#include "QimiAlipayView.h"
 
 QimiMainView::QimiMainView()
 {
@@ -259,6 +260,7 @@ void QimiMainView::onUpdataView()
 
 void QimiMainView::alipayOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
 {
+    //QimiAlipayView
     CCLog("alipayOnClick");
 }
 
