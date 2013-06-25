@@ -97,9 +97,6 @@ void QimiPlatform::openPayDailog(int uId, int sId, std::string key, int money)
 {
     QimiMainView* qimiManView = QimiMainView::create();
     StageScene::shareStageScene()->m_DialogContainer->addChild(qimiManView);
-    //PayView* pPayView = GameCCBLoader::sharedLoader()->createCCBNode<PayView>("PayView.ccbi");
-    //StageScene::shareStageScene()->m_DialogContainer->addChild(pPayView);
-    //pPayView->setPosition(ccp(0, 0));
     qimiManView->initView(uId, sId, key, money);
 }
 

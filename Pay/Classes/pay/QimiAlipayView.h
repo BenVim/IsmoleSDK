@@ -27,6 +27,7 @@ public:
     void initView();
     void initData(int uId, int sId, std::string key, int money);
     void rechargeOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
+    void selected(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void backOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
 private:
     
@@ -51,6 +52,7 @@ private:
     void upSelectState(int index);
     void onLoadOrderSucssful(cocos2d::CCNode *sender, void *data);
     void loadAlixPay();
+
 };
 
 

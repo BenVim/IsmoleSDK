@@ -67,81 +67,104 @@ bool QimiAlipayView::init()
     scale9Sprite->setPosition(ccp(240, 400));
     this->addChild(scale9Sprite);
     
+    CCNode* containerCCNode = CCNode::create();
+    this->addChild(containerCCNode);
+    containerCCNode->setPosition(ccp(6, 418));
 
     CCLabelTTF* txtTitle = CCLabelTTF::create("请选择充值金额（1元=10奇米币）", "Helvetica", 26);
-    this->addChild(txtTitle);
+    containerCCNode->addChild(txtTitle);
     txtTitle->setColor(ccc3(0, 0, 0));
     txtTitle->setPosition(ccp(27, 237));
     txtTitle->setAnchorPoint(ccp(0, 0.5));
     
     
-    CCControlButton* m_pBtnCongzhi;
+    CCControlButton* m_pBtnCongzhi = CCControlButton::create(CCScale9Sprite::create("btn_querenchongzhi.png"));
+    m_pBtnCongzhi->setPreferredSize(CCSizeMake(248, 74));
+    containerCCNode->addChild(m_pBtnCongzhi);
+    m_pBtnCongzhi->setPosition(ccp(233, -189));
+    m_pBtnCongzhi->addTargetWithActionForControlEvents(this,
+                                                         cccontrol_selector(QimiAlipayView::rechargeOnClick),
+                                                         CCControlEventTouchUpInside);
+
     
-    CCNode* containerCCNode = CCNode::create();
-    this->addChild(containerCCNode);
-    containerCCNode->setPosition(ccp(6, 418));
+    
     
     CCLabelTTF* label10 = CCLabelTTF::create("10元", "Helvetica", 18);
+    label10->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn10Select = CCControlButton::create(label10, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn10Select->setPreferredSize(CCSizeMake(196, 47));
     containerCCNode->addChild(m_pBtn10Select);
     m_pBtn10Select->setPosition(ccp(127, 170));
+    m_pBtn10Select->setTag(10);
     m_pBtn10Select->addTargetWithActionForControlEvents(this,
-                                                    cccontrol_selector(QimiAlipayView::backOnClick),
+                                                    cccontrol_selector(QimiAlipayView::selected),
                                                     CCControlEventTouchUpInside);
+    
    
     CCLabelTTF* label20 = CCLabelTTF::create("20元", "Helvetica", 18);
+    label20->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn20Select = CCControlButton::create(label20, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn20Select->setPreferredSize(CCSizeMake(196, 47));
     containerCCNode->addChild(m_pBtn20Select);
     m_pBtn20Select->setPosition(ccp(338, 170));
+    m_pBtn20Select->setTag(20);
     m_pBtn20Select->addTargetWithActionForControlEvents(this,
-                                                        cccontrol_selector(QimiAlipayView::backOnClick),
+                                                        cccontrol_selector(QimiAlipayView::selected),
                                                         CCControlEventTouchUpInside);
 
     CCLabelTTF* label30 = CCLabelTTF::create("30元", "Helvetica", 18);
+    label30->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn30Select = CCControlButton::create(label30,CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn30Select->setPreferredSize(CCSizeMake(196, 47));
     containerCCNode->addChild(m_pBtn30Select);
     m_pBtn30Select->setPosition(ccp(127, 114));
+    m_pBtn30Select->setTag(30);
     m_pBtn30Select->addTargetWithActionForControlEvents(this,
-                                                        cccontrol_selector(QimiAlipayView::backOnClick),
+                                                        cccontrol_selector(QimiAlipayView::selected),
                                                         CCControlEventTouchUpInside);
     
     CCLabelTTF* label50 = CCLabelTTF::create("50元", "Helvetica", 18);
+    label50->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn50Select = CCControlButton::create(label50, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn50Select->setPreferredSize(CCSizeMake(196, 47));
     containerCCNode->addChild(m_pBtn50Select);
     m_pBtn50Select->setPosition(ccp(338, 114));
+    m_pBtn50Select->setTag(50);
     m_pBtn50Select->addTargetWithActionForControlEvents(this,
-                                                        cccontrol_selector(QimiAlipayView::backOnClick),
+                                                        cccontrol_selector(QimiAlipayView::selected),
                                                         CCControlEventTouchUpInside);
     
     CCLabelTTF* label100 = CCLabelTTF::create("100元", "Helvetica", 18);
+    label100->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn100Select = CCControlButton::create(label100,CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn100Select->setPreferredSize(CCSizeMake(196, 47));
     containerCCNode->addChild(m_pBtn100Select);
     m_pBtn100Select->setPosition(ccp(127, 60));
+    m_pBtn100Select->setTag(100);
     m_pBtn100Select->addTargetWithActionForControlEvents(this,
-                                                        cccontrol_selector(QimiAlipayView::backOnClick),
+                                                        cccontrol_selector(QimiAlipayView::selected),
                                                         CCControlEventTouchUpInside);
     
     CCLabelTTF* label300 = CCLabelTTF::create("300元", "Helvetica", 18);
+    label300->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn300Select = CCControlButton::create(label300, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn300Select->setPreferredSize(CCSizeMake(196, 47));
     containerCCNode->addChild(m_pBtn300Select);
     m_pBtn300Select->setPosition(ccp(338, 60));
+    m_pBtn300Select->setTag(300);
     m_pBtn300Select->addTargetWithActionForControlEvents(this,
-                                                         cccontrol_selector(QimiAlipayView::backOnClick),
+                                                         cccontrol_selector(QimiAlipayView::selected),
                                                          CCControlEventTouchUpInside);
     
     CCLabelTTF* label500 = CCLabelTTF::create("500元", "Helvetica", 18);
+    label500->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn500Select = CCControlButton::create(label500, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn500Select->setPreferredSize(CCSizeMake(196, 47));
     containerCCNode->addChild(m_pBtn500Select);
     m_pBtn500Select->setPosition(ccp(127, 4));
+    m_pBtn500Select->setTag(500);
     m_pBtn500Select->addTargetWithActionForControlEvents(this,
-                                                         cccontrol_selector(QimiAlipayView::backOnClick),
+                                                         cccontrol_selector(QimiAlipayView::selected),
                                                          CCControlEventTouchUpInside);
     
     
@@ -164,7 +187,6 @@ bool QimiAlipayView::init()
     yuan->setPosition(ccp(240, 359));
     yuan->setAnchorPoint(ccp(0, 0.5));
     
-    
     CCLabelTTF* label01 = CCLabelTTF::create("您将充值", "Helvetica", 20);
     containerCCNode->addChild(label01);
     label01->setColor(ccc3(0, 0, 0));
@@ -172,9 +194,9 @@ bool QimiAlipayView::init()
     label01->setAnchorPoint(ccp(0, 0.5));
     
     m_pMcashNumTxt = CCLabelTTF::create("1", "Helvetica", 20);
-    label01->setColor(ccc3(196, 9, 9));
-    label01->setPosition(ccp(115, -105));
-    label01->setAnchorPoint(ccp(0, 0.5));
+    m_pMcashNumTxt->setColor(ccc3(196, 9, 9));
+    m_pMcashNumTxt->setPosition(ccp(115, -105));
+    m_pMcashNumTxt->setAnchorPoint(ccp(0, 0.5));
     containerCCNode->addChild(m_pMcashNumTxt);
     
     m_pMcashNumLastTxt = CCLabelTTF::create("奇米币", "Helvetica", 20);
@@ -182,7 +204,6 @@ bool QimiAlipayView::init()
     m_pMcashNumLastTxt->setColor(ccc3(0, 0, 0));
     m_pMcashNumLastTxt->setPosition(ccp(147, -105));
     m_pMcashNumLastTxt->setAnchorPoint(ccp(0, 0.5));
-    
     return true;
 }
 
@@ -204,6 +225,14 @@ void QimiAlipayView::upDataView(int pay)
     float posY = m_pMcashNumTxt->getPosition().y;
     
     m_pMcashNumLastTxt->setPosition(ccp(posX, posY));
+}
+
+void QimiAlipayView::selected(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
+{
+    CCControlButton* btn = dynamic_cast<CCControlButton*>(pSender);
+    int pay = btn->getTag();
+    CCLog("%d", pay);
+    upDataView(pay);
 }
 
 void QimiAlipayView::upSelectState(int index)
