@@ -11,6 +11,7 @@
 #include "QimiAlipayView.h"
 #include "StageScene.h"
 #include "Qimi.h"
+#include "QimiPrepaidCardView.h"
 
 QimiMainView::QimiMainView()
 {
@@ -284,7 +285,9 @@ void QimiMainView::DxOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCCon
 
 void QimiMainView::openPrepaidCard(int kind)
 {
-    CCLog("%d", kind);
+    QimiPrepaidCardView* pQimiPrepaidCardView = QimiPrepaidCardView::create();
+    StageScene::shareStageScene()->m_DialogContainer->addChild(pQimiPrepaidCardView);
+    pQimiPrepaidCardView->initData(m_uId, m_sId, m_key, m_money, kind);
 }
 
 void QimiMainView::backOnClick(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)

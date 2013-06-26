@@ -7,5 +7,7 @@ Thumbs.db
 
 */*.xcodeproj/xcuserdata/
 */*.xcodeproj/project.xcworkspace/
+*.xcodeproj/project.pbxproj
+*.xcodeproj/project.xcworkspace/*
 
 .idea
