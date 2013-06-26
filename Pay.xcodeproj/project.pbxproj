@@ -225,8 +225,6 @@
 		B51E48B1173CE4CD002B9031 /* RSADataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = B51E48A7173CE4CD002B9031 /* RSADataSigner.m */; };
 		B51E48B2173CE4CD002B9031 /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = B51E48A9173CE4CD002B9031 /* RSADataVerifier.m */; };
 		B51E497F173D1995002B9031 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B51E497E173D1995002B9031 /* Info.plist */; };
-		B5401211177180C0003C973B /* asset.ccbproj in Resources */ = {isa = PBXBuildFile; fileRef = B54011DD177180C0003C973B /* asset.ccbproj */; };
-		B5401212177180C0003C973B /* asset.ccbresourcelog in Resources */ = {isa = PBXBuildFile; fileRef = B54011DE177180C0003C973B /* asset.ccbresourcelog */; };
 		B5401213177180C0003C973B /* bg_30x30_kahao.png in Resources */ = {isa = PBXBuildFile; fileRef = B54011E0177180C0003C973B /* bg_30x30_kahao.png */; };
 		B5401214177180C0003C973B /* bg_40x40.png in Resources */ = {isa = PBXBuildFile; fileRef = B54011E1177180C0003C973B /* bg_40x40.png */; };
 		B5401215177180C0003C973B /* bg_chongzhishu_196x47.png in Resources */ = {isa = PBXBuildFile; fileRef = B54011E2177180C0003C973B /* bg_chongzhishu_196x47.png */; };
@@ -246,36 +244,14 @@
 		B5401223177180C0003C973B /* btn_xiayibu.png in Resources */ = {isa = PBXBuildFile; fileRef = B54011F0177180C0003C973B /* btn_xiayibu.png */; };
 		B5401224177180C0003C973B /* btn_zhuce.png in Resources */ = {isa = PBXBuildFile; fileRef = B54011F1177180C0003C973B /* btn_zhuce.png */; };
 		B5401225177180C0003C973B /* btn_zhuce_small.png in Resources */ = {isa = PBXBuildFile; fileRef = B54011F2177180C0003C973B /* btn_zhuce_small.png */; };
-		B5401226177180C0003C973B /* GameUIBigMaskLayer.ccb in Resources */ = {isa = PBXBuildFile; fileRef = B54011F3177180C0003C973B /* GameUIBigMaskLayer.ccb */; };
-		B5401227177180C0003C973B /* GameUIBigMaskLayer.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = B54011F4177180C0003C973B /* GameUIBigMaskLayer.ccbi */; };
-		B5401228177180C0003C973B /* GameUIMaskLayer.ccb in Resources */ = {isa = PBXBuildFile; fileRef = B54011F5177180C0003C973B /* GameUIMaskLayer.ccb */; };
-		B5401229177180C0003C973B /* GameUIMaskLayer.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = B54011F6177180C0003C973B /* GameUIMaskLayer.ccbi */; };
 		B540122A177180C0003C973B /* img_dianxin.png in Resources */ = {isa = PBXBuildFile; fileRef = B54011F7177180C0003C973B /* img_dianxin.png */; };
 		B540122B177180C0003C973B /* img_liantong.png in Resources */ = {isa = PBXBuildFile; fileRef = B54011F8177180C0003C973B /* img_liantong.png */; };
 		B540122C177180C0003C973B /* img_shenzhouxing.png in Resources */ = {isa = PBXBuildFile; fileRef = B54011F9177180C0003C973B /* img_shenzhouxing.png */; };
 		B540122D177180C0003C973B /* img_zhifubao.png in Resources */ = {isa = PBXBuildFile; fileRef = B54011FA177180C0003C973B /* img_zhifubao.png */; };
 		B540122E177180C0003C973B /* loading.plist in Resources */ = {isa = PBXBuildFile; fileRef = B54011FB177180C0003C973B /* loading.plist */; };
 		B540122F177180C0003C973B /* loading.png in Resources */ = {isa = PBXBuildFile; fileRef = B54011FC177180C0003C973B /* loading.png */; };
-		B5401230177180C0003C973B /* LoadingView.ccb in Resources */ = {isa = PBXBuildFile; fileRef = B54011FD177180C0003C973B /* LoadingView.ccb */; };
-		B5401231177180C0003C973B /* LoadingView.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = B54011FE177180C0003C973B /* LoadingView.ccbi */; };
 		B5401232177180C0003C973B /* loginbg.png in Resources */ = {isa = PBXBuildFile; fileRef = B54011FF177180C0003C973B /* loginbg.png */; };
-		B5401233177180C0003C973B /* LoginView.ccb in Resources */ = {isa = PBXBuildFile; fileRef = B5401200177180C0003C973B /* LoginView.ccb */; };
-		B5401234177180C0003C973B /* LoginView.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = B5401201177180C0003C973B /* LoginView.ccbi */; };
 		B5401235177180C0003C973B /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = B5401202177180C0003C973B /* logo.png */; };
-		B5401236177180C0003C973B /* PayHelpItemView.ccb in Resources */ = {isa = PBXBuildFile; fileRef = B5401203177180C0003C973B /* PayHelpItemView.ccb */; };
-		B5401237177180C0003C973B /* PayHelpItemView.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = B5401204177180C0003C973B /* PayHelpItemView.ccbi */; };
-		B5401238177180C0003C973B /* PayHelpView.ccb in Resources */ = {isa = PBXBuildFile; fileRef = B5401205177180C0003C973B /* PayHelpView.ccb */; };
-		B5401239177180C0003C973B /* PayHelpView.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = B5401206177180C0003C973B /* PayHelpView.ccbi */; };
-		B540123A177180C0003C973B /* PayView.ccb in Resources */ = {isa = PBXBuildFile; fileRef = B5401207177180C0003C973B /* PayView.ccb */; };
-		B540123B177180C0003C973B /* PayView.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = B5401208177180C0003C973B /* PayView.ccbi */; };
-		B540123C177180C0003C973B /* PayZhifubaoView.ccb in Resources */ = {isa = PBXBuildFile; fileRef = B5401209177180C0003C973B /* PayZhifubaoView.ccb */; };
-		B540123D177180C0003C973B /* PayZhifubaoView.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = B540120A177180C0003C973B /* PayZhifubaoView.ccbi */; };
-		B540123E177180C0003C973B /* PrepaidCardNextStepView.ccb in Resources */ = {isa = PBXBuildFile; fileRef = B540120B177180C0003C973B /* PrepaidCardNextStepView.ccb */; };
-		B540123F177180C0003C973B /* PrepaidCardNextStepView.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = B540120C177180C0003C973B /* PrepaidCardNextStepView.ccbi */; };
-		B5401240177180C0003C973B /* PrepaidCardView.ccb in Resources */ = {isa = PBXBuildFile; fileRef = B540120D177180C0003C973B /* PrepaidCardView.ccb */; };
-		B5401241177180C0003C973B /* PrepaidCardView.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = B540120E177180C0003C973B /* PrepaidCardView.ccbi */; };
-		B5401242177180C0003C973B /* RegisterView.ccb in Resources */ = {isa = PBXBuildFile; fileRef = B540120F177180C0003C973B /* RegisterView.ccb */; };
-		B5401243177180C0003C973B /* RegisterView.ccbi in Resources */ = {isa = PBXBuildFile; fileRef = B5401210177180C0003C973B /* RegisterView.ccbi */; };
 		B543BB231778249C007AA7D4 /* QimiMainView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B543BB211778249C007AA7D4 /* QimiMainView.cpp */; };
 		B543BB2617784CB6007AA7D4 /* QimiLoginView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B543BB2417784CB4007AA7D4 /* QimiLoginView.cpp */; };
 		B543BB29177935EE007AA7D4 /* QimiRegisterView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B543BB27177935ED007AA7D4 /* QimiRegisterView.cpp */; };
@@ -289,29 +265,9 @@
 		B57E62C917705BA100689077 /* DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = B57E628C17705BA100689077 /* DataSigner.m */; };
 		B57E62CA17705BA100689077 /* DataVerifier.mm in Sources */ = {isa = PBXBuildFile; fileRef = B57E628E17705BA100689077 /* DataVerifier.mm */; };
 		B57E62CB17705BA100689077 /* DictUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E628F17705BA100689077 /* DictUtility.cpp */; };
-		B57E62CC17705BA100689077 /* GameCCBLoader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E629217705BA100689077 /* GameCCBLoader.cpp */; };
-		B57E62CD17705BA100689077 /* GameScrollView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E629517705BA100689077 /* GameScrollView.cpp */; };
-		B57E62CE17705BA100689077 /* GameUIBigMaskLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E629717705BA100689077 /* GameUIBigMaskLayer.cpp */; };
-		B57E62CF17705BA100689077 /* GameUIMaskLayer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E629917705BA100689077 /* GameUIMaskLayer.cpp */; };
 		B57E62D017705BA100689077 /* GameUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E629B17705BA100689077 /* GameUtils.cpp */; };
-		B57E62D117705BA100689077 /* LoadingView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E629D17705BA100689077 /* LoadingView.cpp */; };
-		B57E62D217705BA100689077 /* LoginView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E629F17705BA100689077 /* LoginView.cpp */; };
 		B57E62D317705BA100689077 /* QimiMD5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62A117705BA100689077 /* QimiMD5.cpp */; };
-		B57E62D517705BA100689077 /* MultiProxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62A517705BA100689077 /* MultiProxy.cpp */; };
-		B57E62D617705BA100689077 /* ObjCalls.mm in Sources */ = {isa = PBXBuildFile; fileRef = B57E62A817705BA100689077 /* ObjCalls.mm */; };
-		B57E62D717705BA100689077 /* PayHelpView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62A917705BA100689077 /* PayHelpView.cpp */; };
-		B57E62D817705BA100689077 /* PayView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62AB17705BA100689077 /* PayView.cpp */; };
-		B57E62D917705BA100689077 /* PayZhifubaoView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62AE17705BA100689077 /* PayZhifubaoView.cpp */; };
-		B57E62DA17705BA100689077 /* PrepaidCardNextStepView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62AF17705BA100689077 /* PrepaidCardNextStepView.cpp */; };
 		B57E62DB17705BA100689077 /* PrepaidCardOrder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62B117705BA100689077 /* PrepaidCardOrder.cpp */; };
-		B57E62DC17705BA100689077 /* PrepaidCardView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62B317705BA100689077 /* PrepaidCardView.cpp */; };
-		B57E62DD17705BA100689077 /* Proxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62B517705BA100689077 /* Proxy.cpp */; };
-		B57E62DE17705BA100689077 /* ProxyFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62B717705BA100689077 /* ProxyFilter.cpp */; };
-		B57E62DF17705BA100689077 /* ProxyFilterManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62B917705BA100689077 /* ProxyFilterManager.cpp */; };
-		B57E62E017705BA100689077 /* ProxyInvocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62BB17705BA100689077 /* ProxyInvocation.cpp */; };
-		B57E62E117705BA100689077 /* ProxyLoadingFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62BD17705BA100689077 /* ProxyLoadingFilter.cpp */; };
-		B57E62E217705BA100689077 /* RegisterView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62C017705BA100689077 /* RegisterView.cpp */; };
-		B57E62E317705BA100689077 /* SingleProxy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62C217705BA100689077 /* SingleProxy.cpp */; };
 		B57E62E417705BA100689077 /* StageScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62C417705BA100689077 /* StageScene.cpp */; };
 		B57E62E517705BA100689077 /* TypeUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B57E62C617705BA100689077 /* TypeUtility.cpp */; };
 		B5B495B0177064E800F89F5D /* WebView.m in Sources */ = {isa = PBXBuildFile; fileRef = B5B495AF177064E700F89F5D /* WebView.m */; };
@@ -877,8 +833,6 @@
 		B51E48A8173CE4CD002B9031 /* RSADataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RSADataVerifier.h; path = src/RSADataVerifier.h; sourceTree = "<group>"; };
 		B51E48A9173CE4CD002B9031 /* RSADataVerifier.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RSADataVerifier.m; path = src/RSADataVerifier.m; sourceTree = "<group>"; };
 		B51E497E173D1995002B9031 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
-		B54011DD177180C0003C973B /* asset.ccbproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = asset.ccbproj; sourceTree = "<group>"; };
-		B54011DE177180C0003C973B /* asset.ccbresourcelog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = asset.ccbresourcelog; sourceTree = "<group>"; };
 		B54011E0177180C0003C973B /* bg_30x30_kahao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_30x30_kahao.png; sourceTree = "<group>"; };
 		B54011E1177180C0003C973B /* bg_40x40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_40x40.png; sourceTree = "<group>"; };
 		B54011E2177180C0003C973B /* bg_chongzhishu_196x47.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_chongzhishu_196x47.png; sourceTree = "<group>"; };
@@ -898,36 +852,14 @@
 		B54011F0177180C0003C973B /* btn_xiayibu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_xiayibu.png; sourceTree = "<group>"; };
 		B54011F1177180C0003C973B /* btn_zhuce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_zhuce.png; sourceTree = "<group>"; };
 		B54011F2177180C0003C973B /* btn_zhuce_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_zhuce_small.png; sourceTree = "<group>"; };
-		B54011F3177180C0003C973B /* GameUIBigMaskLayer.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = GameUIBigMaskLayer.ccb; sourceTree = "<group>"; };
-		B54011F4177180C0003C973B /* GameUIBigMaskLayer.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = GameUIBigMaskLayer.ccbi; sourceTree = "<group>"; };
-		B54011F5177180C0003C973B /* GameUIMaskLayer.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = GameUIMaskLayer.ccb; sourceTree = "<group>"; };
-		B54011F6177180C0003C973B /* GameUIMaskLayer.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = GameUIMaskLayer.ccbi; sourceTree = "<group>"; };
 		B54011F7177180C0003C973B /* img_dianxin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_dianxin.png; sourceTree = "<group>"; };
 		B54011F8177180C0003C973B /* img_liantong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_liantong.png; sourceTree = "<group>"; };
 		B54011F9177180C0003C973B /* img_shenzhouxing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_shenzhouxing.png; sourceTree = "<group>"; };
 		B54011FA177180C0003C973B /* img_zhifubao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_zhifubao.png; sourceTree = "<group>"; };
 		B54011FB177180C0003C973B /* loading.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = loading.plist; sourceTree = "<group>"; };
 		B54011FC177180C0003C973B /* loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loading.png; sourceTree = "<group>"; };
-		B54011FD177180C0003C973B /* LoadingView.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LoadingView.ccb; sourceTree = "<group>"; };
-		B54011FE177180C0003C973B /* LoadingView.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = LoadingView.ccbi; sourceTree = "<group>"; };
 		B54011FF177180C0003C973B /* loginbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = loginbg.png; sourceTree = "<group>"; };
-		B5401200177180C0003C973B /* LoginView.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = LoginView.ccb; sourceTree = "<group>"; };
-		B5401201177180C0003C973B /* LoginView.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = LoginView.ccbi; sourceTree = "<group>"; };
 		B5401202177180C0003C973B /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
-		B5401203177180C0003C973B /* PayHelpItemView.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PayHelpItemView.ccb; sourceTree = "<group>"; };
-		B5401204177180C0003C973B /* PayHelpItemView.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = PayHelpItemView.ccbi; sourceTree = "<group>"; };
-		B5401205177180C0003C973B /* PayHelpView.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PayHelpView.ccb; sourceTree = "<group>"; };
-		B5401206177180C0003C973B /* PayHelpView.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = PayHelpView.ccbi; sourceTree = "<group>"; };
-		B5401207177180C0003C973B /* PayView.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PayView.ccb; sourceTree = "<group>"; };
-		B5401208177180C0003C973B /* PayView.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = PayView.ccbi; sourceTree = "<group>"; };
-		B5401209177180C0003C973B /* PayZhifubaoView.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PayZhifubaoView.ccb; sourceTree = "<group>"; };
-		B540120A177180C0003C973B /* PayZhifubaoView.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = PayZhifubaoView.ccbi; sourceTree = "<group>"; };
-		B540120B177180C0003C973B /* PrepaidCardNextStepView.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrepaidCardNextStepView.ccb; sourceTree = "<group>"; };
-		B540120C177180C0003C973B /* PrepaidCardNextStepView.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = PrepaidCardNextStepView.ccbi; sourceTree = "<group>"; };
-		B540120D177180C0003C973B /* PrepaidCardView.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrepaidCardView.ccb; sourceTree = "<group>"; };
-		B540120E177180C0003C973B /* PrepaidCardView.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = PrepaidCardView.ccbi; sourceTree = "<group>"; };
-		B540120F177180C0003C973B /* RegisterView.ccb */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = RegisterView.ccb; sourceTree = "<group>"; };
-		B5401210177180C0003C973B /* RegisterView.ccbi */ = {isa = PBXFileReference; lastKnownFileType = file; path = RegisterView.ccbi; sourceTree = "<group>"; };
 		B543BB1F17781EBD007AA7D4 /* IntObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntObject.h; sourceTree = "<group>"; };
 		B543BB211778249C007AA7D4 /* QimiMainView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QimiMainView.cpp; sourceTree = "<group>"; };
 		B543BB221778249C007AA7D4 /* QimiMainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QimiMainView.h; sourceTree = "<group>"; };
@@ -956,54 +888,13 @@
 		B57E628F17705BA100689077 /* DictUtility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DictUtility.cpp; sourceTree = "<group>"; };
 		B57E629017705BA100689077 /* DictUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DictUtility.h; sourceTree = "<group>"; };
 		B57E629117705BA100689077 /* GameActionFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameActionFunc.h; sourceTree = "<group>"; };
-		B57E629217705BA100689077 /* GameCCBLoader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameCCBLoader.cpp; sourceTree = "<group>"; };
-		B57E629317705BA100689077 /* GameCCBLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCCBLoader.h; sourceTree = "<group>"; };
 		B57E629417705BA100689077 /* GameNotify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameNotify.h; sourceTree = "<group>"; };
-		B57E629517705BA100689077 /* GameScrollView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameScrollView.cpp; sourceTree = "<group>"; };
-		B57E629617705BA100689077 /* GameScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScrollView.h; sourceTree = "<group>"; };
-		B57E629717705BA100689077 /* GameUIBigMaskLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameUIBigMaskLayer.cpp; sourceTree = "<group>"; };
-		B57E629817705BA100689077 /* GameUIBigMaskLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameUIBigMaskLayer.h; sourceTree = "<group>"; };
-		B57E629917705BA100689077 /* GameUIMaskLayer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameUIMaskLayer.cpp; sourceTree = "<group>"; };
-		B57E629A17705BA100689077 /* GameUIMaskLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameUIMaskLayer.h; sourceTree = "<group>"; };
 		B57E629B17705BA100689077 /* GameUtils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GameUtils.cpp; sourceTree = "<group>"; };
 		B57E629C17705BA100689077 /* GameUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameUtils.h; sourceTree = "<group>"; };
-		B57E629D17705BA100689077 /* LoadingView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoadingView.cpp; sourceTree = "<group>"; };
-		B57E629E17705BA100689077 /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
-		B57E629F17705BA100689077 /* LoginView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoginView.cpp; sourceTree = "<group>"; };
-		B57E62A017705BA100689077 /* LoginView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginView.h; sourceTree = "<group>"; };
 		B57E62A117705BA100689077 /* QimiMD5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QimiMD5.cpp; sourceTree = "<group>"; };
 		B57E62A217705BA100689077 /* QimiMD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QimiMD5.h; sourceTree = "<group>"; };
-		B57E62A517705BA100689077 /* MultiProxy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MultiProxy.cpp; sourceTree = "<group>"; };
-		B57E62A617705BA100689077 /* MultiProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MultiProxy.h; sourceTree = "<group>"; };
-		B57E62A717705BA100689077 /* ObjCalls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjCalls.h; sourceTree = "<group>"; };
-		B57E62A817705BA100689077 /* ObjCalls.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ObjCalls.mm; sourceTree = "<group>"; };
-		B57E62A917705BA100689077 /* PayHelpView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PayHelpView.cpp; sourceTree = "<group>"; };
-		B57E62AA17705BA100689077 /* PayHelpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayHelpView.h; sourceTree = "<group>"; };
-		B57E62AB17705BA100689077 /* PayView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PayView.cpp; sourceTree = "<group>"; };
-		B57E62AC17705BA100689077 /* PayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayView.h; sourceTree = "<group>"; };
-		B57E62AD17705BA100689077 /* PayZhifubaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PayZhifubaoView.h; sourceTree = "<group>"; };
-		B57E62AE17705BA100689077 /* PayZhifubaoView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PayZhifubaoView.cpp; sourceTree = "<group>"; };
-		B57E62AF17705BA100689077 /* PrepaidCardNextStepView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrepaidCardNextStepView.cpp; sourceTree = "<group>"; };
-		B57E62B017705BA100689077 /* PrepaidCardNextStepView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepaidCardNextStepView.h; sourceTree = "<group>"; };
 		B57E62B117705BA100689077 /* PrepaidCardOrder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrepaidCardOrder.cpp; sourceTree = "<group>"; };
 		B57E62B217705BA100689077 /* PrepaidCardOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepaidCardOrder.h; sourceTree = "<group>"; };
-		B57E62B317705BA100689077 /* PrepaidCardView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PrepaidCardView.cpp; sourceTree = "<group>"; };
-		B57E62B417705BA100689077 /* PrepaidCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepaidCardView.h; sourceTree = "<group>"; };
-		B57E62B517705BA100689077 /* Proxy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Proxy.cpp; sourceTree = "<group>"; };
-		B57E62B617705BA100689077 /* Proxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Proxy.h; sourceTree = "<group>"; };
-		B57E62B717705BA100689077 /* ProxyFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProxyFilter.cpp; sourceTree = "<group>"; };
-		B57E62B817705BA100689077 /* ProxyFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyFilter.h; sourceTree = "<group>"; };
-		B57E62B917705BA100689077 /* ProxyFilterManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProxyFilterManager.cpp; sourceTree = "<group>"; };
-		B57E62BA17705BA100689077 /* ProxyFilterManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyFilterManager.h; sourceTree = "<group>"; };
-		B57E62BB17705BA100689077 /* ProxyInvocation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProxyInvocation.cpp; sourceTree = "<group>"; };
-		B57E62BC17705BA100689077 /* ProxyInvocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyInvocation.h; sourceTree = "<group>"; };
-		B57E62BD17705BA100689077 /* ProxyLoadingFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ProxyLoadingFilter.cpp; sourceTree = "<group>"; };
-		B57E62BE17705BA100689077 /* ProxyLoadingFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyLoadingFilter.h; sourceTree = "<group>"; };
-		B57E62BF17705BA100689077 /* ProxyStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProxyStatus.h; sourceTree = "<group>"; };
-		B57E62C017705BA100689077 /* RegisterView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RegisterView.cpp; sourceTree = "<group>"; };
-		B57E62C117705BA100689077 /* RegisterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterView.h; sourceTree = "<group>"; };
-		B57E62C217705BA100689077 /* SingleProxy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SingleProxy.cpp; sourceTree = "<group>"; };
-		B57E62C317705BA100689077 /* SingleProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingleProxy.h; sourceTree = "<group>"; };
 		B57E62C417705BA100689077 /* StageScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StageScene.cpp; sourceTree = "<group>"; };
 		B57E62C517705BA100689077 /* StageScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageScene.h; sourceTree = "<group>"; };
 		B57E62C617705BA100689077 /* TypeUtility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TypeUtility.cpp; sourceTree = "<group>"; };
@@ -2144,8 +2035,6 @@
 		B54011DC177180C0003C973B /* asset */ = {
 			isa = PBXGroup;
 			children = (
-				B54011DD177180C0003C973B /* asset.ccbproj */,
-				B54011DE177180C0003C973B /* asset.ccbresourcelog */,
 				B54011DF177180C0003C973B /* pay */,
 			);
 			name = asset;
@@ -2155,6 +2044,7 @@
 		B54011DF177180C0003C973B /* pay */ = {
 			isa = PBXGroup;
 			children = (
+				B54011FB177180C0003C973B /* loading.plist */,
 				B54011E0177180C0003C973B /* bg_30x30_kahao.png */,
 				B54011E1177180C0003C973B /* bg_40x40.png */,
 				B54011E2177180C0003C973B /* bg_chongzhishu_196x47.png */,
@@ -2174,36 +2064,13 @@
 				B54011F0177180C0003C973B /* btn_xiayibu.png */,
 				B54011F1177180C0003C973B /* btn_zhuce.png */,
 				B54011F2177180C0003C973B /* btn_zhuce_small.png */,
-				B54011F3177180C0003C973B /* GameUIBigMaskLayer.ccb */,
-				B54011F4177180C0003C973B /* GameUIBigMaskLayer.ccbi */,
-				B54011F5177180C0003C973B /* GameUIMaskLayer.ccb */,
-				B54011F6177180C0003C973B /* GameUIMaskLayer.ccbi */,
 				B54011F7177180C0003C973B /* img_dianxin.png */,
 				B54011F8177180C0003C973B /* img_liantong.png */,
 				B54011F9177180C0003C973B /* img_shenzhouxing.png */,
 				B54011FA177180C0003C973B /* img_zhifubao.png */,
-				B54011FB177180C0003C973B /* loading.plist */,
 				B54011FC177180C0003C973B /* loading.png */,
-				B54011FD177180C0003C973B /* LoadingView.ccb */,
-				B54011FE177180C0003C973B /* LoadingView.ccbi */,
 				B54011FF177180C0003C973B /* loginbg.png */,
-				B5401200177180C0003C973B /* LoginView.ccb */,
-				B5401201177180C0003C973B /* LoginView.ccbi */,
 				B5401202177180C0003C973B /* logo.png */,
-				B5401203177180C0003C973B /* PayHelpItemView.ccb */,
-				B5401204177180C0003C973B /* PayHelpItemView.ccbi */,
-				B5401205177180C0003C973B /* PayHelpView.ccb */,
-				B5401206177180C0003C973B /* PayHelpView.ccbi */,
-				B5401207177180C0003C973B /* PayView.ccb */,
-				B5401208177180C0003C973B /* PayView.ccbi */,
-				B5401209177180C0003C973B /* PayZhifubaoView.ccb */,
-				B540120A177180C0003C973B /* PayZhifubaoView.ccbi */,
-				B540120B177180C0003C973B /* PrepaidCardNextStepView.ccb */,
-				B540120C177180C0003C973B /* PrepaidCardNextStepView.ccbi */,
-				B540120D177180C0003C973B /* PrepaidCardView.ccb */,
-				B540120E177180C0003C973B /* PrepaidCardView.ccbi */,
-				B540120F177180C0003C973B /* RegisterView.ccb */,
-				B5401210177180C0003C973B /* RegisterView.ccbi */,
 			);
 			path = pay;
 			sourceTree = "<group>";
@@ -2226,60 +2093,19 @@
 				B57E628F17705BA100689077 /* DictUtility.cpp */,
 				B57E629017705BA100689077 /* DictUtility.h */,
 				B57E629117705BA100689077 /* GameActionFunc.h */,
-				B57E629217705BA100689077 /* GameCCBLoader.cpp */,
-				B57E629317705BA100689077 /* GameCCBLoader.h */,
 				B57E629417705BA100689077 /* GameNotify.h */,
-				B57E629517705BA100689077 /* GameScrollView.cpp */,
-				B57E629617705BA100689077 /* GameScrollView.h */,
-				B57E629717705BA100689077 /* GameUIBigMaskLayer.cpp */,
-				B57E629817705BA100689077 /* GameUIBigMaskLayer.h */,
-				B57E629917705BA100689077 /* GameUIMaskLayer.cpp */,
-				B57E629A17705BA100689077 /* GameUIMaskLayer.h */,
 				B57E629B17705BA100689077 /* GameUtils.cpp */,
 				B57E629C17705BA100689077 /* GameUtils.h */,
-				B57E629D17705BA100689077 /* LoadingView.cpp */,
-				B57E629E17705BA100689077 /* LoadingView.h */,
-				B57E629F17705BA100689077 /* LoginView.cpp */,
-				B57E62A017705BA100689077 /* LoginView.h */,
 				B57E62A117705BA100689077 /* QimiMD5.cpp */,
 				B57E62A217705BA100689077 /* QimiMD5.h */,
-				B57E62A517705BA100689077 /* MultiProxy.cpp */,
-				B57E62A617705BA100689077 /* MultiProxy.h */,
-				B57E62A717705BA100689077 /* ObjCalls.h */,
-				B57E62A817705BA100689077 /* ObjCalls.mm */,
-				B57E62A917705BA100689077 /* PayHelpView.cpp */,
-				B57E62AA17705BA100689077 /* PayHelpView.h */,
-				B57E62AB17705BA100689077 /* PayView.cpp */,
-				B57E62AC17705BA100689077 /* PayView.h */,
-				B57E62B517705BA100689077 /* Proxy.cpp */,
-				B57E62B617705BA100689077 /* Proxy.h */,
-				B57E62B717705BA100689077 /* ProxyFilter.cpp */,
-				B57E62B817705BA100689077 /* ProxyFilter.h */,
-				B57E62B917705BA100689077 /* ProxyFilterManager.cpp */,
-				B57E62BA17705BA100689077 /* ProxyFilterManager.h */,
-				B57E62BB17705BA100689077 /* ProxyInvocation.cpp */,
-				B57E62BC17705BA100689077 /* ProxyInvocation.h */,
-				B57E62BD17705BA100689077 /* ProxyLoadingFilter.cpp */,
-				B57E62BE17705BA100689077 /* ProxyLoadingFilter.h */,
-				B57E62BF17705BA100689077 /* ProxyStatus.h */,
-				B57E62C017705BA100689077 /* RegisterView.cpp */,
-				B57E62C117705BA100689077 /* RegisterView.h */,
-				B57E62C217705BA100689077 /* SingleProxy.cpp */,
-				B57E62C317705BA100689077 /* SingleProxy.h */,
 				B57E62C417705BA100689077 /* StageScene.cpp */,
 				B57E62C517705BA100689077 /* StageScene.h */,
 				B57E62C617705BA100689077 /* TypeUtility.cpp */,
 				B57E62C717705BA100689077 /* TypeUtility.h */,
 				B5B495AE177064E700F89F5D /* WebView.h */,
 				B5B495AF177064E700F89F5D /* WebView.m */,
-				B57E62AD17705BA100689077 /* PayZhifubaoView.h */,
-				B57E62AE17705BA100689077 /* PayZhifubaoView.cpp */,
-				B57E62AF17705BA100689077 /* PrepaidCardNextStepView.cpp */,
-				B57E62B017705BA100689077 /* PrepaidCardNextStepView.h */,
 				B57E62B117705BA100689077 /* PrepaidCardOrder.cpp */,
 				B57E62B217705BA100689077 /* PrepaidCardOrder.h */,
-				B57E62B317705BA100689077 /* PrepaidCardView.cpp */,
-				B57E62B417705BA100689077 /* PrepaidCardView.h */,
 				B5B495B117707AD500F89F5D /* QimiPlatform.cpp */,
 				B5B495B217707AD600F89F5D /* QimiPlatform.h */,
 				B5B495B717707DC800F89F5D /* QimiPlatformIOS.mm */,
@@ -2379,8 +2205,6 @@
 				B51E45D2173CA648002B9031 /* sconscript in Resources */,
 				B51E48AA173CE4CD002B9031 /* AlixPayIPadDemoViewController.xib in Resources */,
 				B51E497F173D1995002B9031 /* Info.plist in Resources */,
-				B5401211177180C0003C973B /* asset.ccbproj in Resources */,
-				B5401212177180C0003C973B /* asset.ccbresourcelog in Resources */,
 				B5401213177180C0003C973B /* bg_30x30_kahao.png in Resources */,
 				B5401214177180C0003C973B /* bg_40x40.png in Resources */,
 				B5401215177180C0003C973B /* bg_chongzhishu_196x47.png in Resources */,
@@ -2400,36 +2224,14 @@
 				B5401223177180C0003C973B /* btn_xiayibu.png in Resources */,
 				B5401224177180C0003C973B /* btn_zhuce.png in Resources */,
 				B5401225177180C0003C973B /* btn_zhuce_small.png in Resources */,
-				B5401226177180C0003C973B /* GameUIBigMaskLayer.ccb in Resources */,
-				B5401227177180C0003C973B /* GameUIBigMaskLayer.ccbi in Resources */,
-				B5401228177180C0003C973B /* GameUIMaskLayer.ccb in Resources */,
-				B5401229177180C0003C973B /* GameUIMaskLayer.ccbi in Resources */,
 				B540122A177180C0003C973B /* img_dianxin.png in Resources */,
 				B540122B177180C0003C973B /* img_liantong.png in Resources */,
 				B540122C177180C0003C973B /* img_shenzhouxing.png in Resources */,
 				B540122D177180C0003C973B /* img_zhifubao.png in Resources */,
 				B540122E177180C0003C973B /* loading.plist in Resources */,
 				B540122F177180C0003C973B /* loading.png in Resources */,
-				B5401230177180C0003C973B /* LoadingView.ccb in Resources */,
-				B5401231177180C0003C973B /* LoadingView.ccbi in Resources */,
 				B5401232177180C0003C973B /* loginbg.png in Resources */,
-				B5401233177180C0003C973B /* LoginView.ccb in Resources */,
-				B5401234177180C0003C973B /* LoginView.ccbi in Resources */,
 				B5401235177180C0003C973B /* logo.png in Resources */,
-				B5401236177180C0003C973B /* PayHelpItemView.ccb in Resources */,
-				B5401237177180C0003C973B /* PayHelpItemView.ccbi in Resources */,
-				B5401238177180C0003C973B /* PayHelpView.ccb in Resources */,
-				B5401239177180C0003C973B /* PayHelpView.ccbi in Resources */,
-				B540123A177180C0003C973B /* PayView.ccb in Resources */,
-				B540123B177180C0003C973B /* PayView.ccbi in Resources */,
-				B540123C177180C0003C973B /* PayZhifubaoView.ccb in Resources */,
-				B540123D177180C0003C973B /* PayZhifubaoView.ccbi in Resources */,
-				B540123E177180C0003C973B /* PrepaidCardNextStepView.ccb in Resources */,
-				B540123F177180C0003C973B /* PrepaidCardNextStepView.ccbi in Resources */,
-				B5401240177180C0003C973B /* PrepaidCardView.ccb in Resources */,
-				B5401241177180C0003C973B /* PrepaidCardView.ccbi in Resources */,
-				B5401242177180C0003C973B /* RegisterView.ccb in Resources */,
-				B5401243177180C0003C973B /* RegisterView.ccbi in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2633,29 +2435,9 @@
 				B57E62C917705BA100689077 /* DataSigner.m in Sources */,
 				B57E62CA17705BA100689077 /* DataVerifier.mm in Sources */,
 				B57E62CB17705BA100689077 /* DictUtility.cpp in Sources */,
-				B57E62CC17705BA100689077 /* GameCCBLoader.cpp in Sources */,
-				B57E62CD17705BA100689077 /* GameScrollView.cpp in Sources */,
-				B57E62CE17705BA100689077 /* GameUIBigMaskLayer.cpp in Sources */,
-				B57E62CF17705BA100689077 /* GameUIMaskLayer.cpp in Sources */,
 				B57E62D017705BA100689077 /* GameUtils.cpp in Sources */,
-				B57E62D117705BA100689077 /* LoadingView.cpp in Sources */,
-				B57E62D217705BA100689077 /* LoginView.cpp in Sources */,
 				B57E62D317705BA100689077 /* QimiMD5.cpp in Sources */,
-				B57E62D517705BA100689077 /* MultiProxy.cpp in Sources */,
-				B57E62D617705BA100689077 /* ObjCalls.mm in Sources */,
-				B57E62D717705BA100689077 /* PayHelpView.cpp in Sources */,
-				B57E62D817705BA100689077 /* PayView.cpp in Sources */,
-				B57E62D917705BA100689077 /* PayZhifubaoView.cpp in Sources */,
-				B57E62DA17705BA100689077 /* PrepaidCardNextStepView.cpp in Sources */,
 				B57E62DB17705BA100689077 /* PrepaidCardOrder.cpp in Sources */,
-				B57E62DC17705BA100689077 /* PrepaidCardView.cpp in Sources */,
-				B57E62DD17705BA100689077 /* Proxy.cpp in Sources */,
-				B57E62DE17705BA100689077 /* ProxyFilter.cpp in Sources */,
-				B57E62DF17705BA100689077 /* ProxyFilterManager.cpp in Sources */,
-				B57E62E017705BA100689077 /* ProxyInvocation.cpp in Sources */,
-				B57E62E117705BA100689077 /* ProxyLoadingFilter.cpp in Sources */,
-				B57E62E217705BA100689077 /* RegisterView.cpp in Sources */,
-				B57E62E317705BA100689077 /* SingleProxy.cpp in Sources */,
 				B57E62E417705BA100689077 /* StageScene.cpp in Sources */,
 				B57E62E517705BA100689077 /* TypeUtility.cpp in Sources */,
 				B5B495B0177064E800F89F5D /* WebView.m in Sources */,

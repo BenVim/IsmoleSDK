@@ -25,7 +25,7 @@ public:
     bool init();
     
     void initView();
-    void initData(int uId, int sId, std::string key, int money, int kind);
+    void initData(std::string uId, int sId, std::string key, int money, int kind);
     
     void selected(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void backOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
@@ -33,7 +33,7 @@ public:
     
 private:
     
-    int m_uId;
+    std::string m_uId;
     int m_sId;
     std::string m_key;
     int m_money;

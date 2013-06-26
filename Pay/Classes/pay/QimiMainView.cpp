@@ -12,6 +12,7 @@
 #include "StageScene.h"
 #include "Qimi.h"
 #include "QimiPrepaidCardView.h"
+#include "QimiMD5.h"
 
 QimiMainView::QimiMainView()
 {
@@ -159,7 +160,7 @@ bool QimiMainView::init()
     return true;
 }
 
-void QimiMainView::initView(int uId, int sId, std::string key, int money)
+void QimiMainView::initView(std::string uId, int sId, std::string key, int money)
 {
     m_uId = uId;
     m_sId = sId;
@@ -177,7 +178,19 @@ void QimiMainView::onRequestData()
     request->setRequestType(CCHttpRequest::kHttpPost);
     request->setResponseCallback(this, callfuncND_selector(QimiMainView::onLoadRequestSucssful));
     
-    CCString* postDataStr = CCString::createWithFormat("uId=%d&sId=%d&sign=%s", m_uId, m_sId, m_key.c_str());
+    
+    char sign[255];
+    sprintf(sign, "%s%d%s",
+            m_uId.c_str(),
+            m_sId,
+            m_key.c_str());
+    QimiMD5 md5;
+    md5.update(sign);
+    
+    CCLog("md5str==%s",sign);
+    std::string md5tolower = md5.toString();
+    
+    CCString* postDataStr = CCString::createWithFormat("uId=%s&sId=%d&sign=%s", m_uId.c_str(), m_sId, md5tolower.c_str());
     const char* postData = postDataStr->getCString();
     CCLog("GETUSERINFO【postData=%s】", postData);
     request->setRequestData(postData, strlen(postData));
@@ -192,6 +205,12 @@ void QimiMainView::onLoadRequestSucssful(cocos2d::CCNode *sender, void *data)
     Json::Value root = GameUtils::getResponseData(response);
     if (!root.isNull())
     {
+        
+        if (root["s"].isInt() == 1)
+        {
+            CCLog("%s", root["msg"].asString().c_str());
+        }
+        
         if (root["mcash"].isInt())
         {
             m_cash = root["mcash"].asInt();
@@ -207,7 +226,7 @@ void QimiMainView::onLoadRequestSucssful(cocos2d::CCNode *sender, void *data)
 }
 void QimiMainView::onUpdataView()
 {
-    CCLabelTTF* m_pPassThroughNumTxt = CCLabelTTF::create(CCString::createWithFormat("%d", m_uId)->getCString(),
+    CCLabelTTF* m_pPassThroughNumTxt = CCLabelTTF::create(CCString::createWithFormat("%s", m_uId.c_str())->getCString(),
                                                           "Helvetica",
                                                           24);
     this->addChild(m_pPassThroughNumTxt);
@@ -235,7 +254,7 @@ void QimiMainView::onUpdataView()
     CCLabelTTF* m_pGameNameTxt = CCLabelTTF::create(m_gameInfo.c_str(), "Helvetica", 24);
     this->addChild(m_pGameNameTxt);
     m_pGameNameTxt->setColor(ccc3(0, 0, 0));
-    m_pGameNameTxt->setPosition(ccp(150, 523));
+    m_pGameNameTxt->setPosition(ccp(150, 485));
     m_pGameNameTxt->setAnchorPoint(ccp(0, 0.5));
     
     
@@ -265,6 +284,7 @@ void QimiMainView::alipayOnClick(cocos2d::CCNode* pSender, cocos2d::extension::C
 {
     //QimiAlipayView
     QimiAlipayView* pQimiAlipayView = QimiAlipayView::create();
+    pQimiAlipayView->initData(m_uId, m_sId, m_key, m_money);
     StageScene::shareStageScene()->m_DialogContainer->addChild(pQimiAlipayView);
 }
 

@@ -1,9 +1,9 @@
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
-#include "GameCCBLoader.h"
 #include "StageScene.h"
 #include "QimiPlatform.h"
 #include "QimiParamInfo.h"
+#include "QimiUserModel.h"
 
 using namespace cocos2d;
 using namespace CocosDenshion;
@@ -52,7 +52,17 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
     QimiPlatform::shareQimiPlatform()->setParamInfo(paramInfo);
     
     //QimiPlatform::shareQimiPlatform()->QimiRegister();
-    QimiPlatform::shareQimiPlatform()->openPayDailog(21, 15, "7a92bba4670d479c5514720c1cf46aab", 10);
+    QimiUserModel* userModel =QimiPlatform::shareQimiPlatform()->getQimiUserModel();
+    
+    if (userModel!=NULL && userModel->getuID() != "0")
+    {
+        QimiPlatform::shareQimiPlatform()->openPayDailog(userModel->getuID(), 15, "7a92bba4670d479c5514720c1cf46aab", 10);
+    }
+    else
+    {
+        QimiPlatform::shareQimiPlatform()->QimiLogin();
+    }
+    
     //QimiPlatform::shareQimiPlatform()->QimiLogin();
 }
 

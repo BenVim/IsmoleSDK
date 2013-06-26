@@ -10,7 +10,6 @@
 #include "QimiPlatformIOS.h"
 #include "QimiPlatformAndroid.h"
 #include "QimiParamInfo.h"
-#include "GameCCBLoader.h"
 #include "StageScene.h"
 #include "IntObject.h"
 #include "QimiMainView.h"
@@ -48,7 +47,7 @@ bool QimiPlatform::initialize()
     m_appid         = 0;
     m_sId           = 0;
     m_key           = "";
-    m_uId           = 0;
+    m_uId           = "";
     
     #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     m_pQimiPlatformIOS = QimiPlatformIOS::create();
@@ -93,7 +92,7 @@ void QimiPlatform::openAlertDailog(std::string title, std::string msg)
     #endif
 }
 
-void QimiPlatform::openPayDailog(int uId, int sId, std::string key, int money)
+void QimiPlatform::openPayDailog(std::string uId, int sId, std::string key, int money)
 {
     QimiMainView* qimiManView = QimiMainView::create();
     StageScene::shareStageScene()->m_DialogContainer->addChild(qimiManView);
@@ -165,7 +164,7 @@ void QimiPlatform::callRegBack(cocos2d::CCObject* obj)
 /*检测是否已登录*/
 bool QimiPlatform::isLogined()
 {
-    return m_uId ? true : false;
+    return m_uId.empty() ? false : true;
 }
 
 bool QimiPlatform::isCheckAppId()

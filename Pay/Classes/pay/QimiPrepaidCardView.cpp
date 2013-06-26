@@ -15,6 +15,7 @@
 #include "QimiPlatformIOS.h"
 #include "QimiPrepaidCardNextView.h"
 #include "StageScene.h"
+#include <iostream.h>
 
 
 QimiPrepaidCardView::QimiPrepaidCardView()
@@ -209,18 +210,18 @@ bool QimiPrepaidCardView::init()
     return true;
 }
 
-void QimiPrepaidCardView::initData(int uId, int sId, std::string key, int money, int kind)
+void QimiPrepaidCardView::initData(std::string uId, int sId, std::string key, int money, int kind)
 {
     m_uId = uId;
     m_sId = sId;
     m_key = key;
-    m_money = money;
+    m_money = money*100;
     upDataView(money);
 }
 
 void QimiPrepaidCardView::upDataView(int pay)
 {
-    m_money = pay;
+    m_money = pay*100;
     m_pEditName->setText(CCString::createWithFormat("%d", pay)->getCString());
     m_pMcashNumTxt->setString(CCString::createWithFormat("%d", pay*10)->getCString());
     float posX = m_pMcashNumTxt->getPosition().x + m_pMcashNumTxt->getContentSize().width;
@@ -254,7 +255,11 @@ void QimiPrepaidCardView::upSelectState(int index)
 
 void QimiPrepaidCardView::nextOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
 {
+    std::string money =std::string(m_pEditName->getText());
+    m_money = atoi(money.c_str())*100;
+    //m_money =1;
     QimiPrepaidCardNextView* pQimiPrepaidCardNextView = QimiPrepaidCardNextView::create();
+    pQimiPrepaidCardNextView->initData(m_uId, m_sId, m_key, m_money, m_kind);
     StageScene::shareStageScene()->m_DialogContainer->addChild(pQimiPrepaidCardNextView);
     this->removeFromParentAndCleanup(true);
 }

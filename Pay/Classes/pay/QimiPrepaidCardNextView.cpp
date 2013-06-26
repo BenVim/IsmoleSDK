@@ -77,17 +77,13 @@ bool QimiPrepaidCardNextView::init()
     txtTitle->setPosition(ccp(38, 654));
     txtTitle->setAnchorPoint(ccp(0, 0.5));
     
-    
-    CCControlButton* m_pBtnCongzhi = CCControlButton::create(CCScale9Sprite::create("btn_xiayibu.png"));
-    m_pBtnCongzhi->setPreferredSize(CCSizeMake(177, 59));
+    CCControlButton* m_pBtnCongzhi = CCControlButton::create(CCScale9Sprite::create("btn_querenchongzhi.png"));
+    m_pBtnCongzhi->setPreferredSize(CCSizeMake(248, 74));
     containerCCNode->addChild(m_pBtnCongzhi);
     m_pBtnCongzhi->setPosition(ccp(245, 178));
     m_pBtnCongzhi->addTargetWithActionForControlEvents(this,
-                                                       cccontrol_selector(QimiPrepaidCardNextView::nextOnClick),
+                                                       cccontrol_selector(QimiPrepaidCardNextView::rechargeOnClick),
                                                        CCControlEventTouchUpInside);
-    
-    
-    
     
     CCLabelTTF* label10 = CCLabelTTF::create("10元", "Helvetica", 18);
     label10->setColor(ccc3(0, 0, 0));
@@ -221,13 +217,12 @@ bool QimiPrepaidCardNextView::init()
     return true;
 }
 
-void QimiPrepaidCardNextView::initData(int uId, int sId, std::string key, int money, int kind)
+void QimiPrepaidCardNextView::initData(std::string uId, int sId, std::string key, int money, int kind)
 {
     m_uId = uId;
     m_sId = sId;
     m_key = key;
     m_money = money;
-    upDataView(money);
 }
 
 void QimiPrepaidCardNextView::upDataView(int pay)
@@ -238,8 +233,7 @@ void QimiPrepaidCardNextView::upDataView(int pay)
 void QimiPrepaidCardNextView::selected(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
 {
     CCControlButton* btn = dynamic_cast<CCControlButton*>(pSender);
-    int pay = btn->getTag();
-    upDataView(pay);
+    m_denomination =btn->getTag();
 }
 
 void QimiPrepaidCardNextView::upSelectState(int index)
@@ -262,6 +256,37 @@ void QimiPrepaidCardNextView::nextOnClick(cocos2d::CCNode* pSender, cocos2d::ext
     
 }
 
+void QimiPrepaidCardNextView::rechargeOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
+{
+    //充值。。。 调用接口
+    //m_money 最终需要充值的数量
+    std::string str = std::string(m_pCardNum->getText());
+    if (str.empty())
+    {
+        CCLog("card number is NULL");
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "请输入充值卡号");
+        return;
+    }
+    
+    std::string strPass = std::string(m_pCardPassword->getText());
+    if (strPass.empty())
+    {
+        CCLog("strPass number is NULL");
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "请输入充值卡密码");
+        return;
+    }
+    
+    if (m_denomination == 0)
+    {
+        CCLog("m_denomination number is 0");
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "请选择您的充值卡面额!");
+        return;
+    }
+    
+    requestOrder();
+    CCLog("充值卡 money（分）= %d 种类 %d, 面额：%d", m_money , m_kind, m_denomination);
+}
+
 void QimiPrepaidCardNextView::requestOrder()
 {
     CCHttpRequest* request = new CCHttpRequest();
@@ -269,15 +294,23 @@ void QimiPrepaidCardNextView::requestOrder()
     request->setRequestType(CCHttpRequest::kHttpPost);
     request->setResponseCallback(this, callfuncND_selector(QimiPrepaidCardNextView::requestSucssful));
     
-    std::string sign = "e7d4b2571e2d1fd80c19a048b18a529e";//游戏参数传入的
-    std::string msign = GameUtils::getStringWithMd5(CCString::createWithFormat("%d%d%s",m_uId, m_sId, sign.c_str())->getCString());
+    char sign[255];
+    sprintf(sign, "%s%d%s",
+            m_uId.c_str(),
+            m_sId,
+            m_key.c_str());
+    QimiMD5 md5;
+    md5.update(sign);
     
-    std::transform(msign.begin(), msign.end(), msign.begin(), ::tolower);
+    CCLog("md5str==%s",sign);
+    std::string md5tolower = md5.toString();
+    
+    
     std::string cardNum = m_pCardNum->getText();
     std::string cardPass = m_pCardPassword->getText();
     int denomination =  m_denomination;
     
-    CCString* postDataStr = CCString::createWithFormat("uId=%d&sId=%d&sign=%s&carNum=%s&carPass=%s&denomination=%d&orderType=shenzhoufupay&type=%d&money=%d", m_uId, m_sId, msign.c_str(), cardNum.c_str(), cardPass.c_str(), denomination, m_kind, m_money);
+    CCString* postDataStr = CCString::createWithFormat("uId=%s&sId=%d&sign=%s&carNum=%s&carPass=%s&denomination=%d&orderType=shenzhoufupay&type=%d&money=%d", m_uId.c_str(), m_sId, md5tolower.c_str(), cardNum.c_str(), cardPass.c_str(), denomination, m_kind, m_money);
     
     const char* postData = postDataStr->getCString();
     CCLog("postData=%s", postData);
@@ -293,11 +326,8 @@ void QimiPrepaidCardNextView::requestOrder()
 
 void QimiPrepaidCardNextView::requestSucssful(cocos2d::CCNode *sender, void *data)
 {
-    
     std::string oderId = "";
     std::string cardInfo = "";
-    
-    
     CCHttpResponse *response = (CCHttpResponse*)data;
     
     if (!response)
@@ -486,7 +516,7 @@ void QimiPrepaidCardNextView::requestPaySucssful(cocos2d::CCNode *sender, void *
         default:
             break;
     }
-    
+    this->removeFromParentAndCleanup(true);
 }
 
 

@@ -24,13 +24,13 @@ public:
     CREATE_FUNC(QimiMainView);
     bool init();
     
-    void initView(int uId, int sId, std::string key, int money);
+    void initView(std::string uId, int sId, std::string key, int money);
     void onRequestData();
     
     
 private:
     
-    int m_uId;
+    std::string m_uId;
     int m_sId;
     std::string m_key;
     int m_money;

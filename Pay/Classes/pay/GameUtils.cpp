@@ -7,15 +7,14 @@
 //
 
 #include "GameUtils.h"
-#include "GameCCBLoader.h"
 #include "GameNotify.h"
 #include "DictUtility.h"
 
 #include "md5c.h"
 
 
-
-
+USING_NS_CC;
+USING_NS_CC_EXT;
 
 float GameUtils::getRandom(int from, int to) {
     return from + (rand() % (to + 1 - from));

@@ -21,7 +21,7 @@ public:
     void initData(Json::Value data);
     
     
-    CC_GAME_GET_SET(int , m_uId, uID);
+    CC_GAME_GET_SET(std::string , m_uId, uID);
     CC_GAME_GET_SET(std::string , m_userName, UserName);
     CC_GAME_GET_SET(std::string , m_avatarURL, AvatarURL);
     CC_GAME_GET_SET(int , m_sex, Sex);
@@ -37,7 +37,7 @@ public:
     CC_GAME_GET_SET(std::string , m_sessionKey, SessionKey);
     
 private:
-    int m_uId;
+    std::string m_uId;
     std::string m_userName;
     std::string m_avatarURL;
     int m_sex;

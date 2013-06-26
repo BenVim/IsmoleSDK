@@ -45,7 +45,7 @@ public:
      * key string类型 游戏的key;
      * money int类型 需要支付的初始费用，进入支付系统后，可以再修改;
      */
-    void openPayDailog(int uId, int sId, std::string key ,int money);
+    void openPayDailog(std::string uId, int sId, std::string key ,int money);
     
     /* 提示窗口
      * msg std::string 系统提示信息显示内容；
@@ -67,7 +67,7 @@ public:
     /*存入游戏的KEY值*/
     void setQimiGameKey(std::string key){m_key = key;};
     /*存入游戏的UId*/
-    void setQimiGameUId(int uID){m_uId = uID;};
+    void setQimiGameUId(std::string uID){m_uId = uID;};
     /*存入游戏的sId*/
     void setQimiGameSId(int sID){m_sId = sID;};
     /*存入游戏的appId*/
@@ -81,7 +81,7 @@ public:
     /*获得游戏的KEY值*/
     std::string getQimiGameKey(){ return m_key;};
     /*获得游戏的UId*/
-    int getQimiGameUId(){return m_uId;};
+    std::string getQimiGameUId(){return m_uId;};
     /*获得游戏的sId*/
     int getQimiGameSId(){return m_sId;};
     /*获得游戏的appId*/
@@ -107,7 +107,7 @@ private:
     QimiPlatformAndroid* m_pQimiPlatformAndroid;
     QimiUserModel*       m_pQimiUserModel;
     std::string          m_key; //游戏的KEY值
-    int                  m_uId; //uid
+    std::string          m_uId; //uid
     int                  m_sId; //用户ID
     int                  m_appid; //游戏的APPID
     

@@ -17,12 +17,13 @@ void QimiUserModel::initData(Json::Value data)
 {
     if (!data.isNull())
     {
+        m_uId = "0";
         CC_GAME_JSON_ADD(data, isString, m_sessionKey, "session_key", asString);
         
         Json::Value UserData = data["user"];
         if (!UserData.isNull())
         {
-            CC_GAME_JSON_ADD(UserData, isInt, m_uId, "uid", isInt);
+            CC_GAME_JSON_ADD(UserData, isString, m_uId, "uid", asString);
             CC_GAME_JSON_ADD(UserData, isString, m_userName, "name", asString);
             CC_GAME_JSON_ADD(UserData, isString, m_avatarURL, "avatar", asString);
             CC_GAME_JSON_ADD(UserData, isInt, m_sex, "sex", asInt);

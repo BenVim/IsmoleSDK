@@ -207,7 +207,7 @@ bool QimiAlipayView::init()
     return true;
 }
 
-void QimiAlipayView::initData(int uId, int sId, std::string key, int money)
+void QimiAlipayView::initData(std::string uId, int sId, std::string key, int money)
 {
     m_uId = uId;
     m_sId = sId;
@@ -258,9 +258,18 @@ void QimiAlipayView::rechargeOnClick(cocos2d::CCNode* pSender, cocos2d::extensio
     request->setRequestType(CCHttpRequest::kHttpPost);
     request->setResponseCallback(this, callfuncND_selector(QimiAlipayView::onLoadOrderSucssful));
     
-    std::string sign = "e7d4b2571e2d1fd80c19a048b18a529e";//游戏参数传入的e7d4b2571e2d1fd80c19a048b18a529e
-    std::string msign = GameUtils::getStringWithMd5(CCString::createWithFormat("%d%d%s",m_uId, m_sId, sign.c_str())->getCString());
-    CCString* postDataStr = CCString::createWithFormat("uId=%d&sId=%d&sign=%s&money=%d&orderType=alipay&type=0", m_uId, m_sId, msign.c_str(), m_money);
+    char sign[255];
+    sprintf(sign, "%s%d%s",
+            m_uId.c_str(),
+            m_sId,
+            m_key.c_str());
+    QimiMD5 md5;
+    md5.update(sign);
+    
+    CCLog("md5str==%s",sign);
+    std::string md5tolower = md5.toString();
+    
+    CCString* postDataStr = CCString::createWithFormat("uId=%s&sId=%d&sign=%s&money=%d&orderType=alipay&type=0", m_uId.c_str(), m_sId, md5tolower.c_str(), m_money);
     CCLog("addOrder string ===%s", postDataStr->getCString());
     const char* postData =postDataStr->getCString();// "visitor=cocos2d&TestSuite=Extensions Test/NetworkTest";
     request->setRequestData(postData, strlen(postData));
@@ -279,6 +288,8 @@ void QimiAlipayView::onLoadOrderSucssful(cocos2d::CCNode *sender, void *data)
     {
         m_oderId= root["data"].asString();
     }
+    
+    
     loadAlixPay();
 }
 
