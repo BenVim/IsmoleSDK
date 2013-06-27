@@ -467,7 +467,7 @@ void QimiPrepaidCardNextView::reqeuestPay(PrepaidCardOrder *pOrder)
     CCHttpRequest* request = new CCHttpRequest();
     request->setUrl("http://pay3.shenzhoufu.com/interface/version3/serverconnszx/entry-noxml.aspx");
     request->setRequestType(CCHttpRequest::kHttpPost);
-    request->setResponseCallback(this, callfuncND_selector(QimiPrepaidCardNextView::requestPaySucssful));
+    request->setResponseCallback(this, httpresponse_selector(QimiPrepaidCardNextView::requestPaySucssful));
     CCString* postDataStr = CCString::createWithFormat("version=%d&merId=%s&payMoney=%d&orderId=%s&returnUrl=%s&cardInfo=%s&merUserName=%s&merUserMail=%s&privateField=%s&verifyType=%d&cardTypeCombine=%d&md5String=%s",
                                                        pOrder->getVersion(),
                                                        pOrder->getMerId().c_str(),
