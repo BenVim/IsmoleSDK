@@ -211,6 +211,9 @@ void QimiLoginView::loginSucceed(cocos2d::CCNode *sender, void *data)
                 QimiPlatform::shareQimiPlatform()->setQimiUserModel(pQimiUserModel);
             }
             QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "登录成功");
+            
+            CCInteger* obj = CCInteger::create(1);
+            QimiPlatform::shareQimiPlatform()->callLoginBack(obj);
             this->removeFromParentAndCleanup(true);
         }
         else

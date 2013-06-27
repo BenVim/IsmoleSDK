@@ -213,6 +213,10 @@ void QimiRegisterView::registerSucceed(cocos2d::CCNode *sender, void *data)
             }
             QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "注册成功");
             QimiPlatform::shareQimiPlatform()->QimiLogin();//注册成功打开奇米登录窗口。
+            
+            CCInteger* obj = CCInteger::create(1);
+            QimiPlatform::shareQimiPlatform()->callRegBack(obj);
+            
             this->removeFromParentAndCleanup(true);
         }
         else

@@ -54,6 +54,7 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
     //QimiPlatform::shareQimiPlatform()->QimiRegister();
     QimiUserModel* userModel =QimiPlatform::shareQimiPlatform()->getQimiUserModel();
     
+    CCLog("是否登录 %d", QimiPlatform::shareQimiPlatform()->isLogined());
     if (userModel!=NULL && userModel->getuID() != "0")
     {
         QimiPlatform::shareQimiPlatform()->openPayDailog(userModel->getuID(), 15, "7a92bba4670d479c5514720c1cf46aab", 10);

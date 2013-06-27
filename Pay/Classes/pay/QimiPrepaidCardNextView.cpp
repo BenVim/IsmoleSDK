@@ -508,7 +508,11 @@ void QimiPrepaidCardNextView::requestPaySucssful(cocos2d::CCNode *sender, void *
     
     switch (statusCode) {
         case 200:
+        {
             QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "充值已成功！");//CCLog("充值已成功！");
+            CCInteger* obj = CCInteger::create(1);
+            QimiPlatform::shareQimiPlatform()->callPayBack(obj);
+        }
             break;
         case 101:
             QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "异常错误！");//CCLog("异常错误");
