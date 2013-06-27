@@ -1,8 +1,8 @@
 //
-//  PayProAppDelegate.h
-//  PayPro
+//  PayAppDelegate.h
+//  Pay
 //
-//  Created by Ben on 5/7/13.
+//  Created by Ben on 6/27/13.
 //  Copyright __MyCompanyName__ 2013. All rights reserved.
 //
 

@@ -8,6 +8,8 @@
 
 #include "StageScene.h"
 
+USING_NS_CC;
+
 StageScene* s_shareStageScene;
 
 StageScene* StageScene::shareStageScene()
@@ -29,3 +31,7 @@ bool StageScene::updataStatusView()
     
     return bRet;
 }
+
+
+
+

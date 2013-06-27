@@ -24,9 +24,17 @@ public:
     CREATE_FUNC(QimiLoginView);
     bool init();
     
+    
     void loginOnclick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void registerOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void backOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
+    
+    virtual void onEnter();
+    virtual void onExit();
+    virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent){return true;};
+    virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent){};
+    virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent){};
+    virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent){};
     
 private:
     
@@ -47,7 +55,7 @@ private:
     void onUpdataView();
     void fogetPassWorld(CCObject* obj);
     void remeberPassworld(CCObject* obj);
-    void loginSucceed(cocos2d::CCNode *sender, void *data);
+    void loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response);
     //void alipayOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
 };
 

@@ -29,6 +29,8 @@ public:
     void rechargeOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void selected(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void backOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
+    
+    
 private:
     
     std::string m_uId;
@@ -50,7 +52,7 @@ private:
 private:
     void upDataView(int pay);
     void upSelectState(int index);
-    void onLoadOrderSucssful(cocos2d::CCNode *sender, void *data);
+    void onLoadOrderSucssful(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response);
     void loadAlixPay();
 
 };

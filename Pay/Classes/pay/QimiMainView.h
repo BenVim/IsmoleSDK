@@ -39,7 +39,7 @@ private:
     
     
 private:
-    void onLoadRequestSucssful(cocos2d::CCNode *sender, void *data);
+    void onLoadRequestSucssful(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response);
     void onUpdataView();
     void openPrepaidCard(int kind);
     void alipayOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);

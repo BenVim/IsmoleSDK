@@ -16,6 +16,7 @@
 #include "QimiPrepaidCardNextView.h"
 #include "StageScene.h"
 #include <iostream.h>
+#include "UIMaskLayerView.h"
 
 
 QimiPrepaidCardView::QimiPrepaidCardView()
@@ -30,6 +31,9 @@ QimiPrepaidCardView::~QimiPrepaidCardView()
 
 bool QimiPrepaidCardView::init()
 {
+    UIMaskLayerView* mask = UIMaskLayerView::create();
+    this->addChild(mask);
+    
     CCSize m_size = CCDirector::sharedDirector()->getWinSize();
     
     CCSprite* bg = CCSprite::create("bg_dabeijing_480x800.png");
@@ -38,10 +42,10 @@ bool QimiPrepaidCardView::init()
     
     CCSprite* bgTop = CCSprite::create("bg_top.png");
     this->addChild(bgTop);
-    bgTop->setPosition(ccp(m_size.width/2, m_size.height-bgTop->getContentSize().height/2));
-    
+    bgTop->setPosition(ccp(240, 755));
     
     CCControlButton* backBtn = CCControlButton::create(CCScale9Sprite::create("btn_fanhui.png"));
+    backBtn->setTouchPriority(-1000);
     backBtn->setPreferredSize(CCSizeMake(101, 51));
     this->addChild(backBtn);
     backBtn->setPosition(ccp(63, 760));
@@ -52,6 +56,7 @@ bool QimiPrepaidCardView::init()
     
     CCControlButton* helpBtn = CCControlButton::create(CCScale9Sprite::create("btn_bangzhu.png"));
     helpBtn->setPreferredSize(CCSizeMake(93, 51));
+    helpBtn->setTouchPriority(-1000);
     this->addChild(helpBtn);
     helpBtn->setPosition(ccp(420, 760));
     
@@ -83,6 +88,7 @@ bool QimiPrepaidCardView::init()
     
     CCControlButton* m_pBtnCongzhi = CCControlButton::create(CCScale9Sprite::create("btn_xiayibu.png"));
     m_pBtnCongzhi->setPreferredSize(CCSizeMake(177, 59));
+    m_pBtnCongzhi->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtnCongzhi);
     m_pBtnCongzhi->setPosition(ccp(243, 227));
     m_pBtnCongzhi->addTargetWithActionForControlEvents(this,
@@ -96,6 +102,7 @@ bool QimiPrepaidCardView::init()
     label10->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn10Select = CCControlButton::create(label10, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn10Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn10Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn10Select);
     m_pBtn10Select->setPosition(ccp(138, 595));
     m_pBtn10Select->setTag(10);
@@ -108,6 +115,7 @@ bool QimiPrepaidCardView::init()
     label20->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn20Select = CCControlButton::create(label20, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn20Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn20Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn20Select);
     m_pBtn20Select->setPosition(ccp(350, 595));
     m_pBtn20Select->setTag(20);
@@ -119,6 +127,7 @@ bool QimiPrepaidCardView::init()
     label30->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn30Select = CCControlButton::create(label30,CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn30Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn30Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn30Select);
     m_pBtn30Select->setPosition(ccp(138, 539));
     m_pBtn30Select->setTag(30);
@@ -130,6 +139,7 @@ bool QimiPrepaidCardView::init()
     label50->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn50Select = CCControlButton::create(label50, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn50Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn50Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn50Select);
     m_pBtn50Select->setPosition(ccp(349, 539));
     m_pBtn50Select->setTag(50);
@@ -141,6 +151,7 @@ bool QimiPrepaidCardView::init()
     label100->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn100Select = CCControlButton::create(label100,CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn100Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn100Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn100Select);
     m_pBtn100Select->setPosition(ccp(137, 485));
     m_pBtn100Select->setTag(100);
@@ -152,6 +163,7 @@ bool QimiPrepaidCardView::init()
     label300->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn300Select = CCControlButton::create(label300, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn300Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn300Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn300Select);
     m_pBtn300Select->setPosition(ccp(349, 485));
     m_pBtn300Select->setTag(300);
@@ -163,6 +175,7 @@ bool QimiPrepaidCardView::init()
     label500->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn500Select = CCControlButton::create(label500, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn500Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn500Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn500Select);
     m_pBtn500Select->setPosition(ccp(137, 428));
     m_pBtn500Select->setTag(500);
@@ -179,7 +192,7 @@ bool QimiPrepaidCardView::init()
     m_pEditName->setFontColor(ccc3(255, 0, 0));
     m_pEditName->setMaxLength(20);
     m_pEditName->setReturnType(kKeyboardReturnTypeDone);
-    m_pEditName->setTouchPriority(-130);
+    m_pEditName->setTouchPriority(-1000);
     m_pEditName->setText("10");
     addChild(m_pEditName);
     
@@ -218,6 +231,7 @@ void QimiPrepaidCardView::initData(std::string uId, int sId, std::string key, in
     m_money = money*100;
     upDataView(money);
 }
+
 
 void QimiPrepaidCardView::upDataView(int pay)
 {

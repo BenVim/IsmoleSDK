@@ -27,6 +27,7 @@ public:
     
     void registerOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void backOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
+    
 private:
     
     
@@ -43,7 +44,7 @@ private:
     
     
 private:
-    void registerSucceed(cocos2d::CCNode *sender, void *data);
+    void registerSucceed(CCHttpClient *sender, CCHttpResponse *response);
 };
 
 #endif /* defined(__Pay__QimiRegisterView__) */

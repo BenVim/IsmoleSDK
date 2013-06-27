@@ -10,6 +10,7 @@
 #import "DataSigner.h"
 
 @interface MD5DataSigner : NSObject <DataSigner> {
+    
 }
 
 @end

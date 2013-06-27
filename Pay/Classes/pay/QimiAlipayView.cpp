@@ -13,7 +13,8 @@
 #include "QimiPlatform.h"
 #include "QimiMD5.h"
 #include "QimiPlatformIOS.h"
-
+#include "UIMaskLayerView.h"
+#include "RequestLoadingView.h"
 
 QimiAlipayView::QimiAlipayView():isSelelcted(NULL)
 {
@@ -27,6 +28,9 @@ QimiAlipayView::~QimiAlipayView()
 
 bool QimiAlipayView::init()
 {
+    UIMaskLayerView* mask = UIMaskLayerView::create();
+    this->addChild(mask);
+    
     CCSize m_size = CCDirector::sharedDirector()->getWinSize();
     
     CCSprite* bg = CCSprite::create("bg_dabeijing_480x800.png");
@@ -35,11 +39,12 @@ bool QimiAlipayView::init()
     
     CCSprite* bgTop = CCSprite::create("bg_top.png");
     this->addChild(bgTop);
-    bgTop->setPosition(ccp(m_size.width/2, m_size.height-bgTop->getContentSize().height/2));
+    bgTop->setPosition(ccp(240, 755));
     
     
     CCControlButton* backBtn = CCControlButton::create(CCScale9Sprite::create("btn_fanhui.png"));
     backBtn->setPreferredSize(CCSizeMake(101, 51));
+    backBtn->setTouchPriority(-1000);
     this->addChild(backBtn);
     backBtn->setPosition(ccp(63, 760));
     backBtn->addTargetWithActionForControlEvents(this,
@@ -49,6 +54,7 @@ bool QimiAlipayView::init()
     
     CCControlButton* helpBtn = CCControlButton::create(CCScale9Sprite::create("btn_bangzhu.png"));
     helpBtn->setPreferredSize(CCSizeMake(93, 51));
+    helpBtn->setTouchPriority(-1000);
     this->addChild(helpBtn);
     helpBtn->setPosition(ccp(420, 760));
     
@@ -80,6 +86,7 @@ bool QimiAlipayView::init()
     
     CCControlButton* m_pBtnCongzhi = CCControlButton::create(CCScale9Sprite::create("btn_querenchongzhi.png"));
     m_pBtnCongzhi->setPreferredSize(CCSizeMake(248, 74));
+    m_pBtnCongzhi->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtnCongzhi);
     m_pBtnCongzhi->setPosition(ccp(233, -189));
     m_pBtnCongzhi->addTargetWithActionForControlEvents(this,
@@ -93,6 +100,7 @@ bool QimiAlipayView::init()
     label10->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn10Select = CCControlButton::create(label10, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn10Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn10Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn10Select);
     m_pBtn10Select->setPosition(ccp(127, 170));
     m_pBtn10Select->setTag(10);
@@ -105,6 +113,7 @@ bool QimiAlipayView::init()
     label20->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn20Select = CCControlButton::create(label20, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn20Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn20Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn20Select);
     m_pBtn20Select->setPosition(ccp(338, 170));
     m_pBtn20Select->setTag(20);
@@ -116,6 +125,7 @@ bool QimiAlipayView::init()
     label30->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn30Select = CCControlButton::create(label30,CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn30Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn30Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn30Select);
     m_pBtn30Select->setPosition(ccp(127, 114));
     m_pBtn30Select->setTag(30);
@@ -127,6 +137,7 @@ bool QimiAlipayView::init()
     label50->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn50Select = CCControlButton::create(label50, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn50Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn50Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn50Select);
     m_pBtn50Select->setPosition(ccp(338, 114));
     m_pBtn50Select->setTag(50);
@@ -138,6 +149,7 @@ bool QimiAlipayView::init()
     label100->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn100Select = CCControlButton::create(label100,CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn100Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn100Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn100Select);
     m_pBtn100Select->setPosition(ccp(127, 60));
     m_pBtn100Select->setTag(100);
@@ -149,6 +161,7 @@ bool QimiAlipayView::init()
     label300->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn300Select = CCControlButton::create(label300, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn300Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn300Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn300Select);
     m_pBtn300Select->setPosition(ccp(338, 60));
     m_pBtn300Select->setTag(300);
@@ -158,8 +171,10 @@ bool QimiAlipayView::init()
     
     CCLabelTTF* label500 = CCLabelTTF::create("500元", "Helvetica", 18);
     label500->setColor(ccc3(0, 0, 0));
+    
     CCControlButton* m_pBtn500Select = CCControlButton::create(label500, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn500Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn500Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn500Select);
     m_pBtn500Select->setPosition(ccp(127, 4));
     m_pBtn500Select->setTag(500);
@@ -176,7 +191,7 @@ bool QimiAlipayView::init()
     m_pEditName->setFontColor(ccc3(255, 0, 0));
     m_pEditName->setMaxLength(20);
     m_pEditName->setReturnType(kKeyboardReturnTypeDone);
-    m_pEditName->setTouchPriority(-130);
+    m_pEditName->setTouchPriority(-1000);
     m_pEditName->setText("10");
     addChild(m_pEditName);
     
@@ -206,6 +221,7 @@ bool QimiAlipayView::init()
     m_pMcashNumLastTxt->setAnchorPoint(ccp(0, 0.5));
     return true;
 }
+
 
 void QimiAlipayView::initData(std::string uId, int sId, std::string key, int money)
 {
@@ -256,7 +272,7 @@ void QimiAlipayView::rechargeOnClick(cocos2d::CCNode* pSender, cocos2d::extensio
     CCHttpRequest* request = new CCHttpRequest();
     request->setUrl("http://www.qimi.com/platform/addOrder.php");
     request->setRequestType(CCHttpRequest::kHttpPost);
-    request->setResponseCallback(this, callfuncND_selector(QimiAlipayView::onLoadOrderSucssful));
+    request->setResponseCallback(this, httpresponse_selector(QimiAlipayView::onLoadOrderSucssful));
     
     char sign[255];
     sprintf(sign, "%s%d%s",
@@ -277,11 +293,21 @@ void QimiAlipayView::rechargeOnClick(cocos2d::CCNode* pSender, cocos2d::extensio
     request->setTag("POST test1");
     CCHttpClient::getInstance()->send(request);
     request->release();
+    
+    RequestLoadingView* mask = RequestLoadingView::create();
+    mask->setTag(100000);
+    this->addChild(mask);
+    
 }
 
-void QimiAlipayView::onLoadOrderSucssful(cocos2d::CCNode *sender, void *data)
+void QimiAlipayView::onLoadOrderSucssful(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response)
 {
-    CCHttpResponse *response = (CCHttpResponse*)data;
+    CCNode* node = this->getChildByTag(100000);
+    if (node!=NULL)
+    {
+        node->removeFromParentAndCleanup(true);
+    }
+    
     Json::Value root = GameUtils::getResponseData(response);
     
     if (!root.isNull())

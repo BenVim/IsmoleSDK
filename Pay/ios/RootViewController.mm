@@ -2,7 +2,7 @@
 //  PayAppController.h
 //  Pay
 //
-//  Created by Ben on 5/10/13.
+//  Created by Ben on 6/27/13.
 //  Copyright __MyCompanyName__ 2013. All rights reserved.
 //
 
@@ -44,6 +44,7 @@
 // For ios6, use supportedInterfaceOrientations & shouldAutorotate instead
 - (NSUInteger) supportedInterfaceOrientations{
 #ifdef __IPHONE_6_0
+    //return UIInterfaceOrientationMaskLandscape;
     return UIInterfaceOrientationMaskPortrait;
 #endif
 }

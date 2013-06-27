@@ -13,6 +13,8 @@
 #include "Qimi.h"
 #include "QimiPrepaidCardView.h"
 #include "QimiMD5.h"
+#include "RequestLoadingView.h"
+#include "UIMaskLayerView.h"
 
 QimiMainView::QimiMainView()
 {
@@ -26,19 +28,23 @@ QimiMainView::~QimiMainView()
 
 bool QimiMainView::init()
 {
+    UIMaskLayerView* mask = UIMaskLayerView::create();
+    this->addChild(mask);
     CCSize m_size = CCDirector::sharedDirector()->getWinSize();
     
     CCSprite* bg = CCSprite::create("bg_dabeijing_480x800.png");
     bg->setPosition(ccp(m_size.width/2, m_size.height/2));
     this->addChild(bg);
     
+    
     CCSprite* bgTop = CCSprite::create("bg_top.png");
     this->addChild(bgTop);
-    bgTop->setPosition(ccp(m_size.width/2, m_size.height-bgTop->getContentSize().height/2));
+    bgTop->setPosition(ccp(240, 755));
     
     
     CCControlButton* backBtn = CCControlButton::create(CCScale9Sprite::create("btn_fanhui.png"));
     backBtn->setPreferredSize(CCSizeMake(101, 51));
+    backBtn->setTouchPriority(-1000);
     this->addChild(backBtn);
     backBtn->setPosition(ccp(63, 760));
     backBtn->addTargetWithActionForControlEvents(this,
@@ -48,6 +54,7 @@ bool QimiMainView::init()
     
     CCControlButton* helpBtn = CCControlButton::create(CCScale9Sprite::create("btn_bangzhu.png"));
     helpBtn->setPreferredSize(CCSizeMake(93, 51));
+    helpBtn->setTouchPriority(-1000);
     this->addChild(helpBtn);
     helpBtn->setPosition(ccp(420, 760));
     
@@ -126,6 +133,7 @@ bool QimiMainView::init()
     
     CCControlButton* alixPayBtn = CCControlButton::create(CCScale9Sprite::create("img_zhifubao.png"));
     alixPayBtn->setPreferredSize(CCSizeMake(114, 114));
+    alixPayBtn->setTouchPriority(-1000);
     this->addChild(alixPayBtn);
     alixPayBtn->setPosition(ccp(94, 307));
     alixPayBtn->addTargetWithActionForControlEvents(this,
@@ -135,6 +143,7 @@ bool QimiMainView::init()
     
     CCControlButton* sZXBtn = CCControlButton::create(CCScale9Sprite::create("img_shenzhouxing.png"));
     sZXBtn->setPreferredSize(CCSizeMake(114, 114));
+    sZXBtn->setTouchPriority(-1000);
     this->addChild(sZXBtn);
     sZXBtn->setPosition(ccp(241, 307));
     sZXBtn->addTargetWithActionForControlEvents(this,
@@ -143,6 +152,7 @@ bool QimiMainView::init()
     
     CCControlButton* lTBtn = CCControlButton::create(CCScale9Sprite::create("img_liantong.png"));
     lTBtn->setPreferredSize(CCSizeMake(114, 114));
+    lTBtn->setTouchPriority(-1000);
     this->addChild(lTBtn);
     lTBtn->setPosition(ccp(386, 307));
     lTBtn->addTargetWithActionForControlEvents(this,
@@ -151,6 +161,7 @@ bool QimiMainView::init()
     
     CCControlButton* dXBtn = CCControlButton::create(CCScale9Sprite::create("img_dianxin.png"));
     dXBtn->setPreferredSize(CCSizeMake(114, 114));
+    dXBtn->setTouchPriority(-1000);
     this->addChild(dXBtn);
     dXBtn->setPosition(ccp(94, 175));
     dXBtn->addTargetWithActionForControlEvents(this,
@@ -162,10 +173,12 @@ bool QimiMainView::init()
 
 void QimiMainView::initView(std::string uId, int sId, std::string key, int money)
 {
+    
+    setTouchPriority(-1000);
     m_uId = uId;
     m_sId = sId;
     m_key = key;
-    m_money = money;
+    m_money = money; 
     onRequestData();
     
     ////////////////
@@ -176,7 +189,7 @@ void QimiMainView::onRequestData()
     CCHttpRequest* request = new CCHttpRequest();
     request->setUrl("http://qimi.com/platform/getUser.php");
     request->setRequestType(CCHttpRequest::kHttpPost);
-    request->setResponseCallback(this, callfuncND_selector(QimiMainView::onLoadRequestSucssful));
+    request->setResponseCallback(this, httpresponse_selector(QimiMainView::onLoadRequestSucssful));
     
     
     char sign[255];
@@ -197,11 +210,18 @@ void QimiMainView::onRequestData()
     request->setTag("POST test1");
     CCHttpClient::getInstance()->send(request);
     request->release();
+    RequestLoadingView* mask = RequestLoadingView::create();
+    mask->setTag(100000);
+    this->addChild(mask);
 }
 
-void QimiMainView::onLoadRequestSucssful(cocos2d::CCNode *sender, void *data)
+void QimiMainView::onLoadRequestSucssful(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response)
 {
-    CCHttpResponse *response = (CCHttpResponse*)data;
+    CCNode* node = this->getChildByTag(100000);
+    if (node!=NULL)
+    {
+        node->removeFromParentAndCleanup(true);
+    }
     Json::Value root = GameUtils::getResponseData(response);
     if (!root.isNull())
     {
@@ -314,6 +334,7 @@ void QimiMainView::backOnClick(cocos2d::CCNode *pSender, cocos2d::extension::CCC
 {
     this->removeFromParentAndCleanup(true);
 }
+
 
 
 

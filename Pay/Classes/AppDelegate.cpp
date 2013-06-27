@@ -1,8 +1,8 @@
 //
-//  PayProAppDelegate.cpp
-//  PayPro
+//  PayAppDelegate.cpp
+//  Pay
 //
-//  Created by Ben on 5/7/13.
+//  Created by Ben on 6/27/13.
 //  Copyright __MyCompanyName__ 2013. All rights reserved.
 //
 
@@ -30,13 +30,20 @@ bool AppDelegate::applicationDidFinishLaunching()
     CCDirector *pDirector = CCDirector::sharedDirector();
     pDirector->setOpenGLView(CCEGLView::sharedOpenGLView());
 
-    pDirector->setProjection(kCCDirectorProjection2D);
-    pDirector->getOpenGLView()->setDesignResolutionSize(480, 800, kResolutionShowAll);
 
+    pDirector->setProjection(kCCDirectorProjection2D);
+    
+    //pDirector->getOpenGLView()->setDesignResolutionSize(480, 800, kResolutionShowAll);
+    
+    
+    CCSize s = CCDirector::sharedDirector()->getWinSize();
+    CCEGLView *pEGLView = CCEGLView::sharedOpenGLView();
+    pEGLView->setDesignResolutionSize(480, s.height * 480 / s.width, kResolutionShowAll);
+    
     // turn on display FPS
     pDirector->setDisplayStats(true);
 
-
+    // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object

@@ -13,7 +13,9 @@
 #include "QimiUserModel.h"
 #include "QimiPlatform.h"
 #include "QimiMD5.h"
-
+#include "StageScene.h"
+#include "UIMaskLayerView.h"
+#include "RequestLoadingView.h"
 
 QimiRegisterView::QimiRegisterView():isSelelcted(NULL)
 {
@@ -27,6 +29,9 @@ QimiRegisterView::~QimiRegisterView()
 
 bool QimiRegisterView::init()
 {
+    UIMaskLayerView* mask = UIMaskLayerView::create();
+    this->addChild(mask);
+    
     CCSize m_size = CCDirector::sharedDirector()->getWinSize();
     
     CCSprite* bg = CCSprite::create("bg_dabeijing_480x800.png");
@@ -35,11 +40,12 @@ bool QimiRegisterView::init()
     
     CCSprite* bgTop = CCSprite::create("bg_top.png");
     this->addChild(bgTop);
-    bgTop->setPosition(ccp(m_size.width/2, m_size.height-bgTop->getContentSize().height/2));
+    bgTop->setPosition(ccp(240, 755));
     
     
     CCControlButton* backBtn = CCControlButton::create(CCScale9Sprite::create("btn_fanhui.png"));
     backBtn->setPreferredSize(CCSizeMake(101, 51));
+    backBtn->setTouchPriority(-1000);
     this->addChild(backBtn);
     backBtn->setPosition(ccp(63, 760));
     backBtn->addTargetWithActionForControlEvents(this,
@@ -49,6 +55,7 @@ bool QimiRegisterView::init()
     
     CCControlButton* helpBtn = CCControlButton::create(CCScale9Sprite::create("btn_bangzhu.png"));
     helpBtn->setPreferredSize(CCSizeMake(93, 51));
+    helpBtn->setTouchPriority(-1000);
     this->addChild(helpBtn);
     helpBtn->setPosition(ccp(420, 760));
     
@@ -77,6 +84,7 @@ bool QimiRegisterView::init()
     
     CCControlButton* m_pRegisterBtn = CCControlButton::create(CCScale9Sprite::create("btn_zhuce.png"));
     m_pRegisterBtn->setPreferredSize(CCSizeMake(418, 75));
+    m_pRegisterBtn->setTouchPriority(-1000);
     this->addChild(m_pRegisterBtn);
     m_pRegisterBtn->setPosition(ccp(240, 200));
     m_pRegisterBtn->addTargetWithActionForControlEvents(this,
@@ -100,7 +108,7 @@ bool QimiRegisterView::init()
     m_pEditUserName->setMaxLength(60);
     m_pEditUserName->setReturnType(kKeyboardReturnTypeDone);
     m_pEditUserName->setInputMode(kEditBoxInputModeEmailAddr);
-    m_pEditUserName->setTouchPriority(-130);
+    m_pEditUserName->setTouchPriority(-1000);
     m_pEditUserName->setText("用户名");
     addChild(m_pEditUserName);
     
@@ -111,7 +119,7 @@ bool QimiRegisterView::init()
     m_pEditUserPass->setMaxLength(50);
     m_pEditUserPass->setReturnType(kKeyboardReturnTypeDone);
     m_pEditUserPass->setInputFlag(kEditBoxInputFlagPassword);
-    m_pEditUserPass->setTouchPriority(-130);
+    m_pEditUserPass->setTouchPriority(-1000);
     m_pEditUserPass->setText("用户密码");
     addChild(m_pEditUserPass);
     
@@ -122,7 +130,7 @@ bool QimiRegisterView::init()
     m_pEditVerifyPass->setMaxLength(50);
     m_pEditVerifyPass->setReturnType(kKeyboardReturnTypeDone);
     m_pEditVerifyPass->setInputFlag(kEditBoxInputFlagPassword);
-    m_pEditVerifyPass->setTouchPriority(-130);
+    m_pEditVerifyPass->setTouchPriority(-1000);
     m_pEditVerifyPass->setText("确认密码");
     addChild(m_pEditVerifyPass);
     //////
@@ -135,7 +143,13 @@ void QimiRegisterView::registerOnClick(cocos2d::CCNode* pSender, cocos2d::extens
     std::string userName = m_pEditUserName->getText();
     std::string userPass = m_pEditUserPass->getText();
     std::string userVerifyPass = m_pEditVerifyPass->getText();
+    time_t t;
+    time(&t);
+    char tchar[255];
+    sprintf(tchar, "%ld%d", t, int(GameUtils::getRandom(1, 1000)));
+    //CCLog("tchar%s", tchar);
     
+    std::string name = tchar;
     if (!userName.empty() && !userPass.empty() && !userVerifyPass.empty())
     {
         if (userPass == userVerifyPass)
@@ -145,7 +159,7 @@ void QimiRegisterView::registerOnClick(cocos2d::CCNode* pSender, cocos2d::extens
             sprintf(sign, "appid=%dbirthday=2000-10-10do=regemail=%smod=Username=%spassword=%ssex=1%s",
                     QimiPlatform::shareQimiPlatform()->getQimiGameAppId(),
                     userName.c_str(),
-                    userName.c_str(),
+                    name.c_str(),
                     userPass.c_str(),
                     QimiPlatform::shareQimiPlatform()->getQimiGameKey().c_str());
             
@@ -157,20 +171,24 @@ void QimiRegisterView::registerOnClick(cocos2d::CCNode* pSender, cocos2d::extens
             CCHttpRequest* request = new CCHttpRequest();
             request->setUrl(url.c_str());
             request->setRequestType(CCHttpRequest::kHttpPost);
-            request->setResponseCallback(this, callfuncND_selector(QimiRegisterView::registerSucceed));
+            request->setResponseCallback(this, httpresponse_selector(QimiRegisterView::registerSucceed));
             
             CCString* postDataStr = CCString::createWithFormat("sign=%s&appid=%d&mod=User&do=reg&email=%s&password=%s&name=%s&sex=1&birthday=2000-10-10",
                                                                md5tolower.c_str(),
                                                                QimiPlatform::shareQimiPlatform()->getQimiGameAppId(),
                                                                userName.c_str(),
                                                                userPass.c_str(),
-                                                               userName.c_str());
+                                                               name.c_str());
             const char* postData = postDataStr->getCString();
             //CCLog("postData==%s", postData);
             request->setRequestData(postData, strlen(postData));
             request->setTag("POST test1");
             CCHttpClient::getInstance()->send(request);
             request->release();
+            
+            RequestLoadingView* mask = RequestLoadingView::create();
+            mask->setTag(100000);
+            this->addChild(mask);
         }
         else
         {
@@ -190,9 +208,14 @@ void QimiRegisterView::backOnClick(cocos2d::CCNode* pSender, cocos2d::extension:
     this->removeFromParentAndCleanup(true);
 }
 
-void QimiRegisterView::registerSucceed(cocos2d::CCNode *sender, void *data)
+void QimiRegisterView::registerSucceed(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response)
 {
-    CCHttpResponse *response = (CCHttpResponse*)data;
+    CCNode* node = this->getChildByTag(100000);
+    if (node!=NULL)
+    {
+        node->removeFromParentAndCleanup(true);
+    }
+    
     Json::Value root = GameUtils::getResponseData(response);
     if (root!=NULL && !root.isNull())
     {
@@ -204,18 +227,24 @@ void QimiRegisterView::registerSucceed(cocos2d::CCNode *sender, void *data)
         if (status == 100)
         {
             Json::Value data = root["data"];
+            std::string userId;
             if (!data.isNull())
             {
                 QimiUserModel* pQimiUserModel = QimiUserModel::create();
                 pQimiUserModel->initData(data);
                 pQimiUserModel->retain();
                 QimiPlatform::shareQimiPlatform()->setQimiUserModel(pQimiUserModel);
+                userId = pQimiUserModel->getuID();
             }
-            QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "注册成功");
-            QimiPlatform::shareQimiPlatform()->QimiLogin();//注册成功打开奇米登录窗口。
+            //QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "注册成功");
+            
             
             CCInteger* obj = CCInteger::create(1);
             QimiPlatform::shareQimiPlatform()->callRegBack(obj);
+            
+            char msg[255];
+            printf(msg, "%s 注册成功并且已经登录！", userId.c_str());
+            GameUtils::showNewTip(msg, StageScene::shareStageScene()->m_DialogContainer, ccp(240,400), 1.0, true);
             
             this->removeFromParentAndCleanup(true);
         }

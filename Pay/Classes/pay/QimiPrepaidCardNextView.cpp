@@ -13,6 +13,8 @@
 #include "QimiPlatform.h"
 #include "QimiMD5.h"
 #include "QimiPlatformIOS.h"
+#include "UIMaskLayerView.h"
+#include "RequestLoadingView.h"
 
 
 QimiPrepaidCardNextView::QimiPrepaidCardNextView()
@@ -27,6 +29,9 @@ QimiPrepaidCardNextView::~QimiPrepaidCardNextView()
 
 bool QimiPrepaidCardNextView::init()
 {
+    UIMaskLayerView* mask = UIMaskLayerView::create();
+    this->addChild(mask);
+    
     CCSize m_size = CCDirector::sharedDirector()->getWinSize();
     
     CCSprite* bg = CCSprite::create("bg_dabeijing_480x800.png");
@@ -35,11 +40,12 @@ bool QimiPrepaidCardNextView::init()
     
     CCSprite* bgTop = CCSprite::create("bg_top.png");
     this->addChild(bgTop);
-    bgTop->setPosition(ccp(m_size.width/2, m_size.height-bgTop->getContentSize().height/2));
+    bgTop->setPosition(ccp(240, 755));
     
     
     CCControlButton* backBtn = CCControlButton::create(CCScale9Sprite::create("btn_fanhui.png"));
     backBtn->setPreferredSize(CCSizeMake(101, 51));
+    backBtn->setTouchPriority(-1000);
     this->addChild(backBtn);
     backBtn->setPosition(ccp(63, 760));
     backBtn->addTargetWithActionForControlEvents(this,
@@ -49,6 +55,7 @@ bool QimiPrepaidCardNextView::init()
     
     CCControlButton* helpBtn = CCControlButton::create(CCScale9Sprite::create("btn_bangzhu.png"));
     helpBtn->setPreferredSize(CCSizeMake(93, 51));
+    helpBtn->setTouchPriority(-1000);
     this->addChild(helpBtn);
     helpBtn->setPosition(ccp(420, 760));
     
@@ -79,6 +86,7 @@ bool QimiPrepaidCardNextView::init()
     
     CCControlButton* m_pBtnCongzhi = CCControlButton::create(CCScale9Sprite::create("btn_querenchongzhi.png"));
     m_pBtnCongzhi->setPreferredSize(CCSizeMake(248, 74));
+    m_pBtnCongzhi->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtnCongzhi);
     m_pBtnCongzhi->setPosition(ccp(245, 178));
     m_pBtnCongzhi->addTargetWithActionForControlEvents(this,
@@ -89,6 +97,7 @@ bool QimiPrepaidCardNextView::init()
     label10->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn10Select = CCControlButton::create(label10, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn10Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn10Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn10Select);
     m_pBtn10Select->setPosition(ccp(138, 595));
     m_pBtn10Select->setTag(10);
@@ -101,6 +110,7 @@ bool QimiPrepaidCardNextView::init()
     label20->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn20Select = CCControlButton::create(label20, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn20Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn20Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn20Select);
     m_pBtn20Select->setPosition(ccp(350, 595));
     m_pBtn20Select->setTag(20);
@@ -112,6 +122,7 @@ bool QimiPrepaidCardNextView::init()
     label30->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn30Select = CCControlButton::create(label30,CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn30Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn30Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn30Select);
     m_pBtn30Select->setPosition(ccp(138, 539));
     m_pBtn30Select->setTag(30);
@@ -123,6 +134,7 @@ bool QimiPrepaidCardNextView::init()
     label50->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn50Select = CCControlButton::create(label50, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn50Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn50Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn50Select);
     m_pBtn50Select->setPosition(ccp(349, 539));
     m_pBtn50Select->setTag(50);
@@ -134,6 +146,7 @@ bool QimiPrepaidCardNextView::init()
     label100->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn100Select = CCControlButton::create(label100,CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn100Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn100Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn100Select);
     m_pBtn100Select->setPosition(ccp(137, 485));
     m_pBtn100Select->setTag(100);
@@ -145,6 +158,7 @@ bool QimiPrepaidCardNextView::init()
     label300->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn300Select = CCControlButton::create(label300, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn300Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn300Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn300Select);
     m_pBtn300Select->setPosition(ccp(349, 485));
     m_pBtn300Select->setTag(300);
@@ -156,6 +170,7 @@ bool QimiPrepaidCardNextView::init()
     label500->setColor(ccc3(0, 0, 0));
     CCControlButton* m_pBtn500Select = CCControlButton::create(label500, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn500Select->setPreferredSize(CCSizeMake(196, 47));
+    m_pBtn500Select->setTouchPriority(-1000);
     containerCCNode->addChild(m_pBtn500Select);
     m_pBtn500Select->setPosition(ccp(137, 428));
     m_pBtn500Select->setTag(500);
@@ -179,7 +194,7 @@ bool QimiPrepaidCardNextView::init()
     m_pCardNum->setFontColor(ccc3(255,0,0));
     m_pCardNum->setMaxLength(20);
     m_pCardNum->setReturnType(kKeyboardReturnTypeDone);
-    m_pCardNum->setTouchPriority(-130);
+    m_pCardNum->setTouchPriority(-1000);
     m_pCardNum->setText("");
     addChild(m_pCardNum);
     
@@ -190,7 +205,7 @@ bool QimiPrepaidCardNextView::init()
     m_pCardPassword->setFontColor(ccc3(255,0,0));
     m_pCardPassword->setMaxLength(20);
     m_pCardPassword->setReturnType(kKeyboardReturnTypeDone);
-    m_pCardPassword->setTouchPriority(-130);
+    m_pCardPassword->setTouchPriority(-1000);
     m_pCardPassword->setText("");
     addChild(m_pCardPassword);
     
@@ -292,7 +307,7 @@ void QimiPrepaidCardNextView::requestOrder()
     CCHttpRequest* request = new CCHttpRequest();
     request->setUrl("http://www.qimi.com/platform/addOrder.php");
     request->setRequestType(CCHttpRequest::kHttpPost);
-    request->setResponseCallback(this, callfuncND_selector(QimiPrepaidCardNextView::requestSucssful));
+    request->setResponseCallback(this, httpresponse_selector(QimiPrepaidCardNextView::requestSucssful));
     
     char sign[255];
     sprintf(sign, "%s%d%s",
@@ -320,15 +335,23 @@ void QimiPrepaidCardNextView::requestOrder()
     CCHttpClient::getInstance()->send(request);
     request->release();
     
+    RequestLoadingView* mask = RequestLoadingView::create();
+    mask->setTag(100000);
+    this->addChild(mask);
     
 }
 
 
-void QimiPrepaidCardNextView::requestSucssful(cocos2d::CCNode *sender, void *data)
+void QimiPrepaidCardNextView::requestSucssful(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response)
 {
+    CCNode* node = this->getChildByTag(100000);
+    if (node!=NULL)
+    {
+        node->removeFromParentAndCleanup(true);
+    }
+    
     std::string oderId = "";
     std::string cardInfo = "";
-    CCHttpResponse *response = (CCHttpResponse*)data;
     
     if (!response)
     {
@@ -434,6 +457,9 @@ void QimiPrepaidCardNextView::requestSucssful(cocos2d::CCNode *sender, void *dat
     //std::transform(md5tolower.begin(), md5tolower.end(), md5tolower.begin(), ::tolower);
     pOder->setMd5String(md5tolower);
     reqeuestPay(pOder);
+    
+   
+    
 }
 
 void QimiPrepaidCardNextView::reqeuestPay(PrepaidCardOrder *pOrder)
@@ -464,11 +490,20 @@ void QimiPrepaidCardNextView::reqeuestPay(PrepaidCardOrder *pOrder)
     request->setTag("POST test1");
     CCHttpClient::getInstance()->send(request);
     request->release();
+    
+    RequestLoadingView* mask = RequestLoadingView::create();
+    mask->setTag(100001);
+    this->addChild(mask);
+    
 }
 
-void QimiPrepaidCardNextView::requestPaySucssful(cocos2d::CCNode *sender, void *data)
+void QimiPrepaidCardNextView::requestPaySucssful(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response)
 {
-    CCHttpResponse *response = (CCHttpResponse*)data;
+    CCNode* node = this->getChildByTag(100001);
+    if (node!=NULL)
+    {
+        node->removeFromParentAndCleanup(true);
+    }
     
     if (!response)
     {

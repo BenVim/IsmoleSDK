@@ -2,7 +2,7 @@
 //  PayAppController.mm
 //  Pay
 //
-//  Created by Ben on 5/10/13.
+//  Created by Ben on 6/27/13.
 //  Copyright __MyCompanyName__ 2013. All rights reserved.
 //
 #import <UIKit/UIKit.h>
@@ -59,16 +59,7 @@ static AppDelegate s_sharedApplication;
 
     [[UIApplication sharedApplication] setStatusBarHidden: YES];
 
-    
-
-
-//    UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@".." message:@"..." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-//    [alert show];
-
     cocos2d::CCApplication::sharedApplication()->run();
-    
-        
-    
     return YES;
 }
 

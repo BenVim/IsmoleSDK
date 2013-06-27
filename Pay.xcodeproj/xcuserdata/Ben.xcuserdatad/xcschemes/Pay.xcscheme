@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0450"
+   LastUpgradeVersion = "0460"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B51E422E173CA1CC002B9031"
+               BlueprintIdentifier = "B5BEE185177C18D200584945"
                BuildableName = "Pay.app"
                BlueprintName = "Pay"
                ReferencedContainer = "container:Pay.xcodeproj">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B51E422E173CA1CC002B9031"
+            BlueprintIdentifier = "B5BEE185177C18D200584945"
             BuildableName = "Pay.app"
             BlueprintName = "Pay"
             ReferencedContainer = "container:Pay.xcodeproj">
@@ -51,7 +51,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B51E422E173CA1CC002B9031"
+            BlueprintIdentifier = "B5BEE185177C18D200584945"
             BuildableName = "Pay.app"
             BlueprintName = "Pay"
             ReferencedContainer = "container:Pay.xcodeproj">
@@ -69,7 +69,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B51E422E173CA1CC002B9031"
+            BlueprintIdentifier = "B5BEE185177C18D200584945"
             BuildableName = "Pay.app"
             BlueprintName = "Pay"
             ReferencedContainer = "container:Pay.xcodeproj">

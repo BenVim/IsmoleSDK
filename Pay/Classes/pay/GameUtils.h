@@ -31,6 +31,7 @@ public:
     
     static std::string getStringWithMd5(std::string str);
     static Json::Value getResponseData(cocos2d::extension::CCHttpResponse *response);
+    static void showNewTip(const char *msg, cocos2d::CCNode *parent, cocos2d::CCPoint pt, float daleyTimer, bool bIsFadeOut);
 };
 
 #endif /* defined(__NavigationTimes__GameUtils__) */

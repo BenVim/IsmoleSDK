@@ -49,6 +49,14 @@ bool CCScene::init()
          CC_BREAK_IF( ! (pDirector = CCDirector::sharedDirector()) );
          this->setContentSize(pDirector->getWinSize());
          // success
+         CCSize s = CCDirector::sharedDirector()->getWinSize();
+         
+         //float scale = s.width / 480;
+         //         this->setScale(scale);
+         //         this->setPositionX((s.width - 480) / 2 + 25);
+         
+         this->setPositionY(s.height * 480 / s.width - 800);
+         
          bRet = true;
      } while (0);
      return bRet;

@@ -12,9 +12,17 @@
 #include "QimiUserModel.h"
 #include "QimiPlatform.h"
 #include "QimiMD5.h"
+#include "UIMaskLayerView.h"
+#include "RequestLoadingView.h"
 
-
-QimiLoginView::QimiLoginView():isSelelcted(NULL)
+QimiLoginView::QimiLoginView():
+isSelelcted(NULL),
+m_pRememberSprite(NULL),
+m_pNoRememberSprite(NULL),
+m_pInputUserNameTxtBg(NULL),
+m_pInputUserPassTxtBg(NULL),
+m_pUserName(NULL),
+m_pPassWorld(NULL)
 {
     
 }
@@ -22,10 +30,13 @@ QimiLoginView::QimiLoginView():isSelelcted(NULL)
 QimiLoginView::~QimiLoginView()
 {
     
+    
 }
 
 bool QimiLoginView::init()
 {
+    UIMaskLayerView* mask = UIMaskLayerView::create();
+    this->addChild(mask);
     CCSize m_size = CCDirector::sharedDirector()->getWinSize();
     
     CCSprite* bg = CCSprite::create("bg_dabeijing_480x800.png");
@@ -34,22 +45,25 @@ bool QimiLoginView::init()
     
     CCSprite* bgTop = CCSprite::create("bg_top.png");
     this->addChild(bgTop);
-    bgTop->setPosition(ccp(m_size.width/2, m_size.height-bgTop->getContentSize().height/2));
+    bgTop->setPosition(ccp(240, 755));
     
     
     CCControlButton* backBtn = CCControlButton::create(CCScale9Sprite::create("btn_fanhui.png"));
     backBtn->setPreferredSize(CCSizeMake(101, 51));
+    backBtn->setTouchPriority(-1001);
     this->addChild(backBtn);
     backBtn->setPosition(ccp(63, 760));
     backBtn->addTargetWithActionForControlEvents(this,
                                                  cccontrol_selector(QimiLoginView::backOnClick),
                                                  CCControlEventTouchUpInside);
-    
+
     
     CCControlButton* helpBtn = CCControlButton::create(CCScale9Sprite::create("btn_bangzhu.png"));
     helpBtn->setPreferredSize(CCSizeMake(93, 51));
+    helpBtn->setTouchPriority(-1001);
     this->addChild(helpBtn);
     helpBtn->setPosition(ccp(420, 760));
+
     
     CCLabelTTF* topText = CCLabelTTF::create("奇米网", "Helvetica", 28);
     this->addChild(topText);
@@ -72,20 +86,23 @@ bool QimiLoginView::init()
     
     CCControlButton* m_pLoginBtn = CCControlButton::create(CCScale9Sprite::create("btn_denglu.png"));
     m_pLoginBtn->setPreferredSize(CCSizeMake(200, 75));
+    m_pLoginBtn->setTouchPriority(-1001);
     this->addChild(m_pLoginBtn);
     m_pLoginBtn->setPosition(ccp(133, 221));
     m_pLoginBtn->addTargetWithActionForControlEvents(this,
                                                  cccontrol_selector(QimiLoginView::loginOnclick),
                                                  CCControlEventTouchUpInside);
+
     
     CCControlButton* m_pRegisterBtn = CCControlButton::create(CCScale9Sprite::create("btn_zhuce_small.png"));
     m_pRegisterBtn->setPreferredSize(CCSizeMake(200, 75));
+    m_pRegisterBtn->setTouchPriority(-1001);
     this->addChild(m_pRegisterBtn);
     m_pRegisterBtn->setPosition(ccp(350, 221));
     m_pRegisterBtn->addTargetWithActionForControlEvents(this,
                                                      cccontrol_selector(QimiLoginView::registerOnClick),
                                                      CCControlEventTouchUpInside);
-    
+
     m_pNoRememberSprite = CCSprite::create("btn_jizhumima_left.png");
     m_pNoRememberSprite->setPosition(ccp(168, 306));
     this->addChild(m_pNoRememberSprite);
@@ -109,7 +126,7 @@ bool QimiLoginView::init()
     m_pUserName->setFontColor(ccc3(178,178,178));
     m_pUserName->setMaxLength(50);
     m_pUserName->setReturnType(kKeyboardReturnTypeDone);
-    m_pUserName->setTouchPriority(-130);
+    m_pUserName->setTouchPriority(-1002);
     m_pUserName->setText("您的电子邮箱地址");
     m_pUserName->setInputMode(kEditBoxInputModeEmailAddr);
     addChild(m_pUserName);
@@ -122,7 +139,7 @@ bool QimiLoginView::init()
     m_pPassWorld->setText("您的登录密码");
     m_pPassWorld->setReturnType(kKeyboardReturnTypeDone);
     m_pPassWorld->setInputFlag(kEditBoxInputFlagPassword);
-    m_pPassWorld->setTouchPriority(-130);
+    m_pPassWorld->setTouchPriority(-1002);
     addChild(m_pPassWorld);
     
     //////
@@ -131,7 +148,9 @@ bool QimiLoginView::init()
     label->setColor(ccc3(100, 100, 100));
     CCMenuItemLabel* pmenu=CCMenuItemLabel::create(label,this,menu_selector(QimiLoginView::remeberPassworld));
     pmenu->setPosition(ccp(0,0));
+
     CCMenu* menu = CCMenu::createWithItem(pmenu);
+    menu->setTouchPriority(-1003);
     this->addChild(menu);
     menu->setPosition(ccp(85,308));
     
@@ -146,8 +165,22 @@ bool QimiLoginView::init()
     this->addChild(pFogetMenu);
     pFogetMenu->setPosition(ccp(397,309));
     
+    pFogetMenu->setTouchPriority(-1003);
     return true;
 }
+
+void QimiLoginView::onEnter()
+{
+    CCLayer::onEnter();
+    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, -1000, true);
+}
+
+void QimiLoginView::onExit()
+{
+    CCLayer::onExit();
+    CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
+}
+
 
 void QimiLoginView::loginOnclick(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)
 {
@@ -172,8 +205,8 @@ void QimiLoginView::loginOnclick(cocos2d::CCNode *pSender, cocos2d::extension::C
         CCHttpRequest* request = new CCHttpRequest();
         request->setUrl(url.c_str());
         request->setRequestType(CCHttpRequest::kHttpPost);
-        request->setResponseCallback(this, callfuncND_selector(QimiLoginView::loginSucceed));
-        
+        request->setResponseCallback(this, httpresponse_selector(QimiLoginView::loginSucceed));
+
         CCString* postDataStr = CCString::createWithFormat("sign=%s&appid=%d&mod=User&do=login&email=%s&password=%s",
                                                            md5tolower.c_str(),
                                                            QimiPlatform::shareQimiPlatform()->getQimiGameAppId(),
@@ -185,13 +218,22 @@ void QimiLoginView::loginOnclick(cocos2d::CCNode *pSender, cocos2d::extension::C
         request->setTag("POST test1");
         CCHttpClient::getInstance()->send(request);
         request->release();
+        
+        RequestLoadingView* mask = RequestLoadingView::create();
+        mask->setTag(100000);
+        this->addChild(mask);
     }
 
 }
 
-void QimiLoginView::loginSucceed(cocos2d::CCNode *sender, void *data)
+void QimiLoginView::loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response)
 {
-    CCHttpResponse *response = (CCHttpResponse*)data;
+    CCNode* node = this->getChildByTag(100000);
+    if (node!=NULL)
+    {
+        node->removeFromParentAndCleanup(true);
+    }
+    
     Json::Value root = GameUtils::getResponseData(response);
     if (root!=NULL && !root.isNull())
     {
@@ -252,4 +294,6 @@ void QimiLoginView::backOnClick(cocos2d::CCNode *pSender, cocos2d::extension::CC
 {
     this->removeFromParentAndCleanup(true);
 }
+
+//////
 

@@ -15,6 +15,7 @@
 #include "QimiMainView.h"
 #include "QimiLoginView.h"
 #include "QimiRegisterView.h"
+#include "QimiUserModel.h"
 
 #include "md5c.h"
 
@@ -115,7 +116,11 @@ void QimiPlatform::QimiLogin()
 
 void QimiPlatform::loginOut()
 {
-    
+    if (m_pQimiUserModel !=NULL) {
+        m_pQimiUserModel->release();
+        m_pQimiUserModel = NULL;
+    }
+    QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "退出登录成功！");
 }
 
 void QimiPlatform::registerPayCallBack(cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call)
@@ -160,22 +165,24 @@ void QimiPlatform::callRegBack(cocos2d::CCObject* obj)
     }
 }
 
-
 /*检测是否已登录*/
 bool QimiPlatform::isLogined()
 {
-    return m_uId.empty() ? false : true;
+    if (m_pQimiUserModel!=NULL && !m_pQimiUserModel->getuID().empty())
+    {
+        return true;
+    }
+    return false;
 }
 
 bool QimiPlatform::isCheckAppId()
 {
     return m_appid ? true : false;
-}//检查是否获得APP ID
+}
+//检查是否获得APP ID
 
 bool QimiPlatform::isCheckAppKey()
 {
     return m_key.empty() ? false : true;
 }//检查是否已获得APP KEY
-
-
 

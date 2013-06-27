@@ -11,7 +11,7 @@
 #include "DictUtility.h"
 
 #include "md5c.h"
-
+#include "TipView.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -142,6 +142,11 @@ Json::Value GameUtils::getResponseData(cocos2d::extension::CCHttpResponse *respo
         return NULL;
     }
     return root;
+}
+
+void GameUtils::showNewTip(const char *msg, cocos2d::CCNode *parent, cocos2d::CCPoint pt, float daleyTimer, bool bIsFadeOut)
+{
+    TipView::create(msg, parent, pt, daleyTimer, bIsFadeOut);
 }
 
 
