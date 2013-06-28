@@ -24,8 +24,8 @@ IsmoleSDK
     void openGameWeb(std::string webUrl);
     
     /* 支付接口参数说明：
-     * uId int类型 游戏的uId;
-     * sId int类型 游戏的sId;
+     * uId std::string类型 游戏用户的Id;
+     * sId int类型 游戏服务器的Id;
      * key string类型 游戏的key;
      * money int类型 需要支付的初始费用，进入支付系统后，可以再修改;
      */
@@ -110,12 +110,12 @@ IsmoleSDK
 
 #####QimiSDK调用平台支付接口
 	/* 支付接口参数说明：
-     * uId int类型 游戏的uId;
-     * sId int类型 游戏的sId;
+     * uId std::string 类型 游戏的用户Id;
+     * sId int类型 游戏服务器Id;
      * key string类型 游戏的key;
-     * money int类型 需要支付的初始费用，进入支付系统后，可以再修改;
+     * money int类型 需要支付的初始费用（单位：元），进入支付系统后，可以再修改;
      */
-    void openPayDailog(int uId, int sId, std::string key ,int money);
+    void openPayDailog(std::string uId, int sId, std::string key ,int money);
 
     /**使用方法**/
     QimiPlatform::shareQimiPlatform()->openPayDailog(1, 5, "7a92bba467dd0d479c5514720c1cf46aab", 10);
