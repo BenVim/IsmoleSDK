@@ -17,6 +17,7 @@ public:
     void menuCloseCallback(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent);
 
     void login(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent);
+    void logined(CCObject* obj);
     
     // preprocessor macro for "static create()" constructor ( node() deprecated )
     CREATE_FUNC(HelloWorld);

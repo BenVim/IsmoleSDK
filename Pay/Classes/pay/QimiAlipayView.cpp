@@ -314,8 +314,6 @@ void QimiAlipayView::onLoadOrderSucssful(cocos2d::extension::CCHttpClient *sende
     {
         m_oderId= root["data"].asString();
     }
-    
-    
     loadAlixPay();
 }
 

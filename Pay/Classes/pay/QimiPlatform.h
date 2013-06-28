@@ -14,6 +14,11 @@
 #define QimiPayCallBack "QimiPayCallBack"
 
 #include "cocos2d.h"
+#include "cocos-ext.h"
+#include "json.h"
+
+USING_NS_CC;
+USING_NS_CC_EXT;
 
 class QimiPlatformIOS;
 class QimiPlatformAndroid;
@@ -63,6 +68,7 @@ public:
      */
     void QimiRegister();
     void QimiLogin();
+    void QimiLogin(std::string userName, std::string pass);
     
     /*存入游戏的KEY值*/
     void setQimiGameKey(std::string key){m_key = key;};
@@ -97,10 +103,12 @@ public:
     void registerPayCallBack(cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call);
     void registerLoginCallBack(cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call);
     void registerRegCallBack(cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call);
+    void registerLoginAPICallback(cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call);
     
     void callPayBack(cocos2d::CCObject* obj);
     void callLoginBack(cocos2d::CCObject* obj);
     void callRegBack(cocos2d::CCObject* obj);
+    void callLoginAPIBack(cocos2d::CCObject* obj);
     
 private:
     QimiPlatformIOS*     m_pQimiPlatformIOS;
@@ -120,10 +128,15 @@ private:
     cocos2d::CCObject* m_PayTarget;
     cocos2d::SEL_CallFuncO m_payCall;
     
+    cocos2d::CCObject* m_LoginAPITarget;
+    cocos2d::SEL_CallFuncO m_LoginAPICall;
+    
 private:
     bool isCheckAppId();//检查是否获得APP ID
     bool isCheckAppKey();//检查是否已获得APP KEY
     
+    void qimiUserLogin(std::string username, std::string pass);
+    void loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response);
 };
 
 #endif /* defined(__Pay__QimiPlatform__) */

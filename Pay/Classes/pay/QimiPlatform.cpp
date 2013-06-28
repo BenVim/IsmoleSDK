@@ -7,8 +7,6 @@
 //
 
 #include "QimiPlatform.h"
-#include "QimiPlatformIOS.h"
-#include "QimiPlatformAndroid.h"
 #include "QimiParamInfo.h"
 #include "StageScene.h"
 #include "IntObject.h"
@@ -16,17 +14,18 @@
 #include "QimiLoginView.h"
 #include "QimiRegisterView.h"
 #include "QimiUserModel.h"
-
+#include "QimiMD5.h"
 #include "md5c.h"
-
+#include "RequestLoadingView.h"
+#include "GameUtils.h"
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-
+#include "QimiPlatformIOS.h"
 
 #endif // CC_TARGET_PLATFORM == CC_PLATFORM_IOS
 
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-
+#include "QimiPlatformAndroid.h"
 
 #endif // CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 
@@ -81,7 +80,6 @@ void QimiPlatform::openGameWeb(std::string webUrl)
     #endif
 }
 
-
 void QimiPlatform::openAlertDailog(std::string title, std::string msg)
 {
     #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
@@ -114,6 +112,18 @@ void QimiPlatform::QimiLogin()
     pLoginView->setPosition(ccp(0, 0));
 }
 
+void QimiPlatform::QimiLogin(std::string userName, std::string pass)
+{
+    if (!isLogined())
+    {
+        qimiUserLogin(userName, pass);
+    }
+    else
+    {
+        //已经登录
+    }
+}
+
 void QimiPlatform::loginOut()
 {
     if (m_pQimiUserModel !=NULL) {
@@ -141,6 +151,12 @@ void QimiPlatform::registerRegCallBack(cocos2d::CCObject* target, cocos2d::SEL_C
     m_RegCall = call;
 }
 
+void QimiPlatform::registerLoginAPICallback(cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call)
+{
+    m_LoginAPITarget = target;
+    m_LoginAPICall = call;
+}
+
 void QimiPlatform::callPayBack(CCObject* obj)
 {
     if (m_payCall && m_PayTarget)
@@ -165,6 +181,14 @@ void QimiPlatform::callRegBack(cocos2d::CCObject* obj)
     }
 }
 
+void QimiPlatform::callLoginAPIBack(cocos2d::CCObject *obj)
+{
+    if (m_LoginAPITarget && m_LoginAPICall)
+    {
+        (m_LoginAPITarget->* m_LoginAPICall)(obj);
+    }
+}
+
 /*检测是否已登录*/
 bool QimiPlatform::isLogined()
 {
@@ -185,4 +209,99 @@ bool QimiPlatform::isCheckAppKey()
 {
     return m_key.empty() ? false : true;
 }//检查是否已获得APP KEY
+
+void QimiPlatform::qimiUserLogin(std::string userName, std::string userpass)
+{
+    if (!userName.empty() && !userpass.empty())
+    {
+        char sign[255];
+        sprintf(sign, "appid=%ddo=loginemail=%smod=Userpassword=%s%s",
+                QimiPlatform::shareQimiPlatform()->getQimiGameAppId(),
+                userName.c_str(),
+                userpass.c_str(),
+                QimiPlatform::shareQimiPlatform()->getQimiGameKey().c_str()
+                );
+        QimiMD5 md5;
+        md5.update(sign);
+        CCLog("md5str==%s",sign);
+        std::string md5tolower = md5.toString();
+        std::string url = std::string(QIMI_API);
+        
+        CCHttpRequest* request = new CCHttpRequest();
+        request->setUrl(url.c_str());
+        request->setRequestType(CCHttpRequest::kHttpPost);
+        request->setResponseCallback(this, httpresponse_selector(QimiPlatform::loginSucceed));
+        
+        CCString* postDataStr = CCString::createWithFormat("sign=%s&appid=%d&mod=User&do=login&email=%s&password=%s",
+                                                           md5tolower.c_str(),
+                                                           QimiPlatform::shareQimiPlatform()->getQimiGameAppId(),
+                                                           userName.c_str(),
+                                                           userpass.c_str());
+        const char* postData = postDataStr->getCString();
+        CCLog("postData=%s", postData);
+        request->setRequestData(postData, strlen(postData));
+        request->setTag("POST test1");
+        CCHttpClient::getInstance()->send(request);
+        request->release();
+        
+        RequestLoadingView* mask = RequestLoadingView::create();
+        mask->setTag(100000);
+        StageScene::shareStageScene()->m_DialogContainer->addChild(mask);
+    }
+
+}
+
+void QimiPlatform::loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response)
+{
+    CCNode* node = StageScene::shareStageScene()->m_DialogContainer->getChildByTag(100000);
+    if (node!=NULL)
+    {
+        node->removeFromParentAndCleanup(true);
+    }
+    
+    Json::Value root = GameUtils::getResponseData(response);
+    if (root!=NULL && !root.isNull())
+    {
+        root["status"];
+        int status;
+        CC_GAME_JSON_ADD(root, isInt, status, "status", asInt);
+        //CCLog("status%d", status);
+        
+        if (status == 100)
+        {
+            Json::Value data = root["data"];
+            if (!data.isNull())
+            {
+                QimiUserModel* pQimiUserModel = QimiUserModel::create();
+                pQimiUserModel->initData(data);
+                pQimiUserModel->retain();
+                QimiPlatform::shareQimiPlatform()->setQimiUserModel(pQimiUserModel);
+            }
+            //QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "登录成功");
+            
+            CCInteger* obj = CCInteger::create(1);
+            QimiPlatform::shareQimiPlatform()->callLoginBack(obj);
+            
+            //登录成功后会保存帐号和密码。
+            CCInteger* pObj = CCInteger::create(1);
+            callLoginAPIBack(pObj);
+            //this->removeFromParentAndCleanup(true);
+        }
+        else
+        {
+            int errCode;
+            std::string msg;
+            if (!root.isNull())
+            {
+                CC_GAME_JSON_ADD(root, isInt, errCode, "status", asInt);
+                CC_GAME_JSON_ADD(root, isString, msg, "error", asString);
+            }
+            CCInteger* pObj = CCInteger::create(0);
+            callLoginAPIBack(pObj);
+            
+        }
+    }
+
+}
+
 

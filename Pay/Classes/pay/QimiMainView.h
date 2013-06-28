@@ -37,9 +37,19 @@ private:
     int m_cash;
     std::string m_gameInfo;
     
+    CCLabelTTF* m_pPassThroughNumTxt;
+    CCLabelTTF* m_pMcashNumTxt;
+    CCLabelTTF* m_pProductNameTxt;
+    CCLabelTTF* m_pGameNameTxt ;
+    CCLabelTTF* m_pMcashNumLastTxt;
+    CCLabelTTF* m_pProductNameLastTxt;
+    
+    CCControlButton* m_pQimiPayBtn;
     
 private:
+    
     void onLoadRequestSucssful(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response);
+    void qimiConsumeMcashRequestSucssful(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response);
     void onUpdataView();
     void openPrepaidCard(int kind);
     void alipayOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
@@ -47,6 +57,7 @@ private:
     void LtOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void DxOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void backOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
+    void qimiPay(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
 
 };
 

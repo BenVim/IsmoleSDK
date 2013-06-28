@@ -32,6 +32,9 @@ bool HelloWorld::init()
     }
     
     
+    QimiParamInfo* paramInfo = QimiParamInfo::create(21, 15, "7a92bba4670d479c5514720c1cf46aab");
+    QimiPlatform::shareQimiPlatform()->setParamInfo(paramInfo);
+    
     CCControlButton* backBtn = CCControlButton::create(CCScale9Sprite::create("btn_fanhui.png"));
     backBtn->setPreferredSize(CCSizeMake(101, 51));
     this->addChild(backBtn);
@@ -49,6 +52,10 @@ bool HelloWorld::init()
     backBtn1->addTargetWithActionForControlEvents(this,
                                                  cccontrol_selector(HelloWorld::login),
                                                  CCControlEventTouchUpInside);
+    
+    
+
+    
     return true;
 }
 
@@ -62,8 +69,7 @@ void HelloWorld::menuCloseCallback(cocos2d::CCNode *pSender, cocos2d::extension:
      * sId 
      * appkey
      */
-    QimiParamInfo* paramInfo = QimiParamInfo::create(21, 15, "7a92bba4670d479c5514720c1cf46aab");
-    QimiPlatform::shareQimiPlatform()->setParamInfo(paramInfo);
+    
     
     
     CCLog("是否登录 %d", QimiPlatform::shareQimiPlatform()->isLogined());
@@ -81,6 +87,23 @@ void HelloWorld::menuCloseCallback(cocos2d::CCNode *pSender, cocos2d::extension:
 void HelloWorld::login(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)
 {
     CCLog("是否登录 %d", QimiPlatform::shareQimiPlatform()->isLogined());
+    QimiPlatform::shareQimiPlatform()->registerLoginAPICallback(this, callfuncO_selector(HelloWorld::logined));
+    QimiPlatform::shareQimiPlatform()->QimiLogin(std::string("ddxytest@ismole.com"), std::string("111111"));
+    
+}
+
+void HelloWorld::logined(CCObject* obj)
+{
+    CCInteger* pObj = dynamic_cast<CCInteger*>(obj);
+    if (pObj->getValue() ==1)
+    {
+        CCLog("+成功+");
+    }
+    else
+    {
+        CCLog("+失败+");
+    }
+    
 }
 
 

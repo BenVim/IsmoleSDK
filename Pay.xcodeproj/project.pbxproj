@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B592E11C177D46660021E450 /* btn_qimizf.png in Resources */ = {isa = PBXBuildFile; fileRef = B592E11B177D46660021E450 /* btn_qimizf.png */; };
 		B5BEE18A177C18D200584945 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BEE189177C18D200584945 /* QuartzCore.framework */; };
 		B5BEE18C177C18D200584945 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BEE18B177C18D200584945 /* OpenGLES.framework */; };
 		B5BEE18E177C18D200584945 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BEE18D177C18D200584945 /* OpenAL.framework */; };
@@ -334,6 +335,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B592E11B177D46660021E450 /* btn_qimizf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_qimizf.png; sourceTree = "<group>"; };
 		B5BEE186177C18D200584945 /* Pay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BEE189177C18D200584945 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		B5BEE18B177C18D200584945 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -2275,6 +2277,7 @@
 		B5BEE537177C1ADB00584945 /* pay */ = {
 			isa = PBXGroup;
 			children = (
+				B592E11B177D46660021E450 /* btn_qimizf.png */,
 				B5BEE538177C1ADB00584945 /* bg_112x46.png */,
 				B5BEE539177C1ADB00584945 /* bg_30x30_kahao.png */,
 				B5BEE53A177C1ADB00584945 /* bg_40x40.png */,
@@ -2638,6 +2641,7 @@
 				B5BEE65C177C270C00584945 /* json_internalmap.inl in Resources */,
 				B5BEE65F177C270C00584945 /* json_valueiterator.inl in Resources */,
 				B5BEE661177C270C00584945 /* sconscript in Resources */,
+				B592E11C177D46660021E450 /* btn_qimizf.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3075,6 +3079,7 @@
 				B5BEE535177C18E500584945 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

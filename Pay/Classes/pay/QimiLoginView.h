@@ -29,13 +29,6 @@ public:
     void registerOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void backOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     
-    virtual void onEnter();
-    virtual void onExit();
-    virtual bool ccTouchBegan(CCTouch *pTouch, CCEvent *pEvent){return true;};
-    virtual void ccTouchMoved(CCTouch *pTouch, CCEvent *pEvent){};
-    virtual void ccTouchEnded(CCTouch *pTouch, CCEvent *pEvent){};
-    virtual void ccTouchCancelled(CCTouch *pTouch, CCEvent *pEvent){};
-    
 private:
     
     

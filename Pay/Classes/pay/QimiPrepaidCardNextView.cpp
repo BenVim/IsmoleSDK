@@ -457,9 +457,6 @@ void QimiPrepaidCardNextView::requestSucssful(cocos2d::extension::CCHttpClient *
     //std::transform(md5tolower.begin(), md5tolower.end(), md5tolower.begin(), ::tolower);
     pOder->setMd5String(md5tolower);
     reqeuestPay(pOder);
-    
-   
-    
 }
 
 void QimiPrepaidCardNextView::reqeuestPay(PrepaidCardOrder *pOrder)

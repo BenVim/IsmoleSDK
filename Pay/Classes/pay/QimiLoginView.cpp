@@ -136,11 +136,21 @@ bool QimiLoginView::init()
     m_pPassWorld->setPosition(ccp(247, 391));
     m_pPassWorld->setFontColor(ccc3(178,178,178));
     m_pPassWorld->setMaxLength(50);
-    m_pPassWorld->setText("您的登录密码");
+    
     m_pPassWorld->setReturnType(kKeyboardReturnTypeDone);
     m_pPassWorld->setInputFlag(kEditBoxInputFlagPassword);
     m_pPassWorld->setTouchPriority(-1002);
     addChild(m_pPassWorld);
+    m_pPassWorld->setText("您的登录密码");
+    
+    std::string n = CCUserDefault::sharedUserDefault()->getStringForKey("QimiSDKUserName");
+    std::string p = CCUserDefault::sharedUserDefault()->getStringForKey("QimiSDKUserPass");
+    
+    if(!n.empty() && !p.empty())
+    {
+        m_pUserName->setText(n.c_str());
+        m_pPassWorld->setText(p.c_str());
+    }
     
     //////
     isSelelcted = false;
@@ -168,19 +178,6 @@ bool QimiLoginView::init()
     pFogetMenu->setTouchPriority(-1003);
     return true;
 }
-
-void QimiLoginView::onEnter()
-{
-    CCLayer::onEnter();
-    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, -1000, true);
-}
-
-void QimiLoginView::onExit()
-{
-    CCLayer::onExit();
-    CCDirector::sharedDirector()->getTouchDispatcher()->removeDelegate(this);
-}
-
 
 void QimiLoginView::loginOnclick(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)
 {
@@ -256,6 +253,17 @@ void QimiLoginView::loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos
             
             CCInteger* obj = CCInteger::create(1);
             QimiPlatform::shareQimiPlatform()->callLoginBack(obj);
+            
+            //登录成功后会保存帐号和密码。
+            if (isSelelcted)
+            {
+                std::string userName = m_pUserName->getText();
+                std::string userpass = m_pPassWorld->getText();
+                
+                CCUserDefault::sharedUserDefault()->setStringForKey("QimiSDKUserName", userName.c_str());
+                CCUserDefault::sharedUserDefault()->setStringForKey("QimiSDKUserPass", userpass.c_str());
+            }
+            
             this->removeFromParentAndCleanup(true);
         }
         else
