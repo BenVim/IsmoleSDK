@@ -68,7 +68,7 @@ public:
      */
     void QimiRegister();
     void QimiLogin();
-    void QimiLogin(std::string userName, std::string pass);
+    void QimiLogin(std::string userName, std::string pass, cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call);
     
     /*存入游戏的KEY值*/
     void setQimiGameKey(std::string key){m_key = key;};
@@ -103,7 +103,6 @@ public:
     void registerPayCallBack(cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call);
     void registerLoginCallBack(cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call);
     void registerRegCallBack(cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call);
-    void registerLoginAPICallback(cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call);
     
     void callPayBack(cocos2d::CCObject* obj);
     void callLoginBack(cocos2d::CCObject* obj);

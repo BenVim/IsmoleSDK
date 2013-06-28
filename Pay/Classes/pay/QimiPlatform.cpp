@@ -112,8 +112,11 @@ void QimiPlatform::QimiLogin()
     pLoginView->setPosition(ccp(0, 0));
 }
 
-void QimiPlatform::QimiLogin(std::string userName, std::string pass)
+void QimiPlatform::QimiLogin(std::string userName, std::string pass, cocos2d::CCObject *target, cocos2d::SEL_CallFuncO call)
 {
+    m_LoginAPITarget = target;
+    m_LoginAPICall = call;
+    
     if (!isLogined())
     {
         qimiUserLogin(userName, pass);
@@ -149,12 +152,6 @@ void QimiPlatform::registerRegCallBack(cocos2d::CCObject* target, cocos2d::SEL_C
 {
     m_RegTarget = target;
     m_RegCall = call;
-}
-
-void QimiPlatform::registerLoginAPICallback(cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call)
-{
-    m_LoginAPITarget = target;
-    m_LoginAPICall = call;
 }
 
 void QimiPlatform::callPayBack(CCObject* obj)
@@ -248,7 +245,6 @@ void QimiPlatform::qimiUserLogin(std::string userName, std::string userpass)
         mask->setTag(100000);
         StageScene::shareStageScene()->m_DialogContainer->addChild(mask);
     }
-
 }
 
 void QimiPlatform::loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response)
