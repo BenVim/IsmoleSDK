@@ -87,8 +87,8 @@ void HelloWorld::menuCloseCallback(cocos2d::CCNode *pSender, cocos2d::extension:
 void HelloWorld::login(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)
 {
     CCLog("是否登录 %d", QimiPlatform::shareQimiPlatform()->isLogined());
-    QimiPlatform::shareQimiPlatform()->registerLoginAPICallback(this, callfuncO_selector(HelloWorld::logined));
-    QimiPlatform::shareQimiPlatform()->QimiLogin(std::string("ddxytest@ismole.com"), std::string("111111"));
+    
+    QimiPlatform::shareQimiPlatform()->QimiLogin(std::string("ddxytest@ismole.com"), std::string("111111"), this, callfuncO_selector(HelloWorld::logined));
     
 }
 
