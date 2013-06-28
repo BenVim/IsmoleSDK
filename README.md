@@ -153,6 +153,7 @@ IsmoleSDK
 	* pass 密码
 	* target 回调注册traget
 	* call 回调函数指针 不需要回调target和call设置为NULL
+	* 回调函数返回的类型 成功则返回的是CCString类型 value:"1"则为成功 登录失败则返回的错误提示：例如“用户名不正确！”
 	*/
 	void QimiLogin(std::string userName, std::string pass, cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call);
 	

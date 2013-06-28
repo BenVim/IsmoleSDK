@@ -273,13 +273,8 @@ void QimiPlatform::loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos2
                 pQimiUserModel->retain();
                 QimiPlatform::shareQimiPlatform()->setQimiUserModel(pQimiUserModel);
             }
-            //QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "登录成功");
-            
-            CCInteger* obj = CCInteger::create(1);
-            QimiPlatform::shareQimiPlatform()->callLoginBack(obj);
-            
             //登录成功后会保存帐号和密码。
-            CCInteger* pObj = CCInteger::create(1);
+            CCString* pObj = CCString::create("1");
             callLoginAPIBack(pObj);
             //this->removeFromParentAndCleanup(true);
         }
@@ -292,8 +287,8 @@ void QimiPlatform::loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos2
                 CC_GAME_JSON_ADD(root, isInt, errCode, "status", asInt);
                 CC_GAME_JSON_ADD(root, isString, msg, "error", asString);
             }
-            CCInteger* pObj = CCInteger::create(0);
-            callLoginAPIBack(pObj);
+            CCString* msgObj = CCString::create(msg);
+            callLoginAPIBack(msgObj);
             
         }
     }
