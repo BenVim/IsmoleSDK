@@ -147,6 +147,15 @@ IsmoleSDK
 	/**使用方法**/
 	QimiPlatform::shareQimiPlatform()->getQimiUserModel();
 
+#####QimiSDK登录接口
+	/**
+	* userName 用户名
+	* pass 密码
+	* target 回调注册traget
+	* call 回调函数指针 不需要回调target和call设置为NULL
+	*/
+	void QimiLogin(std::string userName, std::string pass, cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call);
+	
 
 
 
