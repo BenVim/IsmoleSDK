@@ -366,6 +366,8 @@ void QimiAlipayView::loadAlixPay()
 void QimiAlipayView::backOnClick(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)
 {
     this->removeFromParentAndCleanup(true);
+    
+
 }
 
 
