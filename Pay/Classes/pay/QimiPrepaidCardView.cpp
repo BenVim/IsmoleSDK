@@ -15,7 +15,7 @@
 #include "QimiPlatformIOS.h"
 #include "QimiPrepaidCardNextView.h"
 #include "StageScene.h"
-#include <iostream.h>
+
 #include "UIMaskLayerView.h"
 
 
@@ -248,7 +248,6 @@ void QimiPrepaidCardView::selected(cocos2d::CCNode* pSender, cocos2d::extension:
 {
     CCControlButton* btn = dynamic_cast<CCControlButton*>(pSender);
     int pay = btn->getTag();
-    //CCLog("%d", pay);
     upDataView(pay);
 }
 

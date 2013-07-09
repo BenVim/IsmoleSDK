@@ -16,6 +16,7 @@
 #include "cocos2d.h"
 #include "cocos-ext.h"
 #include "json.h"
+#include "Qimi.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -69,7 +70,7 @@ public:
     void QimiRegister();
     void QimiLogin();
     void QimiLogin(std::string userName, std::string pass, cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call);
-    
+    void QimiRegister(std::string userName, std::string userPass);
     /*存入游戏的KEY值*/
     void setQimiGameKey(std::string key){m_key = key;};
     /*存入游戏的UId*/
@@ -109,12 +110,15 @@ public:
     void callRegBack(cocos2d::CCObject* obj);
     void callLoginAPIBack(cocos2d::CCObject* obj);
     
+    CC_GAME_GET_SET(std::string, m_appScheme, AppScheme);
+    
 private:
     QimiPlatformIOS*     m_pQimiPlatformIOS;
     QimiPlatformAndroid* m_pQimiPlatformAndroid;
     QimiUserModel*       m_pQimiUserModel;
     std::string          m_key; //游戏的KEY值
     std::string          m_uId; //uid
+    std::string          m_appScheme;//游戏scheme
     int                  m_sId; //用户ID
     int                  m_appid; //游戏的APPID
     
@@ -136,6 +140,9 @@ private:
     
     void qimiUserLogin(std::string username, std::string pass);
     void loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response);
+    
+    void registerOnClick(std::string userName, std::string usePass);
+    void registerSucceed(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response);
 };
 
 #endif /* defined(__Pay__QimiPlatform__) */

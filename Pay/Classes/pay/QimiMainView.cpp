@@ -109,21 +109,21 @@ bool QimiMainView::init()
     
     
     
-    CCLabelTTF* txt_zhanghuyuer = CCLabelTTF::create("帐户余额：", "Helvetica", 25);
+    CCLabelTTF* txt_zhanghuyuer = CCLabelTTF::create("充值金额：", "Helvetica", 25);
     this->addChild(txt_zhanghuyuer);
     txt_zhanghuyuer->setColor(ccc3(0, 0, 0));
     txt_zhanghuyuer->setPosition(ccp(33, 561));
     txt_zhanghuyuer->setAnchorPoint(ccp(0, 0.5));
     
     
-    CCLabelTTF* txt_productName = CCLabelTTF::create("支付额度：", "Helvetica", 25);
+    CCLabelTTF* txt_productName = CCLabelTTF::create("游戏名称：", "Helvetica", 25);
     this->addChild(txt_productName);
     txt_productName->setColor(ccc3(0, 0, 0));
     txt_productName->setPosition(ccp(33, 523));
     txt_productName->setAnchorPoint(ccp(0, 0.5));
     
     
-    CCLabelTTF* txt_GameName = CCLabelTTF::create("游戏名称：", "Helvetica", 25);
+    CCLabelTTF* txt_GameName = CCLabelTTF::create("充值说明：1人民币=10个游戏币", "Helvetica", 25);
     this->addChild(txt_GameName);
     txt_GameName->setColor(ccc3(0, 0, 0));
     txt_GameName->setPosition(ccp(33, 485));
@@ -142,45 +142,45 @@ bool QimiMainView::init()
     m_pPassThroughNumTxt->setPosition(ccp(150, 599));
     m_pPassThroughNumTxt->setAnchorPoint(ccp(0, 0.5));
     
-    m_pMcashNumTxt = CCLabelTTF::create("0","Helvetica", 24);
-    this->addChild(m_pMcashNumTxt);
-    m_pMcashNumTxt->setColor(ccc3(0, 0, 0));
-    m_pMcashNumTxt->setPosition(ccp(150, 561));
-    m_pMcashNumTxt->setAnchorPoint(ccp(0, 0.5));
+//    m_pMcashNumTxt = CCLabelTTF::create("0","Helvetica", 24);
+//    this->addChild(m_pMcashNumTxt);
+//    m_pMcashNumTxt->setColor(ccc3(0, 0, 0));
+//    m_pMcashNumTxt->setPosition(ccp(150, 561));
+//    m_pMcashNumTxt->setAnchorPoint(ccp(0, 0.5));
     
     m_pProductNameTxt = CCLabelTTF::create("0","Helvetica", 24);
     this->addChild(m_pProductNameTxt);
     m_pProductNameTxt->setColor(ccc3(0, 0, 0));
-    m_pProductNameTxt->setPosition(ccp(150, 523));
+    m_pProductNameTxt->setPosition(ccp(150, 561));
     m_pProductNameTxt->setAnchorPoint(ccp(0, 0.5));
     
     
     m_pGameNameTxt = CCLabelTTF::create(m_gameInfo.c_str(), "Helvetica", 24);
     this->addChild(m_pGameNameTxt);
     m_pGameNameTxt->setColor(ccc3(0, 0, 0));
-    m_pGameNameTxt->setPosition(ccp(150, 485));
+    m_pGameNameTxt->setPosition(ccp(150, 523));
     m_pGameNameTxt->setAnchorPoint(ccp(0, 0.5));
     
     
-    m_pMcashNumLastTxt = CCLabelTTF::create("个奇米币", "Helvetica", 24);
-    this->addChild(m_pMcashNumLastTxt);
-    m_pMcashNumLastTxt->setColor(ccc3(0, 0, 0));
-    m_pMcashNumLastTxt->setPosition(ccp(211, 561));
-    m_pMcashNumLastTxt->setAnchorPoint(ccp(0, 0.5));
+//    m_pMcashNumLastTxt = CCLabelTTF::create("个奇米币", "Helvetica", 24);
+//    this->addChild(m_pMcashNumLastTxt);
+//    m_pMcashNumLastTxt->setColor(ccc3(0, 0, 0));
+//    m_pMcashNumLastTxt->setPosition(ccp(211, 561));
+//    m_pMcashNumLastTxt->setAnchorPoint(ccp(0, 0.5));
     
     
-    m_pQimiPayBtn = CCControlButton::create(CCScale9Sprite::create("btn_qimizf.png"));
-    m_pQimiPayBtn->setPreferredSize(CCSizeMake(125, 40));
-    m_pQimiPayBtn->setTouchPriority(-1000);
-    this->addChild(m_pQimiPayBtn);
-    m_pQimiPayBtn->setPosition(ccp(m_pMcashNumLastTxt->getPositionX()+m_pMcashNumLastTxt->getContentSize().width+10, 565));
-    m_pQimiPayBtn->addTargetWithActionForControlEvents(this,
-                                                    cccontrol_selector(QimiMainView::qimiPay),
-                                                    CCControlEventTouchUpInside);
+//    m_pQimiPayBtn = CCControlButton::create(CCScale9Sprite::create("btn_qimizf.png"));
+//    m_pQimiPayBtn->setPreferredSize(CCSizeMake(125, 40));
+//    m_pQimiPayBtn->setTouchPriority(-1000);
+//    this->addChild(m_pQimiPayBtn);
+//    m_pQimiPayBtn->setPosition(ccp(m_pMcashNumLastTxt->getPositionX()+m_pMcashNumLastTxt->getContentSize().width+10, 565));
+//    m_pQimiPayBtn->addTargetWithActionForControlEvents(this,
+//                                                    cccontrol_selector(QimiMainView::qimiPay),
+//                                                    CCControlEventTouchUpInside);
     
     
     
-    m_pProductNameLastTxt = CCLabelTTF::create("个奇米币", "Helvetica", 24);
+    m_pProductNameLastTxt = CCLabelTTF::create("游戏币", "Helvetica", 24);
     this->addChild(m_pProductNameLastTxt);
     m_pProductNameLastTxt->setColor(ccc3(0, 0, 0));
     m_pProductNameLastTxt->setPosition(ccp(211, 523));
@@ -306,24 +306,25 @@ void QimiMainView::onLoadRequestSucssful(cocos2d::extension::CCHttpClient *sende
 void QimiMainView::onUpdataView()
 {
     m_pPassThroughNumTxt->setString(CCString::createWithFormat("%s", m_uId.c_str())->getCString());
-    m_pMcashNumTxt->setString(CCString::createWithFormat("%d", m_cash)->getCString());
+    //m_pMcashNumTxt->setString(CCString::createWithFormat("%d", m_cash)->getCString());
     m_pProductNameTxt->setString(CCString::createWithFormat("%d", m_money)->getCString());
     m_pGameNameTxt->setString(m_gameInfo.c_str());
-    float posX = m_pMcashNumTxt->getPosition().x + m_pMcashNumTxt->getContentSize().width;
-    float posY = m_pMcashNumTxt->getPosition().y;
-    m_pMcashNumLastTxt->setPosition(ccp(posX, posY));
-    posX = m_pProductNameTxt->getPosition().x + m_pProductNameTxt->getContentSize().width;
-    posY = m_pProductNameTxt->getPosition().y;
+    //float posX = m_pMcashNumTxt->getPosition().x + m_pMcashNumTxt->getContentSize().width;
+    //float posY = m_pMcashNumTxt->getPosition().y;
+    //m_pMcashNumLastTxt->setPosition(ccp(posX, posY));
+    float posX = m_pProductNameTxt->getPosition().x + m_pProductNameTxt->getContentSize().width;
+    float posY = m_pProductNameTxt->getPosition().y;
     m_pProductNameLastTxt->setPosition(ccp(posX, posY));
     
-    m_pQimiPayBtn->setPosition(ccp(m_pMcashNumLastTxt->getPositionX()+m_pMcashNumLastTxt->getContentSize().width+75, 565));
+    //m_pQimiPayBtn->setPosition(ccp(m_pMcashNumLastTxt->getPositionX()+m_pMcashNumLastTxt->getContentSize().width+75, 565));
 }
 
 void QimiMainView::alipayOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
 {
-    //QimiAlipayView
+    std::string appScheme = QimiPlatform::shareQimiPlatform()->getAppScheme();
+    
     QimiAlipayView* pQimiAlipayView = QimiAlipayView::create();
-    pQimiAlipayView->initData(m_uId, m_sId, m_key, m_money);
+    pQimiAlipayView->initData(m_uId, m_sId, m_key, m_money, appScheme, m_gameInfo); //std::string appScheme, std::string productName);
     StageScene::shareStageScene()->m_DialogContainer->addChild(pQimiAlipayView);
 }
 

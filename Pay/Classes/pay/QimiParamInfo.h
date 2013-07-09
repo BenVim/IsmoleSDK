@@ -18,10 +18,10 @@ USING_NS_CC;
 class QimiParamInfo : public cocos2d::CCObject
 {
 public:
-    static QimiParamInfo *create(int appId, int sId, std::string key)
+    static QimiParamInfo *create(int appId, int sId, std::string key, std::string appScheme)
     {
         QimiParamInfo *pRet = new QimiParamInfo();
-        if (pRet && pRet->init(appId, sId, key))
+        if (pRet && pRet->init(appId, sId, key, appScheme))
         {
             pRet->autorelease();
             return pRet;
@@ -30,23 +30,25 @@ public:
         return NULL;
     }
     
-    bool init(int appId, int sId, std::string key)
+    bool init(int appId, int sId, std::string key, std::string appScheme)
     {
         m_appId     = appId;
         m_sId       = sId;
         m_appKey    = key;
-        
+        m_appScheme = appScheme;
         return true;
     }
 
     CC_GAME_GET_SET(int, m_appId, AppID);
     CC_GAME_GET_SET(int, m_sId, SID);
     CC_GAME_GET_SET(std::string, m_appKey, AppKey);
+    CC_GAME_GET_SET(std::string, m_appScheme, AppScheme);
 
 private:
     int m_appId;
     int m_sId;
     std::string m_appKey;
+    std::string m_appScheme;
 
 
 };

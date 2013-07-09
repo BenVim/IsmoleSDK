@@ -25,7 +25,7 @@ public:
     bool init();
     
     void initView();
-    void initData(std::string uId, int sId, std::string key, int money);
+    void initData(std::string uId, int sId, std::string key, int money, std::string appScheme, std::string productName);
     void rechargeOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void selected(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void backOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
@@ -33,28 +33,26 @@ public:
     
 private:
     
+    int         m_money;
+    int         m_cash;
+    int         m_sId;
+    bool        isSelelcted;
     std::string m_uId;
-    int m_sId;
     std::string m_key;
-    int m_money;
-    int m_cash;
-    CCArray* m_pButtonList;
     std::string m_oderId;
+    std::string m_appScheme;
+    std::string m_productName;
     
+    CCArray*    m_pButtonList;
     CCLabelTTF* m_pMcashNumTxt;
     CCLabelTTF* m_pMcashNumLastTxt;
-    
-    
-    CCEditBox* m_pEditName;
-    
-    bool isSelelcted;
+    CCEditBox*  m_pEditName;
     
 private:
     void upDataView(int pay);
     void upSelectState(int index);
     void onLoadOrderSucssful(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response);
     void loadAlixPay();
-
 };
 
 

@@ -20,7 +20,7 @@ bool UIMaskLayerView::init()
 {
     CCSize size = CCDirector::sharedDirector()->getWinSize();
     
-    CCLayerColor* clayer = CCLayerColor::create(ccc4(88, 88, 88, 244), size.width, size.height);
+    CCLayerColor* clayer = CCLayerColor::create(ccc4(88, 88, 88, 88), size.width, size.height);
     this->addChild(clayer);
     return true;
 }

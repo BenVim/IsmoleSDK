@@ -298,7 +298,6 @@
 		B5BEE5D6177C1AFD00584945 /* openssl_wrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BEE5CD177C1AFD00584945 /* openssl_wrapper.m */; };
 		B5BEE5D7177C1AFD00584945 /* RSADataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BEE5CF177C1AFD00584945 /* RSADataSigner.m */; };
 		B5BEE5D8177C1AFD00584945 /* RSADataVerifier.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BEE5D1177C1AFD00584945 /* RSADataVerifier.m */; };
-		B5BEE62D177C1BE200584945 /* DataRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BEE5F2177C1BE200584945 /* DataRequest.cpp */; };
 		B5BEE62E177C1BE200584945 /* DataSigner.m in Sources */ = {isa = PBXBuildFile; fileRef = B5BEE5F5177C1BE200584945 /* DataSigner.m */; };
 		B5BEE62F177C1BE200584945 /* DataVerifier.mm in Sources */ = {isa = PBXBuildFile; fileRef = B5BEE5F7177C1BE200584945 /* DataVerifier.mm */; };
 		B5BEE630177C1BE200584945 /* DictUtility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BEE5F8177C1BE200584945 /* DictUtility.cpp */; };
@@ -332,6 +331,8 @@
 		B5BEE661177C270C00584945 /* sconscript in Resources */ = {isa = PBXBuildFile; fileRef = B5BEE65A177C270C00584945 /* sconscript */; };
 		B5BEE665177C35F500584945 /* UIMaskLayerView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BEE663177C35F100584945 /* UIMaskLayerView.cpp */; };
 		B5BEE668177C578300584945 /* RequestLoadingView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BEE666177C578000584945 /* RequestLoadingView.cpp */; };
+		B5D4DC83178BE21C00F1CE1B /* DataRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D4DC7F178BE21B00F1CE1B /* DataRequest.cpp */; };
+		B5D4DC84178BE21C00F1CE1B /* QimiAlipayDailog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D4DC80178BE21B00F1CE1B /* QimiAlipayDailog.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1006,8 +1007,6 @@
 		B5BEE5EF177C1BE200584945 /* AlixPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPay.h; sourceTree = "<group>"; };
 		B5BEE5F0177C1BE200584945 /* AlixPayOrder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayOrder.h; sourceTree = "<group>"; };
 		B5BEE5F1177C1BE200584945 /* AlixPayResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlixPayResult.h; sourceTree = "<group>"; };
-		B5BEE5F2177C1BE200584945 /* DataRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataRequest.cpp; sourceTree = "<group>"; };
-		B5BEE5F3177C1BE200584945 /* DataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataRequest.h; sourceTree = "<group>"; };
 		B5BEE5F4177C1BE200584945 /* DataSigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataSigner.h; sourceTree = "<group>"; };
 		B5BEE5F5177C1BE200584945 /* DataSigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataSigner.m; sourceTree = "<group>"; };
 		B5BEE5F6177C1BE200584945 /* DataVerifier.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataVerifier.h; sourceTree = "<group>"; };
@@ -1078,6 +1077,11 @@
 		B5BEE664177C35F200584945 /* UIMaskLayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIMaskLayerView.h; sourceTree = "<group>"; };
 		B5BEE666177C578000584945 /* RequestLoadingView.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RequestLoadingView.cpp; sourceTree = "<group>"; };
 		B5BEE667177C578200584945 /* RequestLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestLoadingView.h; sourceTree = "<group>"; };
+		B5D4DC7C178BE10700F1CE1B /* PlatformUtilityHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlatformUtilityHelper.h; sourceTree = "<group>"; };
+		B5D4DC7F178BE21B00F1CE1B /* DataRequest.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataRequest.cpp; sourceTree = "<group>"; };
+		B5D4DC80178BE21B00F1CE1B /* QimiAlipayDailog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QimiAlipayDailog.cpp; sourceTree = "<group>"; };
+		B5D4DC81178BE21B00F1CE1B /* DataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataRequest.h; sourceTree = "<group>"; };
+		B5D4DC82178BE21C00F1CE1B /* QimiAlipayDailog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QimiAlipayDailog.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1141,6 +1145,7 @@
 		B5BEE199177C18D200584945 /* Pay */ = {
 			isa = PBXGroup;
 			children = (
+				B5D4DC78178BE10700F1CE1B /* Platform */,
 				B5BEE19A177C18D200584945 /* Resources */,
 				B5BEE1B2177C18D200584945 /* ios */,
 				B5BEE1BB177C18D200584945 /* libs */,
@@ -2425,11 +2430,13 @@
 		B5BEE5EE177C1BE200584945 /* pay */ = {
 			isa = PBXGroup;
 			children = (
+				B5D4DC7F178BE21B00F1CE1B /* DataRequest.cpp */,
+				B5D4DC80178BE21B00F1CE1B /* QimiAlipayDailog.cpp */,
+				B5D4DC81178BE21B00F1CE1B /* DataRequest.h */,
+				B5D4DC82178BE21C00F1CE1B /* QimiAlipayDailog.h */,
 				B5BEE5EF177C1BE200584945 /* AlixPay.h */,
 				B5BEE5F0177C1BE200584945 /* AlixPayOrder.h */,
 				B5BEE5F1177C1BE200584945 /* AlixPayResult.h */,
-				B5BEE5F2177C1BE200584945 /* DataRequest.cpp */,
-				B5BEE5F3177C1BE200584945 /* DataRequest.h */,
 				B5BEE5F4177C1BE200584945 /* DataSigner.h */,
 				B5BEE5F5177C1BE200584945 /* DataSigner.m */,
 				B5BEE5F6177C1BE200584945 /* DataVerifier.h */,
@@ -2543,6 +2550,38 @@
 				B5BEE65A177C270C00584945 /* sconscript */,
 			);
 			path = lib_json;
+			sourceTree = "<group>";
+		};
+		B5D4DC78178BE10700F1CE1B /* Platform */ = {
+			isa = PBXGroup;
+			children = (
+				B5D4DC79178BE10700F1CE1B /* android */,
+				B5D4DC7D178BE10700F1CE1B /* includes */,
+			);
+			path = Platform;
+			sourceTree = "<group>";
+		};
+		B5D4DC79178BE10700F1CE1B /* android */ = {
+			isa = PBXGroup;
+			children = (
+				B5D4DC7A178BE10700F1CE1B /* jni */,
+			);
+			path = android;
+			sourceTree = "<group>";
+		};
+		B5D4DC7A178BE10700F1CE1B /* jni */ = {
+			isa = PBXGroup;
+			children = (
+				B5D4DC7C178BE10700F1CE1B /* PlatformUtilityHelper.h */,
+			);
+			path = jni;
+			sourceTree = "<group>";
+		};
+		B5D4DC7D178BE10700F1CE1B /* includes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = includes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2886,7 +2925,6 @@
 				B5BEE5D6177C1AFD00584945 /* openssl_wrapper.m in Sources */,
 				B5BEE5D7177C1AFD00584945 /* RSADataSigner.m in Sources */,
 				B5BEE5D8177C1AFD00584945 /* RSADataVerifier.m in Sources */,
-				B5BEE62D177C1BE200584945 /* DataRequest.cpp in Sources */,
 				B5BEE62E177C1BE200584945 /* DataSigner.m in Sources */,
 				B5BEE62F177C1BE200584945 /* DataVerifier.mm in Sources */,
 				B5BEE630177C1BE200584945 /* DictUtility.cpp in Sources */,
@@ -2916,6 +2954,8 @@
 				B5BEE660177C270C00584945 /* json_writer.cpp in Sources */,
 				B5BEE665177C35F500584945 /* UIMaskLayerView.cpp in Sources */,
 				B5BEE668177C578300584945 /* RequestLoadingView.cpp in Sources */,
+				B5D4DC83178BE21C00F1CE1B /* DataRequest.cpp in Sources */,
+				B5D4DC84178BE21C00F1CE1B /* QimiAlipayDailog.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

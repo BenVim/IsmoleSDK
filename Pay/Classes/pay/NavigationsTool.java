@@ -23,14 +23,13 @@ public class NavigationsTool {
 	private static WifiManager wifi;
 	private static TelephonyManager telephony;
 
-	public static void openURL(String url) {
+	public static void openWeb(String url) {
 		Intent intent = new Intent();
 		Log.e("navigations", url);
 		intent.setAction("android.intent.action.VIEW");
 		Uri content_url = Uri.parse(url);
 		intent.setData(content_url);
 		Cocos2dxActivity.getContext().startActivity(intent);
-
 	}
 
 	public static int getStringCount(String str) {

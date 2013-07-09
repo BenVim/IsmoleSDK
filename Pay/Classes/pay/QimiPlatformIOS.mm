@@ -126,7 +126,7 @@ void QimiPlatformIOS::alipayPay(std::string order,
             NSLog(@"签名错误！");
         }
 	}
-    CCLog("支付宝 money %d", price);
+    //CCLog("支付宝 money %d", price);
 }
 
 /*

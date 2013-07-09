@@ -15,6 +15,9 @@
 #include "QimiPlatformIOS.h"
 #include "UIMaskLayerView.h"
 #include "RequestLoadingView.h"
+#include "PlatformUtilityHelper.h"
+#include "QimiAlipayDailog.h"
+#include "StageScene.h"
 
 QimiAlipayView::QimiAlipayView():isSelelcted(NULL)
 {
@@ -223,12 +226,15 @@ bool QimiAlipayView::init()
 }
 
 
-void QimiAlipayView::initData(std::string uId, int sId, std::string key, int money)
+void QimiAlipayView::initData(std::string uId, int sId, std::string key, int money, std::string appScheme, std::string productName)
 {
-    m_uId = uId;
-    m_sId = sId;
-    m_key = key;
-    m_money = money;
+    m_uId           = uId;
+    m_sId           = sId;
+    m_key           = key;
+    m_money         = money;
+    m_appScheme     = appScheme;
+    m_productName   = productName;
+    
     upDataView(money);
 }
 
@@ -287,7 +293,7 @@ void QimiAlipayView::rechargeOnClick(cocos2d::CCNode* pSender, cocos2d::extensio
     
     CCString* postDataStr = CCString::createWithFormat("uId=%s&sId=%d&sign=%s&money=%d&orderType=alipay&type=0", m_uId.c_str(), m_sId, md5tolower.c_str(), m_money);
     CCLog("addOrder string ===%s", postDataStr->getCString());
-    const char* postData =postDataStr->getCString();// "visitor=cocos2d&TestSuite=Extensions Test/NetworkTest";
+    const char* postData =postDataStr->getCString();
     request->setRequestData(postData, strlen(postData));
     
     request->setTag("POST test1");
@@ -319,16 +325,42 @@ void QimiAlipayView::onLoadOrderSucssful(cocos2d::extension::CCHttpClient *sende
 
 void QimiAlipayView::loadAlixPay()
 {
+
+    
+    
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     QimiPlatformIOS* pQimiPlatformIOS = QimiPlatformIOS::create();
     pQimiPlatformIOS->retain();
-    pQimiPlatformIOS->alipayPay(m_oderId, m_money, "pro", "proDes", "pay", QIMI_ALIAPAY_SID, QIMI_ALIAPAY_USERNMAE, "qimi.com",QIMI_PRIVATE_KEY);
+    pQimiPlatformIOS->alipayPay(m_oderId,
+                                m_money,
+                                m_productName,
+                                "proDes",
+                                m_appScheme,
+                                QIMI_ALIAPAY_SID,
+                                QIMI_ALIAPAY_USERNMAE,
+                                "http://www.qimi.com/pay/alipay/notify_url.php",
+                                QIMI_PRIVATE_KEY);
     pQimiPlatformIOS->release();
 #endif
-    
+
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "android支付宝支付暂未支持！");
+    payJNI(m_oderId.c_str(),
+           m_productName.c_str(),
+           "proDes",
+           m_appScheme.c_str(),
+           QIMI_ALIAPAY_SID,
+           QIMI_ALIAPAY_USERNMAE,
+           "http://www.qimi.com/pay/alipay/notify_url.php",
+           QIMI_PRIVATE_KEY,
+           m_money);
 #endif
+    
+    //弹出小窗口。
+    QimiAlipayDailog* m_pQimiAlipayDailog = QimiAlipayDailog::create();
+    m_pQimiAlipayDailog->setPositionY(m_pQimiAlipayDailog->getPositionY()+80);
+    StageScene::shareStageScene()->m_DialogContainer->addChild(m_pQimiAlipayDailog);
+    
+    this->removeFromParentAndCleanup(true);
 }
 
 void QimiAlipayView::backOnClick(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)

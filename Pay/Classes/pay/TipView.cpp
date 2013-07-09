@@ -49,6 +49,7 @@ void TipView::show()
     m_label = CCLabelTTF::create(m_msg.c_str(), "Helvetica", 22);
     m_label->setColor(ccc3(255, 255, 255));
     m_label->setOpacity(0);
+    CCLog("m_msg%s",m_msg.c_str());
     
     CCSize mSize = m_label->getContentSize();
     CCRect imgRect = CCRectMake(0, 0, 40, 40);

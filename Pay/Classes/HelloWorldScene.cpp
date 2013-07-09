@@ -8,9 +8,6 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
-using namespace cocos2d;
-using namespace CocosDenshion;
-
 CCScene* HelloWorld::scene()
 {
     CCScene *scene = CCScene::create();
@@ -32,7 +29,7 @@ bool HelloWorld::init()
     }
     
     
-    QimiParamInfo* paramInfo = QimiParamInfo::create(21, 15, "7a92bba4670d479c5514720c1cf46aab");
+    QimiParamInfo* paramInfo = QimiParamInfo::create(21, 15, "7a92bba4670d479c5514720c1cf46aab", "pay");
     QimiPlatform::shareQimiPlatform()->setParamInfo(paramInfo);
     
     CCControlButton* backBtn = CCControlButton::create(CCScale9Sprite::create("btn_fanhui.png"));
@@ -63,13 +60,6 @@ bool HelloWorld::init()
 
 void HelloWorld::menuCloseCallback(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)
 {
-    /*平台调用方式*/
-    /* QimiParamInfo::create(int appId, int sId, std::string appKey);
-     * appId 应用ID
-     * sId 
-     * appkey
-     */
-    
     CCLog("是否登录 %d", QimiPlatform::shareQimiPlatform()->isLogined());
     if (QimiPlatform::shareQimiPlatform()->isLogined())
     {
@@ -99,7 +89,6 @@ void HelloWorld::logined(CCObject* obj)
     {
         CCLog("+失败+");
     }
-    
 }
 
 
