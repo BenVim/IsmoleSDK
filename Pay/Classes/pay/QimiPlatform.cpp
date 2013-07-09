@@ -128,6 +128,13 @@ void QimiPlatform::QimiLogin(std::string userName, std::string pass, cocos2d::CC
     }
 }
 
+void QimiPlatform::QimiRegister(std::string userName, std::string userPass, cocos2d::CCObject *target, cocos2d::SEL_CallFuncO call)
+{
+    m_regAPITarget = target;
+    m_regAPICall = call;
+    qimiRegister(userName, userPass);
+}
+
 void QimiPlatform::loginOut()
 {
     if (m_pQimiUserModel !=NULL) {
@@ -184,6 +191,14 @@ void QimiPlatform::callLoginAPIBack(cocos2d::CCObject *obj)
     if (m_LoginAPITarget && m_LoginAPICall)
     {
         (m_LoginAPITarget->* m_LoginAPICall)(obj);
+    }
+}
+
+void QimiPlatform::callRegAPIBack(cocos2d::CCObject* obj)
+{
+    if (m_regAPITarget && m_regAPICall)
+    {
+        (m_regAPITarget->*m_regAPICall)(obj);
     }
 }
 
@@ -296,7 +311,7 @@ void QimiPlatform::loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos2
 
 }
 
-void QimiPlatform::registerOnClick(std::string userName, std::string userPass)
+void QimiPlatform::qimiRegister(std::string userName, std::string userPass)
 {
     time_t t;
     time(&t);
@@ -383,8 +398,8 @@ void QimiPlatform::registerSucceed(cocos2d::extension::CCHttpClient *sender, coc
             //QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "注册成功");
             
             
-            CCInteger* obj = CCInteger::create(1);
-            QimiPlatform::shareQimiPlatform()->callRegBack(obj);
+            CCString* pObj = CCString::create("1");
+            callRegAPIBack(pObj);
             
             //GameUtils::showNewTip("注册成功并且已经登录！", StageScene::shareStageScene()->m_DialogContainer, ccp(240,400), 1.0, true);
             
@@ -399,8 +414,8 @@ void QimiPlatform::registerSucceed(cocos2d::extension::CCHttpClient *sender, coc
                 CC_GAME_JSON_ADD(root, isInt, errCode, "status", asInt);
                 CC_GAME_JSON_ADD(root, isString, msg, "error", asString);
             }
-            CCInteger* obj = CCInteger::create(0);
-            QimiPlatform::shareQimiPlatform()->callRegBack(obj);
+            CCString* pObj = CCString::create("msg");
+            callRegAPIBack(pObj);
             
             //QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", msg);
         }

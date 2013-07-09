@@ -69,8 +69,13 @@ public:
      */
     void QimiRegister();
     void QimiLogin();
+    
+    /**
+     注册和登录接口
+     回调参数是CCString .登录和注册成功回调为字符串“1”，失败则返回的是服务器错误信息字符串型。
+     */
     void QimiLogin(std::string userName, std::string pass, cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call);
-    void QimiRegister(std::string userName, std::string userPass);
+    void QimiRegister(std::string userName, std::string userPass, cocos2d::CCObject *target, cocos2d::SEL_CallFuncO call);
     /*存入游戏的KEY值*/
     void setQimiGameKey(std::string key){m_key = key;};
     /*存入游戏的UId*/
@@ -83,7 +88,6 @@ public:
     void loginOut();
     /*检测是否已登录*/
     bool isLogined();
-    
     
     /*获得游戏的KEY值*/
     std::string getQimiGameKey(){ return m_key;};
@@ -108,8 +112,9 @@ public:
     void callPayBack(cocos2d::CCObject* obj);
     void callLoginBack(cocos2d::CCObject* obj);
     void callRegBack(cocos2d::CCObject* obj);
-    void callLoginAPIBack(cocos2d::CCObject* obj);
     
+    void callLoginAPIBack(cocos2d::CCObject* obj);//调用登录接口的回调
+    void callRegAPIBack(cocos2d::CCObject* obj);//调用注册接口回调
     CC_GAME_GET_SET(std::string, m_appScheme, AppScheme);
     
 private:
@@ -134,6 +139,9 @@ private:
     cocos2d::CCObject* m_LoginAPITarget;
     cocos2d::SEL_CallFuncO m_LoginAPICall;
     
+    cocos2d::CCObject *m_regAPITarget;
+    cocos2d::SEL_CallFuncO m_regAPICall;
+    
 private:
     bool isCheckAppId();//检查是否获得APP ID
     bool isCheckAppKey();//检查是否已获得APP KEY
@@ -141,7 +149,7 @@ private:
     void qimiUserLogin(std::string username, std::string pass);
     void loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response);
     
-    void registerOnClick(std::string userName, std::string usePass);
+    void qimiRegister(std::string userName, std::string usePass);
     void registerSucceed(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response);
 };
 
