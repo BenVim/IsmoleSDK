@@ -16,7 +16,7 @@
 #include "RequestLoadingView.h"
 
 QimiLoginView::QimiLoginView():
-isSelelcted(NULL),
+isSelelcted(true),
 m_pRememberSprite(NULL),
 m_pNoRememberSprite(NULL),
 m_pInputUserNameTxtBg(NULL),
@@ -41,7 +41,8 @@ bool QimiLoginView::init()
     
     CCNode* container = CCNode::create();
     this->addChild(container);
-    container->setPosition(ccp(m_size.width/2, m_size.height/2));
+    container->setPosition(ccp(m_size.width/2, 1000));
+    container->runAction(CCSequence::create(CCEaseBackOut::create(CCMoveTo::create(0.5f, ccp(m_size.width/2, m_size.height/2))),NULL));
     
     CCSprite* bg = CCSprite::create("bg_small_denglu.png");
     bg->setPosition(ccp(3,16));
@@ -60,7 +61,7 @@ bool QimiLoginView::init()
     
     
     CCControlButton* backBtn = CCControlButton::create(CCScale9Sprite::create("btn_small_close.png"));
-    backBtn->setPreferredSize(CCSizeMake(18, 17));
+    backBtn->setPreferredSize(CCSizeMake(32, 32));
     backBtn->setTouchPriority(-1001);
     container->addChild(backBtn);
     backBtn->setPosition(ccp(184, 158));
@@ -117,8 +118,6 @@ bool QimiLoginView::init()
     m_pRememberSprite->setVisible(false);
     m_pRememberSprite->setPosition(ccp(-149, -37));
     container->addChild(m_pRememberSprite);
-    
-    
     
     
     CCSize editBoxSize = CCSizeMake(270, 30);
@@ -198,7 +197,7 @@ bool QimiLoginView::init()
     userPassLable->setAnchorPoint(ccp(0, 0.5f));
     container->addChild(userPassLable);
     
-    
+    remeberPassworld(NULL);
     
     return true;
 }
@@ -286,6 +285,7 @@ void QimiLoginView::loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos
                 
                 CCUserDefault::sharedUserDefault()->setStringForKey("QimiSDKUserName", userName.c_str());
                 CCUserDefault::sharedUserDefault()->setStringForKey("QimiSDKUserPass", userpass.c_str());
+                CCUserDefault::sharedUserDefault()->flush();
             }
             
             this->removeFromParentAndCleanup(true);
@@ -315,11 +315,12 @@ void QimiLoginView::remeberPassworld(CCObject* obj)
 {
     isSelelcted = !isSelelcted;
     m_pRememberSprite->setVisible(isSelelcted);
+    m_pNoRememberSprite->setVisible(!isSelelcted);
 }
 
 void QimiLoginView::fogetPassWorld(cocos2d::CCObject *obj)
 {
-    QimiPlatform::shareQimiPlatform()->openGameWeb("http://www.qimi.com/index.php?mod=User&do=backPwdNew");
+    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_FOGET);
 }
 
 void QimiLoginView::backOnClick(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)

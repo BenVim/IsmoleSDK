@@ -33,7 +33,7 @@ public:
     void backOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void nextOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void rechargeOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
-    
+    void qimiHelp(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
 private:
     
     int m_kind;
@@ -57,7 +57,7 @@ private:
     
 private:
     void upDataView(int pay);
-    void upSelectState(int index);
+    void upSelectState(cocos2d::extension::CCControlButton* btn);
     void requestOrder();//请求订单号
     void requestSucssful(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response);//
     

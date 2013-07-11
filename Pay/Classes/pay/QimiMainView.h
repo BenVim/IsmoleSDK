@@ -58,7 +58,8 @@ private:
     void DxOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void backOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void qimiPay(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
-
+    void qimiCz(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
+    void qimiHelp(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
 };
 
 #endif /* defined(__Pay__QimiMainView__) */

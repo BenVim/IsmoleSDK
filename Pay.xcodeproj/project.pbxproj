@@ -27,7 +27,6 @@
 		B540B30F178D908400BFC2FA /* btn_small_zhuce.png in Resources */ = {isa = PBXBuildFile; fileRef = B540B2FE178D908300BFC2FA /* btn_small_zhuce.png */; };
 		B540B310178D908400BFC2FA /* btn_tuichu.png in Resources */ = {isa = PBXBuildFile; fileRef = B540B2FF178D908300BFC2FA /* btn_tuichu.png */; };
 		B540B311178D908400BFC2FA /* img_qimi.png in Resources */ = {isa = PBXBuildFile; fileRef = B540B300178D908400BFC2FA /* img_qimi.png */; };
-		B540B312178D908400BFC2FA /* LOGO11111.png in Resources */ = {isa = PBXBuildFile; fileRef = B540B301178D908400BFC2FA /* LOGO11111.png */; };
 		B592E11C177D46660021E450 /* btn_qimizf.png in Resources */ = {isa = PBXBuildFile; fileRef = B592E11B177D46660021E450 /* btn_qimizf.png */; };
 		B5BEE18A177C18D200584945 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BEE189177C18D200584945 /* QuartzCore.framework */; };
 		B5BEE18C177C18D200584945 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BEE18B177C18D200584945 /* OpenGLES.framework */; };
@@ -354,6 +353,7 @@
 		B5BEE668177C578300584945 /* RequestLoadingView.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5BEE666177C578000584945 /* RequestLoadingView.cpp */; };
 		B5D4DC83178BE21C00F1CE1B /* DataRequest.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D4DC7F178BE21B00F1CE1B /* DataRequest.cpp */; };
 		B5D4DC84178BE21C00F1CE1B /* QimiAlipayDailog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B5D4DC80178BE21B00F1CE1B /* QimiAlipayDailog.cpp */; };
+		B5FF160F178ED50800A80C76 /* bg_seleceted.png in Resources */ = {isa = PBXBuildFile; fileRef = B5FF160E178ED50800A80C76 /* bg_seleceted.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -377,7 +377,6 @@
 		B540B2FE178D908300BFC2FA /* btn_small_zhuce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_small_zhuce.png; sourceTree = "<group>"; };
 		B540B2FF178D908300BFC2FA /* btn_tuichu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_tuichu.png; sourceTree = "<group>"; };
 		B540B300178D908400BFC2FA /* img_qimi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_qimi.png; sourceTree = "<group>"; };
-		B540B301178D908400BFC2FA /* LOGO11111.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LOGO11111.png; sourceTree = "<group>"; };
 		B592E11B177D46660021E450 /* btn_qimizf.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_qimizf.png; sourceTree = "<group>"; };
 		B5BEE186177C18D200584945 /* Pay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B5BEE189177C18D200584945 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -1124,6 +1123,7 @@
 		B5D4DC80178BE21B00F1CE1B /* QimiAlipayDailog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QimiAlipayDailog.cpp; sourceTree = "<group>"; };
 		B5D4DC81178BE21B00F1CE1B /* DataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataRequest.h; sourceTree = "<group>"; };
 		B5D4DC82178BE21C00F1CE1B /* QimiAlipayDailog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QimiAlipayDailog.h; sourceTree = "<group>"; };
+		B5FF160E178ED50800A80C76 /* bg_seleceted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_seleceted.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2324,6 +2324,7 @@
 		B5BEE537177C1ADB00584945 /* pay */ = {
 			isa = PBXGroup;
 			children = (
+				B5FF160E178ED50800A80C76 /* bg_seleceted.png */,
 				B540B2F1178D908100BFC2FA /* bg_3030_kahao.png */,
 				B540B2F2178D908100BFC2FA /* bg_4040.png */,
 				B540B2F3178D908100BFC2FA /* bg_chongzhishu.png */,
@@ -2340,7 +2341,6 @@
 				B540B2FE178D908300BFC2FA /* btn_small_zhuce.png */,
 				B540B2FF178D908300BFC2FA /* btn_tuichu.png */,
 				B540B300178D908400BFC2FA /* img_qimi.png */,
-				B540B301178D908400BFC2FA /* LOGO11111.png */,
 				B540B2E7178D074F00BFC2FA /* bg_372x301.png */,
 				B540B2E8178D074F00BFC2FA /* btn_zhifushibai.png */,
 				B540B2E9178D074F00BFC2FA /* btn_zhifuwancheng.png */,
@@ -2764,7 +2764,7 @@
 				B540B30F178D908400BFC2FA /* btn_small_zhuce.png in Resources */,
 				B540B310178D908400BFC2FA /* btn_tuichu.png in Resources */,
 				B540B311178D908400BFC2FA /* img_qimi.png in Resources */,
-				B540B312178D908400BFC2FA /* LOGO11111.png in Resources */,
+				B5FF160F178ED50800A80C76 /* bg_seleceted.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

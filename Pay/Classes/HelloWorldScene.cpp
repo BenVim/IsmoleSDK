@@ -4,6 +4,7 @@
 #include "QimiPlatform.h"
 #include "QimiParamInfo.h"
 #include "QimiUserModel.h"
+#include "Qimi.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -138,7 +139,7 @@ void HelloWorld::logined(CCObject* obj)
 
 void HelloWorld::openWebURL()
 {
-    QimiPlatform::shareQimiPlatform()->openGameWeb("http:://bbs.qimi.com/");
+    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_FORUM);
 }
 
 void HelloWorld::quit()
@@ -148,7 +149,7 @@ void HelloWorld::quit()
 
 void HelloWorld::forget()
 {
-    QimiPlatform::shareQimiPlatform()->openGameWeb("http://www.qimi.com/index.php?mod=User&do=backPwd");
+    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_FOGET);
 }
 
 

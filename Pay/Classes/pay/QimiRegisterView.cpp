@@ -36,7 +36,9 @@ bool QimiRegisterView::init()
     
     CCNode* container = CCNode::create();
     this->addChild(container);
-    container->setPosition(ccp(m_size.width/2, m_size.height/2));
+    
+    container->setPosition(ccp(m_size.width/2, 1000));
+    container->runAction(CCSequence::create(CCEaseBackOut::create(CCMoveTo::create(0.5f, ccp(m_size.width/2, m_size.height/2))),NULL));
     
     CCSprite* bg = CCSprite::create("bg_small_zhuce.png");
     bg->setPosition(ccp(5, 4));
@@ -55,7 +57,7 @@ bool QimiRegisterView::init()
     
     
     CCControlButton* backBtn = CCControlButton::create(CCScale9Sprite::create("btn_small_close.png"));
-    backBtn->setPreferredSize(CCSizeMake(18, 17));
+    backBtn->setPreferredSize(CCSizeMake(32, 32));
     backBtn->setTouchPriority(-1001);
     container->addChild(backBtn);
     backBtn->setPosition(ccp(184, 158));

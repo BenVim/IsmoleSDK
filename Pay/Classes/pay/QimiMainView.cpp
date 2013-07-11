@@ -17,6 +17,7 @@
 #include "UIMaskLayerView.h"
 #include "QimiPlatform.h"
 #include "QimiUserModel.h"
+#include "QimiUserModel.h"
 
 QimiMainView::QimiMainView()
 {
@@ -39,7 +40,7 @@ bool QimiMainView::init()
     
     CCNode* container = CCNode::create();
     this->addChild(container);
-    container->setPosition(ccp(m_size.width/2, m_size.height/2-45));
+    container->setPosition(ccp(m_size.width/2, m_size.height/2-20));
     
     CCNode* topCCNode = CCNode::create();
     topCCNode->setPosition(ccp(m_size.width/2, m_size.height-45));
@@ -73,8 +74,12 @@ bool QimiMainView::init()
     helpBtn->setTouchPriority(-1000);
     topCCNode->addChild(helpBtn);
     helpBtn->setPosition(ccp(163, 0));
+    helpBtn->addTargetWithActionForControlEvents(this,
+                                                    cccontrol_selector(QimiMainView::qimiHelp),
+                                                    CCControlEventTouchUpInside);
     
     CCLabelTTF* topText = CCLabelTTF::create("奇米支付中心", "Helvetica", 28);
+    topText->setColor(ccc3(104, 67, 2));
     topCCNode->addChild(topText);
     topText->setPosition(ccp(0, 0));
     
@@ -85,12 +90,12 @@ bool QimiMainView::init()
     CCLabelTTF* qimiCopy = CCLabelTTF::create("@2013 奇米网", "Helvetica", 20);
     this->addChild(qimiCopy);
     qimiCopy->setColor(ccc3(94, 94, 94));
-    qimiCopy->setPosition(ccp(240, 60));
+    qimiCopy->setPosition(ccp(240, 50));
     
     CCLabelTTF* qimiUrl = CCLabelTTF::create("www.qimi.com", "Helvetica", 20);
     this->addChild(qimiUrl);
     qimiUrl->setColor(ccc3(94, 94, 94));
-    qimiUrl->setPosition(ccp(240, 36));
+    qimiUrl->setPosition(ccp(240, 26));
     
     ////////////公共部分结束
     
@@ -104,8 +109,8 @@ bool QimiMainView::init()
     
     
     CCScale9Sprite* scale9Sprite1 = CCScale9Sprite::create("bg_40x40.png", form, capInset);
-    scale9Sprite1->setContentSize(CCSizeMake(445, 330));
-    scale9Sprite1->setPosition(ccp(0 , -51));
+    scale9Sprite1->setContentSize(CCSizeMake(445, 380));
+    scale9Sprite1->setPosition(ccp(0 , -70));
     container->addChild(scale9Sprite1);
     
     
@@ -116,20 +121,20 @@ bool QimiMainView::init()
 //    userInfoTitle->setAnchorPoint(ccp(0, 0.5));
     
     
-    CCLabelTTF* txt_tongxinzheng = CCLabelTTF::create("当前帐户：", "Helvetica", 22);
+    CCLabelTTF* txt_tongxinzheng = CCLabelTTF::create("当前帐户：", "Helvetica", 20);
     container->addChild(txt_tongxinzheng);
     txt_tongxinzheng->setColor(ccc3(0, 0, 0));
     txt_tongxinzheng->setPosition(ccp(-82, 250));
     txt_tongxinzheng->setAnchorPoint(ccp(1, 0.5));
     
-    CCLabelTTF* txt_zhanghuyuer = CCLabelTTF::create("充值金额：", "Helvetica", 22);
+    CCLabelTTF* txt_zhanghuyuer = CCLabelTTF::create("充值金额：", "Helvetica", 20);
     container->addChild(txt_zhanghuyuer);
     txt_zhanghuyuer->setColor(ccc3(0, 0, 0));
     txt_zhanghuyuer->setPosition(ccp(-82, 215));
     txt_zhanghuyuer->setAnchorPoint(ccp(1, 0.5));
     
     
-    CCLabelTTF* txt_productName = CCLabelTTF::create("奇米币数量：", "Helvetica", 22);
+    CCLabelTTF* txt_productName = CCLabelTTF::create("兑换说明：", "Helvetica", 20);
     container->addChild(txt_productName);
     txt_productName->setColor(ccc3(0, 0, 0));
     txt_productName->setPosition(ccp(-82, 180));
@@ -138,41 +143,41 @@ bool QimiMainView::init()
     
     /***top 2 end **/
     
-    CCLabelTTF* txt_select = CCLabelTTF::create("请选择充值方式：", "Helvetica", 26);
+    CCLabelTTF* txt_select = CCLabelTTF::create("请选择充值方式：", "Helvetica", 22);
     container->addChild(txt_select);
     txt_select->setColor(ccc3(0, 0, 0));
-    txt_select->setPosition(ccp(0, 83));
+    txt_select->setPosition(ccp(-25, 83));
     txt_select->setAnchorPoint(ccp(1, 0.5));
     
     /////帐户
-    m_pPassThroughNumTxt = CCLabelTTF::create("0", "Helvetica",  24);
+    m_pPassThroughNumTxt = CCLabelTTF::create("0", "Helvetica",  20);
     container->addChild(m_pPassThroughNumTxt);
     m_pPassThroughNumTxt->setColor(ccc3(214, 84, 84));
     m_pPassThroughNumTxt->setPosition(ccp(-75, 250));
     m_pPassThroughNumTxt->setAnchorPoint(ccp(0, 0.5));
     
     //充值金额
-    m_pProductNameTxt = CCLabelTTF::create("0","Helvetica", 24);
+    m_pProductNameTxt = CCLabelTTF::create("0","Helvetica", 20);
     container->addChild(m_pProductNameTxt);
     m_pProductNameTxt->setColor(ccc3(214, 84, 84));
     m_pProductNameTxt->setPosition(ccp(-75, 215));
     m_pProductNameTxt->setAnchorPoint(ccp(0, 0.5));
     
     
-    m_pProductNameLastTxt = CCLabelTTF::create("元", "Helvetica", 24);
+    m_pProductNameLastTxt = CCLabelTTF::create("元", "Helvetica", 20);
     container->addChild(m_pProductNameLastTxt);
     m_pProductNameLastTxt->setColor(ccc3(0, 0, 0));
     m_pProductNameLastTxt->setPosition(ccp(-50, 185));
     m_pProductNameLastTxt->setAnchorPoint(ccp(0, 0.5));
     
     //奇米币数量
-    m_pMcashNumTxt = CCLabelTTF::create("0", "Helvetica", 24);
+    m_pMcashNumTxt = CCLabelTTF::create("0", "Helvetica", 20);
     container->addChild(m_pMcashNumTxt);
     m_pMcashNumTxt->setColor(ccc3(214, 84, 84));
     m_pMcashNumTxt->setPosition(ccp(-75, 180));
     m_pMcashNumTxt->setAnchorPoint(ccp(0, 0.5));
     
-    m_pMcashNumLastTxt = CCLabelTTF::create("个（兑换说明1元=10元宝）", "Helvetica", 24);
+    m_pMcashNumLastTxt = CCLabelTTF::create("", "Helvetica", 20);
     container->addChild(m_pMcashNumLastTxt);
     m_pMcashNumLastTxt->setColor(ccc3(0, 0, 0));
     m_pMcashNumLastTxt->setPosition(ccp(-50, 185));
@@ -189,6 +194,13 @@ bool QimiMainView::init()
                                                     cccontrol_selector(QimiMainView::alipayOnClick),
                                                     CCControlEventTouchUpInside);
     
+    CCLabelTTF* m_pzfbTxt = CCLabelTTF::create("支付宝", "Helvetica", 20);
+    container->addChild(m_pzfbTxt);
+    m_pzfbTxt->setColor(ccc3(0, 0, 0));
+    m_pzfbTxt->setPosition(ccp(-147, -75));
+    m_pzfbTxt->setAnchorPoint(ccp(0.5, 0.5));
+    
+    
     
     CCControlButton* sZXBtn = CCControlButton::create(CCScale9Sprite::create("img_shenzhouxing.png"));
     sZXBtn->setPreferredSize(CCSizeMake(114, 114));
@@ -198,6 +210,12 @@ bool QimiMainView::init()
     sZXBtn->addTargetWithActionForControlEvents(this,
                                                     cccontrol_selector(QimiMainView::SzOnClick),
                                                     CCControlEventTouchUpInside);
+    CCLabelTTF* m_szxTxt = CCLabelTTF::create("神州行", "Helvetica", 20);
+    container->addChild(m_szxTxt);
+    m_szxTxt->setColor(ccc3(0, 0, 0));
+    m_szxTxt->setPosition(ccp(0, -75));
+    m_szxTxt->setAnchorPoint(ccp(0.5, 0.5));
+    
     
     CCControlButton* lTBtn = CCControlButton::create(CCScale9Sprite::create("img_liantong.png"));
     lTBtn->setPreferredSize(CCSizeMake(114, 114));
@@ -207,26 +225,41 @@ bool QimiMainView::init()
     lTBtn->addTargetWithActionForControlEvents(this,
                                                     cccontrol_selector(QimiMainView::LtOnClick),
                                                     CCControlEventTouchUpInside);
+    CCLabelTTF* m_ltTxt = CCLabelTTF::create("联通", "Helvetica", 20);
+    container->addChild(m_ltTxt);
+    m_ltTxt->setColor(ccc3(0, 0, 0));
+    m_ltTxt->setPosition(ccp(145, -75));
+    m_ltTxt->setAnchorPoint(ccp(0.5, 0.5));
+    
     
     CCControlButton* dXBtn = CCControlButton::create(CCScale9Sprite::create("img_dianxin.png"));
     dXBtn->setPreferredSize(CCSizeMake(114, 114));
     dXBtn->setTouchPriority(-1000);
     container->addChild(dXBtn);
-    dXBtn->setPosition(ccp(-147, -134));
+    dXBtn->setPosition(ccp(-147, -154));
     dXBtn->addTargetWithActionForControlEvents(this,
                                                cccontrol_selector(QimiMainView::DxOnClick),
                                                     CCControlEventTouchUpInside);
+    CCLabelTTF* m_dxTxt = CCLabelTTF::create("电信", "Helvetica", 20);
+    container->addChild(m_dxTxt);
+    m_dxTxt->setColor(ccc3(0, 0, 0));
+    m_dxTxt->setPosition(ccp(-147, -229));
+    m_dxTxt->setAnchorPoint(ccp(0.5, 0.5));
     
     
     CCControlButton* qimiBtn = CCControlButton::create(CCScale9Sprite::create("img_qimi.png"));
     qimiBtn->setPreferredSize(CCSizeMake(114, 114));
     qimiBtn->setTouchPriority(-1000);
     container->addChild(qimiBtn);
-    qimiBtn->setPosition(ccp(0, -134));
+    qimiBtn->setPosition(ccp(0, -154));
     qimiBtn->addTargetWithActionForControlEvents(this,
-                                               cccontrol_selector(QimiMainView::DxOnClick),
+                                               cccontrol_selector(QimiMainView::qimiCz),
                                                CCControlEventTouchUpInside);
-    
+    CCLabelTTF* m_qimiTxt = CCLabelTTF::create("奇米", "Helvetica", 20);
+    container->addChild(m_qimiTxt);
+    m_qimiTxt->setColor(ccc3(0, 0, 0));
+    m_qimiTxt->setPosition(ccp(0, -229));
+    m_qimiTxt->setAnchorPoint(ccp(0.5, 0.5));
     
     return true;
 }
@@ -306,8 +339,9 @@ void QimiMainView::onLoadRequestSucssful(cocos2d::extension::CCHttpClient *sende
 }
 void QimiMainView::onUpdataView()
 {
-    m_pPassThroughNumTxt->setString(CCString::createWithFormat("%s", m_uId.c_str())->getCString());
-    m_pMcashNumTxt->setString(CCString::createWithFormat("%d", m_money*10)->getCString());
+    m_pPassThroughNumTxt->setString(QimiPlatform::shareQimiPlatform()->getQimiUserModel()->getEmail().c_str());
+    
+    m_pMcashNumTxt->setString("1元=10元宝");
     m_pProductNameTxt->setString(CCString::createWithFormat("%d", m_money)->getCString());
     float posXxx = m_pMcashNumTxt->getPosition().x + m_pMcashNumTxt->getContentSize().width+10;
     float posYyy = m_pMcashNumTxt->getPosition().y;
@@ -440,6 +474,11 @@ void QimiMainView::DxOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCCon
     openPrepaidCard(2);
 }
 
+void QimiMainView::qimiCz(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
+{
+    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_CZ);
+}
+
 void QimiMainView::openPrepaidCard(int kind)
 {
     QimiPrepaidCardView* pQimiPrepaidCardView = QimiPrepaidCardView::create();
@@ -452,7 +491,10 @@ void QimiMainView::backOnClick(cocos2d::CCNode *pSender, cocos2d::extension::CCC
     this->removeFromParentAndCleanup(true);
 }
 
-
+void QimiMainView::qimiHelp(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
+{
+    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_HELP);
+}
 
 
 
