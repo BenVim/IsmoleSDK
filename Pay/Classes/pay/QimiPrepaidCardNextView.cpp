@@ -34,20 +34,32 @@ bool QimiPrepaidCardNextView::init()
     
     CCSize m_size = CCDirector::sharedDirector()->getWinSize();
     
+    CCNode* container = CCNode::create();
+    this->addChild(container);
+    container->setPosition(ccp(m_size.width/2, m_size.height/2-45));
+    
+    CCNode* topCCNode = CCNode::create();
+    topCCNode->setPosition(ccp(m_size.width/2, m_size.height-45));
+    this->addChild(topCCNode);
+    
+    
+    
     CCSprite* bg = CCSprite::create("bg_dabeijing_480x800.png");
-    bg->setPosition(ccp(m_size.width/2, m_size.height/2));
-    this->addChild(bg);
+    bg->setPosition(ccp(0, 0));
+    container->addChild(bg);
+    
+    /****top****/
     
     CCSprite* bgTop = CCSprite::create("bg_top.png");
-    this->addChild(bgTop);
-    bgTop->setPosition(ccp(240, 755));
+    topCCNode->addChild(bgTop);
+    bgTop->setPosition(ccp(0, 0));
     
     
     CCControlButton* backBtn = CCControlButton::create(CCScale9Sprite::create("btn_fanhui.png"));
     backBtn->setPreferredSize(CCSizeMake(101, 51));
     backBtn->setTouchPriority(-1000);
-    this->addChild(backBtn);
-    backBtn->setPosition(ccp(63, 760));
+    topCCNode->addChild(backBtn);
+    backBtn->setPosition(ccp(-163, 0));
     backBtn->addTargetWithActionForControlEvents(this,
                                                  cccontrol_selector(QimiPrepaidCardNextView::backOnClick),
                                                  CCControlEventTouchUpInside);
@@ -56,12 +68,15 @@ bool QimiPrepaidCardNextView::init()
     CCControlButton* helpBtn = CCControlButton::create(CCScale9Sprite::create("btn_bangzhu.png"));
     helpBtn->setPreferredSize(CCSizeMake(93, 51));
     helpBtn->setTouchPriority(-1000);
-    this->addChild(helpBtn);
-    helpBtn->setPosition(ccp(420, 760));
+    topCCNode->addChild(helpBtn);
+    helpBtn->setPosition(ccp(163, 0));
     
-    CCLabelTTF* topText = CCLabelTTF::create("奇米网支付中心", "Helvetica", 28);
-    this->addChild(topText);
-    topText->setPosition(ccp(240, 762));
+    CCLabelTTF* topText = CCLabelTTF::create("奇米支付中心", "Helvetica", 28);
+    topCCNode->addChild(topText);
+    topText->setPosition(ccp(0, 0));
+    
+    /**TOP END*/
+
     
     
     ////////////公共部分结束
@@ -71,24 +86,24 @@ bool QimiPrepaidCardNextView::init()
     CCRect capInset = CCRectMake(10, 10, 10, 10);
     CCScale9Sprite* scale9Sprite = CCScale9Sprite::create("bg_40x40.png", form, capInset);
     scale9Sprite->setContentSize(CCSizeMake(445, 580));
-    scale9Sprite->setPosition(ccp(240, 400));
-    this->addChild(scale9Sprite);
+    scale9Sprite->setPosition(ccp(0, 12));
+    container->addChild(scale9Sprite);
     
-    CCNode* containerCCNode = CCNode::create();
-    this->addChild(containerCCNode);
-    containerCCNode->setPosition(ccp(0, 0));
+//    CCNode* containerCCNode = CCNode::create();
+//    this->addChild(containerCCNode);
+//    containerCCNode->setPosition(ccp(0, 0));
     
     CCLabelTTF* txtTitle = CCLabelTTF::create("请选择充值卡面额", "Helvetica", 26);
-    containerCCNode->addChild(txtTitle);
+    container->addChild(txtTitle);
     txtTitle->setColor(ccc3(0, 0, 0));
-    txtTitle->setPosition(ccp(38, 654));
+    txtTitle->setPosition(ccp(-204, 259));
     txtTitle->setAnchorPoint(ccp(0, 0.5));
     
     CCControlButton* m_pBtnCongzhi = CCControlButton::create(CCScale9Sprite::create("btn_querenchongzhi.png"));
     m_pBtnCongzhi->setPreferredSize(CCSizeMake(248, 74));
     m_pBtnCongzhi->setTouchPriority(-1000);
-    containerCCNode->addChild(m_pBtnCongzhi);
-    m_pBtnCongzhi->setPosition(ccp(245, 178));
+    container->addChild(m_pBtnCongzhi);
+    m_pBtnCongzhi->setPosition(ccp(0, -220));
     m_pBtnCongzhi->addTargetWithActionForControlEvents(this,
                                                        cccontrol_selector(QimiPrepaidCardNextView::rechargeOnClick),
                                                        CCControlEventTouchUpInside);
@@ -98,8 +113,8 @@ bool QimiPrepaidCardNextView::init()
     CCControlButton* m_pBtn10Select = CCControlButton::create(label10, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn10Select->setPreferredSize(CCSizeMake(196, 47));
     m_pBtn10Select->setTouchPriority(-1000);
-    containerCCNode->addChild(m_pBtn10Select);
-    m_pBtn10Select->setPosition(ccp(138, 595));
+    container->addChild(m_pBtn10Select);
+    m_pBtn10Select->setPosition(ccp(-104, 192));
     m_pBtn10Select->setTag(10);
     m_pBtn10Select->addTargetWithActionForControlEvents(this,
                                                         cccontrol_selector(QimiPrepaidCardNextView::selected),
@@ -111,8 +126,8 @@ bool QimiPrepaidCardNextView::init()
     CCControlButton* m_pBtn20Select = CCControlButton::create(label20, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn20Select->setPreferredSize(CCSizeMake(196, 47));
     m_pBtn20Select->setTouchPriority(-1000);
-    containerCCNode->addChild(m_pBtn20Select);
-    m_pBtn20Select->setPosition(ccp(350, 595));
+    container->addChild(m_pBtn20Select);
+    m_pBtn20Select->setPosition(ccp(107, 192));
     m_pBtn20Select->setTag(20);
     m_pBtn20Select->addTargetWithActionForControlEvents(this,
                                                         cccontrol_selector(QimiPrepaidCardNextView::selected),
@@ -123,8 +138,8 @@ bool QimiPrepaidCardNextView::init()
     CCControlButton* m_pBtn30Select = CCControlButton::create(label30,CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn30Select->setPreferredSize(CCSizeMake(196, 47));
     m_pBtn30Select->setTouchPriority(-1000);
-    containerCCNode->addChild(m_pBtn30Select);
-    m_pBtn30Select->setPosition(ccp(138, 539));
+    container->addChild(m_pBtn30Select);
+    m_pBtn30Select->setPosition(ccp(-104, 136));
     m_pBtn30Select->setTag(30);
     m_pBtn30Select->addTargetWithActionForControlEvents(this,
                                                         cccontrol_selector(QimiPrepaidCardNextView::selected),
@@ -135,8 +150,8 @@ bool QimiPrepaidCardNextView::init()
     CCControlButton* m_pBtn50Select = CCControlButton::create(label50, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn50Select->setPreferredSize(CCSizeMake(196, 47));
     m_pBtn50Select->setTouchPriority(-1000);
-    containerCCNode->addChild(m_pBtn50Select);
-    m_pBtn50Select->setPosition(ccp(349, 539));
+    container->addChild(m_pBtn50Select);
+    m_pBtn50Select->setPosition(ccp(107, 136));
     m_pBtn50Select->setTag(50);
     m_pBtn50Select->addTargetWithActionForControlEvents(this,
                                                         cccontrol_selector(QimiPrepaidCardNextView::selected),
@@ -147,8 +162,8 @@ bool QimiPrepaidCardNextView::init()
     CCControlButton* m_pBtn100Select = CCControlButton::create(label100,CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn100Select->setPreferredSize(CCSizeMake(196, 47));
     m_pBtn100Select->setTouchPriority(-1000);
-    containerCCNode->addChild(m_pBtn100Select);
-    m_pBtn100Select->setPosition(ccp(137, 485));
+    container->addChild(m_pBtn100Select);
+    m_pBtn100Select->setPosition(ccp(-104, 83));
     m_pBtn100Select->setTag(100);
     m_pBtn100Select->addTargetWithActionForControlEvents(this,
                                                          cccontrol_selector(QimiPrepaidCardNextView::selected),
@@ -159,8 +174,8 @@ bool QimiPrepaidCardNextView::init()
     CCControlButton* m_pBtn300Select = CCControlButton::create(label300, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn300Select->setPreferredSize(CCSizeMake(196, 47));
     m_pBtn300Select->setTouchPriority(-1000);
-    containerCCNode->addChild(m_pBtn300Select);
-    m_pBtn300Select->setPosition(ccp(349, 485));
+    container->addChild(m_pBtn300Select);
+    m_pBtn300Select->setPosition(ccp(107, 82));
     m_pBtn300Select->setTag(300);
     m_pBtn300Select->addTargetWithActionForControlEvents(this,
                                                          cccontrol_selector(QimiPrepaidCardNextView::selected),
@@ -171,8 +186,8 @@ bool QimiPrepaidCardNextView::init()
     CCControlButton* m_pBtn500Select = CCControlButton::create(label500, CCScale9Sprite::create("bg_40x40.png"));
     m_pBtn500Select->setPreferredSize(CCSizeMake(196, 47));
     m_pBtn500Select->setTouchPriority(-1000);
-    containerCCNode->addChild(m_pBtn500Select);
-    m_pBtn500Select->setPosition(ccp(137, 428));
+    container->addChild(m_pBtn500Select);
+    m_pBtn500Select->setPosition(ccp(-104, 26));
     m_pBtn500Select->setTag(500);
     m_pBtn500Select->addTargetWithActionForControlEvents(this,
                                                          cccontrol_selector(QimiPrepaidCardNextView::selected),
@@ -190,43 +205,43 @@ bool QimiPrepaidCardNextView::init()
     
     m_pInputCarNumTxtBg->removeFromParentAndCleanup(false);
     m_pCardNum = CCEditBox::create(editBoxSize, m_pInputCarNumTxtBg);
-    m_pCardNum->setPosition(ccp(268, 325));
+    m_pCardNum->setPosition(ccp(30, -80));
     m_pCardNum->setFontColor(ccc3(255,0,0));
     m_pCardNum->setMaxLength(20);
     m_pCardNum->setReturnType(kKeyboardReturnTypeDone);
     m_pCardNum->setTouchPriority(-1000);
     m_pCardNum->setText("");
-    addChild(m_pCardNum);
+    container->addChild(m_pCardNum);
     
     m_pInputCarPassTxtBg = CCScale9Sprite::create("loginbg.png");
     m_pInputCarPassTxtBg->removeFromParentAndCleanup(false);
     m_pCardPassword = CCEditBox::create(editBoxSize, m_pInputCarPassTxtBg);
-    m_pCardPassword->setPosition(ccp(268, 270));
+    m_pCardPassword->setPosition(ccp(30, -140));
     m_pCardPassword->setFontColor(ccc3(255,0,0));
     m_pCardPassword->setMaxLength(20);
     m_pCardPassword->setReturnType(kKeyboardReturnTypeDone);
     m_pCardPassword->setTouchPriority(-1000);
     m_pCardPassword->setText("");
-    addChild(m_pCardPassword);
+    container->addChild(m_pCardPassword);
     
-    CCLabelTTF* labe = CCLabelTTF::create("输入下面卡号信息：", "Helvetica", 20);
-    this->addChild(labe);
+    CCLabelTTF* labe = CCLabelTTF::create("请输入充值卡信息：", "Helvetica", 20);
+    container->addChild(labe);
     labe->setColor(ccc3(0, 0, 0));
-    labe->setPosition(ccp(36, 375));
+    labe->setPosition(ccp(-200, -30));
     labe->setAnchorPoint(ccp(0, 0.5));
     
 
     
     CCLabelTTF* label02 = CCLabelTTF::create("卡号：", "Helvetica", 20);
-    containerCCNode->addChild(label02);
+    container->addChild(label02);
     label02->setColor(ccc3(0, 0, 0));
-    label02->setPosition(ccp(36, 326));
+    label02->setPosition(ccp(-200, -80));
     label02->setAnchorPoint(ccp(0, 0.5));
     
     CCLabelTTF* label03 = CCLabelTTF::create("密码：", "Helvetica", 20);
-    containerCCNode->addChild(label03);
+    container->addChild(label03);
     label03->setColor(ccc3(0, 0, 0));
-    label03->setPosition(ccp(36, 266));
+    label03->setPosition(ccp(-200, -140));
     label03->setAnchorPoint(ccp(0, 0.5));
     
     return true;

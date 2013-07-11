@@ -18,7 +18,11 @@ public:
 
     void login(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent);
     void logined(CCObject* obj);
-    
+    void reg(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent);
+    void openWebURL();
+    void quit();
+    void forget();
+
     // preprocessor macro for "static create()" constructor ( node() deprecated )
     CREATE_FUNC(HelloWorld);
 };

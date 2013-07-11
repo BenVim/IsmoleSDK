@@ -39,108 +39,117 @@ bool QimiLoginView::init()
     this->addChild(mask);
     CCSize m_size = CCDirector::sharedDirector()->getWinSize();
     
-    CCSprite* bg = CCSprite::create("bg_dabeijing_480x800.png");
-    bg->setPosition(ccp(m_size.width/2, m_size.height/2));
-    this->addChild(bg);
+    CCNode* container = CCNode::create();
+    this->addChild(container);
+    container->setPosition(ccp(m_size.width/2, m_size.height/2));
     
-    CCSprite* bgTop = CCSprite::create("bg_top.png");
-    this->addChild(bgTop);
-    bgTop->setPosition(ccp(240, 755));
+    CCSprite* bg = CCSprite::create("bg_small_denglu.png");
+    bg->setPosition(ccp(3,16));
+    container->addChild(bg);
+    
+    CCSprite* logo = CCSprite::create("bg_small_btnlgogo.png");
+    logo->setPosition(ccp(-58, 148));
+    container->addChild(logo);
     
     
-    CCControlButton* backBtn = CCControlButton::create(CCScale9Sprite::create("btn_fanhui.png"));
-    backBtn->setPreferredSize(CCSizeMake(101, 51));
+    CCLabelTTF* titleTxt = CCLabelTTF::create("奇米帐号登录", "Helvetica", 22);
+    titleTxt->setColor(ccc3(0, 0, 0));
+    titleTxt->setPosition(ccp(36, 145));
+    container->addChild(titleTxt);
+    
+    
+    
+    CCControlButton* backBtn = CCControlButton::create(CCScale9Sprite::create("btn_small_close.png"));
+    backBtn->setPreferredSize(CCSizeMake(18, 17));
     backBtn->setTouchPriority(-1001);
-    this->addChild(backBtn);
-    backBtn->setPosition(ccp(63, 760));
+    container->addChild(backBtn);
+    backBtn->setPosition(ccp(184, 158));
     backBtn->addTargetWithActionForControlEvents(this,
                                                  cccontrol_selector(QimiLoginView::backOnClick),
                                                  CCControlEventTouchUpInside);
 
-    
-    CCControlButton* helpBtn = CCControlButton::create(CCScale9Sprite::create("btn_bangzhu.png"));
-    helpBtn->setPreferredSize(CCSizeMake(93, 51));
-    helpBtn->setTouchPriority(-1001);
-    this->addChild(helpBtn);
-    helpBtn->setPosition(ccp(420, 760));
+
 
     
-    CCLabelTTF* topText = CCLabelTTF::create("奇米网", "Helvetica", 28);
-    this->addChild(topText);
-    topText->setPosition(ccp(240, 762));
+    
     
     
     ////////////公共部分结束
-    CCSprite* qimiLogo = CCSprite::create("logo.png");
-    qimiLogo->setPosition(ccp(236,611));
-    this->addChild(qimiLogo);
+
     
-    CCSprite* userBg = CCSprite::create("bg_zhanghao.png");
-    userBg->setPosition(ccp(242, 471));
-    this->addChild(userBg);
+    CCSprite* userBg = CCSprite::create("bg_small_btnbg.png");
+    userBg->setPosition(ccp(6, 82));
+    container->addChild(userBg);
     
-    CCSprite* passBg = CCSprite::create("bg_mima.png");
-    passBg->setPosition(ccp(242, 387));
-    this->addChild(passBg);
+    CCSprite* passBg = CCSprite::create("bg_small_btnbg.png");
+    passBg->setPosition(ccp(6, 17));
+    container->addChild(passBg);
     
     
-    CCControlButton* m_pLoginBtn = CCControlButton::create(CCScale9Sprite::create("btn_denglu.png"));
-    m_pLoginBtn->setPreferredSize(CCSizeMake(200, 75));
+    
+    CCControlButton* m_pLoginBtn = CCControlButton::create(CCScale9Sprite::create("btn_small_denglu.png"));
+    m_pLoginBtn->setPreferredSize(CCSizeMake(176, 59));
     m_pLoginBtn->setTouchPriority(-1001);
-    this->addChild(m_pLoginBtn);
-    m_pLoginBtn->setPosition(ccp(133, 221));
+    container->addChild(m_pLoginBtn);
+    m_pLoginBtn->setPosition(ccp(-86, -93));
     m_pLoginBtn->addTargetWithActionForControlEvents(this,
                                                  cccontrol_selector(QimiLoginView::loginOnclick),
                                                  CCControlEventTouchUpInside);
 
     
-    CCControlButton* m_pRegisterBtn = CCControlButton::create(CCScale9Sprite::create("btn_zhuce_small.png"));
-    m_pRegisterBtn->setPreferredSize(CCSizeMake(200, 75));
+    CCControlButton* m_pRegisterBtn = CCControlButton::create(CCScale9Sprite::create("btn_small_zhuce_denglu.png"));
+    m_pRegisterBtn->setPreferredSize(CCSizeMake(176, 59));
     m_pRegisterBtn->setTouchPriority(-1001);
-    this->addChild(m_pRegisterBtn);
-    m_pRegisterBtn->setPosition(ccp(350, 221));
+    container->addChild(m_pRegisterBtn);
+    m_pRegisterBtn->setPosition(ccp(99, -93));
     m_pRegisterBtn->addTargetWithActionForControlEvents(this,
                                                      cccontrol_selector(QimiLoginView::registerOnClick),
                                                      CCControlEventTouchUpInside);
+    
+    
+    
 
     m_pNoRememberSprite = CCSprite::create("btn_jizhumima_left.png");
-    m_pNoRememberSprite->setPosition(ccp(168, 306));
-    this->addChild(m_pNoRememberSprite);
+    m_pNoRememberSprite->setPosition(ccp(-149, -37));
+    container->addChild(m_pNoRememberSprite);
     
     m_pRememberSprite = CCSprite::create("btn_jizhumima_right.png");
     m_pRememberSprite->setVisible(false);
-    m_pRememberSprite->setPosition(ccp(168, 306));
-    this->addChild(m_pRememberSprite);
+    m_pRememberSprite->setPosition(ccp(-149, -37));
+    container->addChild(m_pRememberSprite);
     
-    CCSize editBoxSize = CCSizeMake(300, 50);
+    
+    
+    
+    CCSize editBoxSize = CCSizeMake(270, 30);
     
     m_pInputUserNameTxtBg = CCScale9Sprite::create("loginbg.png");
     m_pInputUserPassTxtBg = CCScale9Sprite::create("loginbg.png");
     
-    this->addChild(m_pInputUserNameTxtBg);
-    this->addChild(m_pInputUserPassTxtBg);
+    container->addChild(m_pInputUserNameTxtBg);
+    container->addChild(m_pInputUserPassTxtBg);
     
     m_pInputUserNameTxtBg->removeFromParentAndCleanup(false);
     m_pUserName = CCEditBox::create(editBoxSize, m_pInputUserNameTxtBg);
-    m_pUserName->setPosition(ccp(247, 472));
+    m_pUserName->setPosition(ccp(60, 80));
     m_pUserName->setFontColor(ccc3(178,178,178));
     m_pUserName->setMaxLength(50);
     m_pUserName->setReturnType(kKeyboardReturnTypeDone);
     m_pUserName->setTouchPriority(-1002);
     m_pUserName->setText("您的电子邮箱地址");
     m_pUserName->setInputMode(kEditBoxInputModeEmailAddr);
-    addChild(m_pUserName);
+    container->addChild(m_pUserName);
     
     m_pInputUserPassTxtBg->removeFromParentAndCleanup(false);
     m_pPassWorld = CCEditBox::create(editBoxSize, m_pInputUserPassTxtBg);
-    m_pPassWorld->setPosition(ccp(247, 391));
+    m_pPassWorld->setPosition(ccp(60,20));
     m_pPassWorld->setFontColor(ccc3(178,178,178));
     m_pPassWorld->setMaxLength(50);
     
     m_pPassWorld->setReturnType(kKeyboardReturnTypeDone);
     m_pPassWorld->setInputFlag(kEditBoxInputFlagPassword);
     m_pPassWorld->setTouchPriority(-1002);
-    addChild(m_pPassWorld);
+    container->addChild(m_pPassWorld);
     m_pPassWorld->setText("您的登录密码");
     
     std::string n = CCUserDefault::sharedUserDefault()->getStringForKey("QimiSDKUserName");
@@ -154,28 +163,43 @@ bool QimiLoginView::init()
     
     //////
     isSelelcted = false;
-    CCLabelTTF* label = CCLabelTTF::create("记住密码", "Helvetica", 25);
+    CCLabelTTF* label = CCLabelTTF::create("记住密码", "Helvetica", 18);
     label->setColor(ccc3(100, 100, 100));
     CCMenuItemLabel* pmenu=CCMenuItemLabel::create(label,this,menu_selector(QimiLoginView::remeberPassworld));
     pmenu->setPosition(ccp(0,0));
 
     CCMenu* menu = CCMenu::createWithItem(pmenu);
     menu->setTouchPriority(-1003);
-    this->addChild(menu);
-    menu->setPosition(ccp(85,308));
+    container->addChild(menu);
+    menu->setPosition(ccp(-84,-37));
     
     //忘记密码
-    CCLabelTTF* fogetPassTxt = CCLabelTTF::create("忘记密码？", "Helvetica", 25);
+    CCLabelTTF* fogetPassTxt = CCLabelTTF::create("忘记密码？", "Helvetica", 18);
     fogetPassTxt->setColor(ccc3(100, 100, 100));
     
     
     CCMenuItemLabel* fogetPassMenuItem=CCMenuItemLabel::create(fogetPassTxt,this,menu_selector(QimiLoginView::fogetPassWorld));
     
     CCMenu* pFogetMenu = CCMenu::createWithItem(fogetPassMenuItem);
-    this->addChild(pFogetMenu);
-    pFogetMenu->setPosition(ccp(397,309));
-    
+    container->addChild(pFogetMenu);
+    pFogetMenu->setPosition(ccp(140,-37));
     pFogetMenu->setTouchPriority(-1003);
+    
+    
+    CCLabelTTF* userNameLabel = CCLabelTTF::create("帐  号:", "Helvetica", 18);
+    userNameLabel->setColor(ccc3(0, 0, 0));
+    userNameLabel->setAnchorPoint(ccp(0, 0.5f));
+    userNameLabel->setPosition(ccp(-151, 81));
+    container->addChild(userNameLabel);
+    
+    CCLabelTTF* userPassLable = CCLabelTTF::create("密  码：", "Helvetica", 18);
+    userPassLable->setColor(ccc3(0, 0, 0));
+    userPassLable->setPosition(ccp(-151, 19));
+    userPassLable->setAnchorPoint(ccp(0, 0.5f));
+    container->addChild(userPassLable);
+    
+    
+    
     return true;
 }
 
@@ -295,7 +319,7 @@ void QimiLoginView::remeberPassworld(CCObject* obj)
 
 void QimiLoginView::fogetPassWorld(cocos2d::CCObject *obj)
 {
-    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_FORUM);
+    QimiPlatform::shareQimiPlatform()->openGameWeb("http://www.qimi.com/index.php?mod=User&do=backPwdNew");
 }
 
 void QimiLoginView::backOnClick(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)

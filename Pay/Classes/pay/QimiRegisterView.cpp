@@ -34,107 +34,121 @@ bool QimiRegisterView::init()
     
     CCSize m_size = CCDirector::sharedDirector()->getWinSize();
     
-    CCSprite* bg = CCSprite::create("bg_dabeijing_480x800.png");
-    bg->setPosition(ccp(m_size.width/2, m_size.height/2));
-    this->addChild(bg);
+    CCNode* container = CCNode::create();
+    this->addChild(container);
+    container->setPosition(ccp(m_size.width/2, m_size.height/2));
     
-    CCSprite* bgTop = CCSprite::create("bg_top.png");
-    this->addChild(bgTop);
-    bgTop->setPosition(ccp(240, 755));
+    CCSprite* bg = CCSprite::create("bg_small_zhuce.png");
+    bg->setPosition(ccp(5, 4));
+    container->addChild(bg);
+    
+    CCSprite* logo = CCSprite::create("bg_small_btnlgogo.png");
+    logo->setPosition(ccp(-67, 147));
+    container->addChild(logo);
     
     
-    CCControlButton* backBtn = CCControlButton::create(CCScale9Sprite::create("btn_fanhui.png"));
-    backBtn->setPreferredSize(CCSizeMake(101, 51));
-    backBtn->setTouchPriority(-1000);
-    this->addChild(backBtn);
-    backBtn->setPosition(ccp(63, 760));
+    CCLabelTTF* titleTxt = CCLabelTTF::create("奇米帐号登录", "Helvetica", 22);
+    titleTxt->setColor(ccc3(0, 0, 0));
+    titleTxt->setPosition(ccp(28, 145));
+    container->addChild(titleTxt);
+    
+    
+    
+    CCControlButton* backBtn = CCControlButton::create(CCScale9Sprite::create("btn_small_close.png"));
+    backBtn->setPreferredSize(CCSizeMake(18, 17));
+    backBtn->setTouchPriority(-1001);
+    container->addChild(backBtn);
+    backBtn->setPosition(ccp(184, 158));
     backBtn->addTargetWithActionForControlEvents(this,
                                                  cccontrol_selector(QimiRegisterView::backOnClick),
                                                  CCControlEventTouchUpInside);
-    
-    
-    CCControlButton* helpBtn = CCControlButton::create(CCScale9Sprite::create("btn_bangzhu.png"));
-    helpBtn->setPreferredSize(CCSizeMake(93, 51));
-    helpBtn->setTouchPriority(-1000);
-    this->addChild(helpBtn);
-    helpBtn->setPosition(ccp(420, 760));
-    
-    CCLabelTTF* topText = CCLabelTTF::create("奇米网", "Helvetica", 28);
-    this->addChild(topText);
-    topText->setPosition(ccp(240, 762));
-    
-    
     ////////////公共部分结束
-    CCSprite* qimiLogo = CCSprite::create("logo.png");
-    qimiLogo->setPosition(ccp(236,611));
-    this->addChild(qimiLogo);
+
     
-    CCSprite* userBg = CCSprite::create("bg_zhanghao.png");
-    userBg->setPosition(ccp(242, 472));
-    this->addChild(userBg);
+    CCSprite* userBg = CCSprite::create("bg_small_btnbg.png");
+    userBg->setPosition(ccp(6, 82));
+    container->addChild(userBg);
     
-    CCSprite* passBg = CCSprite::create("bg_zhuce_mima.png");
-    passBg->setPosition(ccp(242, 385));
-    this->addChild(passBg);
+    CCSprite* passBg = CCSprite::create("bg_small_btnbg.png");
+    passBg->setPosition(ccp(6, 16));
+    container->addChild(passBg);
     
-    CCSprite* passBg2 = CCSprite::create("bg_mima.png");
-    passBg2->setPosition(ccp(242, 300));
-    this->addChild(passBg2);
+    CCSprite* passBg2 = CCSprite::create("bg_small_btnbg.png");
+    passBg2->setPosition(ccp(6, -49));
+    container->addChild(passBg2);
     
     
-    CCControlButton* m_pRegisterBtn = CCControlButton::create(CCScale9Sprite::create("btn_zhuce.png"));
-    m_pRegisterBtn->setPreferredSize(CCSizeMake(418, 75));
+    CCControlButton* m_pRegisterBtn = CCControlButton::create(CCScale9Sprite::create("btn_small_zhuce.png"));
+    m_pRegisterBtn->setPreferredSize(CCSizeMake(361, 59));
     m_pRegisterBtn->setTouchPriority(-1000);
-    this->addChild(m_pRegisterBtn);
-    m_pRegisterBtn->setPosition(ccp(240, 200));
+    container->addChild(m_pRegisterBtn);
+    m_pRegisterBtn->setPosition(ccp(5, -122));
     m_pRegisterBtn->addTargetWithActionForControlEvents(this,
                                                         cccontrol_selector(QimiRegisterView::registerOnClick),
                                                         CCControlEventTouchUpInside);
     
     
-    CCSize editBoxSize = CCSizeMake(300, 50);
+    CCSize editBoxSize = CCSizeMake(270, 30);
     
     m_pInputUserNameTxtBg = CCScale9Sprite::create("loginbg.png");
     m_pInputUserPassTxtBg = CCScale9Sprite::create("loginbg.png");
     m_pInputUserVerifyPassTxtBg = CCScale9Sprite::create("loginbg.png");
-    this->addChild(m_pInputUserNameTxtBg);
-    this->addChild(m_pInputUserPassTxtBg);
-    this->addChild(m_pInputUserVerifyPassTxtBg);
+    container->addChild(m_pInputUserNameTxtBg);
+    container->addChild(m_pInputUserPassTxtBg);
+    container->addChild(m_pInputUserVerifyPassTxtBg);
     
     m_pInputUserNameTxtBg->removeFromParentAndCleanup(false);
     m_pEditUserName = CCEditBox::create(editBoxSize, m_pInputUserNameTxtBg);
-    m_pEditUserName->setPosition(ccp(247, 472));
+    m_pEditUserName->setPosition(ccp(70, 82));
     m_pEditUserName->setFontColor(ccc3(175,175,175));
     m_pEditUserName->setMaxLength(60);
     m_pEditUserName->setReturnType(kKeyboardReturnTypeDone);
     m_pEditUserName->setInputMode(kEditBoxInputModeEmailAddr);
     m_pEditUserName->setTouchPriority(-1000);
     m_pEditUserName->setText("用户名");
-    addChild(m_pEditUserName);
+    container->addChild(m_pEditUserName);
     
     m_pInputUserPassTxtBg->removeFromParentAndCleanup(false);
     m_pEditUserPass = CCEditBox::create(editBoxSize, m_pInputUserPassTxtBg);
-    m_pEditUserPass->setPosition(ccp(247, 388));
+    m_pEditUserPass->setPosition(ccp(70, 16));
     m_pEditUserPass->setFontColor(ccc3(175,175,175));
     m_pEditUserPass->setMaxLength(50);
     m_pEditUserPass->setReturnType(kKeyboardReturnTypeDone);
     m_pEditUserPass->setInputFlag(kEditBoxInputFlagPassword);
     m_pEditUserPass->setTouchPriority(-1000);
     m_pEditUserPass->setText("用户密码");
-    addChild(m_pEditUserPass);
+    container->addChild(m_pEditUserPass);
     
     m_pInputUserVerifyPassTxtBg->removeFromParentAndCleanup(false);
     m_pEditVerifyPass = CCEditBox::create(editBoxSize, m_pInputUserVerifyPassTxtBg);
-    m_pEditVerifyPass->setPosition(ccp(247, 306));
+    m_pEditVerifyPass->setPosition(ccp(70, -49));
     m_pEditVerifyPass->setFontColor(ccc3(175,175,175));
     m_pEditVerifyPass->setMaxLength(50);
     m_pEditVerifyPass->setReturnType(kKeyboardReturnTypeDone);
     m_pEditVerifyPass->setInputFlag(kEditBoxInputFlagPassword);
     m_pEditVerifyPass->setTouchPriority(-1000);
     m_pEditVerifyPass->setText("确认密码");
-    addChild(m_pEditVerifyPass);
+    container->addChild(m_pEditVerifyPass);
     //////
     
+    CCLabelTTF* userNameLabel = CCLabelTTF::create("帐    号:", "Helvetica", 18);
+    userNameLabel->setColor(ccc3(0, 0, 0));
+    userNameLabel->setAnchorPoint(ccp(1, 0.5f));
+    userNameLabel->setPosition(ccp(-80, 82));
+    container->addChild(userNameLabel);
+    
+    CCLabelTTF* userPassLable = CCLabelTTF::create("密    码:", "Helvetica", 18);
+    userPassLable->setColor(ccc3(0, 0, 0));
+    userPassLable->setPosition(ccp(-80, 16));
+    userPassLable->setAnchorPoint(ccp(1, 0.5f));
+    container->addChild(userPassLable);
+    
+    CCLabelTTF* vUserPassLable = CCLabelTTF::create("确认密码:", "Helvetica", 18);
+    vUserPassLable->setColor(ccc3(0, 0, 0));
+    vUserPassLable->setPosition(ccp(-80, -49));
+    vUserPassLable->setAnchorPoint(ccp(1, 0.5f));
+    container->addChild(vUserPassLable);
+
     return true;
 }
 
