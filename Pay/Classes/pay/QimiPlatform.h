@@ -101,6 +101,8 @@ public:
     /*获得游戏的appId*/
     int getQimiGameAppId(){return m_appid;};
     
+    std::string getDeviceId();
+    
     //qimi
     QimiUserModel* getQimiUserModel(){return m_pQimiUserModel;};
     

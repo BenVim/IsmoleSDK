@@ -38,6 +38,13 @@ void QimiPlatformAndroid::openAlert(std::string title, std::string msg)
 #endif
 }
 
+std::string QimiPlatformAndroid::getDeviceId()
+{
+    #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+        return std::string(getDeviceIdJNI());
+    #endif
+    return "";
+}
 
 
 

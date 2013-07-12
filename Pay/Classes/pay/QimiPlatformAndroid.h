@@ -19,6 +19,7 @@ public:
     bool init();
     void openWeb(std::string webUrl);
     void openAlert(std::string title, std::string msg);
+    std::string getDeviceId();//获取设备ID
 };
 
 

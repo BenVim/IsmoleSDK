@@ -34,6 +34,7 @@ public:
                    std::string seller, //商家支付宝帐号
                    std::string notifyUrl, //支付成功的回调地址
                    std::string alipayKey); //商家支付宝密钥
+    std::string getDeviceId();//获取设备ID
     
 private:
     

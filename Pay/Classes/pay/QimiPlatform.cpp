@@ -92,6 +92,16 @@ void QimiPlatform::openAlertDailog(std::string title, std::string msg)
     #endif
 }
 
+std::string QimiPlatform::getDeviceId()
+{
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    return m_pQimiPlatformIOS->getDeviceId();
+#endif
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    return m_pQimiPlatformAndroid->getDeviceId();
+#endif
+}
 
 
 void QimiPlatform::openPayDailog(std::string uId, int sId, std::string key, int money)
