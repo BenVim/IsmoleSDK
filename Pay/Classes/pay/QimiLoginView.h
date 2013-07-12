@@ -16,7 +16,7 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
-class QimiLoginView : public cocos2d::CCLayer
+class QimiLoginView : public cocos2d::CCLayer, CCEditBoxDelegate
 {
 public:
     QimiLoginView();
@@ -29,6 +29,12 @@ public:
     void registerOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void backOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     
+    
+    virtual void editBoxEditingDidBegin(CCEditBox *editBox);
+    virtual void editBoxEditingDidEnd(CCEditBox *editBox);
+    virtual void editBoxTextChanged(CCEditBox *editBox,const std::string &text);
+    virtual void editBoxReturn(CCEditBox *editBox);
+
 private:
     
     

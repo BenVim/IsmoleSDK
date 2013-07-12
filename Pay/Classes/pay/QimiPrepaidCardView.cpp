@@ -234,7 +234,7 @@ bool QimiPrepaidCardView::init()
     CCLabelTTF* yuan = CCLabelTTF::create("元", "Helvetica", 20);
     container->addChild(yuan);
     yuan->setColor(ccc3(0, 0, 0));
-    yuan->setPosition(ccp(-199, -83));
+    yuan->setPosition(ccp(10, -35));
     yuan->setAnchorPoint(ccp(0, 0.5));
     
     CCLabelTTF* label01 = CCLabelTTF::create("您将充值", "Helvetica", 20);

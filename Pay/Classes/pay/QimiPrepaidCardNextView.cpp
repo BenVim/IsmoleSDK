@@ -724,6 +724,8 @@ void QimiPrepaidCardNextView::editBoxEditingDidBegin(CCEditBox *editBox)
     {
         CCLog("m_denomination number is 0");
         QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "请选择您的充值卡面额!");
+        editBox->detachWithIME();
+        
         return;
     }
 }

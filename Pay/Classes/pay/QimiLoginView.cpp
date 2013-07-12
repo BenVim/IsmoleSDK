@@ -136,6 +136,8 @@ bool QimiLoginView::init()
     m_pUserName->setReturnType(kKeyboardReturnTypeDone);
     m_pUserName->setTouchPriority(-1002);
     m_pUserName->setText("您的电子邮箱地址");
+    m_pUserName->setTag(101);
+    m_pUserName->setDelegate(this);
     m_pUserName->setInputMode(kEditBoxInputModeEmailAddr);
     container->addChild(m_pUserName);
     
@@ -149,6 +151,8 @@ bool QimiLoginView::init()
     m_pPassWorld->setInputFlag(kEditBoxInputFlagPassword);
     m_pPassWorld->setTouchPriority(-1002);
     container->addChild(m_pPassWorld);
+    m_pPassWorld->setTag(102);
+    m_pPassWorld->setDelegate(this);
     m_pPassWorld->setText("您的登录密码");
     
     std::string n = CCUserDefault::sharedUserDefault()->getStringForKey("QimiSDKUserName");
@@ -328,5 +332,45 @@ void QimiLoginView::backOnClick(cocos2d::CCNode *pSender, cocos2d::extension::CC
     this->removeFromParentAndCleanup(true);
 }
 
+void QimiLoginView::editBoxEditingDidBegin(CCEditBox *editBox)
+{
+    std::string str = editBox->getText();
+    int index = editBox->getTag();
+    switch (index) {
+        case 101:
+            if (!strcmp(str.c_str(), "您的电子邮箱地址"))
+            {
+                editBox->setText("");
+            }
+            break;
+        case 102:
+            if (!strcmp(str.c_str(), "您的登录密码"))
+            {
+                editBox->setText("");
+            }
+            
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+}
+
+void QimiLoginView::editBoxEditingDidEnd(CCEditBox *editBox)
+{
+    
+}
+
+void QimiLoginView::editBoxTextChanged(CCEditBox *editBox,const std::string &text)
+{
+    
+}
+
+void QimiLoginView::editBoxReturn(CCEditBox *editBox)
+{
+    
+}
 //////
 

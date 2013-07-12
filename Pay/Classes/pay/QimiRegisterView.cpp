@@ -108,6 +108,8 @@ bool QimiRegisterView::init()
     m_pEditUserName->setInputMode(kEditBoxInputModeEmailAddr);
     m_pEditUserName->setTouchPriority(-1000);
     m_pEditUserName->setText("用户名");
+    m_pEditUserName->setTag(101);
+    m_pEditUserName->setDelegate(this);
     container->addChild(m_pEditUserName);
     
     m_pInputUserPassTxtBg->removeFromParentAndCleanup(false);
@@ -119,6 +121,8 @@ bool QimiRegisterView::init()
     m_pEditUserPass->setInputFlag(kEditBoxInputFlagPassword);
     m_pEditUserPass->setTouchPriority(-1000);
     m_pEditUserPass->setText("用户密码");
+    m_pEditUserPass->setTag(102);
+    m_pEditUserPass->setDelegate(this);
     container->addChild(m_pEditUserPass);
     
     m_pInputUserVerifyPassTxtBg->removeFromParentAndCleanup(false);
@@ -130,6 +134,8 @@ bool QimiRegisterView::init()
     m_pEditVerifyPass->setInputFlag(kEditBoxInputFlagPassword);
     m_pEditVerifyPass->setTouchPriority(-1000);
     m_pEditVerifyPass->setText("确认密码");
+    m_pEditVerifyPass->setTag(103);
+    m_pEditVerifyPass->setDelegate(this);
     container->addChild(m_pEditVerifyPass);
     //////
     
@@ -253,13 +259,9 @@ void QimiRegisterView::registerSucceed(cocos2d::extension::CCHttpClient *sender,
                 userId = pQimiUserModel->getuID();
             }
             //QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "注册成功");
-            
-            
             CCInteger* obj = CCInteger::create(1);
             QimiPlatform::shareQimiPlatform()->callRegBack(obj);
-            
             GameUtils::showNewTip("注册成功并且已经登录！", StageScene::shareStageScene()->m_DialogContainer, ccp(240,400), 1.0, true);
-            
             this->removeFromParentAndCleanup(true);
         }
         else
@@ -275,6 +277,58 @@ void QimiRegisterView::registerSucceed(cocos2d::extension::CCHttpClient *sender,
         }
     }
 }
+
+void QimiRegisterView::editBoxEditingDidBegin(CCEditBox *editBox)
+{
+    std::string str = editBox->getText();
+    int index = editBox->getTag();
+    switch (index) {
+        case 101:
+            if (!strcmp(str.c_str(), "用户名"))
+            {
+                editBox->setText("");
+            }
+            break;
+        case 102:
+            if (!strcmp(str.c_str(), "用户密码"))
+            {
+                editBox->setText("");
+            }
+            
+            break;
+        case 103:
+            if (!strcmp(str.c_str(), "确认密码"))
+            {
+                editBox->setText("");
+            }
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+}
+
+void QimiRegisterView::editBoxEditingDidEnd(CCEditBox *editBox)
+{
+    
+}
+
+void QimiRegisterView::editBoxTextChanged(CCEditBox *editBox,const std::string &text)
+{
+    
+}
+
+void QimiRegisterView::editBoxReturn(CCEditBox *editBox)
+{
+    
+}
+
+
+
+
+
 
 
 
