@@ -131,7 +131,7 @@ bool QimiLoginView::init()
     m_pInputUserNameTxtBg->removeFromParentAndCleanup(false);
     m_pUserName = CCEditBox::create(editBoxSize, m_pInputUserNameTxtBg);
     m_pUserName->setPosition(ccp(60, 80));
-    m_pUserName->setFontColor(ccc3(178,178,178));
+    m_pUserName->setFontColor(ccc3(0,0,0));
     m_pUserName->setMaxLength(50);
     m_pUserName->setReturnType(kKeyboardReturnTypeDone);
     m_pUserName->setTouchPriority(-1002);
@@ -142,7 +142,7 @@ bool QimiLoginView::init()
     m_pInputUserPassTxtBg->removeFromParentAndCleanup(false);
     m_pPassWorld = CCEditBox::create(editBoxSize, m_pInputUserPassTxtBg);
     m_pPassWorld->setPosition(ccp(60,20));
-    m_pPassWorld->setFontColor(ccc3(178,178,178));
+    m_pPassWorld->setFontColor(ccc3(0,0,0));
     m_pPassWorld->setMaxLength(50);
     
     m_pPassWorld->setReturnType(kKeyboardReturnTypeDone);

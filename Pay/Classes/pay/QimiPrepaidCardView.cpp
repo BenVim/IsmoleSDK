@@ -42,6 +42,7 @@ bool QimiPrepaidCardView::init()
     
     CCNode* container = CCNode::create();
     this->addChild(container);
+    container->setTag(100);
     container->setPosition(ccp(m_size.width/2, m_size.height/2-45));
     
     CCNode* topCCNode = CCNode::create();
@@ -226,6 +227,7 @@ bool QimiPrepaidCardView::init()
     m_pEditName->setReturnType(kKeyboardReturnTypeDone);
     m_pEditName->setTouchPriority(-1000);
     m_pEditName->setText("");
+    m_pEditName->setDelegate(this);
     container->addChild(m_pEditName);
     
     
@@ -331,4 +333,46 @@ void QimiPrepaidCardView::qimiHelp(cocos2d::CCNode* pSender, cocos2d::extension:
 {
     QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_HELP);
 }
+
+void QimiPrepaidCardView::editBoxEditingDidBegin(CCEditBox *editBox)
+{
+    CCLog("editBoxEditingDidBegin");
+}
+void QimiPrepaidCardView::editBoxEditingDidEnd(CCEditBox *editBox)
+{
+    CCLog("editBoxEditingDidEnd");
+}
+void QimiPrepaidCardView::editBoxTextChanged(CCEditBox *editBox,const std::string &text)
+{
+    CCLog("editBoxTextChanged");
+}
+void QimiPrepaidCardView::editBoxReturn(CCEditBox *editBox)
+{
+    CCLog("editBoxReturn");
+    changePrie();
+}
+
+void QimiPrepaidCardView::changePrie()
+{
+    std::string p = m_pEditName->getText();
+    int price = atoi(p.c_str());
+    for (int i =0; i < m_pButtonList->count() ; i++) {
+        CCControlButton* b = dynamic_cast<CCControlButton*>(m_pButtonList->objectAtIndex(i));
+        b->setEnabled(true);
+    }
+    CCControlButton* btn = dynamic_cast<CCControlButton*>(this->getChildByTag(100)->getChildByTag(price));
+    if (btn!=NULL)
+    {
+        btn->setEnabled(false);
+    }
+    upDataView(price);
+}
+
+
+
+
+
+
+
+
 

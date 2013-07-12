@@ -16,7 +16,7 @@
 USING_NS_CC;
 USING_NS_CC_EXT;
 
-class QimiPrepaidCardView : public cocos2d::CCLayer
+class QimiPrepaidCardView : public cocos2d::CCLayer,public CCEditBoxDelegate
 {
 public:
     QimiPrepaidCardView();
@@ -31,6 +31,12 @@ public:
     void backOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void nextOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void qimiHelp(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
+    
+    virtual void editBoxEditingDidBegin(CCEditBox *editBox);
+    virtual void editBoxEditingDidEnd(CCEditBox *editBox);
+    virtual void editBoxTextChanged(CCEditBox *editBox,const std::string &text);
+    virtual void editBoxReturn(CCEditBox *editBox);
+    
     
 private:
     
@@ -52,6 +58,7 @@ private:
 private:
     void upDataView(int pay);
     void upSelectState(cocos2d::extension::CCControlButton *btn);
+    void changePrie();
 };
 
 

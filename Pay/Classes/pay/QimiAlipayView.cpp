@@ -40,6 +40,7 @@ bool QimiAlipayView::init()
     CCSize m_size = CCDirector::sharedDirector()->getWinSize();
     
     CCNode* container = CCNode::create();
+    container->setTag(100);
     this->addChild(container);
     container->setPosition(ccp(m_size.width/2, m_size.height/2-45));
     
@@ -230,6 +231,7 @@ bool QimiAlipayView::init()
     m_pEditName->setReturnType(kKeyboardReturnTypeDone);
     m_pEditName->setTouchPriority(-1000);
     m_pEditName->setText("10");
+    m_pEditName->setDelegate(this);
     container->addChild(m_pEditName);
     
     
@@ -410,6 +412,44 @@ void QimiAlipayView::qimiHelp(cocos2d::CCNode* pSender, cocos2d::extension::CCCo
 {
     QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_HELP);
 }
+
+
+void QimiAlipayView::editBoxEditingDidBegin(CCEditBox* editBox)
+{
+    
+}
+void QimiAlipayView::editBoxEditingDidEnd(CCEditBox* editBox)
+{
+    
+}
+void QimiAlipayView::editBoxTextChanged(CCEditBox* editBox, const std::string& text)
+{
+    
+}
+void QimiAlipayView::editBoxReturn(CCEditBox* editBox)
+{
+    changePrie();
+}
+
+void QimiAlipayView::changePrie()
+{
+    std::string p = m_pEditName->getText();
+    int price = atoi(p.c_str());
+    for (int i =0; i < m_pButtonList->count() ; i++) {
+        CCControlButton* b = dynamic_cast<CCControlButton*>(m_pButtonList->objectAtIndex(i));
+        b->setEnabled(true);
+    }
+    CCControlButton* btn = dynamic_cast<CCControlButton*>(this->getChildByTag(100)->getChildByTag(price));
+    if (btn!=NULL)
+    {
+        btn->setEnabled(false);
+    }
+    upDataView(price);
+}
+
+
+
+
 
 
 

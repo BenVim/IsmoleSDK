@@ -232,6 +232,8 @@ bool QimiPrepaidCardNextView::init()
     m_pCardNum->setReturnType(kKeyboardReturnTypeDone);
     m_pCardNum->setTouchPriority(-1000);
     m_pCardNum->setText("");
+    m_pCardNum->setInputMode(kEditBoxInputModeNumeric);
+    m_pCardNum->setDelegate(this);
     container->addChild(m_pCardNum);
     
     m_pInputCarPassTxtBg = CCScale9Sprite::create("loginbg.png");
@@ -243,6 +245,8 @@ bool QimiPrepaidCardNextView::init()
     m_pCardPassword->setReturnType(kKeyboardReturnTypeDone);
     m_pCardPassword->setTouchPriority(-1000);
     m_pCardPassword->setText("");
+    m_pCardPassword->setInputMode(kEditBoxInputModeNumeric);
+    m_pCardPassword->setDelegate(this);
     container->addChild(m_pCardPassword);
     
     CCLabelTTF* labe = CCLabelTTF::create("请输入充值卡信息：", "Helvetica", 20);
@@ -313,6 +317,13 @@ void QimiPrepaidCardNextView::rechargeOnClick(cocos2d::CCNode* pSender, cocos2d:
 {
     //充值。。。 调用接口
     //m_money 最终需要充值的数量
+    if (m_denomination == 0)
+    {
+        CCLog("m_denomination number is 0");
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "请选择您的充值卡面额!");
+        return;
+    }
+    
     std::string str = std::string(m_pCardNum->getText());
     if (str.empty())
     {
@@ -329,12 +340,7 @@ void QimiPrepaidCardNextView::rechargeOnClick(cocos2d::CCNode* pSender, cocos2d:
         return;
     }
     
-    if (m_denomination == 0)
-    {
-        CCLog("m_denomination number is 0");
-        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "请选择您的充值卡面额!");
-        return;
-    }
+    
     
     requestOrder();
     CCLog("充值卡 money（分）= %d 种类 %d, 面额：%d", m_money , m_kind, m_denomination);
@@ -710,3 +716,34 @@ void QimiPrepaidCardNextView::qimiHelp(cocos2d::CCNode* pSender, cocos2d::extens
 {
     QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_HELP);
 }
+
+
+void QimiPrepaidCardNextView::editBoxEditingDidBegin(CCEditBox *editBox)
+{
+    if (m_denomination == 0)
+    {
+        CCLog("m_denomination number is 0");
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "请选择您的充值卡面额!");
+        return;
+    }
+}
+
+void QimiPrepaidCardNextView::editBoxEditingDidEnd(CCEditBox *editBox)
+{
+    
+}
+
+void QimiPrepaidCardNextView::editBoxTextChanged(CCEditBox *editBox,const std::string &text)
+{
+    
+}
+
+void QimiPrepaidCardNextView::editBoxReturn(CCEditBox *editBox)
+{
+
+}
+
+
+
+
+
