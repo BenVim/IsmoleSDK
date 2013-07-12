@@ -222,7 +222,7 @@ void QimiRegisterView::registerOnClick(cocos2d::CCNode* pSender, cocos2d::extens
             request->release();
             
             RequestLoadingView* mask = RequestLoadingView::create();
-            mask->setTag(100000);
+            mask->setTag(1000000);
             this->addChild(mask);
         }
         else
@@ -245,7 +245,7 @@ void QimiRegisterView::backOnClick(cocos2d::CCNode* pSender, cocos2d::extension:
 
 void QimiRegisterView::registerSucceed(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response)
 {
-    CCNode* node = this->getChildByTag(100000);
+    CCNode* node = this->getChildByTag(1000000);
     if (node!=NULL)
     {
         node->removeFromParentAndCleanup(true);

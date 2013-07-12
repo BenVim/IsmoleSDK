@@ -253,7 +253,7 @@ void QimiLoginView::loginOnclick(cocos2d::CCNode *pSender, cocos2d::extension::C
         request->release();
         
         RequestLoadingView* mask = RequestLoadingView::create();
-        mask->setTag(100000);
+        mask->setTag(1000000);
         this->addChild(mask);
     }
 
@@ -261,7 +261,7 @@ void QimiLoginView::loginOnclick(cocos2d::CCNode *pSender, cocos2d::extension::C
 
 void QimiLoginView::loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response)
 {
-    CCNode* node = this->getChildByTag(100000);
+    CCNode* node = this->getChildByTag(1000000);
     if (node!=NULL)
     {
         node->removeFromParentAndCleanup(true);
