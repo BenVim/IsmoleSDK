@@ -576,20 +576,123 @@ void QimiPrepaidCardNextView::requestPaySucssful(cocos2d::extension::CCHttpClien
     }
     printf("\n");
     
-    switch (statusCode) {
-        case 200:
-        {
-            QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "充值已成功！");//CCLog("充值已成功！");
-            CCInteger* obj = CCInteger::create(1);
-            QimiPlatform::shareQimiPlatform()->callPayBack(obj);
-        }
-            break;
+//    switch (statusCode) {
+//        case 200:
+//        {
+//            QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "充值已成功！");//CCLog("充值已成功！");
+//            CCInteger* obj = CCInteger::create(1);
+//            QimiPlatform::shareQimiPlatform()->callPayBack(obj);
+//        }
+//            break;
+//        case 101:
+//            QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "异常错误！");//CCLog("异常错误");
+//            break;
+//        default:
+//            break;
+//    }
+    
+    int errCode = atoi(responseData.c_str());
+    std::string errMsg = "";
+    switch (errCode) {
         case 101:
-            QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "异常错误！");//CCLog("异常错误");
+            errMsg = "md5 验证失败";
             break;
+        case 102:
+            errMsg = "订单号重复";
+            break;
+        case 103:
+            errMsg = "恶意用户";
+            break;
+        case 104:
+            errMsg = "序列号,密码简单验证失败或之前曾提交过的卡密已验证失败";
+            break;
+        case 105:
+            errMsg = "密码正在处理中";
+            break;
+        case 106:
+            errMsg = "系统繁忙,暂停提交";
+            break;
+        case 107:
+            errMsg = "卡内余额不足";//多次支付时卡内余额不足
+            break;
+        case 109:
+            errMsg = "des 解密失败";
+            break;
+        case 201:
+            errMsg = "证书验证失败";
+            break;
+        case 501:
+            errMsg = "插入数据库失败";
+            break;
+        case 502:
+            errMsg = "插入数据库失败";
+            break;
+        case 200:
+            errMsg = "支付成功，请刷新";//请求成功,神州付收单(非订单支付成功)
+            break;
+        case 902:
+            errMsg = "商户参数不全";
+            break;
+        case 903:
+            errMsg = "商户 ID 不存在";
+            break;
+        case 904:
+            errMsg = "商户没有激活";
+            break;
+        case 905:
+            errMsg = "商户没有使用该接口的权限";
+            break;
+        case 906:
+            errMsg = "商户没有设置 密钥(privateKey)";
+            break;
+        case 907:
+            errMsg = "商户没有设置 DES 密钥";
+            break;
+        case 908:
+            errMsg = "该笔订单已经处理完成";//该笔订单已经处理完成(订单状态已经为确定的状态:成功 或 者 失败)
+            break;
+        case 909:
+            errMsg = "该笔订单不符合重复支付的条件";
+            break;
+        case 910:
+            errMsg = "服务器返回地址,不符合规范";
+            break;
+        case 911:
+            errMsg = "订单号,不符合规范";
+            break;
+        case 912:
+            errMsg = "非法订单";
+            break;
+        case 913:
+            errMsg = "该地方卡暂时不支持";
+            break;
+        case 914:
+            errMsg = "支付金额非法";
+            break;
+        case 915:
+            errMsg = "卡面额非法";
+            break;
+        case 916:
+            errMsg = "商户不支持该充值卡的支付";
+            break;
+        case 917:
+            errMsg = "参数格式不正确";
+            break;
+            case 0:
+            errMsg = "网络连接失败";
+            break;
+            
         default:
             break;
     }
+    
+    
+    
+    QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", errMsg);//CCLog("充值已成功！");
+    CCInteger* obj = CCInteger::create(1);
+    QimiPlatform::shareQimiPlatform()->callPayBack(obj);
+    
+    
     this->removeFromParentAndCleanup(true);
 }
 

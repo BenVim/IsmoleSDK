@@ -315,7 +315,7 @@ void QimiPrepaidCardView::nextOnClick(cocos2d::CCNode* pSender, cocos2d::extensi
 {
     std::string money =std::string(m_pEditName->getText());
     m_money = atoi(money.c_str())*100;
-    //m_money =1;
+    //m_money =1;//测试数据
     QimiPrepaidCardNextView* pQimiPrepaidCardNextView = QimiPrepaidCardNextView::create();
     pQimiPrepaidCardNextView->initData(m_uId, m_sId, m_key, m_money, m_kind);
     StageScene::shareStageScene()->m_DialogContainer->addChild(pQimiPrepaidCardNextView);
