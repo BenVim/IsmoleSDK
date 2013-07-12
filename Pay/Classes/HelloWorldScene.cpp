@@ -139,7 +139,7 @@ void HelloWorld::logined(CCObject* obj)
 
 void HelloWorld::openWebURL()
 {
-    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_FORUM);
+    QimiPlatform::shareQimiPlatform()->QimiOpenGameForum(52);
 }
 
 void HelloWorld::quit()

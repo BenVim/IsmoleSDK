@@ -92,6 +92,8 @@ void QimiPlatform::openAlertDailog(std::string title, std::string msg)
     #endif
 }
 
+
+
 void QimiPlatform::openPayDailog(std::string uId, int sId, std::string key, int money)
 {
     QimiMainView* qimiManView = QimiMainView::create();
@@ -222,6 +224,31 @@ bool QimiPlatform::isCheckAppKey()
 {
     return m_key.empty() ? false : true;
 }//检查是否已获得APP KEY
+
+
+void QimiPlatform::QimiOpenGameForum(int fid)
+{
+    if (QimiPlatform::shareQimiPlatform()->isLogined())
+    {
+        std::string userName  = QimiPlatform::shareQimiPlatform()->getQimiUserModel()->getEmail();
+        char sign[255];
+        sprintf(sign, "%s%s",userName.c_str(), QIMI_FROM_KEY);
+        QimiMD5 md5;
+        md5.update(sign);
+        std::string md5tolower = md5.toString();
+        
+        char buff[255];
+        sprintf(buff, "http://bbs.qimi.com/login.php?uName=%s&fid=%d&sign=%s", userName.c_str(), fid, md5tolower.c_str());
+        CCLog("==========%s", buff);
+        QimiPlatform::shareQimiPlatform()->openGameWeb(buff);
+    }
+    else
+    {
+        QimiPlatform::shareQimiPlatform()->QimiLogin();
+    }
+}
+
+
 
 void QimiPlatform::qimiUserLogin(std::string userName, std::string userpass)
 {

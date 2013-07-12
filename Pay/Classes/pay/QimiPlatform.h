@@ -70,6 +70,9 @@ public:
     void QimiRegister();
     void QimiLogin();
     
+    /*打开奇米论坛方法*/
+    void QimiOpenGameForum(int fid);
+    
     /**
      注册和登录接口
      回调参数是CCString .登录和注册成功回调为字符串“1”，失败则返回的是服务器错误信息字符串型。
