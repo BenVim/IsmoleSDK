@@ -679,7 +679,7 @@ void QimiPrepaidCardNextView::requestPaySucssful(cocos2d::extension::CCHttpClien
             errMsg = "卡面额非法";
             break;
         case 916:
-            errMsg = "商户不支持该充值卡的支付";
+            errMsg = "卡号或密码错误！";
             break;
         case 917:
             errMsg = "参数格式不正确";
@@ -720,14 +720,7 @@ void QimiPrepaidCardNextView::qimiHelp(cocos2d::CCNode* pSender, cocos2d::extens
 
 void QimiPrepaidCardNextView::editBoxEditingDidBegin(CCEditBox *editBox)
 {
-    if (m_denomination == 0)
-    {
-        CCLog("m_denomination number is 0");
-        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "请选择您的充值卡面额!");
-        editBox->detachWithIME();
-        
-        return;
-    }
+    
 }
 
 void QimiPrepaidCardNextView::editBoxEditingDidEnd(CCEditBox *editBox)
@@ -742,7 +735,14 @@ void QimiPrepaidCardNextView::editBoxTextChanged(CCEditBox *editBox,const std::s
 
 void QimiPrepaidCardNextView::editBoxReturn(CCEditBox *editBox)
 {
-
+    if (m_denomination == 0)
+    {
+        CCLog("m_denomination number is 0");
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "请选择您的充值卡面额!");
+        //editBox->detachWithIME();
+        
+        return;
+    }
 }
 
 
