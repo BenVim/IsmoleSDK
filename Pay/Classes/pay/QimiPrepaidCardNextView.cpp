@@ -686,13 +686,17 @@ void QimiPrepaidCardNextView::requestPaySucssful(cocos2d::extension::CCHttpClien
             break;
     }
     
-    
-    
     QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", errMsg);//CCLog("充值已成功！");
-    CCInteger* obj = CCInteger::create(1);
-    QimiPlatform::shareQimiPlatform()->callPayBack(obj);
-    
-    
+    if (errCode == 200)
+    {
+        CCInteger* obj = CCInteger::create(1);
+        QimiPlatform::shareQimiPlatform()->callPayBack(obj);
+    }
+    else
+    {
+        CCInteger* obj = CCInteger::create(0);
+        QimiPlatform::shareQimiPlatform()->callPayBack(obj);
+    }
     this->removeFromParentAndCleanup(true);
 }
 
