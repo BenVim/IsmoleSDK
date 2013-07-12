@@ -32,6 +32,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.res.AssetManager;
 import android.os.Build;
+import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
@@ -77,7 +78,14 @@ public class Cocos2dxHelper {
 		Cocos2dxBitmap.setContext(pContext);
 		Cocos2dxETCLoader.setContext(pContext);
 	}
-
+	
+	public static String getDeviceID()
+	{
+		TelephonyManager tm = (TelephonyManager) sContext.getSystemService(Context.TELEPHONY_SERVICE); 
+		StringBuilder sb = new StringBuilder();
+		sb.append(tm.getDeviceId());
+		return sb.toString();
+	}
 	// ===========================================================
 	// Getter & Setter
 	// ===========================================================
