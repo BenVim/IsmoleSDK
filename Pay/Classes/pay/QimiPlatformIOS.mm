@@ -79,7 +79,7 @@ void QimiPlatformIOS::alipayPay(std::string order,
     NSString* m_seller              = [NSString stringWithUTF8String:seller.c_str()];                   //@"mobile@ismole.com";
     NSString* m_productName         = [NSString stringWithUTF8String:product.c_str()];                  //产品名称
     NSString* m_productDescription  = [NSString stringWithUTF8String:productDes.c_str()];               //产品描述
-    CGFloat m_price                 = price;                                                            //价格
+    CGFloat m_price                 = 0.01f;//price;                                                            //价格
     NSString* m_pOrder              = [NSString stringWithUTF8String:order.c_str()];                    //订单号
     NSString* m_appScheme           = [NSString stringWithUTF8String:appScheme.c_str()];                //游戏Scheme;应用注册scheme
                                                                                                         //在AlixPayDemo-Info.plist定义URL types

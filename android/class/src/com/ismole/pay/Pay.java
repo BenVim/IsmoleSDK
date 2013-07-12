@@ -40,6 +40,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.webkit.WebView;
 import android.widget.Toast;
 
 public class Pay extends Cocos2dxActivity {
@@ -59,12 +60,11 @@ public class Pay extends Cocos2dxActivity {
 	}
 	
 	public static void openWeb(String url) {
-		Intent intent = new Intent();
-		Log.e("navigations", url);
-		intent.setAction("android.intent.action.VIEW");
-		Uri content_url = Uri.parse(url);
-		intent.setData(content_url);
-		Cocos2dxActivity.getContext().startActivity(intent);
+		Message message=new Message();
+        message.what=3;
+        message.obj=new MessData(url,"1");
+        handler.sendMessage(message);
+		
 	}
 	
 	public static void openAlert(String title, String msg)
@@ -89,21 +89,26 @@ public class Pay extends Cocos2dxActivity {
 				Dialog alertDialog = new AlertDialog.Builder(Pay.payObj).
 		          setTitle(mData.title).
 		          setMessage(mData.message).
-		          setIcon(R.drawable.ic_launcher).create();
+		          setPositiveButton(R.string.Ensure, null).create();
 				  alertDialog.show();
 				break;
 			}
 			case 2:
 			{
 				MessData data = (MessData)msg.obj;
-				
 				Pay.payObj.alixPay(data.m_order, data.m_product, data.m_productDes, data.m_appScheme, data.m_parent, data.m_seller, data.m_notifyUrl, data.m_alipayKey, data.m_price);
 				break;
 			}
-				
+			case 3:
+			{
+				MessData data = (MessData)msg.obj;
+				Pay.payObj.openWebView(data.title);
+			}
 			}
 		}
 	};
+	
+	
   
 	public static void pay(String order, String product,String productDes,String appScheme, String parent,String seller,String notifyUrl,String alipayKey, int price)
 	{
@@ -121,6 +126,28 @@ public class Pay extends Cocos2dxActivity {
 		super.onResume();
 	}
 	
+	public void openWebView(String url)
+	{
+		
+//		WebView wView = (WebView)findViewById(R.id.wv1);     
+//        WebSettings wSet = wView.getSettings();
+//        wSet.setJavaScriptEnabled(true);
+//        wView.loadUrl(url); 
+		Intent intent = new Intent();
+		intent.putExtra("url", url);
+		
+		intent.setClass(Pay.this, QimiWebView.class);
+		
+		this.startActivity(intent);
+		
+//		Intent intent = new Intent();
+//		Log.e("navigations", url);
+//		intent.setClass(Pay.this, QimiLoginActivity.class);
+//		
+//		this.startActivity(intent);
+	}
+	
+	
 	
 	public void alixPay(String order, 
 			String product, 
@@ -135,6 +162,7 @@ public class Pay extends Cocos2dxActivity {
 		m_parent = parent;
 		m_seller = seller;
 		m_private = alipayKey;
+		price = 0.01f;
 		
 		// check to see if the MobileSecurePay is already installed.
 				// 检测安全支付服务是否安装
@@ -305,7 +333,44 @@ public class Pay extends Cocos2dxActivity {
 							} else {// 验签成功。验签成功后再判断交易状态码
 								if(tradeStatus.equals("9000"))//判断交易状态码，只有9000表示交易成功
 									BaseHelper.showDialog(Pay.this, "提示","支付成功。交易状态码："+tradeStatus, R.drawable.infoicon);
-								else
+								else if (tradeStatus.equals("4000"))
+								{
+									BaseHelper.showDialog(Pay.this, "提示","系统异常。交易状态码："+tradeStatus, R.drawable.infoicon);
+								}else if(tradeStatus.equals("4001"))
+								{
+									BaseHelper.showDialog(Pay.this, "提示","数据格式不正确。交易状态码："+tradeStatus, R.drawable.infoicon);
+								}
+								else if (tradeStatus.equals("4003"))
+								{
+									BaseHelper.showDialog(Pay.this, "提示","该用户绑定的支付宝账户被冻结或不允许支付。交易状态码："+tradeStatus, R.drawable.infoicon);
+								}
+								else if (tradeStatus.equals("4004"))
+								{
+									BaseHelper.showDialog(Pay.this, "提示","该用户已解除绑定。交易状态码："+tradeStatus, R.drawable.infoicon);
+								}
+								else if (tradeStatus.equals("4005"))
+								{
+									BaseHelper.showDialog(Pay.this, "提示","绑定失败或没有绑定。交易状态码："+tradeStatus, R.drawable.infoicon);
+								}
+								else if (tradeStatus.equals("4006"))
+								{
+									BaseHelper.showDialog(Pay.this, "提示","订单支付失败。交易状态码："+tradeStatus, R.drawable.infoicon);
+								}
+								else if (tradeStatus.equals("4010"))
+								{
+									BaseHelper.showDialog(Pay.this, "提示","重新绑定账户。交易状态码："+tradeStatus, R.drawable.infoicon);
+								}
+								else if (tradeStatus.equals("6000"))
+								{
+									BaseHelper.showDialog(Pay.this, "提示","支付服务正在进行升级操作。交易状态码："+tradeStatus, R.drawable.infoicon);
+								}else if (tradeStatus.equals("6001"))
+								{
+									BaseHelper.showDialog(Pay.this, "提示","用户中途取消支付操作。交易状态码："+tradeStatus, R.drawable.infoicon);
+								}
+								else if (tradeStatus.equals("6002"))
+								{
+									BaseHelper.showDialog(Pay.this, "提示","网络连接异常。交易状态码："+tradeStatus, R.drawable.infoicon);
+								}else 
 								BaseHelper.showDialog(Pay.this, "提示", "支付失败。交易状态码:"
 										+ tradeStatus, R.drawable.infoicon);
 							}
@@ -325,6 +390,20 @@ public class Pay extends Cocos2dxActivity {
 				}
 			}
 		};
+		
+		/*
+		 * 9000操作成功
+		 * 4000系统异常
+		 * 4001数据格式不正确
+		 * 4003该用户绑定的支付宝账户被冻结或不允许支付
+		 * 4004该用户已解除绑定
+		 * 4005绑定失败或没有绑定
+		 * 4006订单支付失败
+		 * 4010重新绑定账户。
+		 * 6000支付服务正在进行升级操作。
+		 * 6001用户中途取消支付操作。
+		 * 6002网络连接异常。
+		 */
 
 		//
 		//
@@ -384,5 +463,7 @@ public class Pay extends Cocos2dxActivity {
 				e.printStackTrace();
 			}
 		}
+		
+
 	
 }

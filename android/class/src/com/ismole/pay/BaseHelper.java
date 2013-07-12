@@ -65,7 +65,6 @@ public class BaseHelper {
 	public static void showDialog(Activity context, String strTitle,
 			String strText, int icon) {
 		AlertDialog.Builder tDialog = new AlertDialog.Builder(context);
-		tDialog.setIcon(icon);
 		tDialog.setTitle(strTitle);
 		tDialog.setMessage(strText);
 		tDialog.setPositiveButton(R.string.Ensure, null);
