@@ -56,6 +56,7 @@ private:
     void remeberPassworld(CCObject* obj);
     void loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response);
     //void alipayOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
+    void showWin();
 };
 
 

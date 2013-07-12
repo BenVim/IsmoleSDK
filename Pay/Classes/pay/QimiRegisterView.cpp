@@ -36,9 +36,10 @@ bool QimiRegisterView::init()
     
     CCNode* container = CCNode::create();
     this->addChild(container);
+    container->setTag(100000);
+    container->setPosition(ccp(m_size.width/2, m_size.height/2));
     
-    container->setPosition(ccp(m_size.width/2, 1000));
-    container->runAction(CCSequence::create(CCEaseBackOut::create(CCMoveTo::create(0.5f, ccp(m_size.width/2, m_size.height/2))),NULL));
+    
     
     CCSprite* bg = CCSprite::create("bg_small_zhuce.png");
     bg->setPosition(ccp(5, 4));
@@ -102,7 +103,7 @@ bool QimiRegisterView::init()
     m_pInputUserNameTxtBg->removeFromParentAndCleanup(false);
     m_pEditUserName = CCEditBox::create(editBoxSize, m_pInputUserNameTxtBg);
     m_pEditUserName->setPosition(ccp(70, 82));
-    m_pEditUserName->setFontColor(ccc3(175,175,175));
+    m_pEditUserName->setFontColor(ccc3(0,0,0));
     m_pEditUserName->setMaxLength(60);
     m_pEditUserName->setReturnType(kKeyboardReturnTypeDone);
     m_pEditUserName->setInputMode(kEditBoxInputModeEmailAddr);
@@ -115,7 +116,7 @@ bool QimiRegisterView::init()
     m_pInputUserPassTxtBg->removeFromParentAndCleanup(false);
     m_pEditUserPass = CCEditBox::create(editBoxSize, m_pInputUserPassTxtBg);
     m_pEditUserPass->setPosition(ccp(70, 16));
-    m_pEditUserPass->setFontColor(ccc3(175,175,175));
+    m_pEditUserPass->setFontColor(ccc3(0,0,0));
     m_pEditUserPass->setMaxLength(50);
     m_pEditUserPass->setReturnType(kKeyboardReturnTypeDone);
     m_pEditUserPass->setInputFlag(kEditBoxInputFlagPassword);
@@ -128,7 +129,7 @@ bool QimiRegisterView::init()
     m_pInputUserVerifyPassTxtBg->removeFromParentAndCleanup(false);
     m_pEditVerifyPass = CCEditBox::create(editBoxSize, m_pInputUserVerifyPassTxtBg);
     m_pEditVerifyPass->setPosition(ccp(70, -49));
-    m_pEditVerifyPass->setFontColor(ccc3(175,175,175));
+    m_pEditVerifyPass->setFontColor(ccc3(0,0,0));
     m_pEditVerifyPass->setMaxLength(50);
     m_pEditVerifyPass->setReturnType(kKeyboardReturnTypeDone);
     m_pEditVerifyPass->setInputFlag(kEditBoxInputFlagPassword);
@@ -156,9 +157,21 @@ bool QimiRegisterView::init()
     vUserPassLable->setPosition(ccp(-80, -49));
     vUserPassLable->setAnchorPoint(ccp(1, 0.5f));
     container->addChild(vUserPassLable);
-
+    
+   
+    
+    
+    container->setVisible(false);
+    CCFiniteTimeAction* actionMoveDone = cocos2d::CCCallFunc::create(this, callfunc_selector(QimiRegisterView::showWin));
+    container->runAction(CCSequence::create(CCDelayTime::create(0.01),actionMoveDone,CCMoveTo::create(0.01f, ccp(m_size.width/2, 1000)),CCEaseBackOut::create(CCMoveTo::create(0.5f, ccp(m_size.width/2, m_size.height/2))),NULL));
     return true;
 }
+
+void QimiRegisterView::showWin()
+{
+    this->getChildByTag(100000)->setVisible(true);;
+}
+
 
 void QimiRegisterView::registerOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
 {

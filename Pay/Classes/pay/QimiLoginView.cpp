@@ -40,9 +40,9 @@ bool QimiLoginView::init()
     CCSize m_size = CCDirector::sharedDirector()->getWinSize();
     
     CCNode* container = CCNode::create();
+    container->setTag(100000);
     this->addChild(container);
-    container->setPosition(ccp(m_size.width/2, 1000));
-    container->runAction(CCSequence::create(CCEaseBackOut::create(CCMoveTo::create(0.5f, ccp(m_size.width/2, m_size.height/2))),NULL));
+    container->setPosition(ccp(m_size.width/2, m_size.height/2));
     
     CCSprite* bg = CCSprite::create("bg_small_denglu.png");
     bg->setPosition(ccp(3,16));
@@ -203,7 +203,16 @@ bool QimiLoginView::init()
     
     remeberPassworld(NULL);
     
+    container->setVisible(false);
+    CCFiniteTimeAction* actionMoveDone = cocos2d::CCCallFunc::create(this, callfunc_selector(QimiLoginView::showWin));
+    container->runAction(CCSequence::create(CCDelayTime::create(0.01),actionMoveDone,CCMoveTo::create(0.01f, ccp(m_size.width/2, 1000)),CCEaseBackOut::create(CCMoveTo::create(0.5f, ccp(m_size.width/2, m_size.height/2))),NULL));
     return true;
+}
+
+void QimiLoginView::showWin()
+{
+    this->getChildByTag(100000)->setVisible(true);;
+    
 }
 
 void QimiLoginView::loginOnclick(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)

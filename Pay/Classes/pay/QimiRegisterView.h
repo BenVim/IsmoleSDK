@@ -50,6 +50,7 @@ private:
     
 private:
     void registerSucceed(CCHttpClient *sender, CCHttpResponse *response);
+    void showWin();
 };
 
 #endif /* defined(__Pay__QimiRegisterView__) */
