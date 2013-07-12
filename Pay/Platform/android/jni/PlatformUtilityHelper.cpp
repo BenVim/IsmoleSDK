@@ -77,6 +77,22 @@ extern "C"
         }
     }
     
+    const char *getDeviceIdJNI()
+    {
+        JniMethodInfo t;
+        
+        if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "getDeviceId", "()Ljava/lang/String;"))
+        {
+            jstring result = (jstring)t.env->CallStaticObjectMethod(t.classID, t.methodID);
+            t.env->DeleteLocalRef(t.classID);
+            CCString *ret = new CCString(JniHelper::jstring2string(result).c_str());
+            ret->autorelease();
+            t.env->DeleteLocalRef(result);
+            return ret->m_sString.c_str();
+        }
+        return 0;
+    }
+    
     
 }
 

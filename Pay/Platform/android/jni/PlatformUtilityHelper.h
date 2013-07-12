@@ -15,6 +15,7 @@ extern "C"
     
         extern void openWebJNI(const char * webUrl);
         extern void openAlertJNI(const char* title, const char* msg);
+        extern const char *getDeviceIdJNI();
 }
 
 
