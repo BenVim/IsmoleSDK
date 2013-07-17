@@ -20,7 +20,7 @@
 #define QIMI_CZ "http://www.qimi.com/ddxy/qimijiesh.html"//奇米充值地址
 #define QIMI_FOGET "http://www.qimi.com/index.php?mod=User&do=backPwdNew" //找回密码
 #define QIMI_HELP "http://www.qimi.com/ddxy/bangzhu.html" //帮助页面
-#define QIMI_FROM_KEY "e7d4b2571e2d1fd80c19a048b18a529e"//登录论坛的KEY
+#define QIMI_FROM_KEY "e7d4b2571e2d1fd80c19a048b18a529e"//登录论坛的KEY e7d4b2571e2d1fd80c19a048b18a529e
 
 #define CC_GAME_GET_SET(varType, varName, funName)\
 public: varType get##funName(void){return varName;};\
