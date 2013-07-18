@@ -61,7 +61,7 @@ bool QimiRegisterView::init()
     backBtn->setPreferredSize(CCSizeMake(32, 32));
     backBtn->setTouchPriority(-1001);
     container->addChild(backBtn);
-    backBtn->setPosition(ccp(184, 158));
+    backBtn->setPosition(ccp(180, 153));
     backBtn->addTargetWithActionForControlEvents(this,
                                                  cccontrol_selector(QimiRegisterView::backOnClick),
                                                  CCControlEventTouchUpInside);

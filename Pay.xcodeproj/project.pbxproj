@@ -21,12 +21,12 @@
 		B540B309178D908400BFC2FA /* bg_small_zhuce.png in Resources */ = {isa = PBXBuildFile; fileRef = B540B2F8178D908200BFC2FA /* bg_small_zhuce.png */; };
 		B540B30A178D908400BFC2FA /* bg_zhifutishi.png in Resources */ = {isa = PBXBuildFile; fileRef = B540B2F9178D908200BFC2FA /* bg_zhifutishi.png */; };
 		B540B30B178D908400BFC2FA /* btn_quren.png in Resources */ = {isa = PBXBuildFile; fileRef = B540B2FA178D908200BFC2FA /* btn_quren.png */; };
-		B540B30C178D908400BFC2FA /* btn_small_close.png in Resources */ = {isa = PBXBuildFile; fileRef = B540B2FB178D908200BFC2FA /* btn_small_close.png */; };
 		B540B30D178D908400BFC2FA /* btn_small_denglu.png in Resources */ = {isa = PBXBuildFile; fileRef = B540B2FC178D908300BFC2FA /* btn_small_denglu.png */; };
 		B540B30E178D908400BFC2FA /* btn_small_zhuce_denglu.png in Resources */ = {isa = PBXBuildFile; fileRef = B540B2FD178D908300BFC2FA /* btn_small_zhuce_denglu.png */; };
 		B540B30F178D908400BFC2FA /* btn_small_zhuce.png in Resources */ = {isa = PBXBuildFile; fileRef = B540B2FE178D908300BFC2FA /* btn_small_zhuce.png */; };
 		B540B310178D908400BFC2FA /* btn_tuichu.png in Resources */ = {isa = PBXBuildFile; fileRef = B540B2FF178D908300BFC2FA /* btn_tuichu.png */; };
 		B540B311178D908400BFC2FA /* img_qimi.png in Resources */ = {isa = PBXBuildFile; fileRef = B540B300178D908400BFC2FA /* img_qimi.png */; };
+		B58C3227179801CF000D3E47 /* btn_small_close.png in Resources */ = {isa = PBXBuildFile; fileRef = B540B2FB178D908200BFC2FA /* btn_small_close.png */; };
 		B592E11C177D46660021E450 /* btn_qimizf.png in Resources */ = {isa = PBXBuildFile; fileRef = B592E11B177D46660021E450 /* btn_qimizf.png */; };
 		B5BEE18A177C18D200584945 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BEE189177C18D200584945 /* QuartzCore.framework */; };
 		B5BEE18C177C18D200584945 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B5BEE18B177C18D200584945 /* OpenGLES.framework */; };
@@ -2697,6 +2697,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B58C3227179801CF000D3E47 /* btn_small_close.png in Resources */,
 				B5BEE19C177C18D200584945 /* CloseNormal.png in Resources */,
 				B5BEE19E177C18D200584945 /* CloseSelected.png in Resources */,
 				B5BEE1A0177C18D200584945 /* Default.png in Resources */,
@@ -2758,7 +2759,6 @@
 				B540B309178D908400BFC2FA /* bg_small_zhuce.png in Resources */,
 				B540B30A178D908400BFC2FA /* bg_zhifutishi.png in Resources */,
 				B540B30B178D908400BFC2FA /* btn_quren.png in Resources */,
-				B540B30C178D908400BFC2FA /* btn_small_close.png in Resources */,
 				B540B30D178D908400BFC2FA /* btn_small_denglu.png in Resources */,
 				B540B30E178D908400BFC2FA /* btn_small_zhuce_denglu.png in Resources */,
 				B540B30F178D908400BFC2FA /* btn_small_zhuce.png in Resources */,
