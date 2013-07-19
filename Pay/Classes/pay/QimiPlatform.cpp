@@ -67,17 +67,18 @@ void QimiPlatform::setParamInfo(QimiParamInfo *pQimiParamInfo)
     m_sId       = pQimiParamInfo->getSID();
     m_key       = pQimiParamInfo->getAppKey();
     m_appScheme = pQimiParamInfo->getAppScheme();
+    
 }
 
 
-void QimiPlatform::openGameWeb(std::string webUrl)
+void QimiPlatform::openGameWeb(std::string webUrl, bool isFullScene)
 {
     #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    m_pQimiPlatformIOS->openWeb(webUrl);
+    m_pQimiPlatformIOS->openWeb(webUrl, isFullScene);
     #endif
     
     #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    m_pQimiPlatformAndroid->openWeb(webUrl);
+    m_pQimiPlatformAndroid->openWeb(webUrl, isFullScene);
     #endif
 }
 
@@ -253,7 +254,7 @@ void QimiPlatform::QimiOpenGameForum(int fid)
         char buff[255];
         sprintf(buff, "http://bbs.qimi.com/login.php?name=%s&fid=%d&sign=%s", userName.c_str(), fid, md5tolower.c_str());
         CCLog("==========%s", buff);
-        QimiPlatform::shareQimiPlatform()->openGameWeb(buff);
+        QimiPlatform::shareQimiPlatform()->openGameWeb(buff, true);
     }
     else
     {

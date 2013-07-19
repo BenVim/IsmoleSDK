@@ -714,7 +714,7 @@ void QimiPrepaidCardNextView::backOnClick(cocos2d::CCNode *pSender, cocos2d::ext
 
 void QimiPrepaidCardNextView::qimiHelp(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
 {
-    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_HELP);
+    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_HELP, false);
 }
 
 

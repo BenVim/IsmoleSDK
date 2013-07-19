@@ -42,8 +42,9 @@ public:
     /* 打开论坛的接口参数说明
      * 该接口可以在游戏中打开web网页
      * webUrl string 类型 网站网址。
+     * isFullScene 是否全屏显示
      */
-    void openGameWeb(std::string webUrl);
+    void openGameWeb(std::string webUrl, bool isFullScene);
     
     /* 支付接口参数说明：
      * uId int类型 游戏的uId;

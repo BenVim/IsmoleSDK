@@ -23,5 +23,6 @@
     <string name="menu_settings">Settings</string>
     <string name="title_activity_alix_pay_dialog">AlixPayDialog</string>
     <string name="title_activity_qimi_web_view">QimiWebView</string>
+    <string name="title_activity_qimi_full_scene_web">QimiFullSceneWeb</string>
 
 </resources>

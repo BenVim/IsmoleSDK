@@ -203,16 +203,15 @@ bool QimiLoginView::init()
     
     remeberPassworld(NULL);
     
-    container->setVisible(false);
-    CCFiniteTimeAction* actionMoveDone = cocos2d::CCCallFunc::create(this, callfunc_selector(QimiLoginView::showWin));
-    container->runAction(CCSequence::create(CCDelayTime::create(0.01),actionMoveDone,CCMoveTo::create(0.01f, ccp(m_size.width/2, 1000)),CCEaseBackOut::create(CCMoveTo::create(0.5f, ccp(m_size.width/2, m_size.height/2))),NULL));
+    //container->setVisible(false);
+    //CCFiniteTimeAction* actionMoveDone = cocos2d::CCCallFunc::create(this, callfunc_selector(QimiLoginView::showWin));
+    //container->runAction(CCSequence::create(CCDelayTime::create(0.01),actionMoveDone,CCMoveTo::create(0.01f, ccp(m_size.width/2, 1000)),CCEaseBackOut::create(CCMoveTo::create(0.5f, ccp(m_size.width/2, m_size.height/2))),NULL));
     return true;
 }
 
 void QimiLoginView::showWin()
 {
-    this->getChildByTag(100000)->setVisible(true);;
-    
+    //this->getChildByTag(100000)->setVisible(true);;
 }
 
 void QimiLoginView::loginOnclick(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)
@@ -333,7 +332,7 @@ void QimiLoginView::remeberPassworld(CCObject* obj)
 
 void QimiLoginView::fogetPassWorld(cocos2d::CCObject *obj)
 {
-    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_FOGET);
+    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_FOGET, false);
 }
 
 void QimiLoginView::backOnClick(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)

@@ -51,17 +51,18 @@ extern "C"
         }
     }
     
-    void openWebJNI(const char * webUrl)
+    void openWebJNI(const char * webUrl, bool isFullScreen)
     {
         JniMethodInfo t;
         
-        if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "openWeb", "(Ljava/lang/String;)V")) {
+        if (JniHelper::getStaticMethodInfo(t, CLASS_NAME, "openWeb", "(Ljava/lang/String;Z)V")) {
             jstring jkey = t.env->NewStringUTF(webUrl);
-            t.env->CallStaticVoidMethod(t.classID, t.methodID, jkey);
+            t.env->CallStaticVoidMethod(t.classID, t.methodID, jkey, isFullScreen);
             t.env->DeleteLocalRef(jkey);
             t.env->DeleteLocalRef(t.classID);
         }
     }
+    
     
     void openAlertJNI(const char* title, const char* msg)
     {

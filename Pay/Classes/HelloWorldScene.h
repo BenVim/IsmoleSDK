@@ -23,6 +23,7 @@ public:
     void quit(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent);
     void forget(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent);
     void getDivceId(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent);
+    void openWebURLFull(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent);
 
     // preprocessor macro for "static create()" constructor ( node() deprecated )
     CREATE_FUNC(HelloWorld);

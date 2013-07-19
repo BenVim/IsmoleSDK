@@ -17,7 +17,7 @@ class QimiPlatformAndroid : public cocos2d::CCObject
 public:
     CREATE_FUNC(QimiPlatformAndroid);
     bool init();
-    void openWeb(std::string webUrl);
+    void openWeb(std::string webUrl, bool isFullScene);
     void openAlert(std::string title, std::string msg);
     std::string getDeviceId();//获取设备ID
 };

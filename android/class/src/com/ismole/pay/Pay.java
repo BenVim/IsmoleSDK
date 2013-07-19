@@ -54,6 +54,7 @@ public class Pay extends Cocos2dxActivity {
 	private String m_seller;
 	private String m_private;
 	
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		payObj = this;
@@ -62,10 +63,13 @@ public class Pay extends Cocos2dxActivity {
 		System.loadLibrary("game");
 	}
 	
-	public static void openWeb(String url) {
+	public static void openWeb(String url, boolean isFullScene) {
 		Message message=new Message();
         message.what=3;
-        message.obj=new MessData(url,"1");
+        
+        MessData mData = new MessData(url, "1");
+        mData.isFullScene = isFullScene;
+        message.obj=mData;
         handler.sendMessage(message);
 		
 	}
@@ -104,7 +108,8 @@ public class Pay extends Cocos2dxActivity {
 			case 3:
 			{
 				MessData data = (MessData)msg.obj;
-				Pay.payObj.openWebView(data.title);
+				boolean isFull = data.isFullScene;
+				Pay.payObj.openWebView(data.title, isFull);
 			}
 			}
 		}
@@ -131,12 +136,24 @@ public class Pay extends Cocos2dxActivity {
 		super.onResume();
 	}
 	
-	public void openWebView(String url)
+	public void openWebView(String url, boolean isFullScene)
 	{
-		Intent intent = new Intent();
-		intent.putExtra("url", url);
-		intent.setClass(Pay.this, QimiWebView.class);
-		this.startActivity(intent);
+		if (isFullScene)
+		{
+			//打开全屏webView
+			Intent intent = new Intent();
+			intent.putExtra("url", url);
+			intent.setClass(Pay.this, QimiFullSceneWeb.class);
+			this.startActivity(intent);
+		}
+		else
+		{
+			//打开简单的WEBVIEW
+			Intent intent = new Intent();
+			intent.putExtra("url", url);
+			intent.setClass(Pay.this, QimiWebView.class);
+			this.startActivity(intent);
+		}
 	}
 	
 	public void alixPay(String order, 

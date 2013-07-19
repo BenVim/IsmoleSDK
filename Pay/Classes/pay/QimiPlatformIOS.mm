@@ -88,7 +88,7 @@ std::string QimiPlatformIOS::getDeviceId()
 }
 
 
-void QimiPlatformIOS::openWeb(std::string webUrl)
+void QimiPlatformIOS::openWeb(std::string webUrl, bool isFullScene)
 {
     NSString* url   = [NSString stringWithFormat:@"%s", webUrl.c_str()];
     CGRect webFrame = CGRectMake(0, 0, 320, 480);

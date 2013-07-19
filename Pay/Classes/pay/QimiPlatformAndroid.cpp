@@ -22,11 +22,11 @@ bool QimiPlatformAndroid::init()
     return true;
 }
 
-void QimiPlatformAndroid::openWeb(std::string webUrl)
+void QimiPlatformAndroid::openWeb(std::string webUrl, bool isFullScene)
 {
     
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
-    openWebJNI(webUrl.c_str());
+    openWebJNI(webUrl.c_str(), isFullScene);
     
 #endif // CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID
 }

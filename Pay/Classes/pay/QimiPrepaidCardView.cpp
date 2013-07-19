@@ -331,7 +331,7 @@ void QimiPrepaidCardView::backOnClick(cocos2d::CCNode *pSender, cocos2d::extensi
 
 void QimiPrepaidCardView::qimiHelp(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
 {
-    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_HELP);
+    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_HELP, false);
 }
 
 void QimiPrepaidCardView::editBoxEditingDidBegin(CCEditBox *editBox)

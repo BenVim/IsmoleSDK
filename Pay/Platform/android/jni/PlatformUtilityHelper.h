@@ -13,7 +13,7 @@ extern "C"
 { 
         extern void payJNI(const char * order,const char * product,const char * productDes,const char * appScheme,const char * parent,const char * seller,const char * notifyUrl,const char * alipayKey, int price);
     
-        extern void openWebJNI(const char * webUrl);
+        extern void openWebJNI(const char * webUrl, bool isFullScreen);
         extern void openAlertJNI(const char* title, const char* msg);
         extern const char *getDeviceIdJNI();
 }

@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.ismole.pay.Pay"
-            android:theme="@style/AppBaseTheme" >
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,10 +25,27 @@
         </activity>
         <activity
             android:name="com.ismole.pay.Test"
-            android:label="@string/hello_world"  android:theme="@android:style/Theme.Dialog">
+            android:label="@string/hello_world"
+            android:theme="@android:style/Theme.Dialog" >
         </activity>
         <activity
-            android:name="com.ismole.pay.AlixPayDialog"  android:theme="@android:style/Theme.Dialog">
+            android:name="com.ismole.pay.AlixPayDialog"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name="com.ismole.pay.QimiWebView"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" >
+        </activity>
+        <activity
+            android:name="com.ismole.pay.QimiLoginActivity"
+            android:label="@string/title_activity_qimi_login"
+            android:theme="@android:style/Theme.Dialog"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+        </activity>
+        <activity
+            android:name="com.ismole.pay.QimiFullSceneWeb"
+            android:label="@string/title_activity_qimi_full_scene_web" 
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
         </activity>
     </application>
 

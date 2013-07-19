@@ -22,7 +22,7 @@ public:
     static QimiPlatformIOS* create();
     bool init();
     
-    void openWeb(std::string url);
+    void openWeb(std::string url, bool isFullScene);
     void openAlert(std::string title, std::string msg);
     
     void alipayPay(std::string order, //订单号

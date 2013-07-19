@@ -37,6 +37,15 @@ bool HelloWorld::init()
     QimiParamInfo* paramInfo = QimiParamInfo::create(21, 15, "7a92bba4670d479c5514720c1cf46aab", "pay");
     QimiPlatform::shareQimiPlatform()->setParamInfo(paramInfo);
     
+    CCControlButton* backBtn0 = CCControlButton::create(CCLabelTTF::create("全屏WEBVIEW", "Helvetica", 20), CCScale9Sprite::create("buttonblue.png"));
+    backBtn0->setPreferredSize(CCSizeMake(200, 50));
+    container->addChild(backBtn0);
+    backBtn0->setPosition(ccp(240, 590));
+    backBtn0->addTargetWithActionForControlEvents(this,
+                                                 cccontrol_selector(HelloWorld::openWebURLFull),
+                                                 CCControlEventTouchUpInside);
+    
+    
     CCControlButton* backBtn = CCControlButton::create(CCLabelTTF::create("QIMI登录窗口", "Helvetica", 20), CCScale9Sprite::create("buttonblue.png"));
     backBtn->setPreferredSize(CCSizeMake(200, 50));
     container->addChild(backBtn);
@@ -163,7 +172,7 @@ void HelloWorld::quit(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEve
 
 void HelloWorld::forget(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)
 {
-    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_FOGET);
+    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_FOGET, false);
 }
 
 void HelloWorld::getDivceId(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)
@@ -177,6 +186,18 @@ void HelloWorld::getDivceId(cocos2d::CCNode *pSender, cocos2d::extension::CCCont
     label->setPosition(ccp(s.width/2, 650));
     
 }
+
+void HelloWorld::openWebURLFull(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)
+{
+    QimiPlatform::shareQimiPlatform()->QimiOpenGameForum(51);
+}
+
+
+
+
+
+
+
 
 
 

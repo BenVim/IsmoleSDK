@@ -476,7 +476,7 @@ void QimiMainView::DxOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCCon
 
 void QimiMainView::qimiCz(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
 {
-    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_CZ);
+    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_CZ, false);
 }
 
 void QimiMainView::openPrepaidCard(int kind)
@@ -493,7 +493,7 @@ void QimiMainView::backOnClick(cocos2d::CCNode *pSender, cocos2d::extension::CCC
 
 void QimiMainView::qimiHelp(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
 {
-    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_HELP);
+    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_HELP, false);
 }
 
 

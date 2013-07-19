@@ -410,7 +410,7 @@ void QimiAlipayView::backOnClick(cocos2d::CCNode *pSender, cocos2d::extension::C
 
 void QimiAlipayView::qimiHelp(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
 {
-    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_HELP);
+    QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_HELP, false);
 }
 
 

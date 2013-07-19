@@ -3,6 +3,7 @@ package com.ismole.pay;
 public class MessData {
     public String title;
     public String message;
+    public boolean isFullScene;
     
     public String m_order;
 	public String m_product;
