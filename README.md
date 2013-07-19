@@ -17,11 +17,18 @@ IsmoleSDK
      * 平台初始化 QimiParamInfo对象里面保存appId, sId, appKey几个平台初始化必需要的参数
      */
     void setParamInfo(QimiParamInfo* pQimiParamInfo);
+
+    /*
+     * forumId int类型。论坛版块ID。
+     */
+    void QimiOpenGameForum(int forumId)
+
     /* 打开论坛的接口参数说明
      * 该接口可以在游戏中打开web网页
      * webUrl string 类型 网站网址。
+     * isfullScene bool 是否显以全屏显示网页。true.全屏，否则不全屏。
      */
-    void openGameWeb(std::string webUrl);
+    void openGameWeb(std::string webUrl , bool isfullScene);
     
     /* 支付接口参数说明：
      * uId std::string类型 游戏用户的Id;
