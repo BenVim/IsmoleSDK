@@ -35,6 +35,7 @@ QimiLoginView::~QimiLoginView()
 
 bool QimiLoginView::init()
 {
+    CCLog("QimiLoginView1...mask");
     UIMaskLayerView* mask = UIMaskLayerView::create();
     this->addChild(mask);
     CCSize m_size = CCDirector::sharedDirector()->getWinSize();
@@ -48,11 +49,13 @@ bool QimiLoginView::init()
     bg->setPosition(ccp(3,16));
     container->addChild(bg);
     
+    CCLog("QimiLoginView2...1%f%f", container->getPositionX(), container->getPositionY());
+    
     CCSprite* logo = CCSprite::create("bg_small_btnlgogo.png");
     logo->setPosition(ccp(-58, 148));
     container->addChild(logo);
     
-    
+    CCLog("QimiLoginView3...logo");
     CCLabelTTF* titleTxt = CCLabelTTF::create("奇米帐号登录", "Helvetica", 22);
     titleTxt->setColor(ccc3(0, 0, 0));
     titleTxt->setPosition(ccp(36, 145));
@@ -200,6 +203,7 @@ bool QimiLoginView::init()
     userPassLable->setPosition(ccp(-151, 19));
     userPassLable->setAnchorPoint(ccp(0, 0.5f));
     container->addChild(userPassLable);
+    CCLog("QimiLoginView3...end");
     
     remeberPassworld(NULL);
     
