@@ -121,10 +121,23 @@ void QimiPlatform::QimiRegister()
 
 void QimiPlatform::QimiLogin()
 {
+    loginFunc("");
+}
+
+void QimiPlatform::QimiLogin(std::string userName)
+{
+    loginFunc(userName);
+}
+
+void QimiPlatform::loginFunc(std::string userName)
+{
     QimiLoginView* pLoginView = QimiLoginView::create();
     StageScene::shareStageScene()->m_DialogContainer->addChild(pLoginView);
+    pLoginView->initView(userName);
     pLoginView->setPosition(ccp(0, 0));
 }
+
+
 
 void QimiPlatform::QimiLogin(std::string userName, std::string pass, cocos2d::CCObject *target, cocos2d::SEL_CallFuncO call)
 {

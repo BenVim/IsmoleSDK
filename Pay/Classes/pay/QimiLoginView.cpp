@@ -35,6 +35,11 @@ QimiLoginView::~QimiLoginView()
 
 bool QimiLoginView::init()
 {
+    return true;
+}
+
+void QimiLoginView::initView(std::string userName)
+{
     CCLog("QimiLoginView1...mask");
     UIMaskLayerView* mask = UIMaskLayerView::create();
     this->addChild(mask);
@@ -141,6 +146,7 @@ bool QimiLoginView::init()
     m_pUserName->setText("您的电子邮箱地址");
     m_pUserName->setTag(101);
     m_pUserName->setDelegate(this);
+    m_pUserName->setEnabled(userName.empty());
     m_pUserName->setInputMode(kEditBoxInputModeEmailAddr);
     container->addChild(m_pUserName);
     
@@ -149,6 +155,7 @@ bool QimiLoginView::init()
     m_pPassWorld->setPosition(ccp(60,20));
     m_pPassWorld->setFontColor(ccc3(0,0,0));
     m_pPassWorld->setMaxLength(50);
+    
     
     m_pPassWorld->setReturnType(kKeyboardReturnTypeDone);
     m_pPassWorld->setInputFlag(kEditBoxInputFlagPassword);
@@ -210,7 +217,7 @@ bool QimiLoginView::init()
     //container->setVisible(false);
     //CCFiniteTimeAction* actionMoveDone = cocos2d::CCCallFunc::create(this, callfunc_selector(QimiLoginView::showWin));
     //container->runAction(CCSequence::create(CCDelayTime::create(0.01),actionMoveDone,CCMoveTo::create(0.01f, ccp(m_size.width/2, 1000)),CCEaseBackOut::create(CCMoveTo::create(0.5f, ccp(m_size.width/2, m_size.height/2))),NULL));
-    return true;
+
 }
 
 void QimiLoginView::showWin()
@@ -301,6 +308,7 @@ void QimiLoginView::loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos
                 
                 CCUserDefault::sharedUserDefault()->setStringForKey("QimiSDKUserName", userName.c_str());
                 CCUserDefault::sharedUserDefault()->setStringForKey("QimiSDKUserPass", userpass.c_str());
+                CCUserDefault::sharedUserDefault()->setStringForKey(userName.c_str(), userpass.c_str());
                 CCUserDefault::sharedUserDefault()->flush();
             }
             

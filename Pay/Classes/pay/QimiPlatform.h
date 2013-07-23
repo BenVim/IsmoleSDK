@@ -70,6 +70,7 @@ public:
      */
     void QimiRegister();
     void QimiLogin();
+    void QimiLogin(std::string userName);
     
     /*打开奇米论坛方法*/
     void QimiOpenGameForum(int fid);
@@ -157,6 +158,8 @@ private:
     
     void qimiRegister(std::string userName, std::string usePass);
     void registerSucceed(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response);
+    
+    void loginFunc(std::string userName);
 };
 
 #endif /* defined(__Pay__QimiPlatform__) */

@@ -23,6 +23,7 @@ public:
     ~QimiLoginView();
     CREATE_FUNC(QimiLoginView);
     bool init();
+    void initView(std::string userName);
     
     
     void loginOnclick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
