@@ -45,6 +45,7 @@ private:
     CCLabelTTF* m_pProductNameLastTxt;
     
     CCControlButton* m_pQimiPayBtn;
+    std::string m_oderId;
     
 private:
     
@@ -60,6 +61,11 @@ private:
     void qimiPay(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void qimiCz(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
     void qimiHelp(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent);
+    
+    void rechargeOnClick();
+    void onLoadOrderSucssful(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response);
+    void loadAlixPay();
+    
 };
 
 #endif /* defined(__Pay__QimiMainView__) */

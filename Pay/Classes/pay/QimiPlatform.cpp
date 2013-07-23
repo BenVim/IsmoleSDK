@@ -252,7 +252,7 @@ void QimiPlatform::QimiOpenGameForum(int fid)
         
         
         char buff[255];
-        sprintf(buff, "http://bbs.qimi.com/login.php?name=%s&fid=%d&sign=%s", userName.c_str(), fid, md5tolower.c_str());
+        sprintf(buff, "http://bbs.qimi.com/login.php?name=%s&fid=%d&sign=%s&mod=forumdisplay", userName.c_str(), fid, md5tolower.c_str());
         CCLog("==========%s", buff);
         QimiPlatform::shareQimiPlatform()->openGameWeb(buff, true);
     }

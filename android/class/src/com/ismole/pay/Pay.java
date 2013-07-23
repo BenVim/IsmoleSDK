@@ -169,7 +169,7 @@ public class Pay extends Cocos2dxActivity {
 		m_parent = parent;
 		m_seller = seller;
 		m_private = alipayKey;
-		price = 0.01f;
+
 		
 		// check to see if the MobileSecurePay is already installed.
 				// 检测安全支付服务是否安装

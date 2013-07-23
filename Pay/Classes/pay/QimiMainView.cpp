@@ -18,6 +18,11 @@
 #include "QimiPlatform.h"
 #include "QimiUserModel.h"
 #include "QimiUserModel.h"
+#include "QimiPlatformIOS.h"
+#include "QimiPlatformAndroid.h"
+#include "QimiAlipayDailog.h"
+#include "QimiPrepaidCardNextView.h"
+#include "PlatformUtilityHelper.h"
 
 QimiMainView::QimiMainView()
 {
@@ -355,11 +360,12 @@ void QimiMainView::onUpdataView()
 
 void QimiMainView::alipayOnClick(cocos2d::CCNode* pSender, cocos2d::extension::CCControlEvent* pCCControlEvent)
 {
-    std::string appScheme = QimiPlatform::shareQimiPlatform()->getAppScheme();
-    
-    QimiAlipayView* pQimiAlipayView = QimiAlipayView::create();
-    pQimiAlipayView->initData(m_uId, m_sId, m_key, m_money, appScheme, m_gameInfo); //std::string appScheme, std::string productName);
-    StageScene::shareStageScene()->m_DialogContainer->addChild(pQimiAlipayView);
+    rechargeOnClick();
+//    std::string appScheme = QimiPlatform::shareQimiPlatform()->getAppScheme();
+//    
+//    QimiAlipayView* pQimiAlipayView = QimiAlipayView::create();
+//    pQimiAlipayView->initData(m_uId, m_sId, m_key, m_money, appScheme, m_gameInfo); //std::string appScheme, std::string productName);
+//    StageScene::shareStageScene()->m_DialogContainer->addChild(pQimiAlipayView);
 }
 
 void QimiMainView::qimiPay(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)
@@ -481,9 +487,19 @@ void QimiMainView::qimiCz(cocos2d::CCNode* pSender, cocos2d::extension::CCContro
 
 void QimiMainView::openPrepaidCard(int kind)
 {
-    QimiPrepaidCardView* pQimiPrepaidCardView = QimiPrepaidCardView::create();
-    StageScene::shareStageScene()->m_DialogContainer->addChild(pQimiPrepaidCardView);
-    pQimiPrepaidCardView->initData(m_uId, m_sId, m_key, m_money, kind);
+//    QimiPrepaidCardView* pQimiPrepaidCardView = QimiPrepaidCardView::create();
+//    StageScene::shareStageScene()->m_DialogContainer->addChild(pQimiPrepaidCardView);
+//    pQimiPrepaidCardView->initData(m_uId, m_sId, m_key, m_money, kind);
+    
+    
+    //m_money = atoi(money.c_str())*100;
+    //m_money =1;//测试数据
+    
+    QimiPrepaidCardNextView* pQimiPrepaidCardNextView = QimiPrepaidCardNextView::create();
+    pQimiPrepaidCardNextView->initData(m_uId, m_sId, m_key, m_money*100, kind);
+    StageScene::shareStageScene()->m_DialogContainer->addChild(pQimiPrepaidCardNextView);
+    this->removeFromParentAndCleanup(true);
+    
 }
 
 void QimiMainView::backOnClick(cocos2d::CCNode *pSender, cocos2d::extension::CCControlEvent *pCCControlEvent)
@@ -496,7 +512,98 @@ void QimiMainView::qimiHelp(cocos2d::CCNode* pSender, cocos2d::extension::CCCont
     QimiPlatform::shareQimiPlatform()->openGameWeb(QIMI_HELP, false);
 }
 
+///*************需求修改，跳过修改充值金额的页面****************///
+void QimiMainView::rechargeOnClick()
+{
+    //m_money = atoi(m_pEditName->getText());
+    CCHttpRequest* request = new CCHttpRequest();
+    request->setUrl("http://www.qimi.com/platform/addOrder.php");
+    request->setRequestType(CCHttpRequest::kHttpPost);
+    request->setResponseCallback(this, httpresponse_selector(QimiMainView::onLoadOrderSucssful));
+    
+    char sign[255];
+    sprintf(sign, "%s%d%s",
+            m_uId.c_str(),
+            m_sId,
+            m_key.c_str());
+    QimiMD5 md5;
+    md5.update(sign);
+    
+    CCLog("md5str==%s",sign);
+    std::string md5tolower = md5.toString();
+    
+    CCString* postDataStr = CCString::createWithFormat("uId=%s&sId=%d&sign=%s&money=%d&orderType=alipay&type=0", m_uId.c_str(), m_sId, md5tolower.c_str(), m_money);
+    CCLog("addOrder string ===%s", postDataStr->getCString());
+    const char* postData =postDataStr->getCString();
+    request->setRequestData(postData, strlen(postData));
+    
+    request->setTag("POST test1");
+    CCHttpClient::getInstance()->send(request);
+    request->release();
+    
+    RequestLoadingView* mask = RequestLoadingView::create();
+    mask->setTag(100000);
+    this->addChild(mask);
+    
+}
 
+void QimiMainView::onLoadOrderSucssful(cocos2d::extension::CCHttpClient *sender, cocos2d::extension::CCHttpResponse *response)
+{
+    CCNode* node = this->getChildByTag(100000);
+    if (node!=NULL)
+    {
+        node->removeFromParentAndCleanup(true);
+    }
+    
+    Json::Value root = GameUtils::getResponseData(response);
+    
+    if (!root.isNull())
+    {
+        m_oderId= root["data"].asString();
+    }
+    loadAlixPay();
+}
+
+void QimiMainView::loadAlixPay()
+{
+std::string appScheme = QimiPlatform::shareQimiPlatform()->getAppScheme();
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    QimiPlatformIOS* pQimiPlatformIOS = QimiPlatformIOS::create();
+    pQimiPlatformIOS->retain();
+    pQimiPlatformIOS->alipayPay(m_oderId,
+                                m_money,
+                                m_gameInfo.c_str(),
+                                "proDes",
+                                appScheme.c_str(),
+                                QIMI_ALIAPAY_SID,
+                                QIMI_ALIAPAY_USERNMAE,
+                                QIMI_ALIAPLY_NOTIFY_URL,
+                                QIMI_PRIVATE_KEY);
+    pQimiPlatformIOS->release();
+#endif
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_ANDROID)
+    payJNI(m_oderId.c_str(),
+           m_gameInfo.c_str(),
+           "proDes",
+           appScheme.c_str(),
+           QIMI_ALIAPAY_SID,
+           QIMI_ALIAPAY_USERNMAE,
+           QIMI_ALIAPLY_NOTIFY_URL,
+           QIMI_PRIVATE_KEY,
+           m_money);
+#endif
+    
+    //弹出小窗口。
+    QimiAlipayDailog* m_pQimiAlipayDailog = QimiAlipayDailog::create();
+    m_pQimiAlipayDailog->setPositionY(m_pQimiAlipayDailog->getPositionY()+80);
+    StageScene::shareStageScene()->m_DialogContainer->addChild(m_pQimiAlipayDailog);
+    
+    this->removeFromParentAndCleanup(true);
+}
+
+/////*******end********************/
 
 
 
