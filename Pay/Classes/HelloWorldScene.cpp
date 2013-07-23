@@ -135,7 +135,7 @@ void HelloWorld::menuCloseCallback(cocos2d::CCNode *pSender, cocos2d::extension:
     }
     else
     {
-        QimiPlatform::shareQimiPlatform()->QimiLogin();
+        QimiPlatform::shareQimiPlatform()->QimiLogin("benvim@gmail.com");
     }
 }
 

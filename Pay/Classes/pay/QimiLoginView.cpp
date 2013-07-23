@@ -143,7 +143,14 @@ void QimiLoginView::initView(std::string userName)
     m_pUserName->setMaxLength(50);
     m_pUserName->setReturnType(kKeyboardReturnTypeDone);
     m_pUserName->setTouchPriority(-1002);
-    m_pUserName->setText("您的电子邮箱地址");
+    if (userName.empty()) {
+        m_pUserName->setText("您的电子邮箱地址");
+    }
+    else
+    {
+        m_pUserName->setText(userName.c_str());
+    }
+    
     m_pUserName->setTag(101);
     m_pUserName->setDelegate(this);
     m_pUserName->setEnabled(userName.empty());
