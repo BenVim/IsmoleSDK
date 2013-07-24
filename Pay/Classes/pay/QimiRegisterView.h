@@ -51,6 +51,7 @@ private:
 private:
     void registerSucceed(CCHttpClient *sender, CCHttpResponse *response);
     void showWin();
+    bool checkUserNameLength();
 };
 
 #endif /* defined(__Pay__QimiRegisterView__) */

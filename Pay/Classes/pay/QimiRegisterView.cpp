@@ -184,6 +184,12 @@ void QimiRegisterView::registerOnClick(cocos2d::CCNode* pSender, cocos2d::extens
     sprintf(tchar, "%ld%d", t, int(GameUtils::getRandom(1, 1000)));
     //CCLog("tchar%s", tchar);
     
+    if (!checkUserNameLength())
+    {
+        return;
+    }
+    
+    
     std::string name = tchar;
     if (!userName.empty() && !userPass.empty() && !userVerifyPass.empty())
     {
@@ -341,6 +347,20 @@ void QimiRegisterView::editBoxTextChanged(CCEditBox *editBox,const std::string &
 void QimiRegisterView::editBoxReturn(CCEditBox *editBox)
 {
     
+}
+
+bool QimiRegisterView::checkUserNameLength()
+{
+    std::string userName = m_pEditUserName->getText();
+    int len = userName.length();
+    CCLog("userName leng...%d", len);
+    
+    if (len >20)
+    {
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "用户名不能超过20个字符！");
+        return false;
+    }
+    return true;
 }
 
 
