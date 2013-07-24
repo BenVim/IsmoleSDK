@@ -278,6 +278,15 @@ void QimiRegisterView::registerSucceed(cocos2d::extension::CCHttpClient *sender,
                 QimiPlatform::shareQimiPlatform()->setQimiUserModel(pQimiUserModel);
                 userId = pQimiUserModel->getuID();
             }
+            
+            std::string userName = m_pEditUserName->getText();
+            std::string userPass = m_pEditUserPass->getText();
+            
+            CCUserDefault::sharedUserDefault()->setStringForKey("QimiSDKUserName", userName.c_str());
+            CCUserDefault::sharedUserDefault()->setStringForKey("QimiSDKUserPass", userPass.c_str());
+            CCUserDefault::sharedUserDefault()->setStringForKey(userName.c_str(), userPass.c_str());
+            CCUserDefault::sharedUserDefault()->flush();
+            
             //QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "注册成功");
             CCInteger* obj = CCInteger::create(1);
             QimiPlatform::shareQimiPlatform()->callRegBack(obj);
