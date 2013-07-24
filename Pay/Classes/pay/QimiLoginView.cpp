@@ -148,6 +148,7 @@ void QimiLoginView::initView(std::string userName)
     }
     else
     {
+        
         m_pUserName->setText(userName.c_str());
     }
     
@@ -302,7 +303,7 @@ void QimiLoginView::loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos
                 pQimiUserModel->retain();
                 QimiPlatform::shareQimiPlatform()->setQimiUserModel(pQimiUserModel);
             }
-            QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "登录成功");
+            //QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "登录成功");
             
             CCInteger* obj = CCInteger::create(1);
             QimiPlatform::shareQimiPlatform()->callLoginBack(obj);

@@ -167,7 +167,7 @@ void QimiPlatform::loginOut()
         m_pQimiUserModel->release();
         m_pQimiUserModel = NULL;
     }
-    QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "退出登录成功！");
+    //QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "退出登录成功！");
 }
 
 void QimiPlatform::registerPayCallBack(cocos2d::CCObject* target, cocos2d::SEL_CallFuncO call)

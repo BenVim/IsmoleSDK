@@ -274,7 +274,7 @@ void QimiRegisterView::registerSucceed(cocos2d::extension::CCHttpClient *sender,
             //QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "注册成功");
             CCInteger* obj = CCInteger::create(1);
             QimiPlatform::shareQimiPlatform()->callRegBack(obj);
-            GameUtils::showNewTip("注册成功并且已经登录！", StageScene::shareStageScene()->m_DialogContainer, ccp(240,400), 1.0, true);
+            //GameUtils::showNewTip("注册成功并且已经登录！", StageScene::shareStageScene()->m_DialogContainer, ccp(240,400), 1.0, true);
             this->removeFromParentAndCleanup(true);
         }
         else
