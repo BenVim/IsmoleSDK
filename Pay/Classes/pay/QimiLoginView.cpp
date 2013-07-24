@@ -176,7 +176,7 @@ void QimiLoginView::initView(std::string userName)
     std::string n = CCUserDefault::sharedUserDefault()->getStringForKey("QimiSDKUserName");
     std::string p = CCUserDefault::sharedUserDefault()->getStringForKey("QimiSDKUserPass");
     
-    if(!n.empty() && !p.empty())
+    if(!n.empty() && !p.empty() && userName.empty())
     {
         m_pUserName->setText(n.c_str());
         m_pPassWorld->setText(p.c_str());

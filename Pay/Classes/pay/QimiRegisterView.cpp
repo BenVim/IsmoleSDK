@@ -215,7 +215,7 @@ void QimiRegisterView::registerOnClick(cocos2d::CCNode* pSender, cocos2d::extens
                                                                userPass.c_str(),
                                                                name.c_str());
             const char* postData = postDataStr->getCString();
-            //CCLog("postData==%s", postData);
+            CCLog("Reg postData==%s?%s",QIMI_API, postData);
             request->setRequestData(postData, strlen(postData));
             request->setTag("POST test1");
             CCHttpClient::getInstance()->send(request);
@@ -223,7 +223,8 @@ void QimiRegisterView::registerOnClick(cocos2d::CCNode* pSender, cocos2d::extens
             
             RequestLoadingView* mask = RequestLoadingView::create();
             mask->setTag(1000000);
-            this->addChild(mask);
+            this->addChild(mask);//addOrder string ===uId=0&sId=15&sign=94b2b7d1ef64c8a0bd1d8cca432ae2f0&money=10&orderType=alipay&type=0
+
         }
         else
         {
