@@ -354,6 +354,12 @@ void QimiAlipayView::onLoadOrderSucssful(cocos2d::extension::CCHttpClient *sende
     
     Json::Value root = GameUtils::getResponseData(response);
     
+    if (root == NULL)
+    {
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "服务器异常，请稍后再试");
+        return;
+    }
+    
     if (!root.isNull())
     {
         m_oderId= root["data"].asString();

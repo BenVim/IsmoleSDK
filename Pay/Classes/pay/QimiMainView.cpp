@@ -321,7 +321,7 @@ void QimiMainView::onLoadRequestSucssful(cocos2d::extension::CCHttpClient *sende
         node->removeFromParentAndCleanup(true);
     }
     Json::Value root = GameUtils::getResponseData(response);
-    if (!root.isNull())
+    if (root !=NULL && !root.isNull())
     {
         
         if (root["s"].isInt() == 1)
@@ -338,6 +338,10 @@ void QimiMainView::onLoadRequestSucssful(cocos2d::extension::CCHttpClient *sende
             CCLog("类型不正确");
         }
         m_gameInfo = root["gameInfo"].asString();
+    }
+    else
+    {
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "服务器异常，请稍后再试");
     }
     onUpdataView();
     
@@ -438,7 +442,7 @@ void QimiMainView::qimiConsumeMcashRequestSucssful(cocos2d::extension::CCHttpCli
     }
     
     Json::Value root = GameUtils::getResponseData(response);
-    if (!root.isNull())
+    if (root !=NULL && !root.isNull())
     {
         int status;
         CC_GAME_JSON_ADD(root, isInt, status, "status", asInt);
@@ -462,6 +466,10 @@ void QimiMainView::qimiConsumeMcashRequestSucssful(cocos2d::extension::CCHttpCli
             CCInteger* pobj = CCInteger::create(0);
             QimiPlatform::shareQimiPlatform()->callPayBack(pobj);
         }
+    }
+    else
+    {
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "服务器异常，请稍后再试");
     }
 }
 
@@ -557,9 +565,13 @@ void QimiMainView::onLoadOrderSucssful(cocos2d::extension::CCHttpClient *sender,
     
     Json::Value root = GameUtils::getResponseData(response);
     
-    if (!root.isNull())
+    if (root !=NULL && !root.isNull())
     {
         m_oderId= root["data"].asString();
+    }
+    else
+    {
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "服务器异常，请稍后再试");
     }
     loadAlixPay();
 }

@@ -12,6 +12,7 @@
 
 #include "md5c.h"
 #include "TipView.h"
+#include "QimiPlatform.h"
 
 USING_NS_CC;
 USING_NS_CC_EXT;
@@ -106,6 +107,7 @@ Json::Value GameUtils::getResponseData(cocos2d::extension::CCHttpResponse *respo
     if (!response)
     {
         //调用弹窗口。输出用户信息获取失败。请检查网络。
+        //QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "请检查网络");
         return NULL;
     }
     
@@ -118,6 +120,7 @@ Json::Value GameUtils::getResponseData(cocos2d::extension::CCHttpResponse *respo
     {
         CCLog("response failed");
         CCLog("error buffer: %s", response->getErrorBuffer());
+        //QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "网络异常，请检查网络！");
         return NULL;
     }
     

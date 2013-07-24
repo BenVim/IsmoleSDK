@@ -290,6 +290,10 @@ void QimiRegisterView::registerSucceed(cocos2d::extension::CCHttpClient *sender,
             QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", msg);
         }
     }
+    else
+    {
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "服务器异常，请稍后再试");
+    }
 }
 
 void QimiRegisterView::editBoxEditingDidBegin(CCEditBox *editBox)

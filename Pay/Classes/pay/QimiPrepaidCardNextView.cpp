@@ -399,6 +399,7 @@ void QimiPrepaidCardNextView::requestSucssful(cocos2d::extension::CCHttpClient *
     
     if (!response)
     {
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "网络异常，请检查网络！");
         return;
     }
     
@@ -417,6 +418,7 @@ void QimiPrepaidCardNextView::requestSucssful(cocos2d::extension::CCHttpClient *
     {
         CCLog("response failed");
         CCLog("error buffer: %s", response->getErrorBuffer());
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "网络异常，请检查网络！");
         return;
     }
     std::vector<char> *buffer = response->getResponseData();
@@ -548,6 +550,7 @@ void QimiPrepaidCardNextView::requestPaySucssful(cocos2d::extension::CCHttpClien
     
     if (!response)
     {
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "网络异常，请检查网络！");
         return;
     }
     
@@ -567,6 +570,7 @@ void QimiPrepaidCardNextView::requestPaySucssful(cocos2d::extension::CCHttpClien
     {
         CCLog("response failed");
         CCLog("error buffer: %s", response->getErrorBuffer());
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "网络异常，请检查网络！");
         return;
     }
     

@@ -362,6 +362,10 @@ void QimiPlatform::loginSucceed(cocos2d::extension::CCHttpClient *sender, cocos2
             
         }
     }
+    else
+    {
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "服务器异常，请稍后再试");
+    }
 
 }
 
@@ -473,6 +477,10 @@ void QimiPlatform::registerSucceed(cocos2d::extension::CCHttpClient *sender, coc
             
             //QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", msg);
         }
+    }
+    else
+    {
+        QimiPlatform::shareQimiPlatform()->openAlertDailog("系统提示", "服务器异常，请稍后再试");
     }
 }
 
