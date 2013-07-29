@@ -148,8 +148,10 @@ void QimiLoginView::initView(std::string userName)
     }
     else
     {
-        
+        m_pLoginBtn->setPositionX(0);
         m_pUserName->setText(userName.c_str());
+        m_pRegisterBtn->setEnabled(false);
+        m_pRegisterBtn->setVisible(false);
     }
     
     m_pUserName->setTag(101);
